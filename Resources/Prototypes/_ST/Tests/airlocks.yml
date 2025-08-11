@@ -60,7 +60,7 @@
         path:
           "/Audio/Weapons/smash.ogg"
   - type: InteractionOutline
-  - type: SpriteFade
+  # - type: SpriteFade
   - type: Sprite
     drawdepth: Mobs
     sprite: _ST/Tileset/Doors/Airlocks/airlock_base.rsi
@@ -95,8 +95,6 @@
     openTimeTwo: 0.6
     openingAnimationTime: 0.8
     closingAnimationTime: 0.8
-    closedDrawDepth: Mobs
-    openDrawDepth: Mobs
     openSound:
       path: /Audio/_ST/Machines/airlock_open.ogg
     closeSound:
@@ -195,35 +193,24 @@
       # This tag is used to nagivate the Airlock construction graph. It's needed because the construction graph is shared between Airlock, AirlockGlass, and HighSecDoor
 
 - type: entity
+  id: StellarAirlockScience
+  parent: StellarAirlock
+  name: airlock
+  suffix: Science
+  description: An airlock with a window.
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Doors/Airlocks/airlock_science.rsi
+
+- type: entity
   id: StellarAirlockGlass
   parent: StellarAirlock
-  name: Glass Airlock
+  name: airlock
+  suffix: Glass
   description: An airlock with a window.
   components:
   - type: Sprite
     sprite: _ST/Tileset/Doors/Airlocks/airlock_glass_base.rsi
-    layers:
-    - state: closed
-      map: ["enum.DoorVisualLayers.Base"]
-    - state: closed_unlit
-      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects.rsi
-      shader: unshaded
-      map: ["enum.DoorVisualLayers.BaseUnlit"]
-    - state: welded
-      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects.rsi
-      map: ["enum.WeldableLayers.BaseWelded"]
-      visible: false
-    - state: bolted_unlit
-      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects.rsi
-      shader: unshaded
-      map: ["enum.DoorVisualLayers.BaseBolted"]
-    - state: emergency_unlit
-      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects.rsi
-      map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
-      shader: unshaded
-    - state: panel_open
-      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects.rsi
-      map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: Door
     occludes: false
   - type: Occluder
@@ -232,33 +219,12 @@
 - type: entity
   id: StellarAirlockGlassWhite
   parent: StellarAirlock
-  name: glass white airlock
+  name: white airlock
+  suffix: Glass, White
   description: An airlock with a window.
   components:
   - type: Sprite
     sprite: _ST/Tileset/Doors/Airlocks/airlock_glass_white.rsi
-    layers:
-    - state: closed
-      map: ["enum.DoorVisualLayers.Base"]
-    - state: closed_unlit
-      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects.rsi
-      shader: unshaded
-      map: ["enum.DoorVisualLayers.BaseUnlit"]
-    - state: welded
-      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects.rsi
-      map: ["enum.WeldableLayers.BaseWelded"]
-      visible: false
-    - state: bolted_unlit
-      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects.rsi
-      shader: unshaded
-      map: ["enum.DoorVisualLayers.BaseBolted"]
-    - state: emergency_unlit
-      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects.rsi
-      map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
-      shader: unshaded
-    - state: panel_open
-      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects.rsi
-      map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: Door
     occludes: false
   - type: Occluder
@@ -268,31 +234,10 @@
   id: StellarAirlockGlassScience
   parent: StellarAirlock
   name: glass science airlock
+  suffix: Glass, Science
   components:
   - type: Sprite
     sprite: _ST/Tileset/Doors/Airlocks/airlock_glass_science.rsi
-    layers:
-    - state: closed
-      map: ["enum.DoorVisualLayers.Base"]
-    - state: closed_unlit
-      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects.rsi
-      shader: unshaded
-      map: ["enum.DoorVisualLayers.BaseUnlit"]
-    - state: welded
-      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects.rsi
-      map: ["enum.WeldableLayers.BaseWelded"]
-      visible: false
-    - state: bolted_unlit
-      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects.rsi
-      shader: unshaded
-      map: ["enum.DoorVisualLayers.BaseBolted"]
-    - state: emergency_unlit
-      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects.rsi
-      map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
-      shader: unshaded
-    - state: panel_open
-      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects.rsi
-      map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: Door
     occludes: false
   - type: Occluder

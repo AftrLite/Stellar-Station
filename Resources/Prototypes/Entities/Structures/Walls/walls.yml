@@ -703,11 +703,11 @@
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite: Structures/Walls/reinforced_diagonal.rsi
-    state: state0
+    sprite: _ST/Tileset/Walls/diagonal.rsi # Stellar
+    state: metal_reinforced
   - type: Icon
-    sprite: Structures/Walls/reinforced_diagonal.rsi
-    state: state0
+    sprite: _ST/Tileset/Walls/diagonal.rsi # Stellar
+    state: metal_reinforced
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
@@ -735,6 +735,10 @@
         acts: ["Destruction"]
   - type: RadiationBlocker
     resistance: 5
+  - type: IconSmooth # Begin Stellar - Wallening
+    mode: NoSprite
+    key: wallsbase
+  - type: SpriteFade # End Stellar - Wallening
 
 # Riveting
 - type: entity
@@ -1033,11 +1037,11 @@
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite: Structures/Walls/solid_diagonal.rsi
-    state: state0
+    sprite: _ST/Tileset/Walls/diagonal.rsi # Stellar
+    state: metal
   - type: Icon
-    sprite: Structures/Walls/solid_diagonal.rsi
-    state: state0
+    sprite: _ST/Tileset/Walls/diagonal.rsi # Stellar
+    state: metal
   - type: Destructible
     thresholds:
     - trigger:
@@ -1060,6 +1064,10 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
+  - type: IconSmooth # Begin Stellar - Wallening
+    mode: NoSprite
+    key: wallsbase
+  - type: SpriteFade # End Stellar - Wallening
 
 - type: entity
   parent: WallSolid
