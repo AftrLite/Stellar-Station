@@ -14,6 +14,10 @@
         {
             "name": "metal_reinforced",
             "directions": 4
+        },
+        {
+            "name": "plastitanium",
+            "directions": 4
         }
     ]
 }

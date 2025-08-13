@@ -84,7 +84,7 @@
           - AirlockLayer
     - type: Door
       openDrawDepth: WallTops
-      closedDrawDepth: OverMobs
+      closedDrawDepth: Mobs # Stellar
       closeTimeOne: 0.6
       closeTimeTwo: 0.2 # Stellar
       openTimeOne: 0.6
@@ -96,9 +96,9 @@
         types:
           Blunt: 15
       openSound:
-        path: /Audio/Machines/airlock_open.ogg
+        path: /Audio/_ST/Machines/firelock_open.ogg # Stellar
       closeSound:
-        path: /Audio/Machines/airlock_close.ogg
+        path: /Audio/_ST/Machines/firelock_close.ogg # Stellar
       denySound:
         path: /Audio/Machines/airlock_deny.ogg
       openingAnimationTime: 0.8 # Stellar
@@ -192,11 +192,12 @@
   id: FirelockEdge
   parent: Firelock
   name: firelock
+  suffix: directional # Stellar
   components:
     - type: StationAiWhitelist
     - type: Sprite
-      sprite: Structures/Doors/edge_door_hazard.rsi
-      snapCardinals: false
+      sprite: _ST/Tileset/Doors/Shutters/firelock_directional.rsi # Stellar
+      # snapCardinals: false # Stellar
     - type: Airtight
       airBlocked: false
       noAirWhenFullyAirBlocked: false
@@ -220,6 +221,12 @@
       - ForceNoFixRotations # Prevent fixrotations from targeting these, since the base Firelock is targeted
     - type: Door
       occludes: false
+      openDrawDepth: HighFloorObjects # Begin Stellar
+      closedDrawDepth: Mobs
+      openSound:
+        path: /Audio/_ST/Machines/airlock_open.ogg
+      closeSound:
+        path: /Audio/_ST/Machines/airlock_close.ogg # End Stellar
     - type: Physics
       canCollide: false
     - type: StaticPrice

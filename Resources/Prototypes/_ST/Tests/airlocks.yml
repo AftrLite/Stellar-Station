@@ -27,7 +27,7 @@
     bumpOpen: false
     clickOpen: true
     closedDrawDepth: Mobs
-    openDrawDepth: Mobs
+    openDrawDepth: BelowMobs
     openSound:
       path: /Audio/Effects/door_open.ogg
     closeSound:
@@ -52,6 +52,7 @@
   parent: StellarTallDoorBase
   name: airlock
   description: An airlock.
+  suffix: Service
   components:
   - type: StationAiWhitelist
   - type: MeleeSound
@@ -63,7 +64,7 @@
   # - type: SpriteFade
   - type: Sprite
     drawdepth: Mobs
-    sprite: _ST/Tileset/Doors/Airlocks/airlock_base.rsi
+    sprite: _ST/Tileset/Doors/Airlocks/airlock_service.rsi
     layers:
     - state: closed
       map: ["enum.DoorVisualLayers.Base"]
@@ -200,7 +201,7 @@
   description: An airlock with a window.
   components:
   - type: Sprite
-    sprite: _ST/Tileset/Doors/Airlocks/airlock_science.rsi
+    sprite: _ST/Tileset/Doors/Airlocks/science.rsi
 
 - type: entity
   id: StellarAirlockGlass
@@ -210,7 +211,7 @@
   description: An airlock with a window.
   components:
   - type: Sprite
-    sprite: _ST/Tileset/Doors/Airlocks/airlock_glass_base.rsi
+    sprite: _ST/Tileset/Doors/Airlocks-Glass/airlock_glass_base.rsi
   - type: Door
     occludes: false
   - type: Occluder
@@ -224,7 +225,7 @@
   description: An airlock with a window.
   components:
   - type: Sprite
-    sprite: _ST/Tileset/Doors/Airlocks/airlock_glass_white.rsi
+    sprite: _ST/Tileset/Doors/Airlocks-Glass/white.rsi
   - type: Door
     occludes: false
   - type: Occluder
@@ -237,7 +238,7 @@
   suffix: Glass, Science
   components:
   - type: Sprite
-    sprite: _ST/Tileset/Doors/Airlocks/airlock_glass_science.rsi
+    sprite: _ST/Tileset/Doors/Airlocks-Glass/science.rsi
   - type: Door
     occludes: false
   - type: Occluder

@@ -8,6 +8,10 @@
     layers:
     - state: icon
       map: ["enum.TriggerVisualLayers.Base"]
+    - state: unshaded-overlay
+      shader: unshaded
+      visible: false
+      map: ["dvdplayer"]
   - type: Item
     size: Small
   - type: Clothing
