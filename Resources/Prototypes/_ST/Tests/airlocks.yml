@@ -315,29 +315,36 @@
     enabled: false
 
 - type: entity
-  id: StellarAirlockGlassWhite
-  parent: StellarAirlock
-  name: white airlock
-  suffix: Glass, White
+  id: StellarAirlockGlassShuttle
+  parent: StellarAirlockGlass
+  name: shuttle airlock
+  suffix: Glass, Shuttle
   description: An airlock with a window.
   components:
   - type: Sprite
-    sprite: _ST/Tileset/Doors/Airlocks-Glass/white.rsi
-  - type: Door
-    occludes: false
-  - type: Occluder
-    enabled: false
+    sprite: _ST/Tileset/Doors/Airlocks-Glass/shuttle.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: closed_unlit
+      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects_angled.rsi
+      shader: unshaded
+      map: ["enum.DoorVisualLayers.BaseUnlit"]
+    - state: bolted_unlit
+      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects_angled.rsi
+      shader: unshaded
+      map: ["enum.DoorVisualLayers.BaseBolted"]
+    - state: emergency_unlit
+      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects_angled.rsi
+      map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
+      shader: unshaded
 
 - type: entity
-  id: StellarAirlockGlassScience
-  parent: StellarAirlock
-  name: glass science airlock
-  suffix: Glass, Science
+  id: StellarAirlockGlassPlastitanium
+  parent: StellarAirlockGlassShuttle
+  name: plastitanium airlock
+  suffix: Glass, StellarAirlockGlassPlastitanium
+  description: An airlock with a window.
   components:
   - type: Sprite
-    sprite: _ST/Tileset/Doors/Airlocks-Glass/science.rsi
-  - type: Door
-    occludes: false
-  - type: Occluder
-    enabled: false
-
+    sprite: _ST/Tileset/Doors/Airlocks-Glass/plastitanium.rsi
