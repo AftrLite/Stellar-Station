@@ -315,6 +315,34 @@
     enabled: false
 
 - type: entity
+  id: StellarAirlockGlassExternals
+  parent: StellarAirlockGlass
+  name: external airlock
+  suffix: Glass, Externals
+  description: An airlock with a window.
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Doors/Airlocks-Glass/externals-glass.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: closed_unlit
+      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects_externals.rsi
+      shader: unshaded
+      map: ["enum.DoorVisualLayers.BaseUnlit"]
+    - state: bolted_unlit
+      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects_externals.rsi
+      shader: unshaded
+      map: ["enum.DoorVisualLayers.BaseBolted"]
+    - state: emergency_unlit
+      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects_externals.rsi
+      map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
+      shader: unshaded
+  - type: Door
+    closedDrawDepth: Mobs
+    openDrawDepth: Mobs
+
+- type: entity
   id: StellarAirlockGlassShuttle
   parent: StellarAirlockGlass
   name: shuttle airlock
@@ -322,7 +350,7 @@
   description: An airlock with a window.
   components:
   - type: Sprite
-    sprite: _ST/Tileset/Doors/Airlocks-Glass/shuttle.rsi
+    sprite: _ST/Tileset/Doors/Airlocks-Glass/shuttle-glass.rsi
     layers:
     - state: closed
       map: ["enum.DoorVisualLayers.Base"]
@@ -343,8 +371,36 @@
   id: StellarAirlockGlassPlastitanium
   parent: StellarAirlockGlassShuttle
   name: plastitanium airlock
-  suffix: Glass, StellarAirlockGlassPlastitanium
+  suffix: Glass, Plastitanium
   description: An airlock with a window.
   components:
   - type: Sprite
-    sprite: _ST/Tileset/Doors/Airlocks-Glass/plastitanium.rsi
+    sprite: _ST/Tileset/Doors/Airlocks-Glass/plastitanium-glass.rsi
+
+- type: entity
+  id: StellarAirlockVault
+  parent: StellarAirlock
+  name: vault airlock
+  suffix: Vault
+  description: An airlock with a window.
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Doors/Airlocks/highsecurity.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: closed_unlit
+      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects_highsecurity.rsi
+      shader: unshaded
+      map: ["enum.DoorVisualLayers.BaseUnlit"]
+    - state: bolted_unlit
+      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects_highsecurity.rsi
+      shader: unshaded
+      map: ["enum.DoorVisualLayers.BaseBolted"]
+    - state: emergency_unlit
+      sprite: _ST/Tileset/Doors/Airlocks/airlock_effects_highsecurity.rsi
+      map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
+      shader: unshaded
+  - type: Door
+    closedDrawDepth: Mobs
+    openDrawDepth: Mobs
