@@ -239,15 +239,7 @@
       "name": "paper"
     },
     {
-      "name": "paper_blood",
-      "delays": [
-        [
-          5,
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
+      "name": "paper_blood"
     }
   ]
 }
