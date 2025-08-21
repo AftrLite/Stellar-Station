@@ -2,7 +2,7 @@
     "version": 1,
 	"size": {"x": 32, "y": 32},
     "license": "LicenseRef-Wallening",
-    "copyright": "By AftrLite",
+    "copyright": "By AftrLite(github)",
     "states": [
         {
             "name": "1",
