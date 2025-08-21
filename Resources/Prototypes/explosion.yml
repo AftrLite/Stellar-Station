@@ -61,7 +61,7 @@
       Piercing: 3
   lightColor: Green
   fireColor: Green
-  texturePath: /Textures/Effects/fire_greyscale.rsi
+  texturePath: /Textures/_ST/Effects/tile-fire-explode_grayscale.rsi # Stellar - Fire
   fireStates: 3
 
 - type: explosion
@@ -75,7 +75,7 @@
   tileBreakIntensity: [0]
   lightColor: Blue
   fireColor: Blue
-  texturePath: /Textures/Effects/fire_greyscale.rsi
+  texturePath: /Textures/_ST/Effects/tile-fire-explode_grayscale.rsi # Stellar - Fire
   fireStates: 3
 
 - type: explosion
