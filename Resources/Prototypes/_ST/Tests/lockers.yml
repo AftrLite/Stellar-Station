@@ -56,3 +56,14 @@
     sprite: _ST/Tileset/Storage/Lockers/secure-service-janitor.rsi
   - type: AccessReader
     access: [["Janitor"]]
+
+- type: entity
+  id: LockerArmory
+  parent: LockerBase
+  name: armory locker
+  description: A very sturdy-looking locker.
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Storage/Lockers/secure-security-armory.rsi
+  - type: AccessReader
+    access: [["Security"]]
