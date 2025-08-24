@@ -180,16 +180,16 @@
 - type: entity
   parent: LockerBase
   id: LockerEvacRepair
-  name: emergency shuttle emergency locker
-  description: It's emergencies all the way down.
-  components:
-  - type: Appearance
-  - type: EntityStorageVisuals
-    stateBaseClosed: eng
-    stateDoorOpen: eng_open
-    stateDoorClosed: eng_evac_door
-  - type: AccessReader
-    access: [ [ "Engineering" ] ]
+  name: DON'T MAP THIS  # Begin Stellar - Lockers
+  description: DON'T MAP THIS
+  # components:
+  # - type: Appearance
+  # - type: EntityStorageVisuals
+  #   stateBaseClosed: eng
+  #   stateDoorOpen: eng_open
+  #   stateDoorClosed: eng_evac_door
+  # - type: AccessReader
+  #   access: [ [ "Engineering" ] ] # End Stellar - Lockers
 
 # Freezer
 - type: entity
