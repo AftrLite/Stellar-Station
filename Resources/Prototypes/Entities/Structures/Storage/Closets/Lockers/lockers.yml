@@ -580,7 +580,6 @@
 # Syndicate
 - type: entity
   id: LockerSyndicatePersonal
-  name: armory closet
   parent: LockerBaseSecure # Begin Stellar - Lockers
   name: DON'T MAP THIS
   description: DON'T MAP THIS
