@@ -44,7 +44,7 @@
           layer:
           - MachineLayer
     - type: Icon
-      sprite: _ST/Tileset/Storage/Crates/base-effects.rsi # Stellar - Crates
+      sprite: _ST/Tileset/Storage/Crates/artifact-secure.rsi # End Stellar - Crates
       state: icon # Stellar - Crates
     - type: EntityStorage
       capacity: 1
