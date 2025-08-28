@@ -33,7 +33,7 @@
     path: /Audio/_ST/Music/Mono/valley.ogg
 
 - type: jukebox
-  id: Gruntwork
+  id: 8oclockGhosts
   name: Darklyac - 8 O'Clock Ghosts
   path:
     path: /Audio/_ST/Music/Mono/8oclock_ghosts.ogg
