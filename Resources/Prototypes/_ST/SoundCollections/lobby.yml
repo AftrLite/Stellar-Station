@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: LicenseRef-Wallening
 
 - type: soundCollection
-  id: Music/StereoMusic
+  id: LobbyMusic
   files:
     - /Audio/_ST/Music/Stereo/gruntwork_(stereo).ogg
     - /Audio/_ST/Music/Stereo/new_save_(stereo).ogg
