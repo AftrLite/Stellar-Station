@@ -76,8 +76,8 @@ namespace Content.Server.GameTicking
             var desc = Loc.GetString(preset.Description);
             return Loc.GetString(
                 RunLevel == GameRunLevel.PreRoundLobby
-                    ? "game-ticker-get-info-preround-text"
-                    : "game-ticker-get-info-text",
+                    ? "stellar-game-ticker-get-info-preround-text" // Stellar
+                    : "stellar-game-ticker-get-info-text", // Stellar
                 ("roundId", RoundId),
                 ("playerCount", playerCount),
                 ("readyCount", readyCount),

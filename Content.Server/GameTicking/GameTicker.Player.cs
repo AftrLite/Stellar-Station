@@ -184,7 +184,7 @@ namespace Content.Server.GameTicking
         public void PlayerJoinGame(ICommonSession session, bool silent = false)
         {
             if (!silent)
-                _chatManager.DispatchServerMessage(session, Loc.GetString("game-ticker-player-join-game-message"));
+                _chatManager.DispatchServerMessage(session, Loc.GetString("stellar-game-ticker-player-join-game-message")); // Stellar
 
             _playerGameStatuses[session.UserId] = PlayerGameStatus.JoinedGame;
             _db.AddRoundPlayers(RoundId, session.UserId);
