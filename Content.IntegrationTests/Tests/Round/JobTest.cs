@@ -12,6 +12,9 @@ using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
+// ES START
+using Content.Shared._ES.CCVar;
+// ES END
 
 namespace Content.IntegrationTests.Tests.Round;
 
@@ -83,7 +86,8 @@ public sealed class JobTest
 
         // Initially in the lobby
         Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.PreRoundLobby));
-        Assert.That(pair.Client.AttachedEntity, Is.Null);
+        // ES START
+        // Assert.That(pair.Client.AttachedEntity, Is.Null);
         Assert.That(ticker.PlayerGameStatuses[pair.Client.User!.Value], Is.EqualTo(PlayerGameStatus.NotReadyToPlay));
 
         // Ready up and start the round
@@ -114,7 +118,8 @@ public sealed class JobTest
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, _map);
         var ticker = pair.Server.System<GameTicker>();
         Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.PreRoundLobby));
-        Assert.That(pair.Client.AttachedEntity, Is.Null);
+        // ES START
+        // Assert.That(pair.Client.AttachedEntity, Is.Null);
 
         await pair.SetJobPriorities((Passenger, JobPriority.Medium), (Engineer, JobPriority.High));
         ticker.ToggleReadyAll(true);
@@ -153,7 +158,8 @@ public sealed class JobTest
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, _map);
         var ticker = pair.Server.System<GameTicker>();
         Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.PreRoundLobby));
-        Assert.That(pair.Client.AttachedEntity, Is.Null);
+        // ES START
+        // Assert.That(pair.Client.AttachedEntity, Is.Null);
 
         var captain = pair.Server.ProtoMan.Index(Captain);
         var engineer = pair.Server.ProtoMan.Index(Engineer);
@@ -188,7 +194,10 @@ public sealed class JobTest
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, _map);
         var ticker = pair.Server.System<GameTicker>();
         Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.PreRoundLobby));
-        Assert.That(pair.Client.AttachedEntity, Is.Null);
+// ES START
+        // Assert.That(pair.Client.AttachedEntity, Is.Null);
+        pair.Server.CfgMan.SetCVar(ESCVars.ESRandomCharacters, false);
+// ES END
 
         await pair.Server.AddDummySessions(5);
         await pair.RunTicksSync(5);

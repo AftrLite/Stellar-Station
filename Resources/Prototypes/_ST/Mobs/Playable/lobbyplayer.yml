@@ -1,0 +1,35 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  id: StellarLobbyPlayer
+  parent: BaseMob
+  name: echo
+  description: An echo of something, somewhere..
+  components:
+  - type: Sprite
+    sprite: _ST/Mobs/Playable/lobbyplayer.rsi
+    layers:
+    - state: full
+  - type: Eye
+  - type: Input
+    context: "human"
+  - type: Examiner
+  - type: ESTheatergoerMarker
+  - type: ComplexInteraction
+  - type: Emoting
+  - type: BodyEmotes
+    soundsId: GeneralBodyEmotes
+  - type: Grammar
+    attributes:
+      proper: true
+      gender: epicene
+  - type: TypingIndicator
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+  - type: Dropshadow
+    sprite:
+      sprite: _ST/Effects/dropshadow.rsi
+      state: shadow-playable

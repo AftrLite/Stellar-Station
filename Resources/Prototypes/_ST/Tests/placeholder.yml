@@ -4,6 +4,10 @@
 
 - type: entity
   parent: Error
+  id: ESCarpetFancyRed
+
+- type: entity
+  parent: Error
   id: AirAlarmDecapoid
 - type: entity
   parent: Error

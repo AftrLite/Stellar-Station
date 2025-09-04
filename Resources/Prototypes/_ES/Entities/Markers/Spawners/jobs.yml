@@ -1,0 +1,13 @@
+- type: entity
+  name: lobby spawn point
+  id: StellarLobbyPlayerSpawnpoint
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    sprite: Markers/cross.rsi
+    layers:
+    - state: pink
+    - sprite: _ST/Mobs/Playable/lobbyplayer.rsi
+      state: full
+  - type: SpawnPoint
+    spawn_type: Theatergoer
