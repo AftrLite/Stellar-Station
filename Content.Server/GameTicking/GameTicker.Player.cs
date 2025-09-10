@@ -95,7 +95,7 @@ namespace Content.Server.GameTicking
                         }
                         else
                             SpawnWaitDb();
-
+                            HideLobbyCharacter(session); // Stellar
                         break;
                     }
 
@@ -107,18 +107,21 @@ namespace Content.Server.GameTicking
                         // Their entity was probably deleted sometime while they were disconnected, or they were an observer.
                         // Instead of allowing them to spawn in, we will dump and their existing mind in an observer ghost.
                         SpawnObserverWaitDb();
+                        HideLobbyCharacter(session); // Stellar
                     }
                     else
                     {
                         if (_playerManager.SetAttachedEntity(session, mind.CurrentEntity))
                         {
                             PlayerJoinGame(session);
+                            HideLobbyCharacter(session); // Stellar
                         }
                         else
                         {
                             Log.Error(
                                 $"Failed to attach player {session} with mind {ToPrettyString(mindId)} to its current entity {ToPrettyString(mind.CurrentEntity)}");
                             SpawnObserverWaitDb();
+                            HideLobbyCharacter(session); // Stellar
                         }
                     }
 

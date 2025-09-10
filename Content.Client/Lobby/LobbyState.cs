@@ -86,11 +86,11 @@ namespace Content.Client.Lobby
             LayoutContainer.SetAnchorPreset(Lobby, LayoutContainer.LayoutPreset.Wide);
 
             var lobbyNameCvar = _cfg.GetCVar(CCVars.ServerLobbyName);
-            var serverName = _baseClient.GameInfo?.ServerName ?? string.Empty;
+            // var serverName = _baseClient.GameInfo?.ServerName ?? string.Empty;
 
-            Lobby.ServerName.Text = string.IsNullOrEmpty(lobbyNameCvar)
-                ? Loc.GetString("ui-lobby-title", ("serverName", serverName))
-                : lobbyNameCvar;
+            // Lobby.ServerName.Text = string.IsNullOrEmpty(lobbyNameCvar)
+            //     ? Loc.GetString("ui-lobby-title", ("serverName", serverName))
+            //     : lobbyNameCvar;
 
             var width = _cfg.GetCVar(CCVars.ServerLobbyRightPanelWidth);
             //Lobby.RightSide.SetWidth = width;
@@ -98,6 +98,8 @@ namespace Content.Client.Lobby
             UpdateLobbyUi();
 
             Lobby.CharacterPreview.CharacterSetupButton.OnPressed += OnSetupPressed;
+            Lobby.ReadyButton.OnPressed += OnReadyPressed;
+            Lobby.ReadyButton.OnToggled += OnReadyToggled;
 
             _gameTicker.InfoBlobUpdated += UpdateLobbyUi;
             _gameTicker.LobbyStatusUpdated += LobbyStatusUpdated;
@@ -123,6 +125,8 @@ namespace Content.Client.Lobby
             _voteManager.ClearPopupContainer();
 
             Lobby!.CharacterPreview.CharacterSetupButton.OnPressed -= OnSetupPressed;
+            Lobby!.ReadyButton.OnPressed -= OnReadyPressed;
+            Lobby!.ReadyButton.OnToggled -= OnReadyToggled;
 
             Lobby = null;
         }
@@ -139,17 +143,33 @@ namespace Content.Client.Lobby
             Lobby?.SwitchState(LobbyGui.LobbyGuiState.CharacterSetup);
         }
 
+        private void OnReadyPressed(BaseButton.ButtonEventArgs args)
+        {
+            if (!_gameTicker.IsGameStarted)
+            {
+                return;
+            }
+
+            new LateJoinGui().OpenCentered();
+        }
+
+        private void OnReadyToggled(BaseButton.ButtonToggledEventArgs args)
+        {
+            SetReady(args.Pressed);
+        }
+
         public override void FrameUpdate(FrameEventArgs e)
         {
             if (_gameTicker.IsGameStarted)
             {
-                Lobby!.StartTime.Text = string.Empty;
+                // Lobby!.StartTime.Text = string.Empty;
                 var roundTime = _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
-                Lobby!.StationTime.Text = Loc.GetString("lobby-state-player-status-round-time", ("hours", roundTime.Hours), ("minutes", roundTime.Minutes));
+                // Lobby!.StationTime.Text = Loc.GetString("lobby-state-player-status-round-time", ("hours", roundTime.Hours), ("minutes", roundTime.Minutes));
+                Lobby!.StartTime.Text = Loc.GetString("lobby-state-player-status-round-time", ("hours", roundTime.Hours), ("minutes", roundTime.Minutes));
                 return;
             }
 
-            Lobby!.StationTime.Text = Loc.GetString("lobby-state-player-status-round-not-started");
+            // Lobby!.StationTime.Text = Loc.GetString("lobby-state-player-status-round-not-started");
             string text;
 
             if (_gameTicker.Paused)
@@ -190,7 +210,7 @@ namespace Content.Client.Lobby
 
         private void LobbyLateJoinStatusUpdated()
         {
-            //Lobby!.ReadyButton.Disabled = _gameTicker.DisallowedLateJoin;
+            Lobby!.ReadyButton.Disabled = _gameTicker.DisallowedLateJoin;
         }
 
         private void UpdateLobbyUi()
@@ -198,27 +218,25 @@ namespace Content.Client.Lobby
 
             if (_gameTicker.IsGameStarted)
             {
-                // ES START
-                /*Lobby!.ReadyButton.Text = Loc.GetString("lobby-state-ready-button-join-state");
+                Lobby!.ReadyButton.Text = Loc.GetString("lobby-state-ready-button-join-state");
                 Lobby!.ReadyButton.ToggleMode = false;
                 Lobby!.ReadyButton.Pressed = false;
-                Lobby!.ObserveButton.Disabled = false;*/
+                Lobby!.ObserveButton.Disabled = false;
             }
             else
             {
                 Lobby!.StartTime.Text = string.Empty;
-                /*Lobby!.ReadyButton.Text = Loc.GetString(Lobby!.ReadyButton.Pressed ? "lobby-state-player-status-ready": "lobby-state-player-status-not-ready");
+                Lobby!.ReadyButton.Text = Loc.GetString(Lobby!.ReadyButton.Pressed ? "lobby-state-player-status-ready": "lobby-state-ready-button-ready-up-state"); // Stellar
                 Lobby!.ReadyButton.ToggleMode = true;
                 Lobby!.ReadyButton.Disabled = false;
-                Lobby!.ReadyButton.Pressed = _gameTicker.AreWeReady;
-                Lobby!.ObserveButton.Disabled = true;*/
-                // ES END
+                // Lobby!.ReadyButton.Pressed = _gameTicker.ReadyStatus;
+                Lobby!.ObserveButton.Disabled = true;
             }
 
 
             if (_gameTicker.ServerInfoBlob != null)
             {
-                Lobby!.ServerInfo.SetInfoBlob(_gameTicker.ServerInfoBlob);
+                // Lobby!.ServerInfo.SetInfoBlob(_gameTicker.ServerInfoBlob);
             }
 
             // ES START

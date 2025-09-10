@@ -385,10 +385,6 @@ namespace Content.Server.GameTicking
                 if (LobbyEnabled && status is not (PlayerGameStatus.Observing or PlayerGameStatus.ReadyToPlay)) continue;
                 if (!_playerManager.TryGetSessionById(userId, out var session)) continue;
 
-                if (autoDeAdmin && _adminManager.IsAdmin(session))
-                {
-                    _adminManager.DeAdmin(session);
-                }
 #if DEBUG
                 DebugTools.Assert(_userDb.IsLoadComplete(session), $"Player was readied up but didn't have user DB data loaded yet??");
 #endif

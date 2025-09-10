@@ -3,8 +3,6 @@
   id: StellarLobbyMarkerReady
   parent: MarkerBase
   components:
-  - type: ESReadyTriggerMarker
-    behavior: ReadyToPlay
   - type: Sprite
     sprite: Markers/cross.rsi
     layers:
@@ -30,8 +28,6 @@
   id: StellarLobbyMarkerSpectate
   parent: MarkerBase
   components:
-  - type: ESReadyTriggerMarker
-    behavior: Observing
   - type: Sprite
     sprite: Markers/cross.rsi
     layers:
@@ -57,8 +53,6 @@
   id: StellarLobbyMarkerUnready
   parent: MarkerBase
   components:
-  - type: ESReadyTriggerMarker
-    behavior: NotReadyToPlay
   - type: Sprite
     sprite: Markers/cross.rsi
     layers:

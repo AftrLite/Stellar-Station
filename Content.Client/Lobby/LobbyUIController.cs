@@ -188,7 +188,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
 
         var dummy = LoadProfileEntity(humanoid, null, true);
         PreviewPanel.SetSprite(dummy);
-        PreviewPanel.SetSummaryText(humanoid.Summary);
+        PreviewPanel.SetSummaryText(humanoid.Name);
     }
 
     private void RefreshProfileEditor()

@@ -176,7 +176,7 @@ namespace Content.Client.Lobby.UI
             NameEdit.IsValid = args => args.Length <= _maxNameLength;
             NameRandomize.OnPressed += args => RandomizeName();
             RandomizeEverythingButton.OnPressed += args => { RandomizeEverything(); };
-            WarningLabel.SetMarkup($"[color=red]{Loc.GetString("humanoid-profile-editor-naming-rules-warning")}[/color]");
+            // WarningLabel.SetMarkup($"[color=red]{Loc.GetString("humanoid-profile-editor-naming-rules-warning")}[/color]");
 
             #endregion Name
 
@@ -914,7 +914,7 @@ namespace Content.Client.Lobby.UI
 
                     var icon = new TextureRect
                     {
-                        TextureScale = new Vector2(2, 2),
+                        TextureScale = new Vector2(3, 3), // Stellar
                         VerticalAlignment = VAlignment.Center
                     };
                     var jobIcon = _prototypeManager.Index(job.Icon);

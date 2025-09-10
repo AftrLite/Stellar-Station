@@ -108,6 +108,17 @@ namespace Content.Server.GameTicking
             data.LobbyEntity = theatergoer;
         }
 
+        private void HideLobbyCharacter(ICommonSession session)
+        {
+            if (session.ContentData() is not { } data)
+                return;
+
+            if (data.LobbyEntity != null)
+            {
+
+            }
+        }
+
         private EntityCoordinates GetTheatergoerSpawnPoint()
         {
             if (DiegeticLobbyMapId == null)
@@ -304,36 +315,8 @@ namespace Content.Server.GameTicking
             _playerGameStatuses[player.UserId] = ready;
             RaiseNetworkEvent(GetStatusMsg(player), player.Channel);
             // update server info to reflect new ready count
-            TryShowReadyStatusAlert(player, ready);
             UpdateInfoText();
         }
-
-        // ES START
-        private void TryShowReadyStatusAlert(ICommonSession player, PlayerGameStatus ready)
-        {
-            if (player.AttachedEntity is null || ready == PlayerGameStatus.JoinedGame)
-                return;
-
-            var alert = ready switch
-            {
-                PlayerGameStatus.NotReadyToPlay => NotReadiedAlert,
-                PlayerGameStatus.ReadyToPlay => ReadiedAlert,
-                PlayerGameStatus.Observing => ObservingAlert,
-                _ => throw new ArgumentOutOfRangeException()
-            };
-
-            // _alerts.ShowAlert(player.AttachedEntity.Value, alert); // TODO: HUD DISPLAY, NOT ALERT DISPLAY
-        }
-
-        // TODO clear alerts on theatergoers when evry1 goes ingame
-        private void ClearReadyStatusAlert(ICommonSession player)
-        {
-            if (player.AttachedEntity == null)
-                return;
-
-            // _alerts.ClearAlertCategory(player.AttachedEntity.Value, ReadyAlertCategory); // TODO: HUD DISPLAY, NOT ALERT DISPLAY
-        }
-        // ES END
 
         public bool UserHasJoinedGame(ICommonSession session)
             => UserHasJoinedGame(session.UserId);

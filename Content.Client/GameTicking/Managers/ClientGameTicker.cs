@@ -1,4 +1,3 @@
-using Content.Client._ES.Lobby;
 using Content.Client.Administration.Managers;
 using Content.Client.Gameplay;
 using Content.Client.Lobby;
@@ -28,7 +27,6 @@ namespace Content.Client.GameTicking.Managers
         // ES START
         [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
-        private ESLobbyCurtainsUIController _lobbyCurtains = default!;
         // ES END
 
         private Dictionary<NetEntity, Dictionary<ProtoId<JobPrototype>, int?>>  _jobsAvailable = new();
@@ -72,7 +70,7 @@ namespace Content.Client.GameTicking.Managers
             SubscribeNetworkEvent<TickerJoinGameEvent>(JoinGame);
             SubscribeNetworkEvent<TickerConnectionStatusEvent>(ConnectionStatus);
             SubscribeNetworkEvent<TickerLobbyStatusEvent>(LobbyStatus);
-            SubscribeNetworkEvent<TickerLobbyInfoEvent>(LobbyInfo);
+            // SubscribeNetworkEvent<TickerLobbyInfoEvent>(LobbyInfo);
             SubscribeNetworkEvent<TickerLobbyCountdownEvent>(LobbyCountdown);
             SubscribeNetworkEvent<RoundEndMessageEvent>(RoundEnd);
             SubscribeNetworkEvent<RequestWindowAttentionEvent>(OnAttentionRequest);
@@ -80,50 +78,8 @@ namespace Content.Client.GameTicking.Managers
             SubscribeNetworkEvent<TickerJobsAvailableEvent>(UpdateJobsAvailable);
 
             _admin.AdminStatusUpdated += OnAdminUpdated;
-            // ES START
-            _lobbyCurtains = _userInterfaceManager.GetUIController<ESLobbyCurtainsUIController>();
-            // ES END
             OnAdminUpdated();
         }
-
-        // ES START
-        // Handles playing the closing curtain animations at the correct time to preempt a screen change
-        // the opening animations
-        public override void FrameUpdate(float frameTime)
-        {
-            base.FrameUpdate(frameTime);
-
-            var curTime = _timing.CurTime;
-            var realTime = _timing.RealTime;
-
-            // lobby->game closing
-            if (ReadyStatus is (PlayerGameStatus.Observing or PlayerGameStatus.ReadyToPlay)
-                && StartTime > curTime
-                && _lobbyCurtains.CurtainState == LobbyCurtainState.Open
-                && StartTime - curTime <= TimeSpan.FromSeconds(3))
-            {
-                _lobbyCurtains.StartCurtainAnimation(false);
-            }
-
-            // roundend->lobby closing
-            if (ESExpectedRoundEndTime > curTime
-                && _lobbyCurtains.CurtainState == LobbyCurtainState.Open
-                && ESExpectedRoundEndTime - curTime <= TimeSpan.FromSeconds(3))
-            {
-                _lobbyCurtains.StartCurtainAnimation(false);
-                ESExpectedRoundEndTime = null;
-            }
-
-            // queued opening anim
-            // realtime bc not tied to any existing timespan
-            if (_startOpenAnimationTime != null
-                && realTime > _startOpenAnimationTime.Value)
-            {
-                _lobbyCurtains.StartCurtainAnimation(true);
-                _startOpenAnimationTime = null;
-            }
-        }
-        // ES END
 
         public override void Shutdown()
         {
@@ -195,12 +151,12 @@ namespace Content.Client.GameTicking.Managers
             LobbyStatusUpdated?.Invoke();
         }
 
-        private void LobbyInfo(TickerLobbyInfoEvent message)
-        {
-            ServerInfoBlob = message.TextBlob;
+        // private void LobbyInfo(TickerLobbyInfoEvent message)
+        // {
+        //     ServerInfoBlob = message.TextBlob;
 
-            InfoBlobUpdated?.Invoke();
-        }
+        //     InfoBlobUpdated?.Invoke();
+        // }
 
         private void JoinGame(TickerJoinGameEvent message)
         {
