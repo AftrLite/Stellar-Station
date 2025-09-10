@@ -71,12 +71,12 @@
   - type: Wagging
   - type: Inventory
     speciesId: reptilian
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Human/displacement.rsi
-            state: jumpsuit-female
+    # femaleDisplacements: # Begin Stellar
+    #   jumpsuit:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Human/displacement.rsi
+    #         state: jumpsuit-female # End Stellar
 
 
 - type: entity
@@ -94,11 +94,11 @@
     undergarmentBottom: UndergarmentBottomBoxersReptilian
   - type: Inventory
     speciesId: reptilian
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Human/displacement.rsi
-            state: jumpsuit-female
+    # femaleDisplacements: # Begin Stellar
+    #   jumpsuit:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Human/displacement.rsi
+    #         state: jumpsuit-female # End Stellar
 
 #Weh

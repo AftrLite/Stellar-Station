@@ -35,9 +35,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Inventory
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Human/displacement.rsi
-            state: jumpsuit-female
+    # femaleDisplacements: # Begin Stellar
+    #   jumpsuit:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Human/displacement.rsi
+    #         state: jumpsuit-female # End Stellar

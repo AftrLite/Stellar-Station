@@ -33,28 +33,28 @@
   description: A tasteful grey jumpsuit that reminds you of the good old days.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/color.rsi
+    sprite: _ST/Clothing/Uniforms/Jumpsuit/grey.rsi # Begin Stellar
     layers:
     - state: icon
-      color: "#b3b3b3"
-    - state: trinkets-icon
+      # color: "#b3b3b3"
+    # - state: trinkets-icon
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#b3b3b3"
-      - state: trinkets-inhand-left
+        # color: "#b3b3b3"
+      # - state: trinkets-inhand-left
       right:
       - state: inhand-right
-        color: "#b3b3b3"
-      - state: trinkets-inhand-right
+        # color: "#b3b3b3"
+      # - state: trinkets-inhand-right
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/color.rsi
+    sprite: _ST/Clothing/Uniforms/Jumpsuit/grey.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: "#b3b3b3"
-      - state: trinkets-equipped-INNERCLOTHING
+        # color: "#b3b3b3"
+      # - state: trinkets-equipped-INNERCLOTHING # End Stellar
 
 # Black Jumpsuit
 - type: entity
