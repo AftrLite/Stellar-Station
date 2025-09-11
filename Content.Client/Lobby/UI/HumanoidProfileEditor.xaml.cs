@@ -148,15 +148,17 @@ namespace Content.Client.Lobby.UI
                 ExportProfile();
             };
 
-            ExportImageButton.OnPressed += args =>
-            {
-                ExportImage();
-            };
+            // Begin Stellar
+            // ExportImageButton.OnPressed += args =>
+            // {
+            //     ExportImage();
+            // };
 
-            OpenImagesButton.OnPressed += args =>
-            {
-                _resManager.UserData.OpenOsWindow(ContentSpriteSystem.Exports);
-            };
+            // OpenImagesButton.OnPressed += args =>
+            // {
+            //     _resManager.UserData.OpenOsWindow(ContentSpriteSystem.Exports);
+            // };
+            // End Stellar
 
             ResetButton.OnPressed += args =>
             {
@@ -176,13 +178,13 @@ namespace Content.Client.Lobby.UI
             NameEdit.IsValid = args => args.Length <= _maxNameLength;
             NameRandomize.OnPressed += args => RandomizeName();
             RandomizeEverythingButton.OnPressed += args => { RandomizeEverything(); };
-            // WarningLabel.SetMarkup($"[color=red]{Loc.GetString("humanoid-profile-editor-naming-rules-warning")}[/color]");
+            // WarningLabel.SetMarkup($"[color=red]{Loc.GetString("humanoid-profile-editor-naming-rules-warning")}[/color]"); // Stellar
 
             #endregion Name
 
             #region Appearance
 
-            TabContainer.SetTabTitle(0, Loc.GetString("humanoid-profile-editor-appearance-tab"));
+            // TabContainer.SetTabTitle(0, Loc.GetString("humanoid-profile-editor-appearance-tab")); // Stellar
 
             #region Sex
 
@@ -386,7 +388,7 @@ namespace Content.Client.Lobby.UI
 
             #region Jobs
 
-            TabContainer.SetTabTitle(1, Loc.GetString("humanoid-profile-editor-jobs-tab"));
+            // TabContainer.SetTabTitle(1, Loc.GetString("humanoid-profile-editor-jobs-tab")); // Stellar
 
             PreferenceUnavailableButton.AddItem(
                 Loc.GetString("humanoid-profile-editor-preference-unavailable-stay-in-lobby-button"),
@@ -410,13 +412,13 @@ namespace Content.Client.Lobby.UI
 
             #endregion Jobs
 
-            TabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-antags-tab"));
+            // TabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-antags-tab")); // Stellar
 
             RefreshTraits();
 
             #region Markings
 
-            TabContainer.SetTabTitle(4, Loc.GetString("humanoid-profile-editor-markings-tab"));
+            // TabContainer.SetTabTitle(4, Loc.GetString("humanoid-profile-editor-markings-tab")); // Stellar
 
             Markings.OnMarkingAdded += OnMarkingChange;
             Markings.OnMarkingRemoved += OnMarkingChange;
@@ -494,7 +496,7 @@ namespace Content.Client.Lobby.UI
             TraitsList.DisposeAllChildren();
 
             var traits = _prototypeManager.EnumeratePrototypes<TraitPrototype>().OrderBy(t => Loc.GetString(t.Name)).ToList();
-            TabContainer.SetTabTitle(3, Loc.GetString("humanoid-profile-editor-traits-tab"));
+            // TabContainer.SetTabTitle(3, Loc.GetString("humanoid-profile-editor-traits-tab")); // Stellar
 
             if (traits.Count < 1)
             {
@@ -871,7 +873,7 @@ namespace Content.Client.Lobby.UI
                     {
                         category.AddChild(new Control
                         {
-                            MinSize = new Vector2(0, 23),
+                            MinSize = new Vector2(0, 20), // Stellar
                         });
                     }
 

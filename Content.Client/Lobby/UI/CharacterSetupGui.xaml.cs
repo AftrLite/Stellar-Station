@@ -44,8 +44,7 @@ namespace Content.Client.Lobby.UI
             };
             back.SetPatchMargin(StyleBox.Margin.All, 10);
 
-            // BackgroundPanel.PanelOverride = back;
-            Background.ParallaxPrototype = "StellarMenu"; // Stellar
+            // BackgroundPanel.PanelOverride = back; // Stellar
 
             _createNewCharacterButton = new Button
             {
@@ -60,11 +59,11 @@ namespace Content.Client.Lobby.UI
             };
 
             CharEditor.AddChild(profileEditor);
-            // RulesButton.OnPressed += _ => new RulesAndInfoWindow().Open();
+            // RulesButton.OnPressed += _ => new RulesAndInfoWindow().Open(); // Begin Stellar
 
             // StatsButton.OnPressed += _ => new PlaytimeStatsWindow().OpenCentered();
 
-            // _cfg.OnValueChanged(CCVars.SeeOwnNotes, p => AdminRemarksButton.Visible = p, true);
+            // _cfg.OnValueChanged(CCVars.SeeOwnNotes, p => AdminRemarksButton.Visible = p, true); // End Stellar
         }
 
         /// <summary>

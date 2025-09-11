@@ -8,7 +8,7 @@
             <Label Name="Summary"
             HorizontalAlignment="Center"
             StyleClasses="LabelHeadingBigger"
-            Margin="5"/>
+            Margin="0"/>
             <BoxContainer Name="ViewBox" Orientation="Horizontal" HorizontalAlignment="Center">
             </BoxContainer>
             <controls:VSpacer/>
@@ -16,7 +16,7 @@
                     Text="{Loc 'lobby-character-preview-panel-character-setup-button'}"
                     HorizontalAlignment="Center"
                     StyleClasses="ButtonBig"
-                    Margin="5"/>
+                    Margin="0 5 0 0"/>  <!-- STELLAR STATION -->
         </BoxContainer>
         <Label Name="Unloaded" Text="{Loc 'lobby-character-preview-panel-unloaded-preferences-label'}"/>
     </BoxContainer>

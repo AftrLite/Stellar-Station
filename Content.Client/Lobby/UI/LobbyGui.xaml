@@ -12,10 +12,7 @@
     xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
     xmlns:hotbar="clr-namespace:Content.Client.UserInterface.Systems.Hotbar.Widgets"
     xmlns:alerts="clr-namespace:Content.Client.UserInterface.Systems.Alerts.Widgets">
-    <!-- Background -->
-    <!--<TextureRect Access="Public" VerticalExpand="True" HorizontalExpand="True" Name="Background"
-                 Stretch="KeepAspectCovered" />-->
-    <!-- ES START -->
+    <!-- STELLAR STATION CHANGES BEGIN -->
     <SplitContainer Name="ScreenContainer" HorizontalExpand="True" VerticalExpand="True" SplitWidth="0" StretchDirection="TopLeft">
         <LayoutContainer Name="ViewportContainer" HorizontalExpand="True" VerticalExpand="True">
             <controls:MainViewport Name="MainViewport"/>
@@ -32,15 +29,18 @@
             <PanelContainer.PanelOverride>
                 <graphics:StyleBoxFlat BackgroundColor="#2B2C3B" />
             </PanelContainer.PanelOverride>
-                <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="5" Margin="20">
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="5" Margin="15">
                         <!-- Voting & misc button bar -->
-                        <BoxContainer Orientation="Horizontal" MinSize="0 40" HorizontalAlignment="Center">
-                            <Button Name="AHelpButton" Access="Public" Text="{Loc 'ui-lobby-ahelp-button'}"
-                                    StyleClasses="ButtonBig" />
-                            <vote:VoteCallMenuButton Name="CallVoteButton" StyleClasses="ButtonBig" />
-                            <Button Name="OptionsButton" Access="Public" StyleClasses="ButtonBig"
+                        <BoxContainer Orientation="Horizontal" MinSize="0 20" HorizontalAlignment="Center">
+                            <Button
+                            Name="AHelpButton"
+                            Access="Public"
+                            Text="{Loc 'ui-lobby-ahelp-button'}"
+                            />
+                            <vote:VoteCallMenuButton Name="CallVoteButton" />
+                            <Button Name="OptionsButton" Access="Public"
                                     Text="{Loc 'ui-lobby-options-button'}" />
-                            <Button Name="LeaveButton" Access="Public" StyleClasses="ButtonBig"
+                            <Button Name="LeaveButton" Access="Public"
                                     Text="{Loc 'ui-lobby-leave-button'}" />
                         </BoxContainer>
                         <!-- Server info -->
@@ -49,7 +49,6 @@
                             Access="Public"
                             Align="Center"
                             FontColorOverride="{x:Static maths:Color.DarkGray}"
-                            StyleClasses="LabelBig"
                             HorizontalExpand="True" />
                         <BoxContainer Orientation="Horizontal">
                             <cc:UICommandButton
@@ -68,9 +67,10 @@
                             HorizontalExpand="True"
                             Margin="5"/>
                         </BoxContainer>
-                        <widgets:ChatBox Name="Chat" Access="Public" VerticalExpand="True" Margin="3 3 3 3" MinHeight="50" />
+                        <widgets:ChatBox Name="Chat" Access="Public" VerticalExpand="True" Margin="3" MinHeight="50" />
                 </BoxContainer>
         </PanelContainer>
     </SplitContainer>
     <Control Access="Public" Visible="False" Name="CharacterSetupState" VerticalExpand="True" HorizontalExpand="True" />
+    <!-- STELLAR STATION CHANGES END -->
 </lobbyUi:LobbyGui>
