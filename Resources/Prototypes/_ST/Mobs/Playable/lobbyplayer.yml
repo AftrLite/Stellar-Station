@@ -16,7 +16,7 @@
   - type: Input
     context: "human"
   - type: Examiner
-  - type: ESTheatergoerMarker
+  - type: LobbyCharacter
   - type: ComplexInteraction
   - type: Emoting
   - type: BodyEmotes

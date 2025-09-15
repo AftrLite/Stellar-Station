@@ -28,6 +28,6 @@ public enum SpawnPointType
     Job,
     Observer,
     // ES START
-    Theatergoer
+    LobbyCharacter
     // ES END
 }

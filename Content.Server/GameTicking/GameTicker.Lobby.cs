@@ -5,7 +5,6 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using System.Text;
 using Content.Server.Spawners.Components;
-using Content.Shared.Alert;
 using Content.Shared.CCVar;
 using Content.Shared.Players;
 using Robust.Shared.EntitySerialization;
@@ -44,15 +43,10 @@ namespace Content.Server.GameTicking
         /// </summary>
         public IReadOnlyDictionary<NetUserId, PlayerGameStatus> PlayerGameStatuses => _playerGameStatuses;
 
-        // ES START
+        // ES START (& Stellar)
+        private static readonly EntProtoId PlayerInLobbyEntity = "StellarLobbyPlayer";
         public MapId? DiegeticLobbyMapId = null;
         // todo mirror lobby change
-        private static readonly EntProtoId PlayerInLobbyEntity = "StellarLobbyPlayer";
-
-        private static readonly ProtoId<AlertPrototype> ReadiedAlert = "ESReadiedUp";
-        private static readonly ProtoId<AlertPrototype> NotReadiedAlert = "ESNotReadiedUp";
-        private static readonly ProtoId<AlertPrototype> ObservingAlert = "ESObserving";
-        private static readonly ProtoId<AlertCategoryPrototype> ReadyAlertCategory = "ESReadyStatus";
 
         // Manages loading the diegetic lobby world and spawning players into it.
         // FOR MIRROR NOTES
@@ -101,25 +95,14 @@ namespace Content.Server.GameTicking
             }
 
             _sawmill.Info($"Creating lobby character for {session.Name}");
-            var spawnPosition = GetTheatergoerSpawnPoint();
-            var theatergoer = SpawnAtPosition(PlayerInLobbyEntity, spawnPosition);
-            _playerManager.SetAttachedEntity(session, theatergoer, true);
-            _metaData.SetEntityName(theatergoer, session.Name);
-            data.LobbyEntity = theatergoer;
+            var spawnPosition = GetLobbyCharacterSpawnPoint();
+            var lobbyCharacter = SpawnAtPosition(PlayerInLobbyEntity, spawnPosition);
+            _playerManager.SetAttachedEntity(session, lobbyCharacter, true);
+            _metaData.SetEntityName(lobbyCharacter, session.Name);
+            data.LobbyEntity = lobbyCharacter;
         }
 
-        private void HideLobbyCharacter(ICommonSession session)
-        {
-            if (session.ContentData() is not { } data)
-                return;
-
-            if (data.LobbyEntity != null)
-            {
-
-            }
-        }
-
-        private EntityCoordinates GetTheatergoerSpawnPoint()
+        private EntityCoordinates GetLobbyCharacterSpawnPoint()
         {
             if (DiegeticLobbyMapId == null)
                 return EntityCoordinates.Invalid;
@@ -128,7 +111,7 @@ namespace Content.Server.GameTicking
             var spawnPointQuery = EntityQueryEnumerator<SpawnPointComponent, TransformComponent>();
             while (spawnPointQuery.MoveNext(out var uid, out var point, out var transform))
             {
-                if (point.SpawnType != SpawnPointType.Theatergoer
+                if (point.SpawnType != SpawnPointType.LobbyCharacter
                     || TerminatingOrDeleted(uid)
                     || transform.MapUid == null
                     || TerminatingOrDeleted(transform.MapUid.Value)
@@ -143,7 +126,7 @@ namespace Content.Server.GameTicking
             if (possible.Count != 0)
                 return _robustRandom.Pick(possible);
 
-            _sawmill.Error("Can't find any theatergoer spawn points!");
+            _sawmill.Error("Can't find any lobby character spawn points!");
             return EntityCoordinates.Invalid;
         }
 
@@ -317,7 +300,6 @@ namespace Content.Server.GameTicking
             // update server info to reflect new ready count
             UpdateInfoText();
         }
-
         public bool UserHasJoinedGame(ICommonSession session)
             => UserHasJoinedGame(session.UserId);
 

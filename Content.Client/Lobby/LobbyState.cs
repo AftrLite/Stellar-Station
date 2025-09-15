@@ -1,5 +1,5 @@
-// ES START
-// pretty much entirely changed again
+// ES & STELLAR START
+// pretty much entirely changed again // Stellar - Again, again.
 // commented out some stuff that may be useful later idk
 // but mostly its all diffy
 using Content.Client.Audio;
@@ -211,6 +211,11 @@ namespace Content.Client.Lobby
         private void LobbyLateJoinStatusUpdated()
         {
             Lobby!.ReadyButton.Disabled = _gameTicker.DisallowedLateJoin;
+            if (Math.Round(_playtimeTracking.PlaytimeMinutesToday / 60f, 1) > 12) // Stellar Begin - Encourage grass touching lifestyle
+            {
+                Lobby!.ReadyButton.Disabled = true;
+                Lobby!.ObserveButton.Disabled = true;
+            } // Stellar End
         }
 
         private void UpdateLobbyUi()
@@ -229,36 +234,41 @@ namespace Content.Client.Lobby
                 Lobby!.ReadyButton.Text = Loc.GetString(Lobby!.ReadyButton.Pressed ? "lobby-state-player-status-ready": "lobby-state-ready-button-ready-up-state"); // Stellar
                 Lobby!.ReadyButton.ToggleMode = true;
                 Lobby!.ReadyButton.Disabled = false;
-                // Lobby!.ReadyButton.Pressed = _gameTicker.ReadyStatus;
+                // Lobby!.ReadyButton.Pressed = _gameTicker.ReadyStatus; // Stellar
                 Lobby!.ObserveButton.Disabled = true;
             }
 
 
             if (_gameTicker.ServerInfoBlob != null)
             {
-                // Lobby!.ServerInfo.SetInfoBlob(_gameTicker.ServerInfoBlob);
+                // Lobby!.ServerInfo.SetInfoBlob(_gameTicker.ServerInfoBlob); // Stellar
             }
 
             // ES START
             var minutesToday = _playtimeTracking.PlaytimeMinutesToday;
-            if (minutesToday > 60)
+            if (minutesToday > 5)
             {
-                //Lobby!.PlaytimeComment.Visible = true;
+                Lobby!.PlaytimeContainer.Visible = true;
 
                 var hoursToday = Math.Round(minutesToday / 60f, 1);
 
                 var chosenString = minutesToday switch
                 {
-                    < 180 => "lobby-state-playtime-comment-normal",
-                    < 360 => "lobby-state-playtime-comment-concerning",
-                    < 720 => "lobby-state-playtime-comment-grasstouchless",
-                    _ => "lobby-state-playtime-comment-selfdestructive"
+                    < 180 => "ui-lobby-stellar-playtime-normal",
+                    < 360 => "ui-lobby-stellar-playtime-lots",
+                    < 720 => "ui-lobby-stellar-playtime-toomuch",
+                    _ => "ui-lobby-stellar-playtime-safetynet"
                 };
+                Lobby!.PlaytimeComment.SetMarkup(Loc.GetString(chosenString, ("hours", hoursToday)));
+                if (minutesToday >= 720)
+                {
+                    Lobby.ReadyButton.Disabled = true;
+                    Lobby.ObserveButton.Disabled = true;
+                }
 
-                //Lobby.PlaytimeComment.SetMarkup(Loc.GetString(chosenString, ("hours", hoursToday)));
             }
-            //else
-                //Lobby!.PlaytimeComment.Visible = false;
+            else
+                Lobby!.PlaytimeContainer.Visible = false;
             // ES END
         }
 
@@ -294,7 +304,6 @@ namespace Content.Client.Lobby
         private void UpdateLobbyBackground()
         {
             // ES START
-            // TODO MIRROR LOBBY readd backgrounds somehow
             /*
             if (_gameTicker.LobbyBackground != null)
             {

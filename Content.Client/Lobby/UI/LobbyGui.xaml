@@ -16,11 +16,18 @@
     <SplitContainer Name="ScreenContainer" HorizontalExpand="True" VerticalExpand="True" SplitWidth="0" StretchDirection="TopLeft">
         <LayoutContainer Name="ViewportContainer" HorizontalExpand="True" VerticalExpand="True">
             <controls:MainViewport Name="MainViewport"/>
-                <BoxContainer Name="LobbySongContainer" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                    <PanelContainer StyleClasses="AngleRect">
-                        <RichTextLabel Name="LobbySong" Access="Public" HorizontalAlignment="Center" />
-                    </PanelContainer>
-                </BoxContainer>
+            <BoxContainer Name="ExtraContainer" Orientation="Horizontal" VerticalExpand="True" HorizontalExpand="True" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <PanelContainer StyleClasses="AngleRect" HorizontalExpand="True" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <BoxContainer Orientation="Vertical" >
+                        <BoxContainer Name="PlaytimeContainer" Access="Public" HorizontalAlignment="Center" Visible="False">
+                            <RichTextLabel Name="PlaytimeComment" Access="Public" HorizontalAlignment="Center"/>
+                        </BoxContainer>
+                        <BoxContainer HorizontalAlignment="Center">
+                            <RichTextLabel Name="LobbySong" Access="Public" HorizontalAlignment="Center" />
+                        </BoxContainer>
+                    </BoxContainer>
+                </PanelContainer>
+            </BoxContainer>
             <BoxContainer Name="VoteContainer" Orientation="Vertical">
                 <BoxContainer Name="VoteMenu" Access="Public" Orientation="Vertical"/>
             </BoxContainer>
@@ -30,20 +37,26 @@
                 <graphics:StyleBoxFlat BackgroundColor="#2B2C3B" />
             </PanelContainer.PanelOverride>
                 <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="5" Margin="15">
-                        <!-- Voting & misc button bar -->
+                        <!-- First Button Bar -->
                         <BoxContainer Orientation="Horizontal" MinSize="0 20" HorizontalAlignment="Center">
-                            <Button
-                            Name="AHelpButton"
-                            Access="Public"
-                            Text="{Loc 'ui-lobby-ahelp-button'}"
-                            />
+                            <Button Name="AHelpButton" Access="Public"
+                                    Text="{Loc 'ui-lobby-ahelp-button'}" />
                             <vote:VoteCallMenuButton Name="CallVoteButton" />
                             <Button Name="OptionsButton" Access="Public"
                                     Text="{Loc 'ui-lobby-options-button'}" />
                             <Button Name="LeaveButton" Access="Public"
                                     Text="{Loc 'ui-lobby-leave-button'}" />
                         </BoxContainer>
-                        <!-- Server info -->
+                        <!-- Second Button Bar -->
+                        <BoxContainer Orientation="Horizontal" MinSize="0 10" HorizontalAlignment="Center">
+                            <Button Name="RulesButton" Access="Public"
+                                    Text="{Loc 'ui-lobby-stellar-rules'}" />
+                            <Button Name="GuidebookButton" Access="Public"
+                                    Text="{Loc 'ui-lobby-stellar-guidebook'}" />
+                            <Button Name="ChangelogButton" Access="Public"
+                                    Text="{Loc 'ui-lobby-stellar-changelog'}" />
+                        </BoxContainer>
+                        <!-- Character Preview -->
                         <lobbyUi:LobbyCharacterPreviewPanel Name="CharacterPreview" Access="Public" Visible="True"/>
                             <Label Name="StartTime"
                             Access="Public"

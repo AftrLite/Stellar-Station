@@ -10,4 +10,4 @@
     - sprite: _ST/Mobs/Playable/lobbyplayer.rsi
       state: full
   - type: SpawnPoint
-    spawn_type: Theatergoer
+    spawn_type: LobbyCharacter

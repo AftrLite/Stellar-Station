@@ -12,9 +12,6 @@ using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
-// ES START
-using Content.Shared._ES.CCVar;
-// ES END
 
 namespace Content.IntegrationTests.Tests.Round;
 
@@ -196,7 +193,6 @@ public sealed class JobTest
         Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.PreRoundLobby));
 // ES START
         // Assert.That(pair.Client.AttachedEntity, Is.Null);
-        pair.Server.CfgMan.SetCVar(ESCVars.ESRandomCharacters, false);
 // ES END
 
         await pair.Server.AddDummySessions(5);
