@@ -3,31 +3,34 @@
 # SPDX-License-Identifier: LicenseRef-Wallening
 
 - type: parallax
-  id: StellarDefault
+  id: StellarBluespace
   layers:
     - texture:
         !type:ImageParallaxTextureSource
-        path: "/Textures/_ST/Parallaxes/BG.png"
-      slowness: 0
+        path: "/Textures/_ST/Parallaxes/BG_Darkblue.png"
+      slowness: 1
 
     - texture:
         !type:ImageParallaxTextureSource
-        path: "/Textures/_ST/Parallaxes/STARS.png"
-      slowness: 0.1
+        path: "/Textures/_ST/Parallaxes/WISPS_Darkblue_2.png"
+      slowness: 0.99
 
     - texture:
         !type:ImageParallaxTextureSource
-        path: "/Textures/_ST/Parallaxes/WISPS.png"
+        path: "/Textures/_ST/Parallaxes/WISPS_Darkblue_3.png"
+      slowness: 0.8
+
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/WISPS_Darkblue_2.png"
+      slowness: 0.6
+      scrolling: "0, 0.04"
+
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/WISPS_Darkblue.png"
       slowness: 0.3
-
-    - texture:
-        !type:ImageParallaxTextureSource
-        path: "/Textures/_ST/Parallaxes/PLANET.png"
-      slowness: 0
-      controlHomePosition: "-50, 0"
-      worldHomePosition: "0, 0"
-      scale: "1, 1"
-      tiled: false
+      scrolling: "0, 0.1"
 
   layersLQ:
     - texture:
@@ -35,3 +38,4 @@
         id: ""
         configPath: "/Prototypes/Parallaxes/parallax_config.toml"
   layersLQUseHQ: false
+

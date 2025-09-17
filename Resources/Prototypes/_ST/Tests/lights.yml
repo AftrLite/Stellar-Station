@@ -162,6 +162,35 @@
     softness: 0.9
     color: "#fb4747"
 
+- type: entity
+  name: light fixture
+  description: A light fixture! Requires a light tube to function.
+  id: StellarLightTubeLED
+  suffix: LED
+  parent: Poweredlight
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Lighting/light_tube.rsi
+    layers:
+    - map: ["enum.PoweredLightLayers.Base"]
+      state: base
+    - map: ["enum.PoweredLightLayers.Glow"]
+      color: "#EEEEFF"
+      state: glow
+      shader: unshaded
+  - type: PoweredLight
+    hasLampOnSpawn: LedLightTube
+  - type: PointLight
+    radius: 15
+    energy: 1
+    softness: 0.9
+    color: "#EEEEFF"
+  - type: DamageOnInteract
+    damage:
+      types:
+        Heat: 1 # LEDs don't get as hot
+    popupText: powered-light-component-burn-hand
+
 #################### LIGHT FIXTURES, CORNERS
 - type: entity
   name: corner light fixture
@@ -204,6 +233,15 @@
   description: A corner-shaped light fixture! Requires a light tube to function.
   id: StellarLightCornerRed
   parent: StellarLightTubeRed
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Lighting/light_tube_corner.rsi
+
+- type: entity
+  name: corner light fixture
+  description: A corner-shaped light fixture! Requires a light tube to function.
+  id: StellarLightCornerLED
+  parent: StellarLightTubeLED
   components:
   - type: Sprite
     sprite: _ST/Tileset/Lighting/light_tube_corner.rsi
@@ -254,6 +292,16 @@
   description: A heavy-duty light fixture! Requires a light tube to function.
   id: StellarLightIndustrialRed
   parent: StellarLightTubeRed
+  components:
+  - type: Sprite
+    drawdepth: Overdoors
+    sprite: _ST/Tileset/Lighting/light_tube_industrial.rsi
+
+- type: entity
+  name: industrial light fixture
+  description: A heavy-duty light fixture! Requires a light tube to function.
+  id: StellarLightIndustrialLED
+  parent: StellarLightTubeLED
   components:
   - type: Sprite
     drawdepth: Overdoors
@@ -331,3 +379,80 @@
       color: "#808080"
       shader: "unshaded"
       visible: false
+
+## ALWAYS POWERED
+
+- type: entity
+  id: StellarLightPostAlwaysPowered
+  name: standing light fixture
+  suffix: Always Powered
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Sprite
+    offset: 0, 0.25
+    drawdepth: Mobs
+    sprite: _ST/Tileset/Lighting/light_post.rsi
+    layers:
+    - state: base
+    - state: glow
+      color: "#d8cdaf"
+      shader: unshaded
+  - type: PointLight
+    radius: 15
+    energy: 1
+    softness: 0.9
+    color: "#d8cdaf"
+  - type: Dropshadow
+    sprite:
+      sprite: _ST/Effects/dropshadow.rsi
+      state: shadow-lightpost
+    offset: 0, -0.275
+
+- type: entity
+  id: StellarLightCornerAlwaysPowered
+  name: corner light fixture
+  suffix: Always Powered
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Sprite
+    drawdepth: Overdoors
+    sprite: _ST/Tileset/Lighting/light_tube_corner.rsi
+    layers:
+    - state: base
+    - state: glow
+      color: "#d8cdaf"
+      shader: unshaded
+  - type: PointLight
+    radius: 15
+    energy: 1
+    softness: 0.9
+    color: "#d8cdaf"
+
+- type: entity
+  id: StellarLightTubeAlwaysPowered
+  name: light fixture
+  suffix: Always Powered
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Sprite
+    drawdepth: Overdoors
+    sprite: _ST/Tileset/Lighting/light_tube.rsi
+    layers:
+    - state: base
+    - state: glow
+      color: "#d8cdaf"
+      shader: unshaded
+  - type: PointLight
+    radius: 15
+    energy: 1
+    softness: 0.9
+    color: "#d8cdaf"

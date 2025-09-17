@@ -1,0 +1,24 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  id: StellarVFXBluespaceRIft
+  name: bluespace rift
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Sprite
+    offset: 0, 0.5
+    drawdepth: Overdoors
+    sprite: _ST/Effects/bluespaceportal.rsi
+    layers:
+    - state: vfx
+      shader: unshaded
+  - type: PointLight
+    radius: 15
+    energy: 1
+    softness: 0.9
+    color: "#468aff"

@@ -1,0 +1,35 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: StellarTallDoorBase
+  id: StellarAirlockUnpowered
+  name: unpowered door
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _ST/Tileset/Doors/Airlocks/airlock_base.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: Door
+    bumpOpen: true
+    clickOpen: true
+    closedDrawDepth: Mobs
+    openDrawDepth: BelowMobs
+    occludes: false
+    closeTimeOne: 0.2
+    closeTimeTwo: 0.6
+    openTimeOne: 0.2
+    openTimeTwo: 0.6
+    openingAnimationTime: 0.8
+    closingAnimationTime: 0.8
+    openSound:
+      path: /Audio/_ST/Machines/airlock_open.ogg
+    closeSound:
+      path: /Audio/_ST/Machines/airlock_close.ogg
+  - type: Occluder
+    enabled: false
+  - type: PlacementReplacement
+    key: walls

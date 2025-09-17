@@ -10,7 +10,7 @@ namespace Content.Client.Overlays;
 public sealed partial class StencilOverlay
 {
     private List<Entity<MapGridComponent>> _grids = new();
-
+    private static readonly Vector2 TileOffset = new(0f, 0.5f); // Stellar - wallening
     private void DrawWeather(in OverlayDrawArgs args, WeatherPrototype weatherProto, float alpha, Matrix3x2 invMatrix)
     {
         var worldHandle = args.WorldHandle;
@@ -40,7 +40,7 @@ public sealed partial class StencilOverlay
                 foreach (var tile in _map.GetTilesIntersecting(grid.Owner, grid, worldAABB))
                 {
                     // Ignored tiles for stencil
-                    if (_weather.CanWeatherAffect(grid.Owner, grid, tile, roofComp))
+                    if (_weather.CanWeatherAffect(grid.Owner, grid, tile, roofComp) || weatherProto.Override)
                     {
                         continue;
                     }
@@ -62,7 +62,7 @@ public sealed partial class StencilOverlay
 
         // Draw the rain
         worldHandle.UseShader(_protoManager.Index(StencilDraw).Instance());
-        _parallax.DrawParallax(worldHandle, worldAABB, sprite, curTime, position, Vector2.Zero, modulate: (weatherProto.Color ?? Color.White).WithAlpha(alpha));
+        _parallax.DrawParallax(worldHandle, worldAABB, sprite, curTime, position + TileOffset, weatherProto.ScrollSpeed, modulate: (weatherProto.Color ?? Color.White).WithAlpha(alpha * weatherProto.Opacity)); // Stellar
 
         worldHandle.SetTransform(Matrix3x2.Identity);
         worldHandle.UseShader(null);

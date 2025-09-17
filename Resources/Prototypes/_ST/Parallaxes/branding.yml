@@ -44,3 +44,37 @@
         id: ""
         configPath: "/Prototypes/Parallaxes/parallax_config.toml"
   layersLQUseHQ: false
+
+- type: parallax
+  id: StellarDefault
+  layers:
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/BG.png"
+      slowness: 0
+
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/STARS.png"
+      slowness: 0.1
+
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/WISPS.png"
+      slowness: 0.3
+
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/PLANET.png"
+      slowness: 0
+      controlHomePosition: "-50, 0"
+      worldHomePosition: "0, 0"
+      scale: "1, 1"
+      tiled: false
+
+  layersLQ:
+    - texture:
+        !type:GeneratedParallaxTextureSource
+        id: ""
+        configPath: "/Prototypes/Parallaxes/parallax_config.toml"
+  layersLQUseHQ: false

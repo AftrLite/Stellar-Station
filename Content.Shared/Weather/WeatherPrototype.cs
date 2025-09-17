@@ -1,3 +1,4 @@
+using System.Numerics; // Stellar
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -20,4 +21,22 @@ public sealed partial class WeatherPrototype : IPrototype
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("sound")]
     public SoundSpecifier? Sound;
+
+    /// <summary>
+    /// Stellar Station - Parallax scroll speed
+    /// </summary>
+    [DataField]
+    public Vector2 ScrollSpeed = Vector2.Zero;
+
+    /// <summary>
+    /// Stellar Station - Opacity
+    /// </summary>
+    [DataField]
+    public float Opacity = 1f;
+
+    /// <summary>
+    /// Stellar Station - Universal tile override, applies weather mapwide and ignores tile weather constraints
+    /// </summary>
+    [DataField]
+    public bool Override = false;
 }

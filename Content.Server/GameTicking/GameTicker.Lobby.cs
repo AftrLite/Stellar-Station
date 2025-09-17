@@ -12,6 +12,8 @@ using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Server.Weather;
+using Content.Shared.Weather;
 
 namespace Content.Server.GameTicking
 {
@@ -44,6 +46,8 @@ namespace Content.Server.GameTicking
         public IReadOnlyDictionary<NetUserId, PlayerGameStatus> PlayerGameStatuses => _playerGameStatuses;
 
         // ES START (& Stellar)
+        [Dependency] private readonly WeatherSystem _weather = default!;
+        private static readonly ProtoId<WeatherPrototype> LobbyWeather = "StellarDetailFog";
         private static readonly EntProtoId PlayerInLobbyEntity = "StellarLobbyPlayer";
         public MapId? DiegeticLobbyMapId = null;
         // todo mirror lobby change
@@ -74,6 +78,9 @@ namespace Content.Server.GameTicking
 
             DiegeticLobbyMapId = map.Value.Comp.MapId;
             _sawmill.Info($"Created diegetic lobby at map ID {DiegeticLobbyMapId.Value}");
+
+            _prototypeManager.TryIndex(LobbyWeather, out var indexedWeather);
+            _weather.SetWeather(DiegeticLobbyMapId.Value, indexedWeather, TimeSpan.FromHours(2));
 
             // invent a guy for everyone in the server
             foreach (var player in _playerManager.Sessions)

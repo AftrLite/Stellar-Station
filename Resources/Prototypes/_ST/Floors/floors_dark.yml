@@ -15,229 +15,134 @@
   heatCapacity: 10000
 
 - type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkCornerNw
   name: st-floor-dark-corner-nw
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_corner_nw.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
+
 
 - type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkCornerNe
   name: st-floor-dark-corner-ne
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_corner_ne.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
+
 
 - type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkCornerSe
   name: st-floor-dark-corner-se
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_corner_se.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
+
 
 - type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkCornerSw
   name: st-floor-dark-corner-sw
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_corner_sw.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
+
 
 - type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkDouble1
   name: st-floor-dark-double1
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_doublewide_1.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
+
 
 - type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkDouble2
   name: st-floor-dark-double2
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_doublewide_2.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
+
 
 - type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkMini
   name: st-floor-dark-mini
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_mini.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
+
 
 - type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkMiniBrick1
   name: st-floor-dark-mini-brick1
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_mini_brick_1.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
+
 
 - type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkMiniBrick2
   name: st-floor-dark-mini-brick2
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_mini_brick_2.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
+
 
 - type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkMiniBrickHerringbone
   name: st-floor-dark-herringbone
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_mini_brick_herringbone.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
+
 
 - type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkMono
   name: st-floor-dark-mono
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_mono.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
 
-# - type: tile
-#   id: StellarFloorDarkPlate
-#   name: st-floor-dark-plating
-#   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_plate.png
-#   baseTurf: Plating
-#   isSubfloor: false
-#   deconstructTools: [ Prying ]
-#   footstepSounds:
-#     collection: FootstepFloor
-#   itemDrop: FloorTileItemSteel
-#   heatCapacity: 10000
 
 - type: tile
+  parent: StellarFloorDarkBase
+  id: StellarFloorDarkPlate
+  name: st-floor-dark-plating
+  sprite: /Textures/_ST/Tileset/Floor/Dark/dark_plate.png
+
+
+- type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkProcessor
   name: st-floor-dark-processor
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_processor.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
+
 
 - type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkTechy
   name: st-floor-dark-techy
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_techy.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
+
 
 - type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkVented
   name: st-floor-dark-vented
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_vented.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
+
 
 - type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkWideE
   name: st-floor-dark-wide-e
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_wide_e.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
+
 
 - type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkWideN
   name: st-floor-dark-wide-n
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_wide_n.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
+
 
 - type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkWideS
   name: st-floor-dark-wide-s
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_wide_s.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
+
 
 - type: tile
+  parent: StellarFloorDarkBase
   id: StellarFloorDarkWideW
   name: st-floor-dark-wide-w
   sprite: /Textures/_ST/Tileset/Floor/Dark/dark_wide_w.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
+
