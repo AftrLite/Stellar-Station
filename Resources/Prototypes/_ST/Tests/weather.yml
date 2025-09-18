@@ -2,7 +2,6 @@
   id: StellarDetailFog
   scrollSpeed: -0.04, 0.05
   color: "#7987a7"
-  alpha: 1
   override: true
   sprite:
     sprite: /Textures/_ST/Effects/weather.rsi
