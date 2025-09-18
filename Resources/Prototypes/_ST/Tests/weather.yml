@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
 - type: weather
   id: StellarDetailFog
   scrollSpeed: -0.04, 0.05
@@ -5,4 +9,4 @@
   override: true
   sprite:
     sprite: /Textures/_ST/Effects/weather.rsi
-    state: parallax
+    state: fog

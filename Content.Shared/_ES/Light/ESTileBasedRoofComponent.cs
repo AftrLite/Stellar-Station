@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 EmoGarbage404
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Maps;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
