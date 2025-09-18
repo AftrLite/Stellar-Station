@@ -12,6 +12,6 @@
     layers:
     - state: pink
     - sprite: _ST/Mobs/Playable/lobbyplayer.rsi
-      state: full
+      state: humanoid
   - type: SpawnPoint
     spawn_type: LobbyCharacter

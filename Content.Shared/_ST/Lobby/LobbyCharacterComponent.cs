@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: 2025 AftrLite / Mirrorcult / Emogarbage
 //
-// SPDX-License-Identifier: Licenseref-Wallening
+// SPDX-License-Identifier: MIT
 
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;

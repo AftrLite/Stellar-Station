@@ -8,7 +8,23 @@
   },
   "states": [
     {
-      "name": "full",
+      "name": "humanoid",
+      "directions": 4
+    },
+    {
+      "name": "moth",
+      "directions": 4
+    },
+    {
+      "name": "arachnid",
+      "directions": 4
+    },
+    {
+      "name": "lizard",
+      "directions": 4
+    },
+    {
+      "name": "dionae",
       "directions": 4
     }
   ]

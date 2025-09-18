@@ -11,11 +11,19 @@
   - type: Sprite
     sprite: _ST/Mobs/Playable/lobbyplayer.rsi
     layers:
-    - state: full
+    - state: humanoid
+      map: [ "appearance" ]
+  - type: RandomSprite
+    available:
+    - appearance:
+        humanoid: ""
+        moth: ""
+        dionae: ""
+        lizard: ""
+        arachnid: ""
   - type: Eye
   - type: Input
     context: "human"
-  - type: Examiner
   - type: LobbyCharacter
   - type: ComplexInteraction
   - type: Emoting
