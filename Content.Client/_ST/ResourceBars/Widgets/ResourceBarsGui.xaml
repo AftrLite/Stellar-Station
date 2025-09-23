@@ -1,0 +1,9 @@
+<widgets:ResourceBarsGui
+    xmlns="https://spacestation14.io"
+    xmlns:widgets="clr-namespace:Content.Client._ST.ResourceBars.Widgets"
+    Name="ResourceBarsInterface"
+    VerticalExpand="True"
+    VerticalAlignment="Bottom"
+    Orientation="Vertical"
+    HorizontalAlignment="Center">
+</widgets:ResourceBarsGui>

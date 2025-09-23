@@ -212,6 +212,7 @@
     sprite:
       sprite: _ST/Effects/dropshadow.rsi
       state: shadow-playable # End Stellar - Wallening
+  - type: ResourceBars # Stellar - Resource bars
 
 - type: entity
   save: false
