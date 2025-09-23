@@ -123,3 +123,45 @@
     collection: BarestepWood
   itemDrop: FloorTileItemWood
   heatCapacity: 10000
+
+- type: entity
+  id: StellarFleshFloor
+  name: creeping flesh
+  description: Hideous!
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Clickable
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    anchored: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        layer:
+          - SlipLayer
+        mask:
+          - ItemMask
+        density: 1000
+        hard: false
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepBlood
+      params:
+        volume: 8
+  - type: Sprite
+    sprite: /Textures/_ST/Tileset/Floor/meatcreep.rsi
+  - type: Icon
+    sprite: /Textures/_ST/Tileset/Floor/meatcreep.rsi
+    state: full
+  - type: IconSmooth
+    key: meatfloor
+    base: floor
+  - type: PlacementReplacement
+    key: meatfloor

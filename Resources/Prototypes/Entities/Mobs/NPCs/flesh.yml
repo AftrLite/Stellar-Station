@@ -27,7 +27,7 @@
     - Flesh
   - type: Sprite
     drawdepth: Mobs
-    sprite: Mobs/Aliens/flesh.rsi
+    sprite: /Textures/_ST/Mobs/Anomaly/flesh.rsi # Stellar
   - type: MovementAlwaysTouching
   - type: MovementSpeedModifier
     baseWalkSpeed: 1
