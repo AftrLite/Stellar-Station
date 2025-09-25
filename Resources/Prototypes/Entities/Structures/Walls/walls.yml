@@ -1098,19 +1098,20 @@
 - type: entity
   parent: WallSolid
   id: WallSolidRust
-  suffix: rusted
+  name: DEPRECATED
+  suffix: rusted, DEPRECATED
   components:
   - type: Sprite
-    sprite: Structures/Walls/solid_rust.rsi
+    sprite: _ST/Tileset/Walls/tallmetal.rsi # Stellar
   - type: Icon
-    sprite: Structures/Walls/solid_rust.rsi
+    sprite: _ST/Tileset/Walls/tallmetal.rsi # Stellar
     state: full
   - type: Construction
     graph: Girder
     node: wallrust
   - type: IconSmooth
     key: walls
-    base: solid
+    base: tallmetal # Stellar
   - type: Destructible
     thresholds:
     - trigger:
