@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "LicenseRef-Wallening",
-    "copyright": "A custom item by AftrLite (Github).",
+    "copyright": "A custom item by AftrLite (Github). // variants made by StudioFaewilds. (Those labelled b and c)",
     "size": {
         "x": 32,
         "y": 32
@@ -9,6 +9,12 @@
     "states": [
         {
             "name": "full"
+        },
+        {
+            "name": "fullb"
+        },
+        {
+            "name": "fullc"
         },
         {
             "name": "floor0",
@@ -40,6 +46,70 @@
         },
         {
             "name": "floor7",
+            "directions": 4
+        },
+        {
+            "name": "floorb0",
+            "directions": 4
+        },
+        {
+            "name": "floorb1",
+            "directions": 4
+        },
+        {
+            "name": "floorb2",
+            "directions": 4
+        },
+        {
+            "name": "floorb3",
+            "directions": 4
+        },
+        {
+            "name": "floorb4",
+            "directions": 4
+        },
+        {
+            "name": "floorb5",
+            "directions": 4
+        },
+        {
+            "name": "floorb6",
+            "directions": 4
+        },
+        {
+            "name": "floorb7",
+            "directions": 4
+        },
+        {
+            "name": "floorc0",
+            "directions": 4
+        },
+        {
+            "name": "floorc1",
+            "directions": 4
+        },
+        {
+            "name": "floorc2",
+            "directions": 4
+        },
+        {
+            "name": "floorc3",
+            "directions": 4
+        },
+        {
+            "name": "floorc4",
+            "directions": 4
+        },
+        {
+            "name": "floorc5",
+            "directions": 4
+        },
+        {
+            "name": "floorc6",
+            "directions": 4
+        },
+        {
+            "name": "floorc7",
             "directions": 4
         }
     ]

@@ -10,7 +10,7 @@
     - Wall
   components:
   - type: Anchorable
-    flags: 
+    flags:
     - Anchorable
   - type: Rotatable
   - type: RangedDamageSound
@@ -1006,7 +1006,7 @@
   components:
   - type: Sprite
     # Begin Stellar - Wallening
-    sprite: _ST/Tileset/Walls/metal.rsi
+    sprite: _ST/Tileset/Walls/tallmetal.rsi
   - type: SpriteFade
     # End Stellar - Wallening
   - type: WallReplacementMarker
@@ -1014,7 +1014,7 @@
     graph: Girder
     node: wall
   - type: Icon
-    sprite: _ST/Tileset/Walls/metal.rsi # Stellar
+    sprite: _ST/Tileset/Walls/tallmetal.rsi # Stellar
   - type: RCDDeconstructable
     cost: 6
     delay: 8
@@ -1042,9 +1042,19 @@
       - !type:DoActsBehavior
         acts: ["Destruction"]
   - type: IconSmooth
-    key: wallsbase # Stellar
+    key: wallsbase # Stellar begin
     base: tallmetal
-
+  - type: RandomIconSmooth
+    randomStates:
+    - tallmetal
+    - tallmetal
+    - tallmetal
+    - tallmetal
+    - tallmetalb
+    - tallmetalc
+    - tallmetald
+    - tallmetald
+  - type: Appearance #Stellar end
 
 - type: entity
   parent: WallDiagonalBase

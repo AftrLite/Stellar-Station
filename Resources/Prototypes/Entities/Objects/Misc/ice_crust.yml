@@ -56,4 +56,10 @@
       key: anomalyfloor
     - type: IconSmooth
       key: icefloor
-      base: floor # End Stellar
+      base: floor
+    - type: RandomIconSmooth
+      randomStates:
+      - floor
+      - floorb
+      - floorc
+    - type: Appearance # End Stellar
