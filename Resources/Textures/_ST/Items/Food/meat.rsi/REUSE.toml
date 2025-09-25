@@ -1,0 +1,6 @@
+version = 1
+
+[[annotations]]
+path = ["anomaly-steak.png","anomaly-steak-cooked.png","anomaly-cutlet.png","anomaly-cutlet-cooked.png",]
+SPDX-FileCopyrightText = "Frogoo"
+SPDX-License-Identifier = "LicenseRef-Wallening"

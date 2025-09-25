@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "license": "LicenseRef-Wallening",
+  "copyright": "By Frogoo",
+  "states": [
+    {
+      "name": "anomaly-steak"
+    },
+    {
+      "name": "anomaly-steak-cooked"
+    },
+    {
+      "name": "anomaly-cutlet"
+    },
+    {
+      "name": "anomaly-cutlet-cooked"
+    }
+  ]
+}

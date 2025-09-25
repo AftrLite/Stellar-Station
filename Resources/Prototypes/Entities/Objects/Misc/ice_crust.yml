@@ -12,11 +12,11 @@
         Brute:
           collection: GlassBreak
     - type: Sprite
-      sprite: Objects/Misc/ice_crust.rsi
-      layers:
-        - state: ice
+      sprite: /Textures/_ST/Tileset/Floor/layer_ice.rsi # Begin Stellar
+      # layers:
+      #   - state: ice
       drawdepth: FloorObjects
-      color: "#ffffff44"
+      # color: "#ffffff44" # End Stellar
     - type: Clickable
     - type: Transform
       anchored: true
@@ -52,3 +52,10 @@
     - type: FrictionContacts
     - type: TileFrictionModifier
       modifier: 0.05
+    - type: PlacementReplacement # Begin Stellar
+      key: anomalyfloor
+    - type: IconSmooth
+      key: icefloor
+      base: floor
+    - type: PlacementReplacement
+      key: anomalyfloor # End Stellar

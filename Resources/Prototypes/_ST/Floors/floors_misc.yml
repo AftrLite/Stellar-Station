@@ -148,20 +148,31 @@
           - SlipLayer
         mask:
           - ItemMask
-        density: 1000
+        density: 7
         hard: false
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepBlood
       params:
         volume: 8
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: Sprite
-    sprite: /Textures/_ST/Tileset/Floor/meatcreep.rsi
+    sprite: /Textures/_ST/Tileset/Floor/layer_flesh.rsi
+    drawdepth: FloorObjects
   - type: Icon
-    sprite: /Textures/_ST/Tileset/Floor/meatcreep.rsi
+    sprite: /Textures/_ST/Tileset/Floor/layer_flesh.rsi
     state: full
   - type: IconSmooth
     key: meatfloor
     base: floor
   - type: PlacementReplacement
-    key: meatfloor
+    key: anomalyfloor

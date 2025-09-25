@@ -892,7 +892,9 @@
   description: An impossibly dense slab of meat. Just looking at it makes you uncomfortable.
   components:
   - type: Sprite
-    state: anomalymeat
+    sprite: /Textures/_ST/Items/Food/meat.rsi # Begin Stellar
+    layers:
+    - state: anomaly-steak # End Stellar
   - type: SolutionContainerManager
     solutions:
       food:
@@ -1528,8 +1530,9 @@
     - Cooked
     - Meat
   - type: Sprite
+    sprite: /Textures/_ST/Items/Food/meat.rsi # Begin Stellar
     layers:
-    - state: anomalymeat-cooked #Kinda hard to cook this... thing evenly
+    - state: anomaly-steak-cooked # End Stellar
   - type: SolutionContainerManager
     solutions:
       food:
