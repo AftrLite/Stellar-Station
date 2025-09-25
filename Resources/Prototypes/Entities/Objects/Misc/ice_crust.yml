@@ -56,6 +56,4 @@
       key: anomalyfloor
     - type: IconSmooth
       key: icefloor
-      base: floor
-    - type: PlacementReplacement
-      key: anomalyfloor # End Stellar
+      base: floor # End Stellar
