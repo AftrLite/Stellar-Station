@@ -1,0 +1,17 @@
+{
+	"version": 1,
+	"size": {
+		"x": 32,
+		"y": 32
+	},
+    "license": "LicenseRef-Wallening",
+    "copyright": "By AftrLite",
+	"states": [
+        {
+            "name": "gsensor0"
+        },
+        {
+            "name": "gsensor1"
+        }
+	]
+}

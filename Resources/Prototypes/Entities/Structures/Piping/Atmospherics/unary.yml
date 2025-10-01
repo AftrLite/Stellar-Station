@@ -41,9 +41,10 @@
       - enum.SubfloorLayers.FirstLayer
     - type: Sprite
       drawdepth: FloorObjects
-      sprite: Structures/Piping/Atmospherics/vent.rsi
+      sprite: /Textures/_ST/Tileset/Atmos/vent.rsi # Stellar
+      noRot: true # Stellar
       layers:
-        - sprite: Structures/Piping/Atmospherics/pipe.rsi
+        - sprite: /Textures/_ST/Tileset/Atmos/piping.rsi # Stellar
           state: pipeUnaryConnectors
           map: [ "enum.PipeVisualLayers.Pipe" ]
         - state: vent_off
@@ -91,9 +92,10 @@
       - enum.SubfloorLayers.FirstLayer
     - type: Sprite
       drawdepth: FloorObjects
-      sprite: Structures/Piping/Atmospherics/vent.rsi
+      sprite: /Textures/_ST/Tileset/Atmos/vent.rsi # Stellar
+      noRot: true # Stellar
       layers:
-        - sprite: Structures/Piping/Atmospherics/pipe.rsi
+        - sprite: /Textures/_ST/Tileset/Atmos/piping.rsi # Stellar
           state: pipeUnaryConnectors
           map: [ "enum.PipeVisualLayers.Pipe" ]
         - state: vent_passive
@@ -131,9 +133,10 @@
       - enum.SubfloorLayers.FirstLayer
     - type: Sprite
       drawdepth: FloorObjects
-      sprite: Structures/Piping/Atmospherics/scrubber.rsi
+      noRot: true # Stellar
+      sprite: /Textures/_ST/Tileset/Atmos/scrubber.rsi # Stellar
       layers:
-        - sprite: Structures/Piping/Atmospherics/pipe.rsi
+        - sprite: /Textures/_ST/Tileset/Atmos/piping.rsi # Stellar
           state: pipeUnaryConnectors
           map: [ "enum.PipeVisualLayers.Pipe" ]
         - state: scrub_off
@@ -178,10 +181,10 @@
   components:
     - type: Sprite
       drawdepth: FloorObjects
-      sprite: Structures/Piping/Atmospherics/outletinjector.rsi
+      sprite: /Textures/_ST/Tileset/Atmos/injector.rsi # Stellar
       layers:
         - state: pipeUnaryConnectors
-          sprite: Structures/Piping/Atmospherics/pipe.rsi
+          sprite: /Textures/_ST/Tileset/Atmos/piping.rsi # Stellar
           map: [ "enum.PipeVisualLayers.Pipe" ]
         - state: injector
           map: [ "enum.SubfloorLayers.FirstLayer" ]
@@ -221,7 +224,7 @@
     mode: SnapgridCenter
   components:
     - type: Sprite
-      sprite: Structures/Piping/Atmospherics/thermomachine.rsi
+      sprite: /Textures/_ST/Tileset/Atmos/thermomachine.rsi # Stellar
       snapCardinals: true
     - type: Appearance
     - type: PipeColorVisuals
@@ -231,9 +234,9 @@
     - type: AtmosPipeLayers
       spriteLayersRsiPaths:
         enum.PipeVisualLayers.Pipe:
-          Primary: Structures/Piping/Atmospherics/thermomachine.rsi
-          Secondary: Structures/Piping/Atmospherics/thermomachine_alt1.rsi
-          Tertiary: Structures/Piping/Atmospherics/thermomachine_alt2.rsi
+          Primary: /Textures/_ST/Tileset/Atmos/thermomachine.rsi # Stellar
+          Secondary: /Textures/_ST/Tileset/Atmos/thermomachine_alt1.rsi # Stellar
+          Tertiary: /Textures/_ST/Tileset/Atmos/thermomachine_alt2.rsi # Stellar
     - type: AtmosDevice
     - type: UserInterface
       interfaces:
@@ -280,7 +283,13 @@
       granularLayersRendering: true
       layers:
         - state: freezerOff
-          map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+        - state: freezerOn # Begin Stellar
+          visible: false
+          map: ["enum.PowerDeviceVisualLayers.Powered"]
+        - state: freezerOn-unshaded
+          visible: false
+          shader: unshaded
+          map: ["freezing"] # End Stellar
         - state: freezerPanelOpen
           map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
         - state: pipe
@@ -290,8 +299,11 @@
       visuals:
         enum.PowerDeviceVisuals.Powered:
           enum.PowerDeviceVisualLayers.Powered:
-            True: { state: freezerOn }
-            False: { state: freezerOff }
+            True: { visible: true } # Begin Stellar
+            False: { visible: false }
+          freezing:
+            True: { visible: true }
+            False: { visible: false } # End Stellar
     - type: GasThermoMachine
       coefficientOfPerformance: -3.9
     - type: ApcPowerReceiver
@@ -302,6 +314,12 @@
       prefix: device-address-prefix-freezer
     - type: StealTarget
       stealGroup: FreezerHeater
+    - type: LitOnPowered # Begin Stellar
+    - type: PointLight
+      enabled: false
+      radius: 1.5
+      energy: 1.5
+      color: "#47bfff" # End Stellar
 
 - type: entity
   parent: GasThermoMachineFreezer
@@ -325,9 +343,15 @@
       granularLayersRendering : true
       layers:
         - state: heaterOff
-          map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+        - state: heaterOn # Begin Stellar
+          visible: false
+          map: ["enum.PowerDeviceVisualLayers.Powered"]
+        - state: heaterOn-unshaded
+          shader: unshaded
+          visible: false
+          map: ["heating"]
         - state: heaterPanelOpen
-          map: ["enum.WiresVisualLayers.MaintenancePanel"]
+          map: [ "enum.WiresVisualLayers.MaintenancePanel" ] # End Stellar
         - state: pipe
           map: [ "enum.PipeVisualLayers.Pipe" ]
           renderingStrategy: Default
@@ -335,8 +359,11 @@
       visuals:
         enum.PowerDeviceVisuals.Powered:
           enum.PowerDeviceVisualLayers.Powered:
-            True: { state: heaterOn }
-            False: { state: heaterOff }
+            True: { visible: true } # Begin Stellar
+            False: { visible: false }
+          heating:
+            True: { visible: true }
+            False: { visible: false } # End Stellar
     - type: GasThermoMachine
       coefficientOfPerformance: 0.95
     - type: ApcPowerReceiver
@@ -347,6 +374,12 @@
       prefix: device-address-prefix-heater
     - type: StealTarget
       stealGroup: FreezerHeater
+    - type: LitOnPowered # Begin Stellar
+    - type: PointLight
+      enabled: false
+      radius: 1.5
+      energy: 1.5
+      color: "#ffc747" # End Stellar
 
 - type: entity
   parent: GasThermoMachineHeater
@@ -396,7 +429,7 @@
     mode: SnapgridCenter
   components:
   - type: Sprite
-    sprite: Structures/Piping/Atmospherics/condenser.rsi
+    sprite: /Textures/_ST/Tileset/Atmos/condenser.rsi # Stellar
     snapCardinals: true
     granularLayersRendering: true
     layers:
@@ -407,10 +440,11 @@
     - state: pipe
       map: [ "enum.PipeVisualLayers.Pipe" ]
       renderingStrategy: Default
+    - state: trans # Stellar
     - state: fill-1
       map: ["enum.SolutionContainerLayers.Fill"]
       visible: false
-    - state: trans
+    # - state: trans # Stellar
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -419,7 +453,7 @@
           True: { state: on }
           False: { state: off }
   - type: SolutionContainerVisuals
-    maxFillLevels: 7
+    maxFillLevels: 8 # Stellar
     fillBaseName: fill-
   - type: PipeColorVisuals
   - type: Rotatable
@@ -428,9 +462,9 @@
   - type: AtmosPipeLayers
     spriteLayersRsiPaths:
       enum.PipeVisualLayers.Pipe:
-        Primary: Structures/Piping/Atmospherics/condenser.rsi
-        Secondary: Structures/Piping/Atmospherics/condenser_alt1.rsi
-        Tertiary: Structures/Piping/Atmospherics/condenser_alt2.rsi
+        Primary: /Textures/_ST/Tileset/Atmos/condenser.rsi # Begin Stellar
+        Secondary: /Textures/_ST/Tileset/Atmos/condenser_alt1.rsi
+        Tertiary: /Textures/_ST/Tileset/Atmos/condenser_alt2.rsi # End Stellar
   - type: AtmosDevice
   - type: PipeRestrictOverlap
   - type: ApcPowerReceiver

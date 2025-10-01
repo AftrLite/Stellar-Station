@@ -1,8 +1,8 @@
 # Devices which are not portable but don't link up to anything
 - type: entity
   id: AtmosDeviceFanTiny
-  name: tiny fan
-  description: A tiny fan, releasing a thin gust of air.
+  name: tiny vent # Stellar
+  description: A tiny vent, releasing a thin gust of air. # Stellar
   placement:
     mode: SnapgridCenter
   components:
@@ -11,7 +11,7 @@
   - type: Physics
     bodyType: Static
   - type: Sprite
-    sprite: Structures/Piping/Atmospherics/tinyfan.rsi
+    sprite: /Textures/_ST/Tileset/Atmos/tinyvent.rsi # Stellar
     state: icon
   - type: Fixtures
     fixtures:
@@ -28,8 +28,8 @@
 
 - type: entity
   id: AtmosDeviceFanDirectional
-  name: directional fan
-  description: A thin fan, stopping the movement of gases across it.
+  name: directional vent # Stellar
+  description: A very special vent that stops the movement of gases across it. # Stellar
   placement:
     mode: SnapgridCenter
   components:
@@ -38,7 +38,7 @@
   - type: Physics
     bodyType: Static
   - type: Sprite
-    sprite: Structures/Piping/Atmospherics/directionalfan.rsi
+    sprite: /Textures/_ST/Tileset/Atmos/directionalfan.rsi # Stellar
     state: icon
   - type: Fixtures
     fixtures:

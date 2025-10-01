@@ -7,7 +7,7 @@
   components:
     - type: Sprite
       drawdepth: FloorObjects
-      sprite: Objects/Specific/Janitorial/drain.rsi
+      sprite: /Textures/_ST/Tileset/Atmos/drain.rsi # Stellar
       layers:
       - state: icon
       - map: [ "enum.SolutionContainerLayers.Fill" ]

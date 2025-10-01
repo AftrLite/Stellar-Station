@@ -1,0 +1,67 @@
+{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "By AftrLite",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "pumpDigitalValve",
+            "directions": 4
+        },
+        {
+            "name": "pumpManualValve",
+            "directions": 4
+        },
+        {
+            "name": "pumpManualValveOn",
+            "directions": 4
+        },
+        {
+            "name": "pumpSignalValve",
+            "directions": 4
+        },
+        {
+            "name": "pumpSignalValveOn",
+            "directions": 4
+        },
+        {
+            "name": "pumpPassiveGate",
+            "directions": 4
+        },
+        {
+            "name": "pumpPassiveGateOn",
+            "directions": 4
+        },
+        {
+            "name": "pumpPressure",
+            "directions": 4
+        },
+        {
+            "name": "pumpPressureOn",
+            "directions": 4
+        },
+        {
+            "name": "pumpVolume",
+            "directions": 4
+        },
+        {
+            "name": "pumpVolumeOn",
+            "directions": 4
+        },
+        {
+            "name": "pumpVolumeBlocked",
+            "directions": 4
+        },
+        {
+            "name": "pumpPressureRegulator",
+            "directions": 4
+        },
+        {
+            "name": "pumpPressureRegulatorOn",
+            "directions": 4
+        }
+    ]
+}

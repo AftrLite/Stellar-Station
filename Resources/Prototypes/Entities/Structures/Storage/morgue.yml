@@ -8,11 +8,13 @@
   - type: Pullable
   - type: Anchorable
   - type: Sprite
-    sprite: Structures/Storage/morgue.rsi
+    sprite: /Textures/_ST/Tileset/Medical/morgue.rsi # Stellar
+    drawdepth: Mobs # Stellar
     layers:
     - state: morgue_closed
       map: ["enum.MorgueVisualLayers.Base"]
     - state: morgue_tray
+      drawdepth: BelowMobs
       offset: 0, -1
       visible: false
       map: ["enum.StorageVisualLayers.Door"]

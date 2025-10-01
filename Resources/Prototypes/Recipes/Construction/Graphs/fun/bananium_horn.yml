@@ -9,7 +9,7 @@
             - tag: Pipe
               name: construction-graph-tag-pipe
               icon:
-                sprite: Structures/Piping/Atmospherics/pipe.rsi
+                sprite: /Textures/_ST/Tileset/Atmos/piping.rsi # Stellar
                 state: pipeStraight
               doAfter: 2
             - material: Bananium

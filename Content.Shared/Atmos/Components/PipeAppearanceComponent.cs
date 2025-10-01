@@ -6,7 +6,7 @@ namespace Content.Shared.Atmos.Components;
 public sealed partial class PipeAppearanceComponent : Component
 {
     [DataField]
-    public SpriteSpecifier.Rsi[] Sprite = [new(new("Structures/Piping/Atmospherics/pipe.rsi"), "pipeConnector"),
-        new(new("Structures/Piping/Atmospherics/pipe_alt1.rsi"), "pipeConnector"),
-        new(new("Structures/Piping/Atmospherics/pipe_alt2.rsi"), "pipeConnector")];
+    public SpriteSpecifier.Rsi[] Sprite = [new(new("/Textures/_ST/Tileset/Atmos/piping.rsi"), "pipeConnector"), // Begin Stellar
+        new(new("/Textures/_ST/Tileset/Atmos/piping_alt1.rsi"), "pipeConnector"),
+        new(new("/Textures/_ST/Tileset/Atmos/piping_alt2.rsi"), "pipeConnector")]; // End Stellar
 }

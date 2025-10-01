@@ -79,8 +79,9 @@
     node: sensor
   - type: Appearance
   - type: Sprite
+    noRot: true
     drawdepth: FloorObjects
-    sprite: Structures/Specific/Atmospherics/sensor.rsi
+    sprite: /Textures/_ST/Tileset/Atmos/sensor.rsi # Stellar
     layers:
     - state: gsensor1
       map: [ "enum.PowerDeviceVisualLayers.Powered" ]
@@ -105,6 +106,6 @@
     node: assembly
   - type: Sprite
     drawdepth: FloorObjects
-    sprite: Structures/Specific/Atmospherics/sensor.rsi
+    sprite: /Textures/_ST/Tileset/Atmos/sensor.rsi # Stellar
     layers:
     - state: gsensor0

@@ -237,9 +237,10 @@
   - type: StationAiWhitelist
   - type: SpriteFade
   - type: Sprite
-    sprite: _ST/Tileset/Science/anomaly_generator.rsi # Stellar
-    offset: 0, 0.5 # Stellar - Wallening
-    drawdepth: Walls # Stellar - Wallening
+    sprite: _ST/Tileset/Science/anomaly_generator.rsi # Begin Stellar
+    offset: 0, -0.5
+    drawdepth: Mobs
+    noRot: true # End Stellar
     layers:
     - state: base
     - state: panel

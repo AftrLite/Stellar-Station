@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "LicenseRef-Wallening",
+    "copyright": "By AftrLite",
+    "states": [
+        {
+            "name": "miner",
+            "directions": 4
+        },
+        {
+            "name": "broken",
+            "directions": 4
+        },
+        {
+            "name": "on",
+            "directions": 4
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+{
+   "version":1,
+   "size":{
+      "x":32,
+      "y":32
+   },
+   "license": "LicenseRef-Wallening",
+   "copyright": "By AftrLite",
+   "states":[
+      {
+         "name":"heStraight",
+         "directions":4
+      },
+      {
+         "name":"heBend",
+         "directions":4
+      }
+   ]
+}

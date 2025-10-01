@@ -7,10 +7,10 @@
     mode: AlignAtmosPipeLayers
   components:
   - type: Sprite
-    sprite: Structures/Piping/Atmospherics/gas_pipe_sensor.rsi
+    sprite: /Textures/_ST/Tileset/Atmos/gas_pipe_sensor.rsi # Stellar
     drawdepth: BelowFloor
     layers:
-    - sprite: Structures/Piping/Atmospherics/pipe.rsi
+    - sprite: /Textures/_ST/Tileset/Atmos/piping.rsi # Stellar
       map: [ "enum.PipeVisualLayers.Pipe" ]
       state: pipeStraight
     - map: ["base"]
@@ -20,9 +20,9 @@
       shader: unshaded
   - type: AtmosPipeLayers
     spriteRsiPaths:
-      Primary: Structures/Piping/Atmospherics/gas_pipe_sensor.rsi
-      Secondary: Structures/Piping/Atmospherics/gas_pipe_sensor_alt1.rsi
-      Tertiary: Structures/Piping/Atmospherics/gas_pipe_sensor_alt2.rsi
+      Primary: /Textures/_ST/Tileset/Atmos/gas_pipe_sensor.rsi # Begin Stellar
+      Secondary: /Textures/_ST/Tileset/Atmos/gas_pipe_sensor_alt1.rsi
+      Tertiary: /Textures/_ST/Tileset/Atmos/gas_pipe_sensor_alt2.rsi # End Stellar
     alternativePrototypes:
       Primary: GasPipeSensor
       Secondary: GasPipeSensorAlt1
