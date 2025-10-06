@@ -14,12 +14,12 @@ namespace Content.Shared.DrawDepth
         // various entity types that require different
         // draw depths, as to avoid hiding
         #region SubfloorEntities
-        ThickPipe = DrawDepthTag.Default - 19,
-        ThickWire = DrawDepthTag.Default - 18,
-        ThinPipeAlt2 = DrawDepthTag.Default - 17,
-        ThinPipeAlt1 = DrawDepthTag.Default - 16,
-        ThinPipe = DrawDepthTag.Default - 15,
-        ThinWire = DrawDepthTag.Default - 14,
+        ThickPipe = DrawDepthTag.Default - 19, // Stellar - Reorder
+        ThickWire = DrawDepthTag.Default - 18, // Stellar - Reorder
+        ThinWire = DrawDepthTag.Default - 17, // Stellar - Reorder
+        ThinPipeAlt2 = DrawDepthTag.Default - 16, // Stellar - Reorder
+        ThinPipeAlt1 = DrawDepthTag.Default - 15, // Stellar - Reorder
+        ThinPipe = DrawDepthTag.Default - 14, // Stellar - Reorder
         #endregion
 
         /// <summary>
