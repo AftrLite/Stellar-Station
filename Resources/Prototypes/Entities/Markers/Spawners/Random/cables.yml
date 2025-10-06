@@ -7,9 +7,9 @@
   - type: Sprite
     layers:
     - state: red
-    - sprite: Structures/Power/Cables/hv_cable.rsi
+    - sprite: /Textures/_ST/Tileset/Power/hv_cable.rsi # Stellar
       state: hvcable_3
-    - sprite: Structures/Power/Cables/hv_cable.rsi
+    - sprite: /Textures/_ST/Tileset/Power/hv_cable.rsi # Stellar
       state: hvcable_12
   - type: RandomSpawner
     prototypes:
@@ -25,16 +25,16 @@
   - type: Sprite
     layers:
     - state: red
-    - sprite: Structures/Power/Cables/mv_cable.rsi
+    - sprite: /Textures/_ST/Tileset/Power/mv_cable.rsi # Stellar
       state: mvcable_3
       color: Yellow
-    - sprite: Structures/Power/Cables/mv_cable.rsi
-      state: mvstripes_3
-    - sprite: Structures/Power/Cables/mv_cable.rsi
+    # - sprite: Structures/Power/Cables/mv_cable.rsi # Begin Stellar
+    #   state: mvstripes_3
+    - sprite: Structures/Power/Cables/mv_cable.rsi # End Stellar
       state: mvcable_12
       color: Yellow
-    - sprite: Structures/Power/Cables/mv_cable.rsi
-      state: mvstripes_12
+    # - sprite: Structures/Power/Cables/mv_cable.rsi # Stellar
+    #   state: mvstripes_12 # Stellar
   - type: RandomSpawner
     prototypes:
     - CableMV
@@ -49,10 +49,10 @@
   - type: Sprite
     layers:
     - state: red
-    - sprite: Structures/Power/Cables/lv_cable.rsi
+    - sprite: /Textures/_ST/Tileset/Power/lv_cable.rsi # Stellar
       state: lvcable_3
       color: Green
-    - sprite: Structures/Power/Cables/lv_cable.rsi
+    - sprite: /Textures/_ST/Tileset/Power/lv_cable.rsi # Stellar
       state: lvcable_12
       color: Green
   - type: RandomSpawner
