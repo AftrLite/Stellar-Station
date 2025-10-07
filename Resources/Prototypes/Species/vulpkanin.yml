@@ -46,24 +46,24 @@
       points: 1
       onlyWhitelisted: true # Beards lack displacement maps and are impossible to displace onto a snout.
       required: false
-    Snout:
-      points: 1
-      required: true
-      defaultMarkings: [ VulpSnout ]
+    # Snout: # Begin Stellar - Vulpkanin
+    #   points: 1
+    #   required: true
+    #   defaultMarkings: [ VulpSnout ] # End Stellar - Vulpkanin
     SnoutCover:
       points: 3
       required: false
     Tail:
       points: 1
       required: true
-      defaultMarkings: [ VulpTailVulp ]
+      defaultMarkings: [ StellarVulpTailDefault ] # Stellar - Vulpkanin
     Head:
       points: 3
       required: false
     HeadTop:
       points: 1
       required: true
-      defaultMarkings: [ VulpEar ]
+      defaultMarkings: [ StellaVulpEarsDefault ] # Stellar - Vulpkanin
     UndergarmentTop:
       points: 1
       required: false
@@ -80,89 +80,89 @@
 - type: humanoidBaseSprite
   id: MobVulpkaninEyes
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _ST/Mobs/Playable/vulpkanin.rsi # Stellar
     state: eyes
 
 - type: humanoidBaseSprite
   id: MobVulpkaninHead
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _ST/Mobs/Playable/vulpkanin.rsi # Stellar
     state: head_m
 
 - type: humanoidBaseSprite
   id: MobVulpkaninHeadMale
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _ST/Mobs/Playable/vulpkanin.rsi # Stellar
     state: head_m
 
 - type: humanoidBaseSprite
   id: MobVulpkaninHeadFemale
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _ST/Mobs/Playable/vulpkanin.rsi # Stellar
     state: head_f
 
 - type: humanoidBaseSprite
   id: MobVulpkaninTorso
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _ST/Mobs/Playable/vulpkanin.rsi # Stellar
     state: torso_m
 
 - type: humanoidBaseSprite
   id: MobVulpkaninTorsoMale
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _ST/Mobs/Playable/vulpkanin.rsi # Stellar
     state: torso_m
 
 - type: humanoidBaseSprite
   id: MobVulpkaninTorsoFemale
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _ST/Mobs/Playable/vulpkanin.rsi # Stellar
     state: torso_f
 
 - type: humanoidBaseSprite
   id: MobVulpkaninLLeg
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _ST/Mobs/Playable/vulpkanin.rsi # Stellar
     state: l_leg
 
 - type: humanoidBaseSprite
   id: MobVulpkaninLHand
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _ST/Mobs/Playable/vulpkanin.rsi # Stellar
     state: l_hand
 
 - type: humanoidBaseSprite
   id: MobVulpkaninLArm
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _ST/Mobs/Playable/vulpkanin.rsi # Stellar
     state: l_arm
 
 - type: humanoidBaseSprite
   id: MobVulpkaninLFoot
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _ST/Mobs/Playable/vulpkanin.rsi # Stellar
     state: l_foot
 
 - type: humanoidBaseSprite
   id: MobVulpkaninRLeg
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _ST/Mobs/Playable/vulpkanin.rsi # Stellar
     state: r_leg
 
 - type: humanoidBaseSprite
   id: MobVulpkaninRHand
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _ST/Mobs/Playable/vulpkanin.rsi # Stellar
     state: r_hand
 
 - type: humanoidBaseSprite
   id: MobVulpkaninRArm
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _ST/Mobs/Playable/vulpkanin.rsi # Stellar
     state: r_arm
 
 - type: humanoidBaseSprite
   id: MobVulpkaninRFoot
   baseSprite:
-    sprite: Mobs/Species/Vulpkanin/parts.rsi
+    sprite: _ST/Mobs/Playable/vulpkanin.rsi # Stellar
     state: r_foot
