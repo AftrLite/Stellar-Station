@@ -290,3 +290,30 @@
   id: 36
   time: '2025-09-04T04:42:33.0000000+00:00'
   url: https://github.com/Stellar-Station/Stellar-Station/pull/107
+- author: AftrLite
+  changes:
+  - message: More respritening; Vulpkanin!
+    type: Add
+  id: 37
+  time: '2025-10-07T02:44:19.0000000+00:00'
+  url: https://github.com/Stellar-Station/Stellar-Station/pull/117
+- author: AftrLite
+  changes:
+  - message: New flesh anomaly mobs! Courtesy of Frogoo
+    type: Add
+  - message: The flesh anomaly now has a meat overlay instead of meat tiles.
+    type: Add
+  - message: The ice anomaly's ice crust looks better now.
+    type: Add
+  - message: Metal walls have some variation now! Courtesy of FaeWilds
+    type: Add
+  id: 38
+  time: '2025-09-25T05:28:16.0000000+00:00'
+  url: https://github.com/Stellar-Station/Stellar-Station/pull/113
+- author: AftrLite
+  changes:
+  - message: 'More respritening: Atmos'
+    type: Add
+  id: 39
+  time: '2025-10-07T00:36:29.0000000+00:00'
+  url: https://github.com/Stellar-Station/Stellar-Station/pull/116
