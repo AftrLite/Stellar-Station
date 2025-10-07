@@ -1,0 +1,37 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+# Tails
+- type: marking
+  id: StellarVulpTailDefault
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [ Vulpkanin ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/vulpkanin.rsi
+    state: tail
+
+# Ears
+- type: marking
+  id: StellaVulpEarsDefault
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Vulpkanin ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/vulpkanin.rsi
+    state: ears
+  - sprite: _ST/Mobs/Playable/vulpkanin.rsi
+    state: ears_inner
+  coloring:
+    default:
+      type:
+        !type:CategoryColoring
+          category: HeadTop
+      fallbackTypes:
+        - !type:SkinColoring
+    layers:
+      ears_inner:
+        type:
+          !type:SimpleColoring
+            color: "#FFFFFF"
