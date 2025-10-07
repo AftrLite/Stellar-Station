@@ -18,7 +18,6 @@ using Content.Server.Ghost;
 using Content.Shared.Light.Components;
 using Content.Server.Objectives.Components;
 using Content.Server.Popups;
-using Content.Server.Radio.Components;
 using Content.Shared.Roles.Components;
 using Content.Server.RoundEnd;
 using Content.Server.Shuttles.Systems;
@@ -46,6 +45,7 @@ using Content.Shared.Mobs;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Parallax;
 using Content.Shared.Popups;
+using Content.Shared.Radio.Components;
 using Content.Shared.Roles;
 using Content.Shared.Stunnable;
 using Content.Shared.Temperature.Components;
@@ -783,7 +783,7 @@ public sealed class CosmicCultRuleSystem : GameRuleSystem<CosmicCultRuleComponen
             _euiMan.OpenEui(new CosmicDeconvertedEui(), session);
         }
         _eye.SetVisibilityMask(uid, 1);
-        _alerts.ClearAlert(uid, uid.Comp.EntropyAlert);
+        _alerts.ClearAlert(uid.Owner, uid.Comp.EntropyAlert);
         cosmicGamerule.TotalCult--;
         cosmicGamerule.Cultists.Remove(uid);
         AdjustCultObjectiveConversion(-1);

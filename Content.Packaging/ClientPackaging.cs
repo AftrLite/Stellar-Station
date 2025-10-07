@@ -95,7 +95,11 @@ public static class ClientPackaging
             new[] { "Content.Client", "Content.Stellar.Client", "Content.Shared", "Content.Stellar.Shared", "Content.Shared.Database" }, // Stellar - assemblies
             cancel: cancel);
 
-        await RobustClientPackaging.WriteClientResources(contentDir, inputPass, cancel);
+        await RobustClientPackaging.WriteClientResources(
+            contentDir,
+            inputPass,
+            SharedPackaging.AdditionalIgnoredResources,
+            cancel);
 
         inputPass.InjectFinished();
     }
