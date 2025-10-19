@@ -1,0 +1,24 @@
+<widgets:ResourceBarsUI
+    xmlns="https://spacestation14.io"
+    xmlns:widgets="clr-namespace:Content.Client._ST.ResourceBars"
+    Name="ResourceBarsInterface"
+    HorizontalAlignment="Stretch"
+    HorizontalExpand="True">
+
+    <BoxContainer HorizontalAlignment="Stretch"
+                  HorizontalExpand="True">
+        <BoxContainer Name="LeftContainer"
+                      HorizontalAlignment="Left"
+                      HorizontalExpand="True"
+                      VerticalAlignment="Bottom" />
+        <BoxContainer Name="MiddleContainer"
+                      HorizontalAlignment="Center"
+                      HorizontalExpand="True"
+                      VerticalAlignment="Bottom" />
+        <BoxContainer Name="RightContainer"
+                      HorizontalAlignment="Right"
+                      HorizontalExpand="True"
+                      VerticalAlignment="Bottom" />
+    </BoxContainer>
+
+</widgets:ResourceBarsUI>

@@ -1,68 +1,39 @@
-using Content.Client._ST.ResourceBars.Controls;
-using Content.Client._ST.ResourceBars.Widgets;
 using Content.Client.Gameplay;
-using Content.Shared._ST.ResourceBars.Components;
-using Robust.Client.UserInterface;
+using Content.Shared._ST.ResourceBars;
 using Robust.Client.UserInterface.Controllers;
+using Robust.Client.UserInterface;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Client._ST.ResourceBars;
 
-public sealed class ResourceBarsUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>, IOnSystemChanged<ResourceBarsSystem>
+public sealed class ResourceBarsUIController : UIController, IOnSystemChanged<ResourceBarsSystem>
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
+
     [UISystemDependency] private readonly ResourceBarsSystem _resourceBars = default!;
-    private ResourceBarsComponent? _playerResBarComp;
-    private ResourceBarsGui? BarGui => UIManager.GetActiveUIWidgetOrNull<ResourceBarsGui>();
+
+    private ResourceBarsUI? BarUI => UIManager.GetActiveUIWidgetOrNull<ResourceBarsUI>();
 
     public void OnSystemLoaded(ResourceBarsSystem system)
     {
-        _resourceBars.OnPlayerBarsStartup += LoadPlayerBars;
-        _resourceBars.OnPlayerBarsShutdown += UnloadPlayerBars;
+        _resourceBars.ClearResourceBars += ClearResourceBars;
+        _resourceBars.UpdateResourceBars += UpdateResourceBars;
     }
 
     public void OnSystemUnloaded(ResourceBarsSystem system)
     {
-        _resourceBars.OnPlayerBarsStartup -= LoadPlayerBars;
-        _resourceBars.OnPlayerBarsShutdown -= UnloadPlayerBars;
+        _resourceBars.ClearResourceBars -= ClearResourceBars;
+        _resourceBars.UpdateResourceBars -= UpdateResourceBars;
     }
-    public void OnStateEntered(GameplayState state)
+
+    private void ClearResourceBars()
     {
-        if (BarGui != null)
-            BarGui.Visible = true;
+        BarUI?.Clear();
     }
 
-    public void OnStateExited(GameplayState state)
+    private void UpdateResourceBars(IReadOnlyDictionary<ProtoId<ResourceBarPrototype>, ResourceBarState> bars)
     {
-        if (BarGui != null)
-            BarGui.Visible = false;
+        BarUI?.Update(_prototype, bars);
     }
-
-    public ResourceBarsComponent? GetResouceBarData()
-    {
-        if (_playerResBarComp is not null)
-            return _playerResBarComp;
-        else return null;
-    }
-    private void LoadPlayerBars(Entity<ResourceBarsComponent> comp)
-    {
-        DebugTools.Assert(_playerResBarComp == null);
-        if (BarGui != null)
-            BarGui.Visible = true;
-
-        _playerResBarComp = comp;
-    }
-    private void UnloadPlayerBars()
-    {
-        if (BarGui != null)
-            BarGui.Visible = false;
-
-        _playerResBarComp = null;
-    }
-
-    // public void RegisterResourceBarContainer(ResourceBarsContainer resourceBar)
-    // {
-    //     _resourceBars = resourceBars;
-    // }
-
 }

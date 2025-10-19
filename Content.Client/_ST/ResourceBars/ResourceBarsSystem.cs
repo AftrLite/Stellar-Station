@@ -1,36 +1,56 @@
 using Content.Shared._ST.ResourceBars;
-using Content.Shared._ST.ResourceBars.Components;
 using Robust.Client.Player;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client._ST.ResourceBars;
 
-/// <summary>
-/// Client version of Resource Bar System.
-/// </summary>
 public sealed class ResourceBarsSystem : SharedResourceBarsSystem
 {
-    public event Action<Entity<ResourceBarsComponent>>? OnPlayerBarsStartup;
-    public event Action? OnPlayerBarsShutdown;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
+
+    public event Action? ClearResourceBars;
+    public event Action<IReadOnlyDictionary<ProtoId<ResourceBarPrototype>, ResourceBarState>>? UpdateResourceBars;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ResourceBarsComponent, LocalPlayerAttachedEvent>(HandlePlayerAttached);
-        SubscribeLocalEvent<ResourceBarsComponent, LocalPlayerDetachedEvent>(HandlePlayerDetached);
+        SubscribeLocalEvent<ResourceBarsComponent, ComponentShutdown>(OnComponentShutdown);
+        SubscribeLocalEvent<ResourceBarsComponent, LocalPlayerAttachedEvent>(OnLocalPlayerAttached);
+        SubscribeLocalEvent<ResourceBarsComponent, LocalPlayerDetachedEvent>(OnLocalPlayerDetached);
+        SubscribeLocalEvent<ResourceBarsComponent, AfterAutoHandleStateEvent>(OnAutoHandleState);
     }
 
-    #region Gui
-    private void HandlePlayerAttached(Entity<ResourceBarsComponent> ent, ref LocalPlayerAttachedEvent args)
+    private void OnAutoHandleState(Entity<ResourceBarsComponent> ent, ref AfterAutoHandleStateEvent args)
     {
-        OnPlayerBarsStartup?.Invoke(ent);
+        if (_playerManager.LocalEntity != ent.Owner)
+            return;
+
+        UpdateResourceBars?.Invoke(ent.Comp.Bars);
     }
 
-    private void HandlePlayerDetached(Entity<ResourceBarsComponent> ent, ref LocalPlayerDetachedEvent args)
+    private void OnLocalPlayerAttached(Entity<ResourceBarsComponent> ent, ref LocalPlayerAttachedEvent args)
     {
-        OnPlayerBarsShutdown?.Invoke();
+        if (_playerManager.LocalEntity != ent.Owner)
+            return;
+
+        UpdateResourceBars?.Invoke(ent.Comp.Bars);
     }
 
-    #endregion
+    private void OnLocalPlayerDetached(Entity<ResourceBarsComponent> ent, ref LocalPlayerDetachedEvent args)
+    {
+        if (_playerManager.LocalEntity != ent.Owner)
+            return;
+
+        ClearResourceBars?.Invoke();
+    }
+
+    private void OnComponentShutdown(Entity<ResourceBarsComponent> ent, ref ComponentShutdown args)
+    {
+        if (_playerManager.LocalEntity != ent.Owner)
+            return;
+
+        ClearResourceBars?.Invoke();
+    }
 }

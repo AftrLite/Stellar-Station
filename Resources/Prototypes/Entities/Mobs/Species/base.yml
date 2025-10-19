@@ -213,6 +213,41 @@
       sprite: _ST/Effects/dropshadow.rsi
       state: shadow-playable # End Stellar - Wallening
   - type: ResourceBars # Stellar - Resource bars
+    bars:
+      StaminaBar:
+        fill: 1
+      TingleBar:
+        fill: 0.5
+      FlongleBar:
+        fill: 0.25
+  - type: StellarSprint
+
+- type: resourceBar
+  id: StaminaBar
+  tooltip: meow
+  icon:
+    sprite: /Textures/_ST/Icons/job_icons.rsi
+    state: cleric
+  location: Left
+  color: "#e93a9a"
+
+- type: resourceBar
+  id: FlongleBar
+  tooltip: meow
+  icon:
+    sprite: /Textures/_ST/Icons/job_icons.rsi
+    state: cleric
+  location: Right
+  color: "#b875dc"
+
+- type: resourceBar
+  id: TingleBar
+  tooltip: meow
+  icon:
+    sprite: /Textures/_ST/Icons/job_icons.rsi
+    state: cleric
+  location: Middle
+  color: "#00d3b8"
 
 - type: entity
   save: false

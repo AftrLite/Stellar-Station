@@ -18,13 +18,6 @@ public sealed partial class ResourceBarPrototype : IPrototype
     public string ID { get; private set; } = default!;
 
     /// <summary>
-    /// The name of this resource bar.
-    /// This field is neither required nor localized because it doesn't really matter, but having it is nice for organizing.
-    /// </summary>
-    [DataField]
-    public string Name { get; private set; } = string.Empty;
-
-    /// <summary>
     /// The tooltip text players will see when hovering their mouse over the resource bar UI element.
     /// This field is required because GAMEPLAY COMMUNICATION MATTERS, PEOPLE. IF IT'S ON THE UI, YOU'RE /TALKING/ TO THE PLAYER.
     /// </summary>
@@ -38,25 +31,20 @@ public sealed partial class ResourceBarPrototype : IPrototype
     public SpriteSpecifier Icon = SpriteSpecifier.Invalid;
 
     /// <summary>
-    /// The UI position to place this resource bar. I wanted to make this an Enum, but i don't know how! Enums are bytes though, so it's basically the same thing. Lmao.
-    /// Value must be 1, 2, or 3. 1 = Left, 2 = Middle, 3 = Right. It's that simple.
+    /// The UI position to place this resource bar.
     /// </summary>
     [DataField(required: true)]
-    public ResourceUIPosition? Location;
+    public ResourceUIPosition Location;
 
     /// <summary>
-    /// This resource bar's color. I could've made this default to white, but instead, it's required!
-    /// Why? Because if you're adding a new resource bar i expect you to put in a bare minimum effort! It's not much to ask!
+    /// The resource bar's colour.
     /// </summary>
     [DataField(required: true)]
-    public Color? Color;
-
-    [DataField]
-    public ComponentRegistry? AssociatedComponents;
+    public Color Color;
 }
 
 [Serializable, NetSerializable]
-public enum ResourceUIPosition
+public enum ResourceUIPosition : byte
 {
     Left = 1,
     Middle = 2,

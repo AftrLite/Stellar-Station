@@ -19,6 +19,12 @@
     _itemstatus_content_margin_right: "#06060604"
     _itemstatus_content_margin_left: "#06060604"
     _itemstatus_patch_margin: "#07060404"
+    _resource_bar_left_bar_margins: "#10050000"
+    _resource_bar_left_icon_margins: "#03040000"
+    _resource_bar_middle_bar_margins: "#03100000"
+    _resource_bar_middle_icon_margins: "#26040000"
+    _resource_bar_right_bar_margins: "#03050000"
+    _resource_bar_right_icon_margins: "#56040000"
 
 - type: uiTheme
   id: STCasetteTheme
@@ -37,6 +43,12 @@
     _itemstatus_content_margin_right: "#06060604"
     _itemstatus_content_margin_left: "#06060604"
     _itemstatus_patch_margin: "#07060404"
+    _resource_bar_left_bar_margins: "#10050000"
+    _resource_bar_left_icon_margins: "#03040000"
+    _resource_bar_middle_bar_margins: "#03100000"
+    _resource_bar_middle_icon_margins: "#26040000"
+    _resource_bar_right_bar_margins: "#03050000"
+    _resource_bar_right_icon_margins: "#56040000"
 
 - type: uiTheme
   id: STMalignTheme
@@ -55,6 +67,12 @@
     _itemstatus_content_margin_right: "#06060604"
     _itemstatus_content_margin_left: "#06060604"
     _itemstatus_patch_margin: "#07060404"
+    _resource_bar_left_bar_margins: "#10050000"
+    _resource_bar_left_icon_margins: "#03040000"
+    _resource_bar_middle_bar_margins: "#03100000"
+    _resource_bar_middle_icon_margins: "#26040000"
+    _resource_bar_right_bar_margins: "#03050000"
+    _resource_bar_right_icon_margins: "#56040000"
 
 - type: uiTheme
   id: STAmoledTheme
@@ -73,6 +91,12 @@
     _itemstatus_content_margin_right: "#06060604"
     _itemstatus_content_margin_left: "#06060604"
     _itemstatus_patch_margin: "#07060404"
+    _resource_bar_left_bar_margins: "#10050000"
+    _resource_bar_left_icon_margins: "#03040000"
+    _resource_bar_middle_bar_margins: "#03100000"
+    _resource_bar_middle_icon_margins: "#26040000"
+    _resource_bar_right_bar_margins: "#03050000"
+    _resource_bar_right_icon_margins: "#56040000"
 
 - type: uiTheme
   id: RetroThemeDefault
@@ -91,6 +115,12 @@
     _itemstatus_content_margin_right: "#06060404"
     _itemstatus_content_margin_left: "#04060604"
     _itemstatus_patch_margin: "#07060404"
+    _resource_bar_left_bar_margins: "#10050000"
+    _resource_bar_left_icon_margins: "#03040000"
+    _resource_bar_middle_bar_margins: "#03100000"
+    _resource_bar_middle_icon_margins: "#26040000"
+    _resource_bar_right_bar_margins: "#03050000"
+    _resource_bar_right_icon_margins: "#56040000"
 
 - type: uiTheme
   id: RetroThemeMinimal
@@ -109,6 +139,12 @@
     _itemstatus_content_margin_right: "#06060604"
     _itemstatus_content_margin_left: "#06060604"
     _itemstatus_patch_margin: "#07060404"
+    _resource_bar_left_bar_margins: "#10050000"
+    _resource_bar_left_icon_margins: "#03040000"
+    _resource_bar_middle_bar_margins: "#03100000"
+    _resource_bar_middle_icon_margins: "#26040000"
+    _resource_bar_right_bar_margins: "#03050000"
+    _resource_bar_right_icon_margins: "#56040000"
 
 # Stellar HUDs
 - type: hudTheme
