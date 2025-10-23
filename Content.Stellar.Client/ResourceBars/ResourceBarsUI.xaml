@@ -16,15 +16,21 @@ SPDX-License-Identifier: LicenseRef-Wallening
         <BoxContainer Name="LeftContainer"
                       HorizontalAlignment="Left"
                       HorizontalExpand="True"
-                      VerticalAlignment="Bottom" />
+                      VerticalAlignment="Bottom"
+                      Orientation="Vertical"
+                      SeparationOverride="4" />
         <BoxContainer Name="MiddleContainer"
                       HorizontalAlignment="Center"
                       HorizontalExpand="True"
-                      VerticalAlignment="Bottom" />
+                      VerticalAlignment="Bottom"
+                      Orientation="Vertical"
+                      SeparationOverride="4" />
         <BoxContainer Name="RightContainer"
                       HorizontalAlignment="Right"
                       HorizontalExpand="True"
-                      VerticalAlignment="Bottom" />
+                      VerticalAlignment="Bottom"
+                      Orientation="Vertical"
+                      SeparationOverride="4" />
     </BoxContainer>
 
 </widgets:ResourceBarsUI>

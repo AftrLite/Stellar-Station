@@ -14,7 +14,7 @@ public sealed class ResourceBarsSystem : SharedResourceBarsSystem
     [Dependency] private readonly IPlayerManager _playerManager = default!;
 
     public event Action? ClearResourceBars;
-    public event Action<IReadOnlyDictionary<ProtoId<ResourceBarPrototype>, ResourceBarState>>? UpdateResourceBars;
+    public event Action<IReadOnlyDictionary<ProtoId<ResourceBarPrototype>, ResourceBarState>, IReadOnlyDictionary<ProtoId<ResourceBarCategoryPrototype>, int>>? UpdateResourceBars;
 
     public override void Initialize()
     {
@@ -31,7 +31,7 @@ public sealed class ResourceBarsSystem : SharedResourceBarsSystem
         if (_playerManager.LocalEntity != ent.Owner)
             return;
 
-        UpdateResourceBars?.Invoke(ent.Comp.Bars);
+        UpdateResourceBars?.Invoke(ent.Comp.Bars, ent.Comp.Collation);
     }
 
     private void OnAutoHandleState(Entity<ResourceBarsComponent> ent, ref AfterAutoHandleStateEvent args)
@@ -39,7 +39,7 @@ public sealed class ResourceBarsSystem : SharedResourceBarsSystem
         if (_playerManager.LocalEntity != ent.Owner)
             return;
 
-        UpdateResourceBars?.Invoke(ent.Comp.Bars);
+        UpdateResourceBars?.Invoke(ent.Comp.Bars, ent.Comp.Collation);
     }
 
     private void OnLocalPlayerAttached(Entity<ResourceBarsComponent> ent, ref LocalPlayerAttachedEvent args)
@@ -47,7 +47,7 @@ public sealed class ResourceBarsSystem : SharedResourceBarsSystem
         if (_playerManager.LocalEntity != ent.Owner)
             return;
 
-        UpdateResourceBars?.Invoke(ent.Comp.Bars);
+        UpdateResourceBars?.Invoke(ent.Comp.Bars, ent.Comp.Collation);
     }
 
     private void OnLocalPlayerDetached(Entity<ResourceBarsComponent> ent, ref LocalPlayerDetachedEvent args)

@@ -17,12 +17,11 @@ public sealed partial class ResourceBarPrototype : IPrototype
     [IdDataField]
     public string ID { get; private set; } = default!;
 
-    /// <summary>
-    /// The tooltip text players will see when hovering their mouse over the resource bar UI element.
-    /// This field is required because GAMEPLAY COMMUNICATION MATTERS, PEOPLE. IF IT'S ON THE UI, YOU'RE /TALKING/ TO THE PLAYER.
-    /// </summary>
     [DataField(required: true)]
-    public LocId Tooltip;
+    public LocId Title;
+
+    [DataField(required: true)]
+    public LocId Description;
 
     /// <summary>
     /// The icon associated with the resource bar, displayed on the UI.
@@ -41,6 +40,12 @@ public sealed partial class ResourceBarPrototype : IPrototype
     /// </summary>
     [DataField(required: true)]
     public Color Color;
+
+    /// <summary>
+    /// The resource bar's category.
+    /// </summary>
+    [DataField(required: true)]
+    public ProtoId<ResourceBarCategoryPrototype> Category;
 }
 
 [Serializable, NetSerializable]

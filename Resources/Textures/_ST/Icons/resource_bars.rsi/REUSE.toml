@@ -1,6 +1,6 @@
 version = 1
 
 [[annotations]]
-path = ["heart.png", "stamina.png"]
+path = ["heart.png", "stamina.png", "critical.png"]
 SPDX-FileCopyrightText = "AftrLite"
 SPDX-License-Identifier = "LicenseRef-Wallening"

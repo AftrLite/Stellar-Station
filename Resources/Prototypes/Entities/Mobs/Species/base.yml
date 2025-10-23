@@ -214,15 +214,17 @@
       state: shadow-playable # End Stellar - Wallening
   # Begin Stellar - Resource Bars
   - type: ResourceBars
-    bars:
-      StaminaBar:
-        fill: 1
-      HealthBar:
-        fill: 1
+    order:
+    - Health
+    - Stamina
   - type: MobThresholds
     triggersAlerts: false
   - type: MobThresholdResourceBars
-    resourceBar: HealthBar
+    resourceBars:
+      Alive: HealthBar
+      Critical: CriticalBar
+      Dead: DeadBar
+    resourceBarCategory: Health
   # End Stellar - Resource Bars
   # Begin Stellar - Sprinting
   - type: StellarSprint

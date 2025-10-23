@@ -1,6 +1,12 @@
 version = 1
 
 [[annotations]]
-path = ["*.ftl"]
+path = ["options-menu.ftl"]
 SPDX-FileCopyrightText = "AftrLite"
 SPDX-License-Identifier = "LicenseRef-Wallening"
+
+[[annotations]]
+path = ["resource-bars.ftl"]
+SPDX-FileCopyrightText = "Janet Blackquill"
+SPDX-License-Identifier = "LicenseRef-Wallening"
+

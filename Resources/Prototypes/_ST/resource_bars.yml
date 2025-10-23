@@ -2,9 +2,17 @@
 #
 # SPDX-License-Identifier: LicenseRef-Wallening
 
+- type: resourceBarCategory
+  id: Stamina
+
+- type: resourceBarCategory
+  id: Health
+
 - type: resourceBar
   id: StaminaBar
-  tooltip: meow
+  title: resource-bar-title-health-stamina
+  description: resource-bar-description-health-stamina
+  category: Stamina
   icon:
     sprite: /Textures/_ST/Icons/resource_bars.rsi
     state: stamina
@@ -13,9 +21,33 @@
 
 - type: resourceBar
   id: HealthBar
-  tooltip: meow
+  category: Health
+  title: resource-bar-title-health-alive
+  description: resource-bar-description-health-alive
   icon:
     sprite: /Textures/_ST/Icons/resource_bars.rsi
     state: heart
   location: Left
   color: "#e93d58"
+
+- type: resourceBar
+  id: CriticalBar
+  category: Health
+  title: resource-bar-title-health-critical
+  description: resource-bar-description-health-critical
+  icon:
+    sprite: /Textures/_ST/Icons/resource_bars.rsi
+    state: critical
+  location: Left
+  color: "#bf0039"
+
+- type: resourceBar
+  id: DeadBar
+  category: Health
+  title: resource-bar-title-health-dead
+  description: resource-bar-description-health-dead
+  icon:
+    sprite: /Textures/_ST/Icons/resource_bars.rsi
+    state: critical
+  location: Left
+  color: "#393c3f"

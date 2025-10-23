@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: MIT
 
+using Content.Shared.Mobs;
 using Content.Stellar.Shared.ResourceBars;
 using Robust.Shared.Prototypes;
 
@@ -12,5 +13,8 @@ namespace Content.Stellar.Shared.Mobs;
 public sealed partial class MobThresholdResourceBarsComponent : Component
 {
     [DataField(required: true)]
-    public ProtoId<ResourceBarPrototype> ResourceBar;
+    public Dictionary<MobState, ProtoId<ResourceBarPrototype>> ResourceBars;
+
+    [DataField(required: true)]
+    public ProtoId<ResourceBarCategoryPrototype> ResourceBarCategory;
 }

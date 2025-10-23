@@ -22,6 +22,7 @@ public sealed class StellarSprintSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<StellarSprintComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<StellarSprintComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<StellarSprintComponent, MoveInputEvent>(OnMoveInput);
         SubscribeLocalEvent<StellarSprintComponent, MoveEvent>(OnMove);
         SubscribeLocalEvent<StellarSprintComponent, RefreshMovementSpeedModifiersEvent>(OnRefresh);
@@ -30,7 +31,13 @@ public sealed class StellarSprintSystem : EntitySystem
     private void OnMapInit(Entity<StellarSprintComponent> ent, ref MapInitEvent args)
     {
         ent.Comp.Energy = ent.Comp.EnergyMax;
+        _resourceBars.ShowResourceBar(ent.Owner, ent.Comp.ResourceBar, ent.Comp.Energy / ent.Comp.EnergyMax);
         _movementSpeedModifier.RefreshMovementSpeedModifiers(ent);
+    }
+
+    private void OnShutdown(Entity<StellarSprintComponent> ent, ref ComponentShutdown args)
+    {
+        _resourceBars.ClearResourceBar(ent.Owner, ent.Comp.ResourceBar);
     }
 
     public override void Update(float frameTime)
@@ -58,7 +65,7 @@ public sealed class StellarSprintSystem : EntitySystem
             comp.Energy = Math.Min(comp.Energy + regen, comp.EnergyMax);
 
             _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
-            _resourceBars.SetFill(uid, comp.ResourceBar, comp.Energy / comp.EnergyMax);
+            _resourceBars.ShowResourceBar(uid, comp.ResourceBar, comp.Energy / comp.EnergyMax);
         }
     }
 
@@ -74,7 +81,7 @@ public sealed class StellarSprintSystem : EntitySystem
         Dirty(ent);
 
         _movementSpeedModifier.RefreshMovementSpeedModifiers(ent);
-        _resourceBars.SetFill(ent.Owner, ent.Comp.ResourceBar, ent.Comp.Energy / ent.Comp.EnergyMax);
+        _resourceBars.ShowResourceBar(ent.Owner, ent.Comp.ResourceBar, ent.Comp.Energy / ent.Comp.EnergyMax);
     }
 
     private void StartSprinting(Entity<StellarSprintComponent> ent)

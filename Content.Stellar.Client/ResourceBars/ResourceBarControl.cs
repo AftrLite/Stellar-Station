@@ -4,12 +4,15 @@
 // SPDX-License-Identifier: LicenseRef-Wallening
 
 using System.Numerics;
+using Content.Client.Actions.UI;
 using Content.Client.UserInterface;
 using Content.Stellar.Shared.ResourceBars;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Stellar.Client.ResourceBars;
 
@@ -26,6 +29,7 @@ public sealed partial class ResourceBarControl : Control
     public readonly TextureRect BarForegroundRect;
     public readonly TextureRect BarBackgroundRect;
     public readonly TextureRect BarFrameRect;
+    public readonly ProtoId<ResourceBarPrototype> BarPrototype;
 
     private string _foregroundTexturePath = default!;
     public string ForegroundTexturePath
@@ -69,45 +73,51 @@ public sealed partial class ResourceBarControl : Control
     public ResourceBarControl(ResourceBarPrototype proto, ResourceBarState state)
     {
         IoCManager.InjectDependencies(this);
+        BarPrototype = proto.ID;
         _sprite = _entityManager.System<SpriteSystem>();
         _position = proto.Location;
         _state = state;
 
+        var msg = FormattedMessage.FromMarkupOrThrow(Loc.GetString(proto.Title));
+        var desc = FormattedMessage.FromMarkupOrThrow(Loc.GetString(proto.Description));
+        var tooltip = new ActionAlertTooltip(msg, desc);
+        TooltipSupplier = _ => tooltip;
+
         AddChild(BarFrameRect = new TextureRect
         {
             TextureScale = new Vector2(ResourceScale, ResourceScale),
-            MouseFilter = MouseFilterMode.Ignore,
             Name = "Frame",
             HorizontalAlignment = Control.HAlignment.Left,
-            VerticalAlignment = Control.VAlignment.Top
+            VerticalAlignment = Control.VAlignment.Top,
+            TooltipSupplier = _ => tooltip
         });
         AddChild(BarBackgroundRect = new TextureRect
         {
             TextureScale = new Vector2(ResourceScale, ResourceScale),
-            MouseFilter = MouseFilterMode.Ignore,
             Name = "Background",
             Modulate = proto.Color,
             HorizontalAlignment = Control.HAlignment.Left,
-            VerticalAlignment = Control.VAlignment.Top
+            VerticalAlignment = Control.VAlignment.Top,
+            TooltipSupplier = _ => tooltip
         });
         AddChild(BarForegroundRect = new TextureRect
         {
             TextureScale = new Vector2(ResourceScale, ResourceScale),
-            MouseFilter = MouseFilterMode.Ignore,
             Name = "Foreground",
             Modulate = proto.Color,
             HorizontalAlignment = Control.HAlignment.Left,
             VerticalAlignment = Control.VAlignment.Top,
-            RectClipContent = true
+            RectClipContent = true,
+            TooltipSupplier = _ => tooltip
         });
         AddChild(BarIcon = new TextureRect
         {
             TextureScale = new Vector2(ResourceScale, ResourceScale),
             Texture = _sprite.Frame0(proto.Icon),
-            MouseFilter = MouseFilterMode.Ignore,
             Name = "Icon",
             HorizontalAlignment = Control.HAlignment.Left,
-            VerticalAlignment = Control.VAlignment.Top
+            VerticalAlignment = Control.VAlignment.Top,
+            TooltipSupplier = _ => tooltip
         });
         BarIcon.SetSize = BarIcon.TextureSizeTarget;
 

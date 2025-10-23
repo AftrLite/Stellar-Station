@@ -36,8 +36,8 @@ public sealed class ResourceBarsUIController : UIController, IOnSystemChanged<Re
         BarUI?.Clear();
     }
 
-    private void UpdateResourceBars(IReadOnlyDictionary<ProtoId<ResourceBarPrototype>, ResourceBarState> bars)
+    private void UpdateResourceBars(IReadOnlyDictionary<ProtoId<ResourceBarPrototype>, ResourceBarState> bars, IReadOnlyDictionary<ProtoId<ResourceBarCategoryPrototype>, int> collation)
     {
-        BarUI?.Update(_prototype, bars);
+        BarUI?.Update(_prototype, bars, collation);
     }
 }
