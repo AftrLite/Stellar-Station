@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2025 AftrLite
+// SPDX-FileCopyrightText: 2025 Janet Blackquill
+//
+// SPDX-License-Identifier: LicenseRef-Wallening
+
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;

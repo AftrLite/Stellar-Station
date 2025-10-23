@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 Janet Blackquill
+//
+// SPDX-License-Identifier: MIT
+
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface;
 using Robust.Shared.Reflection;

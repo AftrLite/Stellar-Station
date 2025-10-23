@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2025 AftrLite
+// SPDX-FileCopyrightText: 2025 Janet Blackquill
+//
+// SPDX-License-Identifier: LicenseRef-Wallening
+
 using System.Numerics;
 using Content.Client.UserInterface;
 using Content.Stellar.Shared.ResourceBars;

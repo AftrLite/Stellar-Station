@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 Janet Blackquill
+//
+// SPDX-License-Identifier: LicenseRef-Wallening
+
 using Content.Stellar.Shared.ResourceBars;
 using Robust.Client.Player;
 using Robust.Shared.Player;

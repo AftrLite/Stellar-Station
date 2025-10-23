@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 Janet Blackquill
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Mobs.Systems;
 using Content.Stellar.Shared.ResourceBars;
 
