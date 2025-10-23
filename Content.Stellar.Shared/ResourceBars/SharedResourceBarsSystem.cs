@@ -16,7 +16,7 @@ public abstract class SharedResourceBarsSystem : EntitySystem
 
     public void ClearResourceBar(Entity<ResourceBarsComponent?> ent, ProtoId<ResourceBarPrototype> barId)
     {
-        if (!Resolve(ent, ref ent.Comp))
+        if (!Resolve(ent, ref ent.Comp, false))
             return;
 
         if (!ent.Comp.Bars.Remove(barId))
@@ -43,7 +43,7 @@ public abstract class SharedResourceBarsSystem : EntitySystem
 
     public void ShowResourceBar(Entity<ResourceBarsComponent?> ent, ProtoId<ResourceBarPrototype> barId, float fill)
     {
-        if (!Resolve(ent, ref ent.Comp))
+        if (!Resolve(ent, ref ent.Comp, false))
             return;
 
         if (ent.Comp.Bars.TryGetValue(barId, out var existingBar))
