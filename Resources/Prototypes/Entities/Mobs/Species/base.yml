@@ -212,12 +212,19 @@
     sprite:
       sprite: _ST/Effects/dropshadow.rsi
       state: shadow-playable # End Stellar - Wallening
-  - type: ResourceBars # Stellar - Resource bars
+  # Begin Stellar - Resource Bars
+  - type: ResourceBars
     bars:
       StaminaBar:
         fill: 1
       HealthBar:
         fill: 1
+  - type: MobThresholds
+    triggersAlerts: false
+  - type: MobThresholdResourceBars
+    resourceBar: HealthBar
+  # End Stellar - Resource Bars
+  # Begin Stellar - Sprinting
   - type: StellarSprint
     energyMax: 100
     minimumSprintEnergy: 20
@@ -225,28 +232,7 @@
     decayPerUnitMoved: 2
     regenerationPerSecond: 3
     regenerationInterval: 2.5
-  - type: MobThresholds
-    triggersAlerts: false
-  - type: MobThresholdResourceBars
-    resourceBar: HealthBar
-
-- type: resourceBar
-  id: StaminaBar
-  tooltip: meow
-  icon:
-    sprite: /Textures/_ST/Icons/resource_bars.rsi
-    state: stamina
-  location: Left
-  color: "#ffe247"
-
-- type: resourceBar
-  id: HealthBar
-  tooltip: meow
-  icon:
-    sprite: /Textures/_ST/Icons/resource_bars.rsi
-    state: heart
-  location: Right
-  color: "#e93d58"
+  # End Stellar - Sprinting
 
 - type: entity
   save: false
