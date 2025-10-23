@@ -28,7 +28,7 @@ public abstract class SharedResourceBarsSystem : EntitySystem
 
     public void ClearResourceBarCategory(Entity<ResourceBarsComponent?> ent, ProtoId<ResourceBarCategoryPrototype> category)
     {
-        if (!Resolve(ent, ref ent.Comp))
+        if (!Resolve(ent, ref ent.Comp, false))
             return;
 
         foreach (var bar in ent.Comp.Bars.Keys)
