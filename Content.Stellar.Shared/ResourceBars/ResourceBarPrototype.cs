@@ -6,7 +6,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 
-namespace Content.Shared._ST.ResourceBars;
+namespace Content.Stellar.Shared.ResourceBars;
 
 /// <summary>
 /// A resource bar that a player has.

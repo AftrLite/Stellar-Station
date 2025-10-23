@@ -1,12 +1,12 @@
 using System.Numerics;
 using Content.Client.UserInterface;
-using Content.Shared._ST.ResourceBars;
+using Content.Stellar.Shared.ResourceBars;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface;
 
-namespace Content.Client._ST.ResourceBars;
+namespace Content.Stellar.Client.ResourceBars;
 
 public sealed partial class ResourceBarControl : Control
 {

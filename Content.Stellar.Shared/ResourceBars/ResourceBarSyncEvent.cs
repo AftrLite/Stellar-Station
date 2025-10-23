@@ -1,4 +1,4 @@
-namespace Content.Shared._ST.ResourceBars;
+namespace Content.Stellar.Shared.ResourceBars;
 
 /// <summary>
 ///     Raised when the ResouceBarsSystem might need resouce bar sources to recalculate stuff.

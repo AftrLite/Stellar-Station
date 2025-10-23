@@ -2,9 +2,10 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._ST.ResourceBars;
+namespace Content.Stellar.Shared.ResourceBars;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(raiseAfterAutoHandleState: true)]
+[Access(typeof(SharedResourceBarsSystem))]
 public sealed partial class ResourceBarsComponent : Component
 {
     [DataField, AutoNetworkedField]

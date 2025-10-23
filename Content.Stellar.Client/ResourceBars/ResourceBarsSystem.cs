@@ -1,9 +1,9 @@
-using Content.Shared._ST.ResourceBars;
+using Content.Stellar.Shared.ResourceBars;
 using Robust.Client.Player;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client._ST.ResourceBars;
+namespace Content.Stellar.Client.ResourceBars;
 
 public sealed class ResourceBarsSystem : SharedResourceBarsSystem
 {
@@ -20,6 +20,14 @@ public sealed class ResourceBarsSystem : SharedResourceBarsSystem
         SubscribeLocalEvent<ResourceBarsComponent, LocalPlayerAttachedEvent>(OnLocalPlayerAttached);
         SubscribeLocalEvent<ResourceBarsComponent, LocalPlayerDetachedEvent>(OnLocalPlayerDetached);
         SubscribeLocalEvent<ResourceBarsComponent, AfterAutoHandleStateEvent>(OnAutoHandleState);
+    }
+
+    protected override void AfterUpdateBars(Entity<ResourceBarsComponent> ent)
+    {
+        if (_playerManager.LocalEntity != ent.Owner)
+            return;
+
+        UpdateResourceBars?.Invoke(ent.Comp.Bars);
     }
 
     private void OnAutoHandleState(Entity<ResourceBarsComponent> ent, ref AfterAutoHandleStateEvent args)

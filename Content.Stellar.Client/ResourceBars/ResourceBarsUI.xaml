@@ -1,6 +1,6 @@
 <widgets:ResourceBarsUI
     xmlns="https://spacestation14.io"
-    xmlns:widgets="clr-namespace:Content.Client._ST.ResourceBars"
+    xmlns:widgets="clr-namespace:Content.Stellar.Client.ResourceBars"
     Name="ResourceBarsInterface"
     HorizontalAlignment="Stretch"
     HorizontalExpand="True">

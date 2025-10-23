@@ -216,38 +216,37 @@
     bars:
       StaminaBar:
         fill: 1
-      TingleBar:
-        fill: 0.5
-      FlongleBar:
-        fill: 0.25
+      HealthBar:
+        fill: 1
   - type: StellarSprint
+    energyMax: 100
+    minimumSprintEnergy: 20
+    resourceBar: StaminaBar
+    decayPerUnitMoved: 2
+    regenerationPerSecond: 3
+    regenerationInterval: 2.5
+  - type: MobThresholds
+    triggersAlerts: false
+  - type: MobThresholdResourceBars
+    resourceBar: HealthBar
 
 - type: resourceBar
   id: StaminaBar
   tooltip: meow
   icon:
-    sprite: /Textures/_ST/Icons/job_icons.rsi
-    state: cleric
+    sprite: /Textures/_ST/Icons/resource_bars.rsi
+    state: stamina
   location: Left
-  color: "#e93a9a"
+  color: "#ffe247"
 
 - type: resourceBar
-  id: FlongleBar
+  id: HealthBar
   tooltip: meow
   icon:
-    sprite: /Textures/_ST/Icons/job_icons.rsi
-    state: cleric
+    sprite: /Textures/_ST/Icons/resource_bars.rsi
+    state: heart
   location: Right
-  color: "#b875dc"
-
-- type: resourceBar
-  id: TingleBar
-  tooltip: meow
-  icon:
-    sprite: /Textures/_ST/Icons/job_icons.rsi
-    state: cleric
-  location: Middle
-  color: "#00d3b8"
+  color: "#e93d58"
 
 - type: entity
   save: false

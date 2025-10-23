@@ -1,11 +1,11 @@
 using Content.Client.Gameplay;
-using Content.Shared._ST.ResourceBars;
+using Content.Stellar.Shared.ResourceBars;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
-namespace Content.Client._ST.ResourceBars;
+namespace Content.Stellar.Client.ResourceBars;
 
 public sealed class ResourceBarsUIController : UIController, IOnSystemChanged<ResourceBarsSystem>
 {
