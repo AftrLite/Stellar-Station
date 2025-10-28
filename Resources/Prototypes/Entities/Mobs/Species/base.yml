@@ -212,6 +212,29 @@
     sprite:
       sprite: _ST/Effects/dropshadow.rsi
       state: shadow-playable # End Stellar - Wallening
+  # Begin Stellar - Resource Bars
+  - type: ResourceBars
+    order:
+    - Health
+    - Stamina
+  - type: MobThresholds
+    triggersAlerts: false
+  - type: MobThresholdResourceBars
+    resourceBars:
+      Alive: HealthBar
+      Critical: CriticalBar
+      Dead: DeadBar
+    resourceBarCategory: Health
+  # End Stellar - Resource Bars
+  # Begin Stellar - Sprinting
+  - type: StellarSprint
+    energyMax: 100
+    minimumSprintEnergy: 20
+    resourceBar: StaminaBar
+    decayPerUnitMoved: 2
+    regenerationPerSecond: 3
+    regenerationInterval: 2.5
+  # End Stellar - Sprinting
 
 - type: entity
   save: false
