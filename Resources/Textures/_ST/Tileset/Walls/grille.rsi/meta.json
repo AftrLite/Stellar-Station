@@ -7,40 +7,56 @@
     "license": "LicenseRef-Wallening",
     "copyright": "By AftrLite",
     "states": [
-        {
-            "name": "full"
-        },
-        {
-            "name": "grille0",
-            "directions": 4
-        },
-        {
-            "name": "grille1",
-            "directions": 4
-        },
-        {
-            "name": "grille2",
-            "directions": 4
-        },
-        {
-            "name": "grille3",
-            "directions": 4
-        },
-        {
-            "name": "grille4",
-            "directions": 4
-        },
-        {
-            "name": "grille5",
-            "directions": 4
-        },
-        {
-            "name": "grille6",
-            "directions": 4
-        },
-        {
-            "name": "grille7",
-            "directions": 4
-        }
+    {
+      "name": "full"
+    },
+    {
+      "name": "base0"
+    },
+    {
+      "name": "base1"
+    },
+    {
+      "name": "base2"
+    },
+    {
+      "name": "base3"
+    },
+    {
+      "name": "base4"
+    },
+    {
+      "name": "base5"
+    },
+    {
+      "name": "base6"
+    },
+    {
+      "name": "base7"
+    },
+    {
+      "name": "base8"
+    },
+    {
+      "name": "base9"
+    },
+    {
+      "name": "base10"
+    },
+    {
+      "name": "base11"
+    },
+    {
+      "name": "base12"
+    },
+    {
+      "name": "base13"
+    },
+    {
+      "name": "base14"
+    },
+    {
+      "name": "base15"
+    }
     ]
 }
