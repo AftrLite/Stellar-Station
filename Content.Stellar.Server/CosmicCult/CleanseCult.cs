@@ -9,18 +9,18 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Stellar.Server.CosmicCult;
 
-public sealed partial class CleanseCult : EntityEffect
+public sealed partial class CleanseCult : EntityEffectBase<CleanseCult>
 {
-    protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    public override string? EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
     {
         return Loc.GetString("reagent-effect-guidebook-cleanse-cultist", ("chance", Probability));
     }
+}
 
-    public override void Effect(EntityEffectBaseArgs args)
+public sealed partial class CleanseCultEntityEffectSystem : EntityEffectSystem<CosmicCultComponent, CleanseCult>
+{
+    protected override void Effect(Entity<CosmicCultComponent> ent, ref EntityEffectEvent<CleanseCult> args)
     {
-        var entityManager = args.EntityManager;
-        var uid = args.TargetEntity;
-        if (entityManager.HasComponent<CosmicCultComponent>(uid))
-            entityManager.EnsureComponent<CleanseCultComponent>(uid); // We just slap them with the component and let the Deconversion system handle the rest.
+        EnsureComp<CleanseCultComponent>(ent); // We just slap them with the component and let the Deconversion system handle the rest.
     }
 }
