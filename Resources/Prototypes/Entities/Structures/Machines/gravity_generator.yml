@@ -20,7 +20,7 @@
       - state: on
         map: ["enum.GravityGeneratorVisualLayers.Base"]
       # - sprite: Structures/Machines/gravity_generator_core.rsi # Stellar
-      - state: vfx # Stellar
+      - state: activated # Stellar
         shader: unshaded
         map: ["enum.GravityGeneratorVisualLayers.Core"]
   - type: Transform
