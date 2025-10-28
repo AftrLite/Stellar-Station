@@ -3,6 +3,8 @@
 //
 // SPDX-License-Identifier: LicenseRef-CosmicCult
 
+using Content.Shared.Whitelist;
+
 namespace Content.Stellar.Server.CosmicCult.Components;
 
 [RegisterComponent]
@@ -10,4 +12,7 @@ public sealed partial class CosmicEffigyConditionComponent : Component
 {
     [DataField]
     public EntityUid? EffigyTarget;
+
+    [DataField]
+    public EntityWhitelist? EffigyTargetBlacklist;
 }

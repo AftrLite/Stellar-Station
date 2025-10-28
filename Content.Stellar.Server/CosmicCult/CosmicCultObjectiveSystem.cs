@@ -9,6 +9,7 @@ using Content.Shared.Ninja.Components;
 using Content.Shared.Objectives.Components;
 using Content.Shared.Roles;
 using Content.Shared.Warps;
+using Content.Shared.Whitelist;
 using Content.Stellar.Server.CosmicCult.Components;
 using Content.Stellar.Shared.CosmicCult.Roles;
 using Robust.Shared.Random;
@@ -21,6 +22,7 @@ public sealed class CosmicCultObjectiveSystem : EntitySystem
     [Dependency] private readonly NumberObjectiveSystem _number = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedRoleSystem _roles = default!;
+    [Dependency] private readonly EntityWhitelistSystem _entityWhitelist = default!;
 
     public override void Initialize()
     {
@@ -41,9 +43,12 @@ public sealed class CosmicCultObjectiveSystem : EntitySystem
             return;
 
         var warps = new List<EntityUid>();
-        var query = EntityQueryEnumerator<BombingTargetComponent, WarpPointComponent>();
-        while (query.MoveNext(out var warpUid, out _, out var warp))
+        var query = EntityQueryEnumerator<WarpPointComponent>();
+        while (query.MoveNext(out var warpUid, out var warp))
         {
+            if (!_entityWhitelist.IsBlacklistFail(comp.EffigyTargetBlacklist, warpUid))
+                continue;
+
             if (warp.Location != null)
             {
                 warps.Add(warpUid);
