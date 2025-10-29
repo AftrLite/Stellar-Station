@@ -16,7 +16,7 @@
   icon:
     sprite: /Textures/_ST/Icons/resource_bars.rsi
     state: stamina
-  location: Left
+  location: Right
   color: "#ffe247"
 
 - type: resourceBar

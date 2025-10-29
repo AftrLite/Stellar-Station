@@ -1,0 +1,6 @@
+version = 1
+
+[[annotations]]
+path = ["bar_background.png", "bar_foreground.png", "bar_left.png", "bar_middle.png", "bar_right.png"]
+SPDX-FileCopyrightText = "AftrLite"
+SPDX-License-Identifier = "LicenseRef-Wallening"
