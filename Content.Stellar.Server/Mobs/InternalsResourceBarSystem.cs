@@ -34,8 +34,8 @@ public sealed class InternalsResourceBarSystem : EntitySystem
         if (_internals.AreInternalsWorking(ent) && TryComp<InternalsComponent>(ent, out var internalsComp))
         {
             var gasTank = Comp<GasTankComponent>(internalsComp.GasTankEntity!.Value);
-            var minutesLeft = gasTank.Air.TotalMoles / gasTank.OutputPressure * 325;
-            _resourceBars.ShowResourceBar(ent.Owner, ent.Comp.ResourceBar, minutesLeft / 15); // The resourcebar displays a maximum of 15 minutes of breathable gas.
+            var volumeLimit = 1000 / (8.31446261 * gasTank.Air.Temperature / gasTank.Air.Volume);
+            _resourceBars.ShowResourceBar(ent.Owner, ent.Comp.ResourceBar, gasTank.Air.TotalMoles / (float)volumeLimit);
         }
         else _resourceBars.ClearResourceBar(ent.Owner, ent.Comp.ResourceBar);
     }
