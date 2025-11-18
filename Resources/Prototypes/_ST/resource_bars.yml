@@ -8,10 +8,19 @@
 - type: resourceBarCategory
   id: Health
 
+- type: resourceBarCategory
+  id: Thirst
+
+- type: resourceBarCategory
+  id: Hunger
+
+- type: resourceBarCategory
+  id: Respiration
+
 - type: resourceBar
   id: StaminaBar
-  title: resource-bar-title-health-stamina
-  description: resource-bar-description-health-stamina
+  title: resource-bar-title-stamina
+  description: resource-bar-description-stamina
   category: Stamina
   icon:
     sprite: /Textures/_ST/Icons/resource_bars.rsi
@@ -51,3 +60,50 @@
     state: critical
   location: Left
   color: "#393c3f"
+
+- type: resourceBar
+  id: BatteryBar
+  title: resource-bar-title-battery
+  description: resource-bar-description-battery
+  category: Stamina
+  icon:
+    sprite: /Textures/_ST/Icons/resource_bars.rsi
+    state: battery
+  location: Right
+  color: "#4dff47"
+
+- type: resourceBar
+  id: ThirstBar
+  title: resource-bar-title-thirst
+  description: resource-bar-description-thirst
+  category: Thirst
+  icon:
+    sprite: /Textures/_ST/Icons/resource_bars.rsi
+    state: thirst
+  location: Right
+  style: Thin
+  color: "#7ebfe6"
+
+- type: resourceBar
+  id: HungerBar
+  title: resource-bar-title-health-hunger
+  description: resource-bar-description-health-hunger
+  category: Hunger
+  icon:
+    sprite: /Textures/_ST/Icons/resource_bars.rsi
+    state: hunger
+  location: Left
+  style: Thin
+  color: "#c7956c"
+
+- type: resourceBar
+  id: InternalsBar
+  title: resource-bar-title-internals
+  description: resource-bar-description-internals
+  category: Respiration
+  icon:
+    sprite: /Textures/_ST/Icons/resource_bars.rsi
+    state: respiration
+  location: Middle
+  style: Thin
+  color: "#698af8"

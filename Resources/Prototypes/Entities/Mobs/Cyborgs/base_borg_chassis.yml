@@ -43,6 +43,7 @@
     - Critical
     - Dead
   - type: MobThresholds
+    triggersAlerts: false # Stellar
     thresholds:
       0: Alive
       100: Critical
@@ -248,6 +249,19 @@
     damageProtection:
       flatReductions:
         Heat: 10 # capable of touching light bulbs and stoves without feeling pain!
+  # Begin Stellar - Resource Bars
+  - type: ResourceBars
+    order:
+    - Health
+    - Stamina
+  - type: MobThresholdResourceBars
+    resourceBars:
+      Alive: HealthBar
+      Critical: CriticalBar
+      Dead: DeadBar
+    resourceBarCategory: Health
+  - type: BatteryResourceBar
+  # End Stellar - Resource Bars
 
 - type: entity
   abstract: true

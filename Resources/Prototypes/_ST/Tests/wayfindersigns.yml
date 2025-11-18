@@ -1,0 +1,301 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  id: StellarWayfinderSign
+  parent: BaseStructure
+  name: wayfinder sign
+  description: A sign for holding direction labels.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    sprite: _ST/Items/Misc/wayfinderlabels.rsi
+    offset: 0, 0.5
+    layers:
+      - state: base
+        sprite: _ST/Tileset/Machines/wayfindersign.rsi
+      - state: sci
+        offset: 0, 0.1545
+        shader: unshaded
+        visible: false
+        map: ["enum.WayfinderSignLayers.Slot1"]
+      - state: sci
+        offset: 0, 0.1545
+        shader: unshaded
+        visible: false
+        map: ["enum.WayfinderSignLayers.Slot1Arrow"]
+      - state: sci
+        offset: 0, -0.064
+        shader: unshaded
+        visible: false
+        map: ["enum.WayfinderSignLayers.Slot2"]
+      - state: sci
+        offset: 0, -0.064
+        shader: unshaded
+        visible: false
+        map: ["enum.WayfinderSignLayers.Slot2Arrow"]
+      - state: sci
+        offset: 0, -0.281
+        shader: unshaded
+        visible: false
+        map: ["enum.WayfinderSignLayers.Slot3"]
+      - state: sci
+        offset: 0, -0.281
+        shader: unshaded
+        visible: false
+        map: ["enum.WayfinderSignLayers.Slot3Arrow"]
+  - type: Icon
+    sprite: _ST/Tileset/Machines/wayfindersign.rsi
+    state: base
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.4,0.50,-0.4,0.2"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+        - BulletImpassable
+  - type: Repairable
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
+  - type: RCDDeconstructable
+    cost: 4
+    delay: 2
+    fx: EffectRCDDeconstruct2
+  - type: Appearance
+  - type: ItemSlots
+    slots:
+      Slot1:
+        whitelist:
+          components:
+          - WayfinderLabel
+      Slot2:
+        whitelist:
+          components:
+          - WayfinderLabel
+      Slot3:
+        whitelist:
+          components:
+          - WayfinderLabel
+  - type: ContainerContainer
+  - type: WayfinderSign
+  - type: Lock
+    locked: false
+  - type: AccessReader
+    access: [["Command"], ["Engineering"], ["Janitor"]]
+
+- type: entity
+  name: science sign label
+  parent: BaseItem
+  abstract: true
+  id: WayfinderLabelBase
+  description: A directional label with a rotatable arrow, meant for use on a wayfinder sign.
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Misc/wayfinderlabels.rsi
+    layers:
+      - state: sci
+      - state: arrow-0
+        map: ["enum.WayfinderLabelVisuals.Label"]
+  - type: Appearance
+  - type: Item
+    sprite: _ST/Items/Misc/wayfinderlabels.rsi
+    heldPrefix: label
+    size: Tiny
+  - type: WayfinderLabel
+    labelType: sci
+
+# -------------------------------------------------------------
+
+- type: entity
+  name: bar sign label
+  parent: WayfinderLabelBase
+  id: WayfinderLabelBar
+  components:
+  - type: Sprite
+    layers:
+      - state: bar
+      - state: arrow-0
+        map: ["enum.WayfinderLabelVisuals.Label"]
+  - type: WayfinderLabel
+    labelType: bar
+
+- type: entity
+  name: botany sign label
+  parent: WayfinderLabelBase
+  id: WayfinderLabelBotany
+  components:
+  - type: Sprite
+    layers:
+      - state: botany
+      - state: arrow-0
+        map: ["enum.WayfinderLabelVisuals.Label"]
+  - type: WayfinderLabel
+    labelType: botany
+
+- type: entity
+  name: bridge sign label
+  parent: WayfinderLabelBase
+  id: WayfinderLabelBridge
+  components:
+  - type: Sprite
+    layers:
+      - state: bridge
+      - state: arrow-0
+        map: ["enum.WayfinderLabelVisuals.Label"]
+  - type: WayfinderLabel
+    labelType: bridge
+
+- type: entity
+  name: cafeteria sign label
+  parent: WayfinderLabelBase
+  id: WayfinderLabelCafe
+  components:
+  - type: Sprite
+    layers:
+      - state: cafe
+      - state: arrow-0
+        map: ["enum.WayfinderLabelVisuals.Label"]
+  - type: WayfinderLabel
+    labelType: cafe
+
+- type: entity
+  name: cargo sign label
+  parent: WayfinderLabelBase
+  id: WayfinderLabelCargo
+  components:
+  - type: Sprite
+    layers:
+      - state: cargo
+      - state: arrow-0
+        map: ["enum.WayfinderLabelVisuals.Label"]
+  - type: WayfinderLabel
+    labelType: cargo
+
+- type: entity
+  name: chemistry sign label
+  parent: WayfinderLabelBase
+  id: WayfinderLabelChemistry
+  components:
+  - type: Sprite
+    layers:
+      - state: chem
+      - state: arrow-0
+        map: ["enum.WayfinderLabelVisuals.Label"]
+  - type: WayfinderLabel
+    labelType: chem
+
+- type: entity
+  name: cryosleep sign label
+  parent: WayfinderLabelBase
+  id: WayfinderLabelCryo
+  components:
+  - type: Sprite
+    layers:
+      - state: cryo
+      - state: arrow-0
+        map: ["enum.WayfinderLabelVisuals.Label"]
+  - type: WayfinderLabel
+    labelType: cryo
+
+- type: entity
+  name: dormitories sign label
+  parent: WayfinderLabelBase
+  id: WayfinderLabelDorms
+  components:
+  - type: Sprite
+    layers:
+      - state: dorms
+      - state: arrow-0
+        map: ["enum.WayfinderLabelVisuals.Label"]
+  - type: WayfinderLabel
+    labelType: dorms
+
+- type: entity
+  name: engineering sign label
+  parent: WayfinderLabelBase
+  id: WayfinderLabelEngineering
+  components:
+  - type: Sprite
+    layers:
+      - state: engi
+      - state: arrow-0
+        map: ["enum.WayfinderLabelVisuals.Label"]
+  - type: WayfinderLabel
+    labelType: engi
+
+- type: entity
+  name: head of personnel sign label
+  parent: WayfinderLabelBase
+  id: WayfinderLabelHeadOfPersonnel
+  components:
+  - type: Sprite
+    layers:
+      - state: hop
+      - state: arrow-0
+        map: ["enum.WayfinderLabelVisuals.Label"]
+  - type: WayfinderLabel
+    labelType: hop
+
+- type: entity
+  name: library sign label
+  parent: WayfinderLabelBase
+  id: WayfinderLabelLibrary
+  components:
+  - type: Sprite
+    layers:
+      - state: lbry
+      - state: arrow-0
+        map: ["enum.WayfinderLabelVisuals.Label"]
+  - type: WayfinderLabel
+    labelType: lbry
+
+- type: entity
+  name: medical sign label
+  parent: WayfinderLabelBase
+  id: WayfinderLabelMedical
+  components:
+  - type: Sprite
+    layers:
+      - state: med
+      - state: arrow-0
+        map: ["enum.WayfinderLabelVisuals.Label"]
+  - type: WayfinderLabel
+    labelType: med
+
+- type: entity
+  name: science sign label
+  parent: WayfinderLabelBase
+  id: WayfinderLabelScience
+  components:
+  - type: Sprite
+    layers:
+      - state: sci
+      - state: arrow-0
+        map: ["enum.WayfinderLabelVisuals.Label"]
+  - type: WayfinderLabel
+    labelType: sci
+
+- type: entity
+  name: security sign label
+  parent: WayfinderLabelBase
+  id: WayfinderLabelSecurity
+  components:
+  - type: Sprite
+    layers:
+      - state: sec
+      - state: arrow-0
+        map: ["enum.WayfinderLabelVisuals.Label"]
+  - type: WayfinderLabel
+    labelType: sec

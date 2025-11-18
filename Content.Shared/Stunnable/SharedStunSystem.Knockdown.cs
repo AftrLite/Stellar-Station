@@ -234,7 +234,7 @@ public abstract partial class SharedStunSystem
 
         entity.Comp.NextUpdate = time;
         DirtyField(entity, entity.Comp, nameof(KnockedDownComponent.NextUpdate));
-        Alerts.UpdateAlert(entity.Owner, KnockdownAlert, null, entity.Comp.NextUpdate);
+        // Alerts.UpdateAlert(entity.Owner, KnockdownAlert, null, entity.Comp.NextUpdate); # Stellar
     }
 
     private void HandleToggleKnockdown(ICommonSession? session)

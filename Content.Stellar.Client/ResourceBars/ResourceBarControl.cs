@@ -121,16 +121,31 @@ public sealed partial class ResourceBarControl : Control
         });
         BarIcon.SetSize = BarIcon.TextureSizeTarget;
 
-        FrameTexturePath = proto.Location switch
+        switch (proto.Style)
         {
-            ResourceUIPosition.Left => "Bars/bar_left",
-            ResourceUIPosition.Middle => "Bars/bar_middle",
-            ResourceUIPosition.Right => "Bars/bar_right",
-            _ => throw new ArgumentOutOfRangeException(nameof(proto), proto, null)
-        };
-
-        BackgroundTexturePath = "Bars/bar_background";
-        ForegroundTexturePath = "Bars/bar_foreground";
+            default:
+                FrameTexturePath = proto.Location switch
+                {
+                    ResourceUIPosition.Left => "Bars/bar_left",
+                    ResourceUIPosition.Middle => "Bars/bar_middle",
+                    ResourceUIPosition.Right => "Bars/bar_right",
+                    _ => throw new ArgumentOutOfRangeException(nameof(proto), proto, null)
+                };
+                BackgroundTexturePath = "Bars/bar_background";
+                ForegroundTexturePath = "Bars/bar_foreground";
+                break;
+            case ResourceUIStyle.Thin:
+                FrameTexturePath = proto.Location switch
+                {
+                    ResourceUIPosition.Left => "Bars/bar_thin_left",
+                    ResourceUIPosition.Middle => "Bars/bar_thin_middle",
+                    ResourceUIPosition.Right => "Bars/bar_thin_right",
+                    _ => throw new ArgumentOutOfRangeException(nameof(proto), proto, null)
+                };
+                BackgroundTexturePath = "Bars/bar_thin_background";
+                ForegroundTexturePath = "Bars/bar_thin_foreground";
+                break;
+        }
 
         UpdateMargins();
     }

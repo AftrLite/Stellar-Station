@@ -1,0 +1,35 @@
+{
+    "version": 1,
+  "license": "LicenseRef-Wallening",
+  "copyright": "By AftrLite(GitHub)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+          "name": "stun6"
+        },
+        {
+          "name": "stun5"
+        },
+        {
+          "name": "stun4"
+        },
+        {
+          "name": "stun3"
+        },
+        {
+          "name": "stun2"
+        },
+        {
+          "name": "stun1"
+        },
+        {
+          "name": "stun0"
+        },
+        {
+          "name": "stunned"
+        }
+      ]
+}

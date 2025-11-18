@@ -150,7 +150,7 @@ public sealed class HungerSystem : EntitySystem
 
         if (component.HungerThresholdAlerts.TryGetValue(component.CurrentThreshold, out var alertId))
         {
-            _alerts.ShowAlert(uid, alertId);
+            // _alerts.ShowAlert(uid, alertId); # Stellar
         }
         else
         {

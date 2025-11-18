@@ -104,6 +104,7 @@
     - CablesStatic
     - LightsStatic
     - ServiceStatic
+    - WayfinderLabelsStatic
     dynamicPacks:
     - Janitor
     - Instruments

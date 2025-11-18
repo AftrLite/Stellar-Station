@@ -283,7 +283,7 @@ public abstract partial class SharedStunSystem : EntitySystem
         }
         else
         {
-            Alerts.ShowAlert(uid, KnockdownAlert);
+            // Alerts.ShowAlert(uid, KnockdownAlert); # Stellar
             _adminLogger.Add(LogType.Stamina, LogImpact.Medium, $"{ToPrettyString(uid):user} was knocked down");
         }
     }

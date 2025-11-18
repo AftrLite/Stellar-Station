@@ -1,0 +1,109 @@
+- type: latheCategory
+  id: Signs
+  name: lathe-category-signs
+
+- type: latheRecipePack
+  id: WayfinderLabelsStatic
+  recipes:
+  - WayfinderLabelBar
+  - WayfinderLabelBotany
+  - WayfinderLabelBridge
+  - WayfinderLabelCafe
+  - WayfinderLabelCargo
+  - WayfinderLabelChemistry
+  - WayfinderLabelCryo
+  - WayfinderLabelDorms
+  - WayfinderLabelEngineering
+  - WayfinderLabelHeadOfPersonnel
+  - WayfinderLabelMedical
+  - WayfinderLabelScience
+  - WayfinderLabelSecurity
+
+- type: latheRecipe
+  parent: WayfinderLabelBase
+  categories:
+  - Signs
+  id: WayfinderLabelBase
+  result: WayfinderLabelBar
+  abstract: true
+  completetime: 1
+  materials:
+    Plastic: 50
+
+- type: latheRecipe
+  parent: WayfinderLabelBase
+  id: WayfinderLabelBar
+  result: WayfinderLabelBar
+
+
+- type: latheRecipe
+  parent: WayfinderLabelBase
+  id: WayfinderLabelBotany
+  result: WayfinderLabelBotany
+
+
+- type: latheRecipe
+  parent: WayfinderLabelBase
+  id: WayfinderLabelBridge
+  result: WayfinderLabelBridge
+
+
+- type: latheRecipe
+  parent: WayfinderLabelBase
+  id: WayfinderLabelCafe
+  result: WayfinderLabelCafe
+
+
+- type: latheRecipe
+  parent: WayfinderLabelBase
+  id: WayfinderLabelCargo
+  result: WayfinderLabelCargo
+
+
+- type: latheRecipe
+  parent: WayfinderLabelBase
+  id: WayfinderLabelChemistry
+  result: WayfinderLabelChemistry
+
+
+- type: latheRecipe
+  parent: WayfinderLabelBase
+  id: WayfinderLabelCryo
+  result: WayfinderLabelCryo
+
+
+- type: latheRecipe
+  parent: WayfinderLabelBase
+  id: WayfinderLabelDorms
+  result: WayfinderLabelDorms
+
+
+- type: latheRecipe
+  parent: WayfinderLabelBase
+  id: WayfinderLabelEngineering
+  result: WayfinderLabelEngineering
+
+
+- type: latheRecipe
+  parent: WayfinderLabelBase
+  id: WayfinderLabelHeadOfPersonnel
+  result: WayfinderLabelHeadOfPersonnel
+
+
+- type: latheRecipe
+  parent: WayfinderLabelBase
+  id: WayfinderLabelMedical
+  result: WayfinderLabelMedical
+
+
+- type: latheRecipe
+  parent: WayfinderLabelBase
+  id: WayfinderLabelScience
+  result: WayfinderLabelScience
+
+
+- type: latheRecipe
+  parent: WayfinderLabelBase
+  id: WayfinderLabelSecurity
+  result: WayfinderLabelSecurity
+

@@ -158,12 +158,12 @@ public abstract class SharedInternalsSystem : EntitySystem
 
     private void OnInternalsStartup(Entity<InternalsComponent> ent, ref ComponentStartup args)
     {
-        _alerts.ShowAlert(ent.Owner, ent.Comp.InternalsAlert, GetSeverity(ent));
+        // _alerts.ShowAlert(ent.Owner, ent.Comp.InternalsAlert, GetSeverity(ent)); # Stellar - Alerts Begone
     }
 
     private void OnInternalsShutdown(Entity<InternalsComponent> ent, ref ComponentShutdown args)
     {
-        _alerts.ClearAlert(ent.Owner, ent.Comp.InternalsAlert);
+        // _alerts.ClearAlert(ent.Owner, ent.Comp.InternalsAlert); # Stellar - Alerts Begone
     }
 
     public void ConnectBreathTool(Entity<InternalsComponent> ent, EntityUid toolEntity)
@@ -178,7 +178,7 @@ public abstract class SharedInternalsSystem : EntitySystem
         }
 
         Dirty(ent);
-        _alerts.ShowAlert(ent.Owner, ent.Comp.InternalsAlert, GetSeverity(ent));
+        // _alerts.ShowAlert(ent.Owner, ent.Comp.InternalsAlert, GetSeverity(ent)); # Stellar - Alerts Begone
     }
 
     public void DisconnectBreathTool(Entity<InternalsComponent> ent, EntityUid toolEntity, bool forced = false)
@@ -199,7 +199,7 @@ public abstract class SharedInternalsSystem : EntitySystem
             DisconnectTank(ent, forced: forced);
         }
 
-        _alerts.ShowAlert(ent.Owner, ent.Comp.InternalsAlert, GetSeverity(ent));
+        // _alerts.ShowAlert(ent.Owner, ent.Comp.InternalsAlert, GetSeverity(ent)); # Stellar - Alerts Begone
     }
 
     public void DisconnectTank(Entity<InternalsComponent> ent, bool forced = false)
@@ -209,7 +209,7 @@ public abstract class SharedInternalsSystem : EntitySystem
 
         ent.Comp.GasTankEntity = null;
         Dirty(ent);
-        _alerts.ShowAlert(ent.Owner, ent.Comp.InternalsAlert, GetSeverity(ent.Comp));
+        // _alerts.ShowAlert(ent.Owner, ent.Comp.InternalsAlert, GetSeverity(ent.Comp)); # Stellar - Alerts Begone
     }
 
     public bool TryConnectTank(Entity<InternalsComponent> ent, EntityUid tankEntity)
@@ -222,7 +222,7 @@ public abstract class SharedInternalsSystem : EntitySystem
 
         ent.Comp.GasTankEntity = tankEntity;
         Dirty(ent);
-        _alerts.ShowAlert(ent.Owner, ent.Comp.InternalsAlert, GetSeverity(ent));
+        // _alerts.ShowAlert(ent.Owner, ent.Comp.InternalsAlert, GetSeverity(ent)); # Stellar - Alerts Begone
         return true;
     }
 

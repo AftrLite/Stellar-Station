@@ -131,10 +131,10 @@ public abstract partial class SharedGravitySystem : EntitySystem
 
     private void OnWeightlessnessChanged(Entity<AlertsComponent> entity, ref WeightlessnessChangedEvent args)
     {
-        if (args.Weightless)
-            _alerts.ShowAlert(entity.AsNullable(), WeightlessAlert);
-        else
-            _alerts.ClearAlert(entity.AsNullable(), WeightlessAlert);
+        // if (args.Weightless) BEGIN STELLAR CHANGES - Disable several excess alerts
+        //     _alerts.ShowAlert(entity.AsNullable(), WeightlessAlert);
+        // else
+        //     _alerts.ClearAlert(entity.AsNullable(), WeightlessAlert); END STELLAR CHANGES - Disable several excess alerts
     }
 
     private void OnEntParentChanged(Entity<GravityAffectedComponent> entity, ref EntParentChangedMessage args)
@@ -196,18 +196,18 @@ public abstract partial class SharedGravitySystem : EntitySystem
 
     private void OnAlertsSync(AlertSyncEvent ev)
     {
-        if (IsWeightless(ev.Euid))
-            _alerts.ShowAlert(ev.Euid, WeightlessAlert);
-        else
-            _alerts.ClearAlert(ev.Euid, WeightlessAlert);
+        // if (IsWeightless(ev.Euid)) BEGIN STELLAR CHANGES - Disable several excess alerts
+        //     _alerts.ShowAlert(ev.Euid, WeightlessAlert);
+        // else
+        //     _alerts.ClearAlert(ev.Euid, WeightlessAlert); END STELLAR CHANGES - Disable several excess alerts
     }
 
     private void OnAlertsParentChange(Entity<AlertsComponent> entity, ref EntParentChangedMessage args)
     {
-        if (IsWeightless(entity.Owner))
-            _alerts.ShowAlert(entity.AsNullable(), WeightlessAlert);
-        else
-            _alerts.ClearAlert(entity.AsNullable(), WeightlessAlert);
+        // if (IsWeightless(entity.Owner)) BEGIN STELLAR CHANGES - Disable several excess alerts
+        //     _alerts.ShowAlert(entity.AsNullable(), WeightlessAlert);
+        // else
+        //     _alerts.ClearAlert(entity.AsNullable(), WeightlessAlert); END STELLAR CHANGES - Disable several excess alerts
     }
 
     private void OnGridInit(GridInitializeEvent ev)
