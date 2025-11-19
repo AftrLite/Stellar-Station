@@ -142,7 +142,7 @@
 
 - type: alert
   id: Stun
-  category: Stun
+  category: Stamina
   icons:
   - sprite: /Textures/_ST/Icons/Alerts/stunned.rsi # Begin Stellar changes
     state: stunned
@@ -337,7 +337,7 @@
 
 - type: alert
   id: Stamina
-  category: Stun # Stellar
+  category: Stamina
   icons:
   - sprite: /Textures/_ST/Icons/Alerts/stunned.rsi # Begin Stellar changes
     state: stun0
