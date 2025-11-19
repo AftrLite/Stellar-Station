@@ -89,6 +89,19 @@
           components:
           - WayfinderLabel
   - type: ContainerContainer
+    containers:
+      Slot1: !type:ContainerSlot
+        showEnts: False
+        occludes: True
+        ent: null
+      Slot2: !type:ContainerSlot
+        showEnts: False
+        occludes: True
+        ent: null
+      Slot3: !type:ContainerSlot
+        showEnts: False
+        occludes: True
+        ent: null
   - type: WayfinderSign
   - type: Lock
     locked: false
