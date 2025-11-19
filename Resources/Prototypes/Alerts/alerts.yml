@@ -146,7 +146,7 @@
   icons:
   - sprite: /Textures/_ST/Icons/Alerts/stunned.rsi # Begin Stellar changes
     state: stunned
-  name: alerts-stellar-stunned-name # End Stellar changes
+  name: alerts-stellar-stunned-name
   description: alerts-stellar-stunned-desc # End Stellar changes
 
 - type: alert
@@ -160,19 +160,21 @@
 
 - type: alert
   id: Handcuffed
-  clickEvent: !type:RemoveCuffsAlertEvent
-  icons: [ /Textures/Interface/Alerts/Handcuffed/Handcuffed.png ]
-  name: alerts-handcuffed-name
-  description: alerts-handcuffed-desc
+  # clickEvent: !type:RemoveCuffsAlertEvent # Begin Stellar changes
+  icons:
+  - sprite: /Textures/_ST/Icons/Alerts/restrained.rsi
+    state: icon
+  name: alerts-stellar-restrained-name
+  description: alerts-stellar-restrained-desc # End Stellar changes
 
 - type: alert
   id: Ensnared
   clickEvent: !type:RemoveEnsnareAlertEvent
   icons:
-  - sprite: /Textures/Interface/Alerts/ensnared.rsi
-    state: ensnared
-  name: alerts-ensnared-name
-  description: alerts-ensnared-desc
+  - sprite: /Textures/_ST/Icons/Alerts/slowed.rsi # Stellar
+    state: icon
+  name: alerts-slowed-name
+  description: alerts-slowed-desc
 
 - type: alert
   id: Buckled
@@ -393,10 +395,10 @@
   id: VowOfSilence
   icons: # Begin Stellar changes
   - sprite: /Textures/_ST/Icons/Alerts/muted.rsi
-    state: muted # End Stellar changes
-  name: alerts-vow-silence-name
-  clickEvent: !type:BreakVowAlertEvent
-  description: alerts-vow-silence-desc
+    state: muted
+  # clickEvent: !type:BreakVowAlertEvent # Stellar
+  name: alerts-stellar-muted-name
+  description: alerts-stellar-muted-desc # End Stellar changes
 
 - type: alert
   id: VowBroken
@@ -404,7 +406,7 @@
   - sprite: /Textures/_ST/Icons/Alerts/muted.rsi
     state: unmuted # End Stellar changes
   name: alerts-vow-broken-name
-  clickEvent: !type:RetakeVowAlertEvent
+  # clickEvent: !type:RetakeVowAlertEvent # Stellar
   description: alerts-vow-broken-desc
 
 - type: alert

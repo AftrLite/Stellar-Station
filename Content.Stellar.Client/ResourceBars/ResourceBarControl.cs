@@ -23,6 +23,7 @@ public sealed partial class ResourceBarControl : Control
     private const float ResourceScale = 2;
     private readonly SpriteSystem _sprite;
     private readonly ResourceUIPosition _position;
+    private readonly ResourceUIStyle _style;
     private ResourceBarState _state;
 
     public readonly TextureRect BarIcon;
@@ -76,6 +77,7 @@ public sealed partial class ResourceBarControl : Control
         BarPrototype = proto.ID;
         _sprite = _entityManager.System<SpriteSystem>();
         _position = proto.Location;
+        _style = proto.Style;
         _state = state;
 
         var msg = FormattedMessage.FromMarkupOrThrow(Loc.GetString(proto.Title));
@@ -162,8 +164,16 @@ public sealed partial class ResourceBarControl : Control
                 iconMargin = MarginFromThemeColor("_resource_bar_left_icon_margins");
                 break;
             case ResourceUIPosition.Middle:
-                barMargin = MarginFromThemeColor("_resource_bar_middle_bar_margins");
-                iconMargin = MarginFromThemeColor("_resource_bar_middle_icon_margins");
+                if (_style == ResourceUIStyle.Thin)
+                {
+                    barMargin = MarginFromThemeColor("_resource_bar_middle_bar_thin_margins");
+                    iconMargin = MarginFromThemeColor("_resource_bar_middle_icon_thin_margins");
+                }
+                else
+                {
+                    barMargin = MarginFromThemeColor("_resource_bar_middle_bar_margins");
+                    iconMargin = MarginFromThemeColor("_resource_bar_middle_icon_margins");
+                }
                 break;
             case ResourceUIPosition.Right:
                 barMargin = MarginFromThemeColor("_resource_bar_right_bar_margins");

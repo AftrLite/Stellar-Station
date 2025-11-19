@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: LicenseRef-Wallening
 
 using Content.Server.Body.Systems;
+using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
@@ -34,8 +35,8 @@ public sealed class InternalsResourceBarSystem : EntitySystem
         if (_internals.AreInternalsWorking(ent) && TryComp<InternalsComponent>(ent, out var internalsComp))
         {
             var gasTank = Comp<GasTankComponent>(internalsComp.GasTankEntity!.Value);
-            var volumeLimit = 1000 / (8.31446261 * gasTank.Air.Temperature / gasTank.Air.Volume);
-            _resourceBars.ShowResourceBar(ent.Owner, ent.Comp.ResourceBar, gasTank.Air.TotalMoles / (float)volumeLimit);
+            var volumeLimit = 1000f / (Atmospherics.R * gasTank.Air.Temperature / gasTank.Air.Volume); // The 1000f isn't a magic number, i promise. Move along. Pay it no mind.
+            _resourceBars.ShowResourceBar(ent.Owner, ent.Comp.ResourceBar, gasTank.Air.TotalMoles / volumeLimit);
         }
         else _resourceBars.ClearResourceBar(ent.Owner, ent.Comp.ResourceBar);
     }
