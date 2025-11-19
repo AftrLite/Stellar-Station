@@ -5,11 +5,12 @@
   description: Extracts seeds from produce.
   components:
   - type: Sprite
-    sprite: Structures/Machines/seed_extractor.rsi
+    sprite: _ST/Tileset/Botany/seed_extractor.rsi # Stellar
+    noRot: true # Stellar
     snapCardinals: true
     layers:
-    - state: seedextractor-off
-    - state: seedextractor-unlit
+    - state: base # Stellar
+    - state: unshaded # Stellar
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
   - type: Physics

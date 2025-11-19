@@ -551,12 +551,13 @@
   description: Converts plants into biomass, which can be used to construct useful items.
   components:
   - type: Sprite
-    sprite: Structures/Machines/biofabricator.rsi
+    sprite: _ST/Tileset/Botany/biogenerator.rsi # Stellar
+    noRot: true # Stellar
     snapCardinals: true
     layers:
-    - state: icon
+    - state: base # Stellar
       map: ["enum.LatheVisualLayers.IsRunning"]
-    - state: unlit
+    - state: unshaded # Stellar
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
     - state: inserting
@@ -581,7 +582,7 @@
       beaker_slot: !type:ContainerSlot
   - type: Lathe
     reagentOutputSlotId: beaker_slot
-    idleState: icon
+    idleState: base # Stellar
     runningState: building
     staticPacks:
     - BioGenIngredientsStatic
