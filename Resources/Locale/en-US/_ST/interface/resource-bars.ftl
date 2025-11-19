@@ -20,4 +20,4 @@ resource-bar-title-hunger = Hunger
 resource-bar-description-hunger = A biological need. Starvation will impair you!
 
 resource-bar-title-internals = Internals
-resource-bar-description-initernals = The amount of gas left in the tank.
+resource-bar-description-internals = The amount of gas left in the tank.

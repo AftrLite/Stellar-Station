@@ -1,6 +1,9 @@
+// SPDX-FileCopyrightText: 2025 AftrLite
+//
+// SPDX-License-Identifier: LicenseRef-Wallening
+
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
-using Robust.Shared.Utility;
 
 namespace Content.Stellar.Shared.WayfinderSign;
 

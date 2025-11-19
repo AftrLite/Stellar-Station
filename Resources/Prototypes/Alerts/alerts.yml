@@ -5,10 +5,8 @@
   id: BaseAlertOrder # Begin Stellar - reorder alerts
   order:
     - category: Health
+    - category: Stamina
     - alertType: Fire
-    - category: Stun
-    - category: Piloting
-    - alertType: Corporeal
     - category: Breathing
     - category: Pressure
     - alertType: Bleed
@@ -17,6 +15,8 @@
     - alertType: Ensnared
     - category: Hunger
     - category: Thirst
+    - category: Piloting
+    - alertType: Corporeal
     - alertType: Buckled
     - alertType: Pulling
     - alertType: Magboots
