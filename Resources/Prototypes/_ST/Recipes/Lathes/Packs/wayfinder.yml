@@ -24,7 +24,6 @@
   - WayfinderLabelSecurity
 
 - type: latheRecipe
-  parent: WayfinderLabelBase
   categories:
   - Signs
   id: WayfinderLabelBase
