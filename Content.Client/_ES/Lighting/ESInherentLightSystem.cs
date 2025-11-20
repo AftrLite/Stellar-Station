@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 Mirrorcult
+//
+// SPDX-License-Identifier: MIT
+
 using System.Numerics;
 using Robust.Client.GameObjects;
 using Robust.Shared.Map;

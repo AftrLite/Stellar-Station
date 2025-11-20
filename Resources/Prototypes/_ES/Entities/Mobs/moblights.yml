@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 Mirrorcult
+#
+# SPDX-License-Identifier: MIT
+
 # Inherent point light prototypes that can be attached to mobs using ESInherentLightComponent.
 - type: entity
   id: ESMobDefaultInherentLight
