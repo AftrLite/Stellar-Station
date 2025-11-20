@@ -8,22 +8,22 @@
     },
     "states": [
       {
-        "name": "grow-1"
+        "name": "stage-1"
       },
       {
-        "name": "grow-2"
+        "name": "stage-2"
       },
       {
-        "name": "grow-3"
+        "name": "stage-3"
       },
       {
-        "name": "grow-4"
+        "name": "stage-4"
       },
       {
-        "name": "grow-5"
+        "name": "stage-5"
       },
       {
-        "name": "grow-6"
+        "name": "stage-6"
       }
     ]
 }

@@ -3,7 +3,7 @@
   name: seeds-wheat-name
   noun: seeds-noun-seeds
   displayName: seeds-wheat-display-name
-  plantRsi: Objects/Specific/Hydroponics/wheat.rsi
+  plantRsi: _ST/Tileset/Botany/Plants/wheat.rsi # Stellar
   packetPrototype: WheatSeeds
   productPrototypes:
     - WheatBushel
@@ -15,6 +15,7 @@
   yield: 3
   potency: 5
   idealLight: 8
+  growthStages: 4 # Stellar
   nutrientConsumption: 0.40
   chemicals:
     Nutriment:
@@ -1830,7 +1831,7 @@
   name: seeds-pumpkin-name
   noun: seeds-noun-seeds
   displayName: seeds-pumpkin-display-name
-  plantRsi: Objects/Specific/Hydroponics/pumpkin.rsi
+  plantRsi: _ST/Tileset/Botany/Plants/pumpkin.rsi # Stellar
   packetPrototype: PumpkinSeeds
   productPrototypes:
     - FoodPumpkin
@@ -1842,7 +1843,7 @@
   yield: 2
   potency: 10
   idealHeat: 288
-  growthStages: 3
+  growthStages: 5 # Stellar
   chemicals:
     PumpkinFlesh:
       Min: 1
