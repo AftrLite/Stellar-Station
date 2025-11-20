@@ -96,6 +96,8 @@
     resistanceBypass: true
     angle: 0
     animation: WeaponArcCosmic
+    wideAnimation: WeaponArcThrust # ES - Animations with Easing
+    wideAnimationRotation: -135
     attackRate: 0.62
     damage:
       types:
