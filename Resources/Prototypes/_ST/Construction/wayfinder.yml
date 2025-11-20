@@ -1,0 +1,67 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+# SHUTTLE
+- type: constructionGraph
+  id: StellarWayfinderSign
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: StellarWayfinderSignFrame
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 1
+            - material: Plastic
+              amount: 2
+              doAfter: 1
+
+    - node: StellarWayfinderSignFrame
+      entity: StellarWayfinderSignFrame
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
+            - !type:SpawnPrototype
+              prototype: SheetPlastic1
+              amount: 2
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Prying
+              doAfter: 1
+        - to: StellarWayfinderSign
+          steps:
+            - material: Cable
+              amount: 3
+              doAfter: 2
+            - tool: Screwing
+              doAfter: 1
+            - material: Glass
+              amount: 3
+              doAfter: 2
+            - tool: Screwing
+              doAfter: 1
+
+    - node: StellarWayfinderSign
+      entity: StellarWayfinderSign
+      edges:
+        - to: StellarWayfinderSignFrame
+          steps:
+            - tool: Screwing
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 1
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetGlass1
+              amount: 3
+            - !type:SpawnPrototype
+              prototype: CableApcStack1
+              amount: 2

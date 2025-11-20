@@ -107,6 +107,52 @@
     locked: false
   - type: AccessReader
     access: [["Command"], ["Engineering"], ["Janitor"]]
+  - type: Construction
+    graph: StellarWayfinderSign
+    node: StellarWayfinderSign
+
+- type: entity
+  id: StellarWayfinderSignFrame
+  parent: BaseStructure
+  name: wayfinder sign frame
+  description: A partially-built wayfinder sign.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    sprite: _ST/Tileset/Machines/wayfindersign.rsi
+    state: frame
+    offset: 0, 0.5
+  - type: Icon
+    sprite: _ST/Tileset/Machines/wayfindersign.rsi
+    state: frame
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.4,0.50,-0.4,0.2"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+        - BulletImpassable
+  - type: Repairable
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
+  - type: RCDDeconstructable
+    cost: 2
+    delay: 2
+    fx: EffectRCDDeconstruct2
+  - type: Construction
+    graph: StellarWayfinderSign
+    node: StellarWayfinderSignFrame
 
 - type: entity
   name: science sign label
