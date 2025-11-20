@@ -209,6 +209,12 @@ public abstract class SharedInternalsSystem : EntitySystem
 
         ent.Comp.GasTankEntity = null;
         Dirty(ent);
+
+        // Begin Stellar
+        var evt = new Content.Shared._ST.Atmos.InternalsToggledEvent(false);
+        RaiseLocalEvent(ent, ref evt);
+        // End Stellar
+
         // _alerts.ShowAlert(ent.Owner, ent.Comp.InternalsAlert, GetSeverity(ent.Comp)); # Stellar - Alerts Begone
     }
 
@@ -222,6 +228,11 @@ public abstract class SharedInternalsSystem : EntitySystem
 
         ent.Comp.GasTankEntity = tankEntity;
         Dirty(ent);
+        // Begin Stellar
+        var evt = new Content.Shared._ST.Atmos.InternalsToggledEvent(true);
+        RaiseLocalEvent(ent, ref evt);
+        // End Stellar
+
         // _alerts.ShowAlert(ent.Owner, ent.Comp.InternalsAlert, GetSeverity(ent)); # Stellar - Alerts Begone
         return true;
     }
