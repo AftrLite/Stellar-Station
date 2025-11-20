@@ -32,12 +32,18 @@ public sealed class InternalsResourceBarSystem : EntitySystem
 
     private void OnInhaleLocation(Entity<InternalsResourceBarComponent> ent, ref InhaleLocationEvent args)
     {
-        if (_internals.AreInternalsWorking(ent) && TryComp<InternalsComponent>(ent, out var internalsComp))
+        if (!_internals.AreInternalsWorking(ent) || !TryComp<InternalsComponent>(ent, out var internals))
         {
-            var gasTank = Comp<GasTankComponent>(internalsComp.GasTankEntity!.Value);
-            var volumeLimit = 1000f / (Atmospherics.R * gasTank.Air.Temperature / gasTank.Air.Volume); // The 1000f isn't a magic number, i promise. Move along. Pay it no mind.
-            _resourceBars.ShowResourceBar(ent.Owner, ent.Comp.ResourceBar, gasTank.Air.TotalMoles / volumeLimit);
+            _resourceBars.ClearResourceBar(ent.Owner, ent.Comp.ResourceBar);
+            return;
         }
-        else _resourceBars.ClearResourceBar(ent.Owner, ent.Comp.ResourceBar);
+
+        var gasTank = Comp<GasTankComponent>(internals.GasTankEntity!.Value);
+
+        var expectedMaximumMoleage = (ent.Comp.MaxFillPressure * gasTank.Air.Volume) / (Atmospherics.R * gasTank.Air.Temperature);
+        var currentMoleage = gasTank.Air.TotalMoles;
+        var ratio = currentMoleage / expectedMaximumMoleage;
+
+        _resourceBars.ShowResourceBar(ent.Owner, ent.Comp.ResourceBar, ratio);
     }
 }
