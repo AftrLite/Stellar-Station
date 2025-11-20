@@ -2,7 +2,6 @@
 //
 // SPDX-License-Identifier: LicenseRef-Wallening
 
-using Content.Stellar.Server.Mobs;
 using Content.Stellar.Shared.ResourceBars;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -21,7 +20,9 @@ public sealed partial class SatiationResourceBarsComponent : Component
     [DataField]
     public TimeSpan UpdateInterval = TimeSpan.FromSeconds(1d);
 
+    [DataField]
     public ProtoId<ResourceBarPrototype> ResourceBarHunger = "HungerBar";
 
+    [DataField]
     public ProtoId<ResourceBarPrototype> ResourceBarThirst = "ThirstBar";
 }

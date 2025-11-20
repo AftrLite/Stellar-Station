@@ -125,28 +125,30 @@ public sealed partial class ResourceBarControl : Control
 
         switch (proto.Style)
         {
-            default:
-                FrameTexturePath = proto.Location switch
-                {
-                    ResourceUIPosition.Left => "Bars/bar_left",
-                    ResourceUIPosition.Middle => "Bars/bar_middle",
-                    ResourceUIPosition.Right => "Bars/bar_right",
-                    _ => throw new ArgumentOutOfRangeException(nameof(proto), proto, null)
-                };
-                BackgroundTexturePath = "Bars/bar_background";
-                ForegroundTexturePath = "Bars/bar_foreground";
-                break;
             case ResourceUIStyle.Thin:
                 FrameTexturePath = proto.Location switch
                 {
                     ResourceUIPosition.Left => "Bars/bar_thin_left",
                     ResourceUIPosition.Middle => "Bars/bar_thin_middle",
                     ResourceUIPosition.Right => "Bars/bar_thin_right",
-                    _ => throw new ArgumentOutOfRangeException(nameof(proto), proto, null)
+                    _ => throw new ArgumentOutOfRangeException(nameof(proto.Location), proto.Location, null)
                 };
                 BackgroundTexturePath = "Bars/bar_thin_background";
                 ForegroundTexturePath = "Bars/bar_thin_foreground";
                 break;
+            case ResourceUIStyle.Default:
+                FrameTexturePath = proto.Location switch
+                {
+                    ResourceUIPosition.Left => "Bars/bar_left",
+                    ResourceUIPosition.Middle => "Bars/bar_middle",
+                    ResourceUIPosition.Right => "Bars/bar_right",
+                    _ => throw new ArgumentOutOfRangeException(nameof(proto.Location), proto.Location, null)
+                };
+                BackgroundTexturePath = "Bars/bar_background";
+                ForegroundTexturePath = "Bars/bar_foreground";
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(proto.Style), proto.Style, null);
         }
 
         UpdateMargins();
