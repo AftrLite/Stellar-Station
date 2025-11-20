@@ -13,7 +13,6 @@ namespace Content.Stellar.Shared.Movement;
 
 public sealed class StellarSprintSystem : EntitySystem
 {
-    [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
     [Dependency] private readonly SharedResourceBarsSystem _resourceBars = default!;
@@ -72,7 +71,7 @@ public sealed class StellarSprintSystem : EntitySystem
 
     private void OnMove(Entity<StellarSprintComponent> ent, ref MoveEvent args)
     {
-        if (!ent.Comp.Sprinting || _net.IsClient)
+        if (!ent.Comp.Sprinting)
             return;
 
         var distance = (args.NewPosition.Position - args.OldPosition.Position).Length();

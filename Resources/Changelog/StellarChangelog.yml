@@ -340,3 +340,17 @@
   id: 42
   time: '2025-10-23T05:24:23.0000000+00:00'
   url: https://github.com/Stellar-Station/Stellar-Station/pull/112
+- author: AftrLite
+  changes:
+  - message: Animation Easings & ClientLights, courtesy of MirrorCult/Ephemeral Space
+    type: Add
+  id: 43
+  time: '2025-11-20T06:28:08.0000000+00:00'
+  url: https://github.com/Stellar-Station/Stellar-Station/pull/124
+- author: AftrLite
+  changes:
+  - message: ResouceBars now have appearances for the non-default hud styles.
+    type: Add
+  id: 44
+  time: '2025-10-29T02:16:34.0000000+00:00'
+  url: https://github.com/Stellar-Station/Stellar-Station/pull/122

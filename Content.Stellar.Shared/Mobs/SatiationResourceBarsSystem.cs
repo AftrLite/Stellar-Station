@@ -8,7 +8,7 @@ using Content.Stellar.Shared.Mobs;
 using Content.Stellar.Shared.ResourceBars;
 using Robust.Shared.Timing;
 
-namespace Content.Stellar.Server.Mobs;
+namespace Content.Stellar.Shared.Mobs;
 
 public sealed class SatiationResourceBarsSystem : EntitySystem
 {
@@ -23,44 +23,40 @@ public sealed class SatiationResourceBarsSystem : EntitySystem
         SubscribeLocalEvent<SatiationResourceBarsComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<SatiationResourceBarsComponent, ComponentShutdown>(OnShutdown);
     }
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<SatiationResourceBarsComponent>();
+        var query = EntityQueryEnumerator<SatiationResourceBarsComponent, HungerComponent, ThirstComponent>();
 
-        while (query.MoveNext(out var uid, out var comp))
+        while (query.MoveNext(out var uid, out var satiation, out var hunger, out var thirst))
         {
-            if (comp.LastUpdate + comp.UpdateInterval < _timing.CurTime)
+            if (satiation.LastUpdate + satiation.UpdateInterval < _timing.CurTime)
                 continue;
 
-            comp.LastUpdate = _timing.CurTime;
-            Dirty(uid, comp);
+            satiation.LastUpdate = _timing.CurTime;
+            Dirty(uid, satiation);
 
-            UpdateResourceBars((uid, comp));
+            UpdateResourceBars((uid, satiation, hunger, thirst));
         }
     }
 
     private void OnMapInit(Entity<SatiationResourceBarsComponent> ent, ref MapInitEvent args)
     {
-        UpdateResourceBars(ent);
+        if (!TryComp<HungerComponent>(ent, out var hunger))
+            return;
+
+        if (!TryComp<ThirstComponent>(ent, out var thirst))
+            return;
+
+        UpdateResourceBars((ent.Owner, ent.Comp, hunger, thirst));
     }
 
-    private void UpdateResourceBars(Entity<SatiationResourceBarsComponent> ent)
+    private void UpdateResourceBars(Entity<SatiationResourceBarsComponent, HungerComponent, ThirstComponent> ent)
     {
-        if (TryComp<HungerComponent>(ent, out var hungerComp))
-        {
-            _resourceBars.ShowResourceBar(ent.Owner, ent.Comp.ResourceBarHunger, _hunger.GetHunger(hungerComp) / hungerComp.Thresholds[HungerThreshold.Okay]);
-        }
-        else
-            _resourceBars.ClearResourceBar(ent.Owner, ent.Comp.ResourceBarHunger);
-
-        if (TryComp<ThirstComponent>(ent, out var thirstComp))
-        {
-            _resourceBars.ShowResourceBar(ent.Owner, ent.Comp.ResourceBarThirst, thirstComp.CurrentThirst / thirstComp.ThirstThresholds[ThirstThreshold.Okay]);
-        }
-        else
-            _resourceBars.ClearResourceBar(ent.Owner, ent.Comp.ResourceBarThirst);
+        _resourceBars.ShowResourceBar(ent.Owner, ent.Comp1.ResourceBarHunger, _hunger.GetHunger(ent.Comp2) / ent.Comp2.Thresholds[HungerThreshold.Okay]);
+        _resourceBars.ShowResourceBar(ent.Owner, ent.Comp1.ResourceBarThirst, ent.Comp3.CurrentThirst / ent.Comp3.ThirstThresholds[ThirstThreshold.Okay]);
     }
 
     private void OnShutdown(Entity<SatiationResourceBarsComponent> ent, ref ComponentShutdown args)

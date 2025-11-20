@@ -243,6 +243,9 @@
     regenerationPerSecond: 3
     regenerationInterval: 2.5
   # End Stellar - Sprinting
+  # ES START
+  - type: ESInherentLight
+  # ES END
 
 - type: entity
   save: false

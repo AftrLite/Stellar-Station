@@ -377,7 +377,7 @@
   - type: MeleeWeapon
     attackRate: 1.5
     angle: 0
-    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust # ES - Animations with Easing
     wideAnimationRotation: 90
     damage:
       types:
