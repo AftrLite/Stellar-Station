@@ -68,7 +68,9 @@ public sealed class RotationVisualizerSystem : SharedRotationVisualsSystem
                     KeyFrames =
                     {
                         new AnimationTrackProperty.KeyFrame(spriteComp.Rotation, 0),
-                        new AnimationTrackProperty.KeyFrame(rotation, animationTime)
+                        // ES START
+                        new AnimationTrackProperty.KeyFrame(rotation, animationTime, Easings.OutCubic)
+                        // ES END
                     }
                 }
             }

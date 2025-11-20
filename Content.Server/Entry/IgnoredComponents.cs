@@ -21,7 +21,10 @@ namespace Content.Server.Entry
             "HolidayRsiSwap",
             "OptionsVisualizer",
             "AnomalyScannerScreen",
-            "MultipartMachineGhost"
+            "MultipartMachineGhost",
+           // ES START
+            "ESInherentLight",
+            // ES END
         };
     }
 }
