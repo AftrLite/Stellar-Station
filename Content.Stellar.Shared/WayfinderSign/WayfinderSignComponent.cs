@@ -7,26 +7,63 @@ using Robust.Shared.Serialization;
 
 namespace Content.Stellar.Shared.WayfinderSign;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class WayfinderSignComponent : Component
 {
-    [DataField, AutoNetworkedField]
-    public string Slot1ID = "Slot1";
-
-    [DataField, AutoNetworkedField]
-    public string Slot2ID = "Slot2";
-
-    [DataField, AutoNetworkedField]
-    public string Slot3ID = "Slot3";
-
+    [DataField]
+    public Dictionary<string, WayfinderSignSlot> Slots = new()
+    {
+        ["slot1"] = new(WayfinderSignLayers.Slot1Base, WayfinderSignLayers.Slot1Arrow, WayfinderSignLayers.Slot1Direction),
+        ["slot2"] = new(WayfinderSignLayers.Slot2Base, WayfinderSignLayers.Slot2Arrow, WayfinderSignLayers.Slot2Direction),
+        ["slot3"] = new(WayfinderSignLayers.Slot3Base, WayfinderSignLayers.Slot3Arrow, WayfinderSignLayers.Slot3Direction),
+    };
 }
+
+[DataDefinition, NetSerializable, Serializable]
+public partial struct WayfinderSignSlotsAppearance
+{
+    [DataField]
+    public Dictionary<string, WayfinderSignSlot> Slots;
+
+    public WayfinderSignSlotsAppearance(Dictionary<string, WayfinderSignSlot> slots)
+    {
+        Slots = slots;
+    }
+}
+
+[DataDefinition, NetSerializable, Serializable]
+public partial struct WayfinderSignSlot
+{
+    [DataField]
+    public Enum Base;
+
+    [DataField]
+    public Enum Arrow;
+
+    [DataField]
+    public Enum Direction;
+
+    public WayfinderSignSlot(Enum @base, Enum arrow, Enum direction)
+    {
+        Base = @base;
+        Arrow = arrow;
+        Direction = direction;
+    }
+};
+
+
 [Serializable, NetSerializable]
 public enum WayfinderSignLayers : byte
 {
-    Slot1,
+    Slots,
+
+    Slot1Base,
     Slot1Arrow,
-    Slot2,
+    Slot1Direction,
+    Slot2Base,
     Slot2Arrow,
-    Slot3,
+    Slot2Direction,
+    Slot3Base,
     Slot3Arrow,
+    Slot3Direction,
 }

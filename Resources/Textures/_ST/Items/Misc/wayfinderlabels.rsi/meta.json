@@ -8,16 +8,8 @@
   "copyright": "By AftrLite(GitHub)",
   "states": [
     {
-      "name": "arrow-0"
-    },
-    {
-      "name": "arrow-1"
-    },
-    {
-      "name": "arrow-2"
-    },
-    {
-      "name": "arrow-3"
+      "name": "arrow",
+      "directions": 4
     },
     {
       "name": "bar"
