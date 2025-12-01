@@ -36,6 +36,12 @@ public sealed partial class ResourceBarPrototype : IPrototype
     public ResourceUIPosition Location;
 
     /// <summary>
+    /// The style used for resource bar.
+    /// </summary>
+    [DataField]
+    public ResourceUIStyle Style = ResourceUIStyle.Default;
+
+    /// <summary>
     /// The resource bar's colour.
     /// </summary>
     [DataField(required: true)]
@@ -47,11 +53,16 @@ public sealed partial class ResourceBarPrototype : IPrototype
     [DataField(required: true)]
     public ProtoId<ResourceBarCategoryPrototype> Category;
 }
-
 [Serializable, NetSerializable]
 public enum ResourceUIPosition : byte
 {
     Left = 1,
     Middle = 2,
     Right = 3,
+}
+[Serializable, NetSerializable]
+public enum ResourceUIStyle : byte
+{
+    Default = 1,
+    Thin = 2,
 }

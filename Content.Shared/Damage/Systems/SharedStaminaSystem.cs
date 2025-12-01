@@ -237,7 +237,10 @@ public abstract partial class SharedStaminaSystem : EntitySystem
             return;
 
         var severity = ContentHelpers.RoundToLevels(MathF.Max(0f, component.CritThreshold - component.StaminaDamage), component.CritThreshold, 7);
-        _alerts.ShowAlert(uid, component.StaminaAlert, (short) severity);
+        if (component.StaminaDamage <= 0f) // Begin Stellar - Begone, stamina alert
+            _alerts.ClearAlert(uid, component.StaminaAlert);
+        else
+            _alerts.ShowAlert(uid, component.StaminaAlert, (short) severity); // End Stellar - Begone, stamina alert
     }
 
     /// <summary>

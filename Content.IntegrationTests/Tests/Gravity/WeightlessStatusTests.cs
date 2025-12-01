@@ -62,7 +62,7 @@ namespace Content.IntegrationTests.Tests.Gravity
             await server.WaitAssertion(() =>
             {
                 // No gravity without a gravity generator
-                Assert.That(alertsSystem.IsShowingAlert(human, weightlessAlert));
+                // Assert.That(alertsSystem.IsShowingAlert(human, weightlessAlert)); Stellar - This alert doesn't exist.
 
                 generatorUid = entityManager.SpawnEntity("WeightlessGravityGeneratorDummy", entityManager.GetComponent<TransformComponent>(human).Coordinates);
             });
@@ -72,7 +72,7 @@ namespace Content.IntegrationTests.Tests.Gravity
 
             await server.WaitAssertion(() =>
             {
-                Assert.That(alertsSystem.IsShowingAlert(human, weightlessAlert), Is.False);
+                // Assert.That(alertsSystem.IsShowingAlert(human, weightlessAlert), Is.False); Stellar - This alert doesn't exist.
 
                 // This should kill gravity
                 entityManager.DeleteEntity(generatorUid);
@@ -82,7 +82,7 @@ namespace Content.IntegrationTests.Tests.Gravity
 
             await server.WaitAssertion(() =>
             {
-                Assert.That(alertsSystem.IsShowingAlert(human, weightlessAlert));
+                // Assert.That(alertsSystem.IsShowingAlert(human, weightlessAlert)); Stellar - This alert doesn't exist.
             });
 
             await pair.RunTicksSync(10);

@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "license": "LicenseRef-Wallening",
+  "copyright": "By AftrLite(GitHub)",
+  "states": [
+    {
+      "name": "arrow",
+      "directions": 4
+    },
+    {
+      "name": "bar"
+    },
+    {
+      "name": "botany"
+    },
+    {
+      "name": "bridge"
+    },
+    {
+      "name": "cafe"
+    },
+    {
+      "name": "cargo"
+    },
+    {
+      "name": "chem"
+    },
+    {
+      "name": "cryo"
+    },
+    {
+      "name": "dorms"
+    },
+    {
+      "name": "engi"
+    },
+    {
+      "name": "hop"
+    },
+    {
+      "name": "lbry"
+    },
+    {
+      "name": "med"
+    },
+    {
+      "name": "sci"
+    },
+    {
+      "name": "sec"
+    }
+  ]
+}

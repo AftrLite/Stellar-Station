@@ -92,7 +92,7 @@ public sealed partial class BorgSystem : SharedBorgSystem
 
     private void OnMapInit(EntityUid uid, BorgChassisComponent component, MapInitEvent args)
     {
-        UpdateBatteryAlert((uid, component));
+        // UpdateBatteryAlert((uid, component)); # Stellar
         _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
     }
 
@@ -211,7 +211,7 @@ public sealed partial class BorgSystem : SharedBorgSystem
 
     private void OnPowerCellChanged(EntityUid uid, BorgChassisComponent component, PowerCellChangedEvent args)
     {
-        UpdateBatteryAlert((uid, component));
+        // UpdateBatteryAlert((uid, component)); # Stellar
 
         // if we aren't drawing and suddenly get enough power to draw again, reeanble.
         if (_powerCell.HasDrawCharge(uid))
@@ -286,27 +286,29 @@ public sealed partial class BorgSystem : SharedBorgSystem
         args.Cancel();
     }
 
-    private void UpdateBatteryAlert(Entity<BorgChassisComponent> ent, PowerCellSlotComponent? slotComponent = null)
-    {
-        if (!_powerCell.TryGetBatteryFromSlot(ent, out var battery, slotComponent))
-        {
-            _alerts.ClearAlert(ent.Owner, ent.Comp.BatteryAlert);
-            _alerts.ShowAlert(ent.Owner, ent.Comp.NoBatteryAlert);
-            return;
-        }
+    // BEGIN STELLAR CHANGES - Borgs use resourcebars
+    // private void UpdateBatteryAlert(Entity<BorgChassisComponent> ent, PowerCellSlotComponent? slotComponent = null)
+    // {
+    //     if (!_powerCell.TryGetBatteryFromSlot(ent, out var battery, slotComponent))
+    //     {
+    //         _alerts.ClearAlert(ent.Owner, ent.Comp.BatteryAlert);
+    //         _alerts.ShowAlert(ent.Owner, ent.Comp.NoBatteryAlert);
+    //         return;
+    //     }
 
-        var chargePercent = (short) MathF.Round(battery.CurrentCharge / battery.MaxCharge * 10f);
+    //     var chargePercent = (short) MathF.Round(battery.CurrentCharge / battery.MaxCharge * 10f);
 
-        // we make sure 0 only shows if they have absolutely no battery.
-        // also account for floating point imprecision
-        if (chargePercent == 0 && _powerCell.HasDrawCharge(ent, cell: slotComponent))
-        {
-            chargePercent = 1;
-        }
+    //     // we make sure 0 only shows if they have absolutely no battery.
+    //     // also account for floating point imprecision
+    //     if (chargePercent == 0 && _powerCell.HasDrawCharge(ent, cell: slotComponent))
+    //     {
+    //         chargePercent = 1;
+    //     }
 
-        _alerts.ClearAlert(ent.Owner, ent.Comp.NoBatteryAlert);
-        _alerts.ShowAlert(ent.Owner, ent.Comp.BatteryAlert, chargePercent);
-    }
+    //     _alerts.ClearAlert(ent.Owner, ent.Comp.NoBatteryAlert);
+    //     _alerts.ShowAlert(ent.Owner, ent.Comp.BatteryAlert, chargePercent);
+    // }
+    // END STELLAR CHANGES - Borgs use resourcebars
 
     public bool TryEjectPowerCell(EntityUid uid, BorgChassisComponent component, [NotNullWhen(true)] out List<EntityUid>? ents)
     {

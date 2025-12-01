@@ -23,6 +23,7 @@ public sealed partial class ResourceBarControl : Control
     private const float ResourceScale = 2;
     private readonly SpriteSystem _sprite;
     private readonly ResourceUIPosition _position;
+    private readonly ResourceUIStyle _style;
     private ResourceBarState _state;
 
     public readonly TextureRect BarIcon;
@@ -76,6 +77,7 @@ public sealed partial class ResourceBarControl : Control
         BarPrototype = proto.ID;
         _sprite = _entityManager.System<SpriteSystem>();
         _position = proto.Location;
+        _style = proto.Style;
         _state = state;
 
         var msg = FormattedMessage.FromMarkupOrThrow(Loc.GetString(proto.Title));
@@ -121,16 +123,33 @@ public sealed partial class ResourceBarControl : Control
         });
         BarIcon.SetSize = BarIcon.TextureSizeTarget;
 
-        FrameTexturePath = proto.Location switch
+        switch (proto.Style)
         {
-            ResourceUIPosition.Left => "Bars/bar_left",
-            ResourceUIPosition.Middle => "Bars/bar_middle",
-            ResourceUIPosition.Right => "Bars/bar_right",
-            _ => throw new ArgumentOutOfRangeException(nameof(proto), proto, null)
-        };
-
-        BackgroundTexturePath = "Bars/bar_background";
-        ForegroundTexturePath = "Bars/bar_foreground";
+            case ResourceUIStyle.Thin:
+                FrameTexturePath = proto.Location switch
+                {
+                    ResourceUIPosition.Left => "Bars/bar_thin_left",
+                    ResourceUIPosition.Middle => "Bars/bar_thin_middle",
+                    ResourceUIPosition.Right => "Bars/bar_thin_right",
+                    _ => throw new ArgumentOutOfRangeException(nameof(proto.Location), proto.Location, null)
+                };
+                BackgroundTexturePath = "Bars/bar_thin_background";
+                ForegroundTexturePath = "Bars/bar_thin_foreground";
+                break;
+            case ResourceUIStyle.Default:
+                FrameTexturePath = proto.Location switch
+                {
+                    ResourceUIPosition.Left => "Bars/bar_left",
+                    ResourceUIPosition.Middle => "Bars/bar_middle",
+                    ResourceUIPosition.Right => "Bars/bar_right",
+                    _ => throw new ArgumentOutOfRangeException(nameof(proto.Location), proto.Location, null)
+                };
+                BackgroundTexturePath = "Bars/bar_background";
+                ForegroundTexturePath = "Bars/bar_foreground";
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(proto.Style), proto.Style, null);
+        }
 
         UpdateMargins();
     }
@@ -147,8 +166,16 @@ public sealed partial class ResourceBarControl : Control
                 iconMargin = MarginFromThemeColor("_resource_bar_left_icon_margins");
                 break;
             case ResourceUIPosition.Middle:
-                barMargin = MarginFromThemeColor("_resource_bar_middle_bar_margins");
-                iconMargin = MarginFromThemeColor("_resource_bar_middle_icon_margins");
+                if (_style == ResourceUIStyle.Thin)
+                {
+                    barMargin = MarginFromThemeColor("_resource_bar_middle_bar_thin_margins");
+                    iconMargin = MarginFromThemeColor("_resource_bar_middle_icon_thin_margins");
+                }
+                else
+                {
+                    barMargin = MarginFromThemeColor("_resource_bar_middle_bar_margins");
+                    iconMargin = MarginFromThemeColor("_resource_bar_middle_icon_margins");
+                }
                 break;
             case ResourceUIPosition.Right:
                 barMargin = MarginFromThemeColor("_resource_bar_right_bar_margins");

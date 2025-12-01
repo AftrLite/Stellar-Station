@@ -354,3 +354,18 @@
   id: 44
   time: '2025-10-29T02:16:34.0000000+00:00'
   url: https://github.com/Stellar-Station/Stellar-Station/pull/122
+- author: AftrLite, sowelipililimute
+  changes:
+  - message: Wayfinder signs are now here to aid your navigation.
+    type: Add
+  - message: Internals' remaining gas is now shown by a ResourceBar.
+    type: Add
+  - message: Hunger & Thirst are now represented by ResourceBars.
+    type: Tweak
+  - message: Borg's battery charge is now represented by ResourceBars.
+    type: Tweak
+  - message: Alerts have been given a visual overhaul!
+    type: Tweak
+  id: 45
+  time: '2025-11-21T02:32:30.0000000+00:00'
+  url: https://github.com/Stellar-Station/Stellar-Station/pull/123

@@ -19,12 +19,15 @@
     _itemstatus_content_margin_right: "#06060604"
     _itemstatus_content_margin_left: "#06060604"
     _itemstatus_patch_margin: "#07060404"
-    _resource_bar_left_bar_margins: "#10050000"
+    _resource_bar_left_bar_margins: "#0f050000"
     _resource_bar_left_icon_margins: "#03040000"
     _resource_bar_middle_bar_margins: "#03100000"
     _resource_bar_middle_icon_margins: "#26040000"
-    _resource_bar_right_bar_margins: "#03050000"
+    _resource_bar_right_bar_margins: "#04050000"
     _resource_bar_right_icon_margins: "#56040000"
+    _resource_bar_middle_bar_thin_margins: "#030c0000"
+    _resource_bar_middle_icon_thin_margins: "#26040000"
+
 
 - type: uiTheme
   id: STCasetteTheme
@@ -43,12 +46,14 @@
     _itemstatus_content_margin_right: "#06060604"
     _itemstatus_content_margin_left: "#06060604"
     _itemstatus_patch_margin: "#07060404"
-    _resource_bar_left_bar_margins: "#10050000"
+    _resource_bar_left_bar_margins: "#0f050000"
     _resource_bar_left_icon_margins: "#03040000"
     _resource_bar_middle_bar_margins: "#03100000"
     _resource_bar_middle_icon_margins: "#26040000"
-    _resource_bar_right_bar_margins: "#03050000"
+    _resource_bar_right_bar_margins: "#04050000"
     _resource_bar_right_icon_margins: "#56040000"
+    _resource_bar_middle_bar_thin_margins: "#030c0000"
+    _resource_bar_middle_icon_thin_margins: "#26040000"
 
 - type: uiTheme
   id: STMalignTheme
@@ -67,12 +72,14 @@
     _itemstatus_content_margin_right: "#06060604"
     _itemstatus_content_margin_left: "#06060604"
     _itemstatus_patch_margin: "#07060404"
-    _resource_bar_left_bar_margins: "#10050000"
+    _resource_bar_left_bar_margins: "#0f050000"
     _resource_bar_left_icon_margins: "#03040000"
     _resource_bar_middle_bar_margins: "#03100000"
     _resource_bar_middle_icon_margins: "#26040000"
-    _resource_bar_right_bar_margins: "#03050000"
+    _resource_bar_right_bar_margins: "#04050000"
     _resource_bar_right_icon_margins: "#56040000"
+    _resource_bar_middle_bar_thin_margins: "#030c0000"
+    _resource_bar_middle_icon_thin_margins: "#26040000"
 
 - type: uiTheme
   id: STAmoledTheme
@@ -97,6 +104,8 @@
     _resource_bar_middle_icon_margins: "#26040000"
     _resource_bar_right_bar_margins: "#03050000"
     _resource_bar_right_icon_margins: "#56040000"
+    _resource_bar_middle_bar_thin_margins: "#03090000"
+    _resource_bar_middle_icon_thin_margins: "#26010000"
 
 - type: uiTheme
   id: RetroThemeDefault
@@ -121,6 +130,8 @@
     _resource_bar_middle_icon_margins: "#26040000"
     _resource_bar_right_bar_margins: "#03050000"
     _resource_bar_right_icon_margins: "#56040000"
+    _resource_bar_middle_bar_thin_margins: "#03090000"
+    _resource_bar_middle_icon_thin_margins: "#26010000"
 
 - type: uiTheme
   id: RetroThemeMinimal
@@ -145,6 +156,8 @@
     _resource_bar_middle_icon_margins: "#26040000"
     _resource_bar_right_bar_margins: "#03050000"
     _resource_bar_right_icon_margins: "#56040000"
+    _resource_bar_middle_bar_thin_margins: "#03090000"
+    _resource_bar_middle_icon_thin_margins: "#26010000"
 
 # Stellar HUDs
 - type: hudTheme

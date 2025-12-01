@@ -218,8 +218,13 @@
   # Begin Stellar - Resource Bars
   - type: ResourceBars
     order:
+    - Hunger
+    - Thirst
     - Health
+    - Respiration
     - Stamina
+  - type: SatiationResourceBars
+  - type: InternalsResourceBar
   - type: MobThresholds
     triggersAlerts: false
   - type: MobThresholdResourceBars

@@ -15,6 +15,18 @@
         },
         {
             "name": "critical"
+        },
+        {
+            "name": "battery"
+        },
+        {
+            "name": "hunger"
+        },
+        {
+            "name": "thirst"
+        },
+        {
+            "name": "respiration"
         }
     ]
 }
