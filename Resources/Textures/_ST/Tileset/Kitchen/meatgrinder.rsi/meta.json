@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "license": "CC-BY-SA-3.0",
+  "copyright": "From Baystation, on https://github.com/Baystation12/Baystation12/blob/e6f8a23266d3ad2bcbdb0dca125597dfe7750ed5/icons/obj/machines/cooking_machines.dmi",
+  "states": [
+    {
+      "name": "cooking",
+      "delays": [
+        [
+          0.075,
+          0.075,
+          0.075,
+          0.075
+        ]
+      ]
+    },
+    {
+      "name": "base"
+    },
+    {
+      "name": "idle"
+    },
+    {
+      "name": "powered"
+    },
+    {
+      "name": "dirt"
+    }
+  ]
+}

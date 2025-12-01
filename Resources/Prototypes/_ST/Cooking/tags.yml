@@ -1,0 +1,46 @@
+# Meat
+
+- type: Tag
+  id: Ingredient-Meat
+
+- type: Tag
+  id: Ingredient-Meat-Slice
+
+- type: Tag
+  id: Ingredient-Meat-Cutlet
+
+- type: Tag
+  id: Ingredient-Meat-Pork
+
+# Vegetable
+
+- type: Tag
+  id: Ingredient-Vegetable
+
+- type: Tag
+  id: Ingredient-Cabbage
+
+- type: Tag
+  id: Ingredient-Potato
+
+- type: Tag
+  id: Ingredient-Pumpkin
+
+# Fruits
+
+- type: Tag
+  id: Ingredient-Fruit
+
+# Misc
+
+- type: Tag
+  id: Ingredient-Wheat
+
+- type: Tag
+  id: Ingredient-Egg
+
+- type: Tag
+  id: Ingredient-Dough
+
+- type: Tag
+  id: Ingredient-Cheese

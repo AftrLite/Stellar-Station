@@ -1,0 +1,366 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+################ STOVE
+- type: entity
+  id: StellarCookingStove
+  parent: BaseStructure
+  name: stove
+  description: Good for cooking things on.
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Kitchen/stove.rsi
+    layers:
+    - state: base
+    - map: ["enum.EntityHeaterVisuals.Setting"]
+      shader: unshaded
+      visible: false
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.EntityHeaterVisuals.Setting:
+        enum.EntityHeaterVisuals.Setting:
+          Off: { visible: false }
+          Low: { visible: true, state: low }
+          Medium: { visible: true, state: medium }
+          High: { visible: true, state: high }
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      itemcollide:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.14,-0.05,0.15,0.25"
+        layer:
+        - HighImpassable
+        hard: false
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 55
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+  - type: Climbable
+  - type: Anchorable
+  - type: Rotatable
+  - type: ExtensionCableReceiver
+  - type: LightningTarget
+    priority: 1
+  - type: ApcPowerReceiver
+    powerLoad: 0 # off by default
+  - type: EntityHeater
+    settingSound:
+      path: /Audio/Weapons/click.ogg
+      params:
+        volume: -6
+  - type: PlaceableSurface
+  - type: Temperature
+  - type: ItemPlacer
+    maxEntities: 6 # big stove, many steaks
+    whitelist:
+      components:
+      - Temperature
+
+
+############################# - OVEN
+
+- type: entity
+  id: StellarCookingOven
+  parent: BaseStructure
+  name: combi-oven
+  description: The NanoTraZe CombiX Pro 2A11 Electical Hybrid Combi-Steamer Commercial oven - everything a chef could ever want or desire. Has plenty of space to cook a lot of things at once!
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _ST/Tileset/Kitchen/oven.rsi
+    drawdepth: Mobs
+    offset: 0, 0.25
+    layers:
+    - state: base
+      map: ["enum.StorageVisualLayers.Base"]
+    - map: ["enum.StorageFillLayers.Fill"]
+    - state: burning
+      offset: 0.033, 0
+      color: "#38312e"
+      visible: false
+      map: [ burning ]
+    - state: closed
+      map: [ base ]
+    - state: glow
+      shader: unshaded
+      visible: false
+      map: [ glow ]
+    - state: glow
+      shader: unshaded
+      visible: false
+      map: [ glow2 ]
+    - state: unpowered
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+  - type: Appearance
+  - type: StorageFillVisualizer
+    maxFillLevels: 5
+    fillBaseName: storage
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: opened }
+          False: { state: closed }
+      enum.CP14CookingVisuals.Active:
+        glow:
+          True: { visible: true }
+          False: { visible: false }
+      enum.CP14CookingVisuals.Burning:
+        burning:
+          True: { visible: true }
+          False: { visible: false }
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { state: powered }
+          False: { state: unpowered }
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 55
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+  - type: Anchorable
+  - type: ExtensionCableReceiver
+  - type: LightningTarget
+    priority: 1
+  - type: PowerSwitch
+  - type: ApcPowerReceiver
+    powerLoad: 0 # off by default
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+  - type: Storage
+    storageOpenSound: /Audio/Effects/closetopen.ogg
+    storageCloseSound: /Audio/Effects/closetclose.ogg
+    clickInsert: false
+    quickInsert: false
+    areaInsert: false
+    maxItemSize: Normal
+    grid:
+    - 0,0,3,3
+    whitelist:
+      components:
+        - CP14FoodCooker
+  - type: CP14CookerRelay
+    finishSound:
+      path: /Audio/Effects/kaching.ogg
+  - type: DoAfter
+  - type: AmbientSound
+    enabled: false
+    sound:
+      path: /Audio/Machines/microwave_loop.ogg
+
+############################# - STAND MIXER
+
+- type: entity
+  id: StellarCookingMixer
+  parent: StellarCookerBase
+  name: mixer
+  description: LOREM IPSUM # TODO
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: PowerSwitch
+  - type: ApcPowerReceiver
+    powerLoad: 50
+  - type: ExtensionCableReceiver
+  - type: LightningTarget
+  - type: RequireProjectileTarget
+  - type: Sprite
+    sprite: _ST/Tileset/Kitchen/mixer.rsi
+    drawdepth: Mobs
+    offset: 0, 0.28
+    snapCardinals: true
+    noRot: true
+    layers:
+    - state: base
+    - map: ["cp14_foodLayers"]
+    - state: idle
+      map: [ cook ]
+    - state: powered
+      shader: unshaded
+      visible: false
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+      enum.CP14CookingVisuals.Cooking:
+        cook:
+          True: { state: cooking }
+          False: { state: idle }
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.17,0,0.20,0.4"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - TabletopMachineLayer
+  - type: Storage
+  - type: SolutionContainerManager
+    solutions:
+      cooker:
+        maxVol: 250
+  - type: RefillableSolution
+    solution: cooker
+  - type: DrainableSolution
+    solution: cooker
+  - type: DippableSolution
+    solution: cooker
+  - type: CP14FoodCooker
+    foodType: Mixer
+    solutionId: cooker
+    cookMethod: Power
+  - type: CP14FoodHolder
+    foodType: Mixer
+    solutionId: cooker
+    displacementRsiPath: _ST/Items/Cooking/Food/Meals/displacement_pan.rsi
+    maxDisplacementFillLevels: 2
+    canGiveFood: true
+  - type: AmbientSound
+    sound:
+      path: /Audio/_ST/Ambience/Cooking/pan_frying.ogg
+
+
+############################# - MEAT GRINDER
+
+- type: entity
+  id: StellarCookingMeatgrinder
+  parent: StellarCookerBase
+  name: meat grinder
+  description: LOREM IPSUM # TODO
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: PowerSwitch
+  - type: ApcPowerReceiver
+    powerLoad: 50
+  - type: ExtensionCableReceiver
+  - type: LightningTarget
+  - type: RequireProjectileTarget
+  - type: Sprite
+    sprite: _ST/Tileset/Kitchen/meatgrinder.rsi
+    drawdepth: Mobs
+    offset: 0, 0.25
+    snapCardinals: true
+    noRot: true
+    layers:
+    - state: base
+    - map: ["cp14_foodLayers"]
+    - state: idle
+      map: [ cook ]
+    - state: powered
+      shader: unshaded
+      visible: false
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+      enum.CP14CookingVisuals.Cooking:
+        cook:
+          True: { state: cooking }
+          False: { state: idle }
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.17,0,0.20,0.4"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - TabletopMachineLayer
+  - type: Storage
+    storageInsertSound: /Audio/Items/toolbox_insert.ogg
+    storageRemoveSound: /Audio/Items/toolbox_insert.ogg
+  - type: SolutionContainerManager
+    solutions:
+      cooker:
+        maxVol: 250
+  - type: RefillableSolution
+    solution: cooker
+  - type: DrainableSolution
+    solution: cooker
+  - type: CP14FoodCooker
+    foodType: MeatGrinder
+    solutionId: cooker
+    cookMethod: Power
+  - type: CP14FoodHolder
+    foodType: MeatGrinder
+    solutionId: cooker
+    displacementRsiPath: _ST/Items/Cooking/Food/Meals/displacement_pan.rsi
+    maxDisplacementFillLevels: 2
+    canGiveFood: true
+  - type: AmbientSound
+    sound:
+      path: /Audio/_ST/Ambience/Cooking/pan_frying.ogg
+
+############################# - FOOD PROCESSOR
+
+- type: entity
+  id: StellarCookingFoodprocessor
+  parent: KitchenReagentGrinder
+  name: food processor
+  description: It processes food. What else did you expect?
+  components:
+  - type: ReagentGrinder
+  - type: Sprite
+    sprite: _ST/Tileset/Kitchen/foodprocessor.rsi
+    drawdepth: Mobs
+    offset: 0, 0.25
+    snapCardinals: true
+    layers:
+    - state: base
+    - state: beaker
+      map: [ "grinder" ]
+    - state: unpowered
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ReagentGrinderVisualState.BeakerAttached:
+        grinder:
+          True: { visible: true }
+          False: { visible: false }
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { state: powered }
+          False: { state: unpowered }

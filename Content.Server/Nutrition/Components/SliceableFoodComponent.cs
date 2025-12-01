@@ -1,10 +1,11 @@
 using Content.Server.Nutrition.EntitySystems;
+using Content.Shared._CP14.Cooking; // CrystallEdge Cooking
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Nutrition.Components;
 
-[RegisterComponent, Access(typeof(SliceableFoodSystem))]
+[RegisterComponent, Access(typeof(SliceableFoodSystem), typeof(CP14SharedCookingSystem))] // CrystallEdge Cooking
 public sealed partial class SliceableFoodComponent : Component
 {
     /// <summary>

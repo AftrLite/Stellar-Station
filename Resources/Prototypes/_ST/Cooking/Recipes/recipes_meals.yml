@@ -1,0 +1,202 @@
+- type: CP14CookingRecipe
+  id: InedibleMeal
+  foodType: Meal
+  foodData:
+    name: stellar-recipe-meal-trash-name
+    desc: stellar-recipe-meal-trash-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Meals/recipes.rsi
+      state: trash
+  requirements:
+  - !type:AlwaysMet
+
+# 1 req
+
+- type: CP14CookingRecipe
+  id: GreenSalad
+  foodType: Meal
+  foodData:
+    name: stellar-recipe-meal-green-salad-name
+    desc: stellar-recipe-meal-green-salad-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Meals/recipes.rsi
+      state: green_salad
+  requirements:
+  - !type:TagRequired
+    tags:
+    - Ingredient-Vegetable
+
+- type: CP14CookingRecipe
+  id: MeatPlate
+  foodType: Meal
+  foodData:
+    name: stellar-recipe-meal-meat-plate-name
+    desc: stellar-recipe-meal-meat-plate-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Meals/recipes.rsi
+      state: meat_plate
+  requirements:
+  - !type:TagRequired
+    tags:
+    - Ingredient-Meat-Slice
+    - Ingredient-Meat
+
+- type: CP14CookingRecipe
+  id: BreadPlate
+  foodType: Meal
+  foodData:
+    name: stellar-recipe-meal-bread-plate-name
+    desc: stellar-recipe-meal-bread-plate-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Meals/recipes.rsi
+      state: bread_plate
+  requirements:
+  - !type:TagRequired
+    tags:
+    - Ingredient-Dough
+
+- type: CP14CookingRecipe
+  id: MashedPotato
+  foodType: Meal
+  foodData:
+    name: stellar-recipe-meal-mashed-potato-name
+    desc: stellar-recipe-meal-mashed-potato-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Meals/recipes.rsi
+      state: mashed_potato
+  requirements:
+  - !type:TagRequired
+    tags:
+    - Ingredient-Potato
+
+# 2 req
+
+- type: CP14CookingRecipe
+  id: GreenSaladMeat
+  foodType: Meal
+  foodData:
+    name: stellar-recipe-meal-green-salad-meat-name
+    desc: stellar-recipe-meal-green-salad-meat-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Meals/recipes.rsi
+      state: green_salad_meat
+  requirements:
+  - !type:TagRequired
+    tags:
+    - Ingredient-Vegetable
+  - !type:TagRequired
+    tags:
+    - Ingredient-Meat
+
+- type: CP14CookingRecipe
+  id: MashedPotatoMeat
+  foodType: Meal
+  foodData:
+    name: stellar-recipe-meal-mashed-potato-meat-name
+    desc: stellar-recipe-meal-mashed-potato-meat-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Meals/recipes.rsi
+      state: mashed_potato_meat
+  requirements:
+  - !type:TagRequired
+    tags:
+    - Ingredient-Potato
+  - !type:TagRequired
+    tags:
+    - Ingredient-Meat
+
+- type: CP14CookingRecipe
+  id: MashedPotatoSalad
+  foodType: Meal
+  foodData:
+    name: stellar-recipe-meal-mashed-potato-salad-name
+    desc: stellar-recipe-meal-mashed-potato-salad-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Meals/recipes.rsi
+      state: mashed_potato_salad
+  requirements:
+  - !type:TagRequired
+    tags:
+    - Ingredient-Potato
+  - !type:TagRequired
+    tags:
+    - Ingredient-Vegetable
+
+- type: CP14CookingRecipe
+  id: CheeseBread
+  foodType: Meal
+  foodData:
+    name: stellar-recipe-meal-cheese-bread-name
+    desc: stellar-recipe-meal-cheese-bread-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Meals/recipes.rsi
+      state: cheese_bread
+  requirements:
+  - !type:TagRequired
+    tags:
+    - Ingredient-Dough
+  - !type:TagRequired
+    tags:
+    - Ingredient-Cheese
+
+# 3 req
+
+- type: CP14CookingRecipe
+  id: ZellasianBreakfast
+  foodType: Meal
+  foodData:
+    name: stellar-recipe-meal-zellasian-breakfast-name
+    desc: stellar-recipe-meal-zellasian-breakfast-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Meals/recipes.rsi
+      state: zellasian_breakfast
+  requirements:
+  - !type:TagRequired
+    tags:
+    - Ingredient-Egg
+  - !type:TagRequired
+    tags:
+    - Ingredient-Dough
+  - !type:TagRequired
+    tags:
+    - Ingredient-Meat
+
+- type: CP14CookingRecipe
+  id: StuffedPotato
+  foodType: Meal
+  foodData:
+    name: stellar-recipe-meal-stuffed-potato-name
+    desc: stellar-recipe-meal-stuffed-potato-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Meals/recipes.rsi
+      state: stuffed_potato
+  requirements:
+  - !type:TagRequired
+    tags:
+    - Ingredient-Meat-Slice
+  - !type:TagRequired
+    tags:
+    - Ingredient-Cheese
+  - !type:TagRequired
+    tags:
+    - Ingredient-Potato
+
+- type: CP14CookingRecipe
+  id: PorkPlatter
+  foodType: Meal
+  foodData:
+    name: stellar-recipe-meal-pork-platter-name
+    desc: stellar-recipe-meal-pork-platter-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Meals/recipes.rsi
+      state: pig_cheese
+  requirements:
+  - !type:TagRequired
+    tags:
+    - Ingredient-Meat-Pork
+  - !type:TagRequired
+    tags:
+    - Ingredient-Potato
+  - !type:TagRequired
+    tags:
+    - Ingredient-Vegetable

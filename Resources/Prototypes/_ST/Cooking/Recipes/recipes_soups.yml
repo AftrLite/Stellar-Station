@@ -1,0 +1,136 @@
+- type: CP14CookingRecipe
+  id: InedibleSoup
+  foodType: Soup
+  foodData:
+    name: stellar-recipe-soup-trash-name
+    desc: stellar-recipe-soup-trash-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Soup/recipes.rsi
+      state: trash
+  requirements:
+  - !type:AlwaysMet
+
+# 1 req
+
+# We dont have 1 req for soups because all soups is water + something
+
+# 2 req
+
+- type: CP14CookingRecipe
+  id: MeatSoup
+  foodType: Soup
+  foodData:
+    name: stellar-recipe-soup-meat-name
+    desc: stellar-recipe-soup-meat-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Soup/recipes.rsi
+      state: meat
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - Water
+  - !type:TagRequired
+    tags:
+    - Ingredient-Meat-Slice
+
+- type: CP14CookingRecipe
+  id: CheeseSoup
+  foodType: Soup
+  foodData:
+    name: stellar-recipe-soup-cheese-name
+    desc: stellar-recipe-soup-cheese-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Soup/recipes.rsi
+      state: cheese
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - Water
+  - !type:TagRequired
+    tags:
+    - Ingredient-Cheese
+
+- type: CP14CookingRecipe
+  id: PumpkinPuree
+  foodType: Soup
+  foodData:
+    name: stellar-recipe-soup-pumpkin-puree-name
+    desc: stellar-recipe-soup-pumpkin-puree-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Soup/recipes.rsi
+      state: pumpkin
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - Water #TODO: Milk Cream!!
+  - !type:TagRequired
+    tags:
+    - Ingredient-Pumpkin
+
+# 3 req
+
+- type: CP14CookingRecipe
+  id: VegSoup
+  foodType: Soup
+  foodData:
+    name: stellar-recipe-soup-veg-name
+    desc: stellar-recipe-soup-veg-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Soup/recipes.rsi
+      state: veg_stew
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - Water
+  - !type:TagRequired
+    tags:
+    - Ingredient-Vegetable
+  - !type:TagBlocked
+    tags:
+    - Ingredient-Meat-Slice
+
+- type: CP14CookingRecipe
+  id: MeatCheeseSoup
+  foodType: Soup
+  foodData:
+    name: stellar-recipe-soup-meat-cheese-name
+    desc: stellar-recipe-soup-meat-cheese-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Soup/recipes.rsi
+      state: meat2
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - Water
+  - !type:TagRequired
+    tags:
+    - Ingredient-Meat-Slice
+  - !type:TagRequired
+    tags:
+    - Ingredient-Cheese
+
+- type: CP14CookingRecipe
+  id: MeatSaladSoup
+  foodType: Soup
+  foodData:
+    name: stellar-recipe-soup-meat-salad-name
+    desc: stellar-recipe-soup-meat-salad-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Soup/recipes.rsi
+      state: meat_salad
+  requirements:
+  - !type:ReagentRequired
+    amount: 20
+    reagents:
+    - Water
+  - !type:TagRequired
+    tags:
+    - Ingredient-Meat-Slice
+  - !type:TagRequired
+    tags:
+    - Ingredient-Vegetable

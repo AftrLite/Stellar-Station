@@ -1,0 +1,189 @@
+
+####### PIE MOULD
+- type: entity
+  id: StellarFoodPieMould
+  parent: StellarCookerBase
+  name: pie mould
+  description: A mould for making a delicious pie.
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Cooking/Food/Pie/piemould.rsi
+    layers:
+    - state: base
+    - map: ["cp14_foodLayers"]
+    - map: ["enum.StorageFillLayers.Fill"]
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,1,1
+  - type: CP14FoodCooker
+    renameCooker: true
+    cookMethod: Nested
+    foodType: Pie
+    solutionId: cooker
+  - type: CP14FoodHolder
+    foodType: Pie
+    solutionId: cooker
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,2,2
+    earlyIgnorelist:
+      components:
+        - CP14FoodHolder
+        - FoodSequenceStartPoint
+        - Sharp
+  - type: Appearance
+  - type: StorageFillVisualizer
+    maxFillLevels: 3
+    fillBaseName: raw
+  - type: SolutionContainerManager
+    solutions:
+      cooker:
+        maxVol: 50
+  - type: AmbientSound
+    sound:
+      path: /Audio/_ST/Ambience/Cooking/pan_frying.ogg
+  - type: GenericVisualizer
+    visuals:
+      enum.CP14CookingVisuals.Cooking:
+        cook:
+          True: { visible: true }
+          False: { visible: false }
+      enum.CP14CookingVisuals.Burning:
+        burn:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Edible
+    edible: Food
+    transferAmount: 2.5
+    solution: cooker
+    trash:
+    - StellarFoodPieMould
+  - type: Spillable
+    solution: cooker
+  - type: SolutionContainerVisuals
+  - type: SliceableFood
+
+####### SOUP POT
+- type: entity
+  id: StellarFoodPot
+  parent: StellarCookerBase
+  name: cooking pot
+  description: Useful for cooking soups, stews, and other such things.
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Cooking/Food/Soup/cooking_pot.rsi
+    layers:
+    - state: base
+      map: ["enum.StorageVisualLayers.Base"]
+    - map: ["cp14_foodLayers"]
+    - state: closed
+      map: [ base ]
+    - state: cooking
+      visible: false
+      map: [ cook ]
+    - state: cooking
+      visible: false
+      color: "#38312e"
+      map: [ burn ]
+  - type: SolutionContainerManager
+    solutions:
+      cooker:
+        maxVol: 150
+  - type: Temperature
+  - type: CP14FoodHolder
+    foodType: Soup
+    solutionId: cooker
+    displacementRsiPath: _ST/Items/Cooking/Food/Soup/displacement_pot.rsi
+    maxDisplacementFillLevels: 2
+    canGiveFood: true
+  - type: CP14FoodCooker
+    foodType: Soup
+    solutionId: cooker
+  - type: Item
+    size: Ginormous
+  - type: MultiHandedItem
+  - type: RefillableSolution
+    solution: cooker
+  - type: Spillable
+    solution: cooker
+  - type: SolutionItemStatus
+    solution: cooker
+  - type: ExaminableSolution
+    solution: cooker
+  - type: AmbientSound
+    sound:
+      path: /Audio/_ST/Ambience/Cooking/pot_brewing.ogg
+  - type: Storage
+    storageOpenSound: /Audio/_ST/Effects/Cooking/pan_open.ogg
+    storageCloseSound: /Audio/_ST/Effects/Cooking/pan_close.ogg
+    storageInsertSound: /Audio/Items/toolbox_insert.ogg
+    storageRemoveSound: /Audio/Items/toolbox_insert.ogg
+    earlyIgnorelist:
+      components:
+        - CP14FoodHolder
+        - FoodSequenceStartPoint
+        - Injector
+        - SolutionTransfer
+
+####### FRYING PAN
+- type: entity
+  id: StellarFoodFrypan
+  parent: StellarCookerBase
+  name: frying pan
+  description: A simple cooking implement. Has a wide variety of uses!
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Cooking/Food/Meals/frying_pan.rsi
+    layers:
+    - state: base
+      map: ["enum.StorageVisualLayers.Base"]
+    - map: ["cp14_foodLayers"]
+    - state: closed
+      map: [ base ]
+    - state: cooking
+      visible: false
+      map: [ cook ]
+    - state: cooking
+      visible: false
+      color: "#38312e"
+      map: [ burn ]
+  - type: MeleeWeapon
+    wideAnimationRotation: 270
+    damage:
+      types:
+        Blunt: 6
+    soundHit:
+      path: "/Audio/Weapons/smash.ogg"
+  - type: Storage
+    storageOpenSound: /Audio/_ST/Effects/Cooking/pan_open.ogg
+    storageCloseSound: /Audio/_ST/Effects/Cooking/pan_close.ogg
+    storageInsertSound: /Audio/Items/toolbox_insert.ogg
+    storageRemoveSound: /Audio/Items/toolbox_insert.ogg
+  - type: SolutionContainerManager
+    solutions:
+      cooker:
+        maxVol: 100
+  - type: CP14FoodHolder
+    foodType: Meal
+    solutionId: cooker
+    displacementRsiPath: _ST/Items/Cooking/Food/Meals/displacement_pan.rsi
+    maxDisplacementFillLevels: 2
+    canGiveFood: true
+  - type: Item
+    size: Ginormous
+  - type: MultiHandedItem
+  - type: Temperature
+  - type: CP14FoodCooker
+    foodType: Meal
+    solutionId: cooker
+  - type: RefillableSolution
+    solution: cooker
+  - type: DrainableSolution
+    solution: cooker
+  - type: Spillable
+    solution: cooker
+  - type: AmbientSound
+    sound:
+      path: /Audio/_ST/Ambience/Cooking/pan_frying.ogg

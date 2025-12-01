@@ -1,0 +1,84 @@
+- type: entity
+  id: StellarCrockeryBowlBase
+  parent: BaseItem
+  description: A bowl.
+  categories: [ ForkFiltered ]
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Cooking/Food/Soup/bowls.rsi
+  - type: Item
+    shape:
+    - 0,0,1,0
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+  - type: CP14FoodHolder
+    foodType: Soup
+    solutionId: food
+    displacementRsiPath: _ST/Items/Cooking/Food/Soup/displacement.rsi
+    canAcceptFood: true
+  - type: Appearance
+  - type: SolutionContainerVisuals
+  - type: Edible
+    edible: Drink
+    utensil: Spoon
+    transferAmount: 2.5
+  - type: Spillable
+    solution: food
+
+- type: entity
+  id: StellarCrockeryBowl
+  parent: StellarCrockeryBowlBase
+  name: bowl
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - map: ["cp14_foodLayers"]
+  - type: Food
+    trash:
+    - StellarCrockeryBowl
+
+- type: entity
+  id: StellarCrockeryPlateBase
+  parent: BaseItem
+  description: A plate.
+  categories: [ ForkFiltered ]
+  abstract: true
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _ST/Items/Cooking/Food/Meals/plates.rsi
+  - type: Item
+    shape:
+    - 0,0,1,0
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+  - type: CP14FoodHolder
+    displacementRsiPath: _ST/Items/Cooking/Food/Meals/displacement.rsi
+    foodType: Meal
+    solutionId: food
+    canAcceptFood: true
+  - type: Appearance
+  - type: SolutionContainerVisuals
+  - type: Edible
+    transferAmount: 2.5
+  - type: Spillable
+    solution: food
+
+- type: entity
+  id: StellarCrockeryPlate
+  parent: StellarCrockeryPlateBase
+  name: wooden plate
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - map: ["cp14_foodLayers"]
+  - type: Food
+    trash:
+    - StellarCrockeryPlate

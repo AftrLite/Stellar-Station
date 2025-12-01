@@ -1,0 +1,23 @@
+- type: reagent
+  id: StellarBurntFood
+  name: stellar-reagent-name-burnt-food
+  group: Foods
+  desc: stellar-reagent-desc-burnt-food
+  physicalDesc: stellar-reagent-physical-desc-unpleasant
+  flavor: terrible
+  color: "#2c2c2c"
+  recognizable: true
+  metabolisms:
+    Food:
+      effects:
+      - !type:SatiateThirst
+        factor: -0.2
+      - !type:AdjustReagent
+        reagent: Nutriment
+        amount: 0.1
+      - !type:Vomit
+        conditions:
+        - !type:ReagentCondition
+          reagent: StellarBurntFood
+          min: 4
+        probability: 0.3

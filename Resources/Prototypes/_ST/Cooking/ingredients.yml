@@ -1,0 +1,78 @@
+- type: entity
+  id: StellarFoodTEMP-Dough
+  parent: FoodInjectableBase
+  name: dough
+  description: It's a piece of dough.
+  components:
+  - type: Item
+    size: Small
+  - type: Temperature
+  - type: FlavorProfile
+    flavors:
+      - dough
+  - type: Sprite
+    sprite: Objects/Consumable/Food/ingredients.rsi
+    state: dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 25
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 20
+  - type: CP14TemperatureTransformation
+    entries:
+    - temperatureRange: 400, 500
+      transformTo: FoodBreadVolcanic # TODO: CHANGE THIS
+  - type: Tag
+    tags:
+      - Ingredient-Dough
+
+- type: entity
+  id: StellarFoodTEMP-MeatSlice
+  parent: FoodInjectableBase
+  name: meat slice
+  description: It's a piece of dough.
+  components:
+  - type: Item
+    size: Small
+  - type: Temperature
+  - type: FlavorProfile
+    flavors:
+      - dough
+  - type: Sprite
+    sprite: Objects/Consumable/Food/meat.rsi
+    state: cutlet
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 25
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 20
+  - type: CP14TemperatureTransformation
+    entries:
+    - temperatureRange: 400, 500
+      transformTo: FoodBreadVolcanic # TODO: CHANGE THIS
+  - type: Tag
+    tags:
+      - Ingredient-Meat-Slice
+
+- type: entity
+  id: StellarFoodTEMP-Processible
+  parent: FoodInjectableBase
+  name: metamorphic sludge
+  description: useful for testing out recipes.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: Objects/Consumable/Food/meat.rsi
+    state: crab-rangoon
+  - type: Tag
+    tags:
+      - Ingredient-Pumpkin
+  - type: DippableItem
+    neededVolume: 5
+    reagentAndResult:
+      Plasma: ClothingNeckScarfStripedSyndieGreen

@@ -1,0 +1,63 @@
+- type: entity
+  parent: FoodInjectableBase
+  id: StellarFoodPiePieceBase
+  abstract: true
+  components:
+  - type: Item
+    size: Tiny
+  - type: Temperature
+  - type: Sprite
+    sprite: _ST/Items/Cooking/Food/Pie/pieces.rsi
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 7
+        - ReagentId: Protein
+          Quantity: 2
+
+- type: entity
+  id: StellarFoodPiePieceTrash
+  parent: StellarFoodPiePieceBase
+  name: odd pie slice
+  description: On the outside, it looked appealing and delicious, but on the inside, it was simply awful.
+  components:
+  - type: Sprite
+    layers:
+    - state: blank
+    - state: trash
+
+- type: entity
+  id: StellarFoodPiePieceMeat
+  parent: StellarFoodPiePieceBase
+  name: meat pie slice
+  description: Pie with juicy meat.
+  components:
+  - type: Sprite
+    layers:
+    - state: blank
+    - state: meat
+
+- type: entity
+  id: StellarFoodPiePiecePumpkin
+  parent: StellarFoodPiePieceBase
+  name: pumpkin pie slice
+  description: Pie with juicy pumpkin.
+  components:
+  - type: Sprite
+    layers:
+    - state: blank
+    - state: pumpkin
+
+- type: entity
+  id: StellarFoodPiePieceVeg
+  parent: StellarFoodPiePieceBase
+  name: vegetable pie slice
+  description: Pie with juicy vegetables.
+  components:
+  - type: Sprite
+    layers:
+    - state: blank
+    - state: veg

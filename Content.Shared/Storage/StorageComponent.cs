@@ -150,6 +150,14 @@ namespace Content.Shared.Storage
         [DataField]
         public bool HideStackVisualsWhenClosed = true;
 
+        // STELLAR CHANGES BEGIN
+        /// <summary>
+        /// For interrupting items at the attempted interaction stage.
+        /// </summary>
+        [DataField]
+        public EntityWhitelist? EarlyIgnorelist;
+        // STELLAR CHANGES END
+
         /// <summary>
         /// Entities with this tag won't trigger storage sound.
         /// </summary>

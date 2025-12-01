@@ -1,0 +1,72 @@
+- type: CP14CookingRecipe
+  id: InediblePie
+  cookingTime: 5
+  foodType: Pie
+  foodData:
+    name: stellar-recipe-pie-trash-name
+    desc: stellar-recipe-pie-trash-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Pie/recipes.rsi
+      state: trash
+    sliceProto: StellarFoodPiePieceTrash
+  requirements:
+  - !type:TagRequired
+    tags:
+    - Ingredient-Dough
+
+# 1 Req
+
+- type: CP14CookingRecipe
+  id: PieMeat
+  foodType: Pie
+  foodData:
+    name: stellar-recipe-pie-meat-name
+    desc: stellar-recipe-pie-meat-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Pie/recipes.rsi
+      state: meat
+    sliceProto: StellarFoodPiePieceMeat
+  requirements:
+  - !type:TagRequired
+    tags:
+    - Ingredient-Dough
+  - !type:TagRequired
+    tags:
+    - Ingredient-Meat-Slice
+    - Ingredient-Meat
+
+- type: CP14CookingRecipe
+  id: PiePumpkin
+  foodType: Pie
+  foodData:
+    name: stellar-recipe-pie-pumpkin-name
+    desc: stellar-recipe-pie-pumpkin-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Pie/recipes.rsi
+      state: meat
+    sliceProto: StellarFoodPiePiecePumpkin
+  requirements:
+  - !type:TagRequired
+    tags:
+    - Ingredient-Dough
+  - !type:TagRequired
+    tags:
+    - Ingredient-Pumpkin
+
+- type: CP14CookingRecipe
+  id: PieVeg
+  foodType: Pie
+  foodData:
+    name: stellar-recipe-pie-vegetable-name
+    desc: stellar-recipe-pie-vegetable-desc
+    visuals:
+    - sprite: _ST/Items/Cooking/Food/Pie/recipes.rsi
+      state: veg
+    sliceProto: StellarFoodPiePieceVeg
+  requirements:
+  - !type:TagRequired
+    tags:
+    - Ingredient-Dough
+  - !type:TagRequired
+    tags:
+    - Ingredient-Vegetable

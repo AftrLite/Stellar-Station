@@ -1,0 +1,55 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 48
+    },
+    "license": "CC-BY-SA-4.0",
+    "copyright": "By AftrLite, burning sprites by TheShuEd",
+    "states": [
+        {
+            "name": "base"
+        },
+        {
+            "name": "glow"
+        },
+        {
+            "name": "powered"
+        },
+        {
+            "name": "unpowered"
+        },
+        {
+            "name": "opened"
+        },
+        {
+            "name": "closed"
+        },
+        {
+            "name": "storage-0"
+        },
+        {
+            "name": "storage-1"
+        },
+        {
+            "name": "storage-2"
+        },
+        {
+            "name": "storage-3"
+        },
+        {
+            "name": "storage-4"
+        },
+        {
+        "name": "burning",
+        "delays": [
+            [
+            0.2,
+            0.2,
+            0.2,
+            0.2
+            ]
+        ]
+        }
+    ]
+}

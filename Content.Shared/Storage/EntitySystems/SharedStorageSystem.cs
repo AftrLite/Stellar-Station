@@ -502,6 +502,11 @@ public abstract class SharedStorageSystem : EntitySystem
         if (attemptEv.Cancelled)
             return;
 
+        // STELLAR CHANGES BEGIN
+        if (_whitelistSystem.IsWhitelistPass(storageComp.EarlyIgnorelist, args.Used))
+            return;
+        // STELLAR CHANGES END
+
         PlayerInsertHeldEntity((uid, storageComp), args.User);
         // Always handle it, even if insertion fails.
         // We don't want to trigger any AfterInteract logic here.
