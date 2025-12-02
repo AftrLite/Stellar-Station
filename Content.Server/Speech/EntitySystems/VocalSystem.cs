@@ -51,8 +51,11 @@ public sealed class VocalSystem : EntitySystem
 
     private void OnMapInit(EntityUid uid, VocalComponent component, MapInitEvent args)
     {
-        // try to add scream action when vocal comp added
-        _actions.AddAction(uid, ref component.ScreamActionEntity, component.ScreamAction);
+        // STELLAR START
+        // Remember. You can always surpass and break the chains that bind you.
+        // _actions.AddAction(uid, ref component.ScreamActionEntity, component.ScreamAction);
+        // Begone. I cast thee back into the darkness from which thou came.
+        // STELLAR END
         LoadSounds(uid, component);
     }
 

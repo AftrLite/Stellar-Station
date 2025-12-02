@@ -69,7 +69,10 @@ namespace Content.Server.Light.EntitySystems
 
         private void OnGetActions(EntityUid uid, HandheldLightComponent component, GetItemActionsEvent args)
         {
-            args.AddAction(ref component.ToggleActionEntity, component.ToggleAction);
+            // ES START
+            return;
+            // args.AddAction(ref component.ToggleActionEntity, component.ToggleAction);
+            // ES END
         }
 
         private void OnToggleAction(Entity<HandheldLightComponent> ent, ref ToggleActionEvent args)
@@ -92,9 +95,12 @@ namespace Content.Server.Light.EntitySystems
 
         private void OnMapInit(Entity<HandheldLightComponent> ent, ref MapInitEvent args)
         {
-            var component = ent.Comp;
-            _actionContainer.EnsureAction(ent, ref component.ToggleActionEntity, component.ToggleAction);
-            _actions.AddAction(ent, ref component.SelfToggleActionEntity, component.ToggleAction);
+            // ES START
+            return;
+            // var component = ent.Comp;
+            // _actionContainer.EnsureAction(ent, ref component.ToggleActionEntity, component.ToggleAction);
+            // _actions.AddAction(ent, ref component.SelfToggleActionEntity, component.ToggleAction);
+            // ES END
         }
 
         private void OnShutdown(EntityUid uid, HandheldLightComponent component, ComponentShutdown args)
@@ -142,9 +148,14 @@ namespace Content.Server.Light.EntitySystems
 
         private void OnExamine(EntityUid uid, HandheldLightComponent component, ExaminedEvent args)
         {
+// ES START
+            using var _ = args.PushGroup(nameof(HandheldLightComponent));
+
             args.PushMarkup(component.Activated
                 ? Loc.GetString("handheld-light-component-on-examine-is-on-message")
                 : Loc.GetString("handheld-light-component-on-examine-is-off-message"));
+            args.PushMarkup(Loc.GetString("es-flashlight-toggle-examine-keybind"));
+// ES END
         }
 
         public override void Shutdown()

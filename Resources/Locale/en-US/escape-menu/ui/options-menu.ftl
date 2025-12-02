@@ -132,13 +132,16 @@ ui-options-header-text-chat = Chat
 ui-options-header-text-other = Text input other
 
 ui-options-hotkey-keymap = Use US QWERTY Keys
-ui-options-hotkey-toggle-walk = Toggle Walk
-
+# STELLAR START
+ui-options-hotkey-toggle-walk = Toggle Sprint
+# STELLAR END
 ui-options-function-move-up = Move Up
 ui-options-function-move-left = Move Left
 ui-options-function-move-down = Move Down
 ui-options-function-move-right = Move Right
-ui-options-function-walk = Walk
+# STELLAR START
+ui-options-function-walk = Sprint
+# STELLAR END
 ui-options-function-toggle-knockdown = Toggle Crawling
 
 ui-options-function-camera-rotate-left = Rotate left
