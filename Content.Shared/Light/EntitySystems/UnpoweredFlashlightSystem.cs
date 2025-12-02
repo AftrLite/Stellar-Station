@@ -54,7 +54,10 @@ public sealed class UnpoweredFlashlightSystem : EntitySystem
 
     private void OnGetActions(EntityUid uid, UnpoweredFlashlightComponent component, GetItemActionsEvent args)
     {
-        args.AddAction(component.ToggleActionEntity);
+        // ES START
+        return;
+        // ES END
+        // args.AddAction(component.ToggleActionEntity);
     }
 
     private void AddToggleLightVerbs(EntityUid uid, UnpoweredFlashlightComponent component, GetVerbsEvent<ActivationVerb> args)
