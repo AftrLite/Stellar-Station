@@ -8,8 +8,9 @@
     - HideContextMenu
   - type: Sprite
     sprite: _ST/Interface/Misc/pointing.rsi
-    state: pointing
-    shader: unshaded
+    layers:
+    - state: pointing
+      shader: unshaded
     drawdepth: Overlays
     noRot: true
   - type: PointingArrow
