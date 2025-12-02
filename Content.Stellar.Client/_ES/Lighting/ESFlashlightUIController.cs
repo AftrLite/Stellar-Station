@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 EmoGarbage404
+//
+// SPDX-License-Identifier: MIT
+
 using System.Linq;
 using Content.Client.Gameplay;
 using Content.Client.Hands.Systems;

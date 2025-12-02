@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 EmoGarbage404
+//
+// SPDX-License-Identifier: MIT
+
 using Robust.Shared.GameStates;
 
 namespace Content.Stellar.Shared._ES.Chat.Obfuscation.Components;

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 EmoGarbage404
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.ActionBlocker;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.EntitySystems;
