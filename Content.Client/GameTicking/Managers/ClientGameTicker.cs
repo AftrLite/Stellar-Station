@@ -27,7 +27,9 @@ namespace Content.Client.GameTicking.Managers
 
         private Dictionary<NetEntity, Dictionary<ProtoId<JobPrototype>, int?>> _jobsAvailable = new();
         private Dictionary<NetEntity, string> _stationNames = new();
-        [ViewVariables] public bool AreWeReady { get; private set; }
+        // ES START
+        [ViewVariables] public PlayerGameStatus ReadyStatus { get; private set; }
+        // ES END
         [ViewVariables] public bool IsGameStarted { get; private set; }
         [ViewVariables] public ResolvedSoundSpecifier? RestartSound { get; private set; }
         [ViewVariables] public string? LobbyBackground { get; private set; }
@@ -54,7 +56,7 @@ namespace Content.Client.GameTicking.Managers
             SubscribeNetworkEvent<TickerJoinGameEvent>(JoinGame);
             SubscribeNetworkEvent<TickerConnectionStatusEvent>(ConnectionStatus);
             SubscribeNetworkEvent<TickerLobbyStatusEvent>(LobbyStatus);
-            // SubscribeNetworkEvent<TickerLobbyInfoEvent>(LobbyInfo);
+            // SubscribeNetworkEvent<TickerLobbyInfoEvent>(LobbyInfo); // Stellar
             SubscribeNetworkEvent<TickerLobbyCountdownEvent>(LobbyCountdown);
             SubscribeNetworkEvent<RoundEndMessageEvent>(RoundEnd);
             SubscribeNetworkEvent<RequestWindowAttentionEvent>(OnAttentionRequest);
@@ -125,19 +127,21 @@ namespace Content.Client.GameTicking.Managers
             StartTime = message.StartTime;
             RoundStartTimeSpan = message.RoundStartTimeSpan;
             IsGameStarted = message.IsRoundStarted;
-            AreWeReady = message.YouAreReady;
+            ReadyStatus = message.ReadyStatus; // ES & Stellar
             LobbyBackground = message.LobbyBackground;
             Paused = message.Paused;
 
             LobbyStatusUpdated?.Invoke();
         }
 
+        // BEGIN STELLAR
         // private void LobbyInfo(TickerLobbyInfoEvent message)
         // {
         //     ServerInfoBlob = message.TextBlob;
 
         //     InfoBlobUpdated?.Invoke();
         // }
+        // END STELLAR
 
         private void JoinGame(TickerJoinGameEvent message)
         {

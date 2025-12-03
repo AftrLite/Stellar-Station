@@ -83,14 +83,17 @@ namespace Content.Server.GameTicking
                 case SessionStatus.InGame:
                 {
                     _userDb.ClientConnected(session);
-
                     if (mind == null)
                     {
                         if (LobbyEnabled)
+                        {
                             PlayerJoinLobby(session);
+                            // ES START
+                            AttachPlayerToLobbyCharacter(session);
+                            // ES END
+                        }
                         else
                             SpawnWaitDb();
-
                         break;
                     }
 

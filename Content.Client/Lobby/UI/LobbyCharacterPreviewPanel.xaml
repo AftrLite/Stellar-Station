@@ -3,20 +3,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls">
     <BoxContainer Name="VBox" Orientation="Vertical">
+        <!-- <controls:NanoHeading Name="Header" Text="{Loc 'lobby-character-preview-panel-header'}">
+
+        </controls:NanoHeading> -->
         <BoxContainer Name="Loaded" Orientation="Vertical"
                       Visible="False">
-            <Label Name="Summary"
-            HorizontalAlignment="Center"
-            StyleClasses="LabelHeadingBigger"
-            Margin="0"/>
+            <Label Name="Summary" StyleClasses="LabelHeadingBigger" HorizontalAlignment="Center" Margin="3 3"/> <!-- STELLAR -->
             <BoxContainer Name="ViewBox" Orientation="Horizontal" HorizontalAlignment="Center">
+
             </BoxContainer>
             <controls:VSpacer/>
-            <Button Name="CharacterSetup"
-                    Text="{Loc 'lobby-character-preview-panel-character-setup-button'}"
+            <Button Name="CharacterSetup" Text="{Loc 'lobby-character-preview-panel-character-setup-button'}"
                     HorizontalAlignment="Center"
-                    StyleClasses="ButtonBig"
-                    Margin="0 5 0 0"/>  <!-- STELLAR STATION -->
+                    Margin="0 5 0 0"/>
         </BoxContainer>
         <Label Name="Unloaded" Text="{Loc 'lobby-character-preview-panel-unloaded-preferences-label'}"/>
     </BoxContainer>

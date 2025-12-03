@@ -451,6 +451,13 @@ namespace Content.Server.GameTicking
                         continue;
                     }
 
+                    // ES START
+                    if (_transform.GetMapId((uid, Transform(uid))) == DiegeticLobbyMapId)
+                    {
+                        continue;
+                    }
+                    // ES END
+
                     _possiblePositions.Add(new EntityCoordinates(uid, Vector2.Zero));
                 }
             }
