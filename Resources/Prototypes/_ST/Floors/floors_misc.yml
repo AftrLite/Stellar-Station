@@ -176,3 +176,178 @@
     base: floor
   - type: PlacementReplacement
     key: anomalyfloor
+
+
+## GRASS
+
+- type: tile
+  id: StellarFloorGrass
+  parent: FloorAsteroidSandDugBorderless
+  name: grass
+  sprite: /Textures/_ST/Tileset/Floor/Grass/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 6
+  edgeSprites:
+    SouthEast: /Textures/_ST/Tileset/Floor/Grass/single_edge_SE.png
+    NorthEast: /Textures/_ST/Tileset/Floor/Grass/single_edge_NE.png
+    NorthWest: /Textures/_ST/Tileset/Floor/Grass/single_edge_NW.png
+    SouthWest: /Textures/_ST/Tileset/Floor/Grass/single_edge_SW.png
+    South: /Textures/_ST/Tileset/Floor/Grass/double_edge_S.png
+    East: /Textures/_ST/Tileset/Floor/Grass/double_edge_E.png
+    North: /Textures/_ST/Tileset/Floor/Grass/double_edge_N.png
+    West: /Textures/_ST/Tileset/Floor/Grass/double_edge_W.png
+  footstepSounds:
+    collection: FootstepGrass
+
+## LOBBY
+
+- type: tile
+  id: StellarFloorNothing
+  sprite: /Textures/_ST/CosmicCult/Tileset/cosmicfloor/floor_void.png
+  baseTurf: Space
+  isSubfloor: true
+  heatCapacity: 10000
+  weather: true
+
+- type: entity
+  id: StellarLobbyDecay
+  suffix: DO NOT MAP
+  name: tile decay
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: FloorOccluder
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    anchored: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.45,0.45,-0.45,-0.45"
+        density: 999
+        mask:
+        - MachineMask
+        layer:
+        - Impassable
+  - type: Sprite
+    sprite: /Textures/_ST/Tileset/Floor/lobbydecay.rsi
+  - type: Icon
+    sprite: /Textures/_ST/Tileset/Floor/lobbydecay.rsi
+    state: full
+  - type: IconSmooth
+    key: bluespace
+    base: floor
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: PlacementReplacement
+    key: decay
+
+- type: entity
+  id: StellarLobbyDecayDark
+  parent: StellarLobbyDecay
+  suffix: dark
+  components:
+  - type: Sprite
+    sprite: /Textures/_ST/Tileset/Floor/lobbydecay_dark.rsi
+  - type: Icon
+    sprite: /Textures/_ST/Tileset/Floor/lobbydecay_dark.rsi
+    state: full
+
+- type: entity
+  id: StellarLobbyDecayWhite
+  parent: StellarLobbyDecay
+  suffix: white
+  components:
+  - type: Sprite
+    sprite: /Textures/_ST/Tileset/Floor/lobbydecay_white.rsi
+  - type: Icon
+    sprite: /Textures/_ST/Tileset/Floor/lobbydecay_white.rsi
+    state: full
+
+
+- type: entity
+  id: StellarBluespaceCracks
+  name: bluespace erosion
+  placement:
+    mode: SnapgridCenter
+  components:
+    - type: Sprite
+      sprite: /Textures/_ST/Tileset/Floor/bluespace-erosion.rsi
+      layers:
+        - state: base1
+        - state: bluespace1
+          shader: unshaded
+      drawdepth: LowFloors
+    - type: SyncSprite
+    - type: RequiresTile
+    - type: Transform
+      anchored: true
+    - type: Tag
+      tags:
+        - HideContextMenu
+    - type: PointLight
+      radius: 5
+      energy: 1
+      softness: 0.9
+      color: "#468aff"
+
+- type: entity
+  id: StellarBluespaceCracks2
+  parent: StellarBluespaceCracks
+  placement:
+    mode: SnapgridCenter
+  components:
+    - type: Sprite
+      layers:
+        - state: base2
+        - state: bluespace2
+          shader: unshaded
+
+- type: entity
+  id: StellarBluespaceCracks3
+  parent: StellarBluespaceCracks
+  placement:
+    mode: SnapgridCenter
+  components:
+    - type: Sprite
+      layers:
+        - state: base3
+        - state: bluespace3
+          shader: unshaded
+
+- type: entity
+  id: StellarBluespaceCracks4
+  parent: StellarBluespaceCracks
+  placement:
+    mode: SnapgridCenter
+  components:
+    - type: Sprite
+      layers:
+        - state: base4
+        - state: bluespace4
+          shader: unshaded
+
+- type: entity
+  id: StellarBluespaceCracks5
+  parent: StellarBluespaceCracks
+  placement:
+    mode: SnapgridCenter
+  components:
+    - type: Sprite
+      layers:
+        - state: base5
+        - state: bluespace5
+          shader: unshaded

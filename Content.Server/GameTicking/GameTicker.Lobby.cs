@@ -4,6 +4,17 @@ using Content.Server.Station.Components;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using System.Text;
+using Content.Server.Weather;
+using Robust.Shared.Prototypes;
+using Content.Shared.Weather;
+using Robust.Shared.Map;
+using Content.Shared.CCVar;
+using Robust.Shared.EntitySerialization;
+using Robust.Shared.Utility;
+using Content.Shared.Players;
+using Content.Server.Spawners.Components;
+using Content.Shared.Random.Helpers;
+using Robust.Shared.Random;
 
 namespace Content.Server.GameTicking
 {
@@ -35,6 +46,122 @@ namespace Content.Server.GameTicking
         /// </summary>
         public IReadOnlyDictionary<NetUserId, PlayerGameStatus> PlayerGameStatuses => _playerGameStatuses;
 
+        // ES START (& Stellar)
+        [Dependency] private readonly WeatherSystem _weather = default!;
+        private static readonly ProtoId<WeatherPrototype> LobbyWeather = "StellarDetailFog";
+        private static readonly EntProtoId PlayerInLobbyEntity = "StellarLobbyPlayer";
+        public MapId? DiegeticLobbyMapId = null;
+        // todo mirror lobby change
+
+        // Manages loading the diegetic lobby world and spawning players into it.
+        // FOR MIRROR NOTES
+        // lobby persists thru restarts (?)
+        // create once at server start
+        // characters also persist
+        // diegetic mechanism for readying = chairs diegetic mechanism for marking as observer = uhh idk lol
+        // maptext for directions, 'projector' entit ythat shows maptext, use a different font, idk
+        private void CreateLobbyWorld()
+        {
+            if (_runLevel != GameRunLevel.PreRoundLobby)
+                return;
+
+            var mapPath = _cfg.GetCVar(CCVars.GameDiegeticLobbyMap);
+
+            _sawmill.Info("Creating diegetic lobby..");
+            var opts = DeserializationOptions.Default with { InitializeMaps = true };
+            if (!_loader.TryLoadMap(new ResPath(mapPath),
+                    out var map,
+                    out _,
+                    opts))
+            {
+                throw new Exception($"Failed to load diegetic lobby map {mapPath}");
+            }
+
+            DiegeticLobbyMapId = map.Value.Comp.MapId;
+            _sawmill.Info($"Created diegetic lobby at map ID {DiegeticLobbyMapId.Value}");
+
+            _prototypeManager.TryIndex(LobbyWeather, out var indexedWeather);
+            _weather.SetWeather(DiegeticLobbyMapId.Value, indexedWeather, TimeSpan.FromHours(2));
+
+            // invent a guy for everyone in the server
+            foreach (var player in _playerManager.Sessions)
+            {
+                AttachPlayerToLobbyCharacter(player);
+            }
+        }
+
+        private void AttachPlayerToLobbyCharacter(ICommonSession session)
+        {
+            if (session.ContentData() is not { } data)
+                return;
+
+            if (data.LobbyEntity != null)
+            {
+                _sawmill.Info($"Attaching {session.Name} to existing lobby character");
+                _playerManager.SetAttachedEntity(session, data.LobbyEntity.Value, true);
+                return;
+            }
+
+            _sawmill.Info($"Creating lobby character for {session.Name}");
+            var spawnPosition = GetLobbyCharacterSpawnPoint();
+            var lobbyCharacter = SpawnAtPosition(PlayerInLobbyEntity, spawnPosition);
+            _playerManager.SetAttachedEntity(session, lobbyCharacter, true);
+            _metaData.SetEntityName(lobbyCharacter, session.Name);
+            data.LobbyEntity = lobbyCharacter;
+        }
+
+        private EntityCoordinates GetLobbyCharacterSpawnPoint()
+        {
+            if (DiegeticLobbyMapId == null)
+                return EntityCoordinates.Invalid;
+
+            var possible = new List<EntityCoordinates>();
+            var spawnPointQuery = EntityQueryEnumerator<SpawnPointComponent, TransformComponent>();
+            while (spawnPointQuery.MoveNext(out var uid, out var point, out var transform))
+            {
+                if (point.SpawnType != SpawnPointType.LobbyCharacter
+                    || TerminatingOrDeleted(uid)
+                    || transform.MapUid == null
+                    || TerminatingOrDeleted(transform.MapUid.Value)
+                    || transform.MapID != DiegeticLobbyMapId)
+                {
+                    continue;
+                }
+
+                possible.Add(transform.Coordinates);
+            }
+
+            if (possible.Count != 0)
+                return _robustRandom.Pick(possible);
+
+            _sawmill.Error("Can't find any lobby character spawn points!");
+            return EntityCoordinates.Invalid;
+        }
+
+        // called on round restart
+        private void CleanupLobbyWorld()
+        {
+            _sawmill.Info("Cleaning up lobby world");
+
+            // it might be necessary to raise RoundRestartCleanup
+            // (for when lobby transitions to gameplay)
+            // I really don't want bugs where bad entity systems persist data from the diegetic lobby
+            // into the actual game, so it should be fine to trick them a little bit, but also
+            // I think it'll introduce more weirdness with stuff that assumes we were actually in game?
+            // so for now I'm not doing it
+            // ideally, we just have nothing in the diegetic lobby that actually relies on anything that would need
+            // to be cleaned up, and nothing subscribing to roundrestartcleanup that doesn't care about roundflow
+            // but this is probably a pipe dream.
+
+            foreach (var player in _playerManager.Sessions)
+            {
+                if (player.ContentData() is not { } data)
+                    continue;
+
+                data.LobbyEntity = null;
+            }
+        }
+        // ES END
         public void UpdateInfoText()
         {
             RaiseNetworkEvent(GetInfoMsg(), Filter.Empty().AddPlayers(_playerManager.NetworkedSessions));

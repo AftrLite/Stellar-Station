@@ -15,13 +15,26 @@ public sealed partial class CCVars
     ///     Controls if the lobby is enabled. If it is not, and there are no available jobs, you may get stuck on a black screen.
     /// </summary>
     public static readonly CVarDef<bool>
-        GameLobbyEnabled = CVarDef.Create("game.lobbyenabled", true, CVar.ARCHIVE);
+        GameLobbyEnabled = CVarDef.Create("game.lobbyenabled", false, CVar.ARCHIVE); // Stellar
 
     /// <summary>
     ///     Controls the duration of the lobby timer in seconds. Defaults to 2 minutes and 30 seconds.
     /// </summary>
     public static readonly CVarDef<int>
         GameLobbyDuration = CVarDef.Create("game.lobbyduration", 150, CVar.ARCHIVE);
+
+    // ES - STELLAR START
+
+    /// <summary>
+    ///     Path to the map to use as the diegetic lobby.
+    /// </summary>
+    public static readonly CVarDef<string>
+        GameDiegeticLobbyMap = CVarDef.Create("game.diegeticlobbymap", "/Maps/_ST/Other/lobby_test.yml", CVar.ARCHIVE | CVar.SERVERONLY);
+
+    public static readonly CVarDef<bool>
+        GameLobbyCurtainAnimation = CVarDef.Create("game.lobbycurtainanimation", true, CVar.ARCHIVE | CVar.CLIENTONLY);
+
+    // ES - STELLAR END
 
     /// <summary>
     ///     Controls if players can latejoin at all.

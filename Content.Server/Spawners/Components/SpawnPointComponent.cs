@@ -31,4 +31,7 @@ public enum SpawnPointType
     LateJoin,
     Job,
     Observer,
+    // ES START
+    LobbyCharacter
+    // ES END
 }

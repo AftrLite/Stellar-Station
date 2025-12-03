@@ -229,5 +229,10 @@ namespace Content.Shared.GameTicking
         NotReadyToPlay = 0,
         ReadyToPlay,
         JoinedGame,
+        // ES START
+        // when the game starts, this player will observe
+        // instead of joining the game
+        Observing,
+        // ES END
     }
 }
