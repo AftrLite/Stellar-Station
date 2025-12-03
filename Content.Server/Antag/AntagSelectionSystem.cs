@@ -14,6 +14,7 @@ using Content.Server.Preferences.Managers;
 using Content.Server.Roles;
 using Content.Server.Roles.Jobs;
 using Content.Server.Shuttles.Components;
+using Content.Shared._ST.Lobby;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Antag;
 using Content.Shared.Clothing;
@@ -570,6 +571,11 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
         // If the player has not spawned in as any entity (e.g., in the lobby), they can be given an antag role/entity.
         if (entity == null)
             return true;
+
+        // ES START
+        if (HasComp<LobbyCharacterComponent>(entity))
+            return true;
+        // ES END
 
         if (HasComp<PendingClockInComponent>(entity))
             return false;

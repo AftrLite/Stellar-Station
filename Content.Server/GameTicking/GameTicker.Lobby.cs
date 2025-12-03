@@ -51,7 +51,6 @@ namespace Content.Server.GameTicking
         private static readonly ProtoId<WeatherPrototype> LobbyWeather = "StellarDetailFog";
         private static readonly EntProtoId PlayerInLobbyEntity = "StellarLobbyPlayer";
         public MapId? DiegeticLobbyMapId = null;
-        // todo mirror lobby change
 
         // Manages loading the diegetic lobby world and spawning players into it.
         // FOR MIRROR NOTES
@@ -287,7 +286,9 @@ namespace Content.Server.GameTicking
             }
         }
 
-        public void ToggleReady(ICommonSession player, bool ready)
+        // ES START
+        public void ToggleReady(ICommonSession player, PlayerGameStatus ready)
+        // ES END
         {
             if (!_playerGameStatuses.ContainsKey(player.UserId))
                 return;
@@ -300,7 +301,7 @@ namespace Content.Server.GameTicking
                 return;
             }
 
-            _playerGameStatuses[player.UserId] = ready ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay;
+            _playerGameStatuses[player.UserId] = ready; // EPHEMERAL SPACE
             RaiseNetworkEvent(GetStatusMsg(player), player.Channel);
             // update server info to reflect new ready count
             UpdateInfoText();

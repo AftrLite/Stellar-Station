@@ -81,7 +81,7 @@ public sealed class FailAndStartPresetTest
 
         // Initially in the lobby
         Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.PreRoundLobby));
-        Assert.That(client.AttachedEntity, Is.Null);
+        // Assert.That(client.AttachedEntity, Is.Null); // EPHEMERAL SPACE
         Assert.That(ticker.PlayerGameStatuses[client.User!.Value], Is.EqualTo(PlayerGameStatus.NotReadyToPlay));
 
         // Try to start nukeops without readying up
@@ -92,9 +92,9 @@ public sealed class FailAndStartPresetTest
         // Game should not have started
         Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.PreRoundLobby));
         Assert.That(ticker.PlayerGameStatuses[client.User!.Value], Is.EqualTo(PlayerGameStatus.NotReadyToPlay));
-        Assert.That(!client.EntMan.EntityExists(client.AttachedEntity));
+        // Assert.That(!client.EntMan.EntityExists(client.AttachedEntity)); // EPHEMERAL SPACE
         var player = pair.Player!.AttachedEntity;
-        Assert.That(!entMan.EntityExists(player));
+        // Assert.That(!entMan.EntityExists(player)); // EPHEMERAL SPACE
 
         // Ready up and start nukeops
         await pair.WaitClientCommand("toggleready True");

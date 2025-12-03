@@ -103,7 +103,7 @@ public sealed partial class ShuttleSystem : SharedShuttleSystem
         if (HasComp<MapComponent>(ev.EntityUid))
             return;
 
-        EnsureComp<ShuttleComponent>(ev.EntityUid);
+        // EnsureComp<ShuttleComponent>(ev.EntityUid); // STELLAR
 
         // This and RoofComponent should be mutually exclusive, so ImplicitRoof should be removed if the grid has RoofComponent
         if (HasComp<RoofComponent>(ev.EntityUid))

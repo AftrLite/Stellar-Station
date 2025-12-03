@@ -24,16 +24,11 @@ public sealed partial class CCVars
         GameLobbyDuration = CVarDef.Create("game.lobbyduration", 150, CVar.ARCHIVE);
 
     // ES - STELLAR START
-
     /// <summary>
     ///     Path to the map to use as the diegetic lobby.
     /// </summary>
     public static readonly CVarDef<string>
         GameDiegeticLobbyMap = CVarDef.Create("game.diegeticlobbymap", "/Maps/_ST/Other/lobby_test.yml", CVar.ARCHIVE | CVar.SERVERONLY);
-
-    public static readonly CVarDef<bool>
-        GameLobbyCurtainAnimation = CVarDef.Create("game.lobbycurtainanimation", true, CVar.ARCHIVE | CVar.CLIENTONLY);
-
     // ES - STELLAR END
 
     /// <summary>
@@ -366,8 +361,9 @@ public sealed partial class CCVars
     ///     The time in seconds that the server should wait before restarting the round.
     ///     Defaults to 2 minutes.
     /// </summary>
+    // ES EDIT: changed to be replicated, shouldn't be a problem
     public static readonly CVarDef<float> RoundRestartTime =
-        CVarDef.Create("game.round_restart_time", 120f, CVar.SERVERONLY);
+        CVarDef.Create("game.round_restart_time", 120f, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     ///     The prototype to use for secret weights.

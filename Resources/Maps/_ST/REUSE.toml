@@ -4,3 +4,8 @@ version = 1
 path = ["Other/cosmicvoid.yml"]
 SPDX-FileCopyrightText = "By AftrLite(GitHub) for Cosmic Cult."
 SPDX-License-Identifier = "LicenseRef-CosmicCult"
+
+[[annotations]]
+path = ["Other/lobbytest.yml"]
+SPDX-FileCopyrightText = "By AftrLite(GitHub)"
+SPDX-License-Identifier = "LicenseRef-Wallening"

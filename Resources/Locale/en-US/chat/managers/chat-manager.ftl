@@ -35,8 +35,6 @@ chat-manager-entity-me-wrap-message = [italic]{ PROPER($entity) ->
     }
 
 chat-manager-entity-looc-wrap-message = LOOC: [bold]{$entityName}:[/bold] {$message}
-chat-manager-send-ooc-wrap-message = OOC: [bold]{$playerName}:[/bold] {$message}
-chat-manager-send-ooc-patron-wrap-message = OOC: [bold][color={$patronColor}]{$playerName}[/color]:[/bold] {$message}
 # ES START
 # need to add bubble tags (??? i did not know these existed)
 chat-manager-send-ooc-wrap-message = OOC: [BubbleHeader][bold]{$playerName}[/BubbleHeader]:[/bold] [BubbleContent]{$message}[/BubbleContent]

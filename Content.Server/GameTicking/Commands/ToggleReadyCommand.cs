@@ -1,4 +1,5 @@
 using Content.Shared.Administration;
+using Content.Shared.GameTicking;
 using Robust.Shared.Console;
 
 namespace Content.Server.GameTicking.Commands;
@@ -36,6 +37,6 @@ public sealed class ToggleReadyCommand : LocalizedEntityCommands
             return;
         }
 
-        _gameTicker.ToggleReady(player, ready);
+        _gameTicker.ToggleReady(player, bool.Parse(args[0]) ? PlayerGameStatus.ReadyToPlay : PlayerGameStatus.NotReadyToPlay); // EPHEMERAL SPACE
     }
 }
