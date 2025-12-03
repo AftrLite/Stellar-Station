@@ -14,9 +14,9 @@
     <SplitContainer Name="ScreenContainer" HorizontalExpand="True" VerticalExpand="True" SplitWidth="0" StretchDirection="TopLeft">
         <LayoutContainer Name="ViewportContainer" HorizontalExpand="True" VerticalExpand="True">
             <controls:MainViewport Name="MainViewport"/>
-            <BoxContainer Name="ExtraContainer" Orientation="Horizontal" VerticalExpand="True" HorizontalExpand="True" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <PanelContainer StyleClasses="AngleRect" HorizontalExpand="True" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                    <BoxContainer Orientation="Vertical" >
+            <BoxContainer Name="ExtraContainer" Orientation="Horizontal" VerticalExpand="True" HorizontalExpand="True" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0">
+                <PanelContainer StyleClasses="BackgroundPanel" HorizontalExpand="True" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">
+                    <BoxContainer Orientation="Vertical" Margin="5">
                         <BoxContainer Name="PlaytimeContainer" Access="Public" HorizontalAlignment="Center" Visible="False">
                             <RichTextLabel Name="PlaytimeComment" Access="Public" HorizontalAlignment="Center"/>
                         </BoxContainer>
