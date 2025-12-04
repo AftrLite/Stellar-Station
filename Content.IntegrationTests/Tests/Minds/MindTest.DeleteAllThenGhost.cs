@@ -1,4 +1,4 @@
-﻿#nullable enable
+﻿﻿#nullable enable
 using Robust.Shared.Console;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
@@ -43,7 +43,8 @@ public sealed partial class MindTests
         await pair.RunTicksSync(5);
 
         // Client is not attached to anything
-        // Assert.That(pair.Client.AttachedEntity, Is.Null); // EPHEMERAL SPACE
+        // ES START
+        // Assert.That(pair.Client.AttachedEntity, Is.Null);
         Assert.That(pair.PlayerData?.Mind, Is.Null);
 
         // Attempt to ghost

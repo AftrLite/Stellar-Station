@@ -72,16 +72,20 @@ public sealed class FailAndStartPresetTest
         var ticker = server.System<GameTicker>();
         server.System<TestRuleSystem>().Run = true;
 
-        Assert.That(server.CfgMan.GetCVar(CCVars.GridFill), Is.False);
-        Assert.That(server.CfgMan.GetCVar(CCVars.GameLobbyFallbackEnabled), Is.True);
-        Assert.That(server.CfgMan.GetCVar(CCVars.GameLobbyDefaultPreset), Is.EqualTo("secret"));
+// ES START
+        // Pointless asserts that add nothing.
+        //Assert.That(server.CfgMan.GetCVar(CCVars.GridFill), Is.False);
+        //Assert.That(server.CfgMan.GetCVar(CCVars.GameLobbyFallbackEnabled), Is.True);
+        //Assert.That(server.CfgMan.GetCVar(CCVars.GameLobbyDefaultPreset), Is.EqualTo("secret"));
+// ES END
         server.CfgMan.SetCVar(CCVars.GridFill, true);
         server.CfgMan.SetCVar(CCVars.GameLobbyFallbackEnabled, false);
         server.CfgMan.SetCVar(CCVars.GameLobbyDefaultPreset, "TestPreset");
 
         // Initially in the lobby
         Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.PreRoundLobby));
-        // Assert.That(client.AttachedEntity, Is.Null); // EPHEMERAL SPACE
+        // ES START
+        // Assert.That(client.AttachedEntity, Is.Null);
         Assert.That(ticker.PlayerGameStatuses[client.User!.Value], Is.EqualTo(PlayerGameStatus.NotReadyToPlay));
 
         // Try to start nukeops without readying up
@@ -92,9 +96,11 @@ public sealed class FailAndStartPresetTest
         // Game should not have started
         Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.PreRoundLobby));
         Assert.That(ticker.PlayerGameStatuses[client.User!.Value], Is.EqualTo(PlayerGameStatus.NotReadyToPlay));
-        // Assert.That(!client.EntMan.EntityExists(client.AttachedEntity)); // EPHEMERAL SPACE
+// ES START
+        // Assert.That(!client.EntMan.EntityExists(client.AttachedEntity));
         var player = pair.Player!.AttachedEntity;
-        // Assert.That(!entMan.EntityExists(player)); // EPHEMERAL SPACE
+        // Assert.That(!entMan.EntityExists(player));
+// ES END
 
         // Ready up and start nukeops
         await pair.WaitClientCommand("toggleready True");

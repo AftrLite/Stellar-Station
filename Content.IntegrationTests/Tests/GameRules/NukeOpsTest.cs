@@ -67,7 +67,8 @@ public sealed class NukeOpsTest
 
         // Initially in the lobby
         Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.PreRoundLobby));
-        Assert.That(client.AttachedEntity, Is.Not.Null); // EPHEMERAL SPACE
+        // ES START
+        Assert.That(client.AttachedEntity, Is.Not.Null);
         Assert.That(ticker.PlayerGameStatuses[client.User!.Value], Is.EqualTo(PlayerGameStatus.NotReadyToPlay));
 
         // Add several dummy players
