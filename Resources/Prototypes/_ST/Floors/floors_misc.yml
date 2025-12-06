@@ -176,3 +176,20 @@
     base: floor
   - type: PlacementReplacement
     key: anomalyfloor
+
+- type: entity
+  id: StellarCatwalkHazard
+  name: hazard catwalk
+  parent: Catwalk
+  description: A catwalk for easier EVA maneuvering and cable placement. This one has hazard strips along the edges.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Floor/catwalk-hazard.rsi
+    drawdepth: FloorTiles
+  - type: Icon
+    sprite: _ST/Tileset/Floor/catwalk-hazard.rsi
+  - type: IconSmooth
+    key: catwalk-alt
+    base: catwalk_
