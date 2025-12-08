@@ -1,29 +1,48 @@
 light_mode unshaded;
 
-const highp float PI = 3.14159265;
+const highp float PI = 3.141592;
+const highp float TAU = 6.283185;
 
+uniform highp float outer_radius = 0.3;
+uniform highp float inner_radius = 0.85;
 uniform highp float progress;
 
+highp float remap(highp float i_min, highp float i_max, highp float o_min, highp float o_max, highp float val) {
+	float t = (val - i_min) / (i_max - i_min);
+	return o_min + (o_max - o_min) * t;
+}
+
+highp float circle(highp vec2 uv, highp float value)
+{
+	float d = length(uv);
+	float t = step(outer_radius, d) - step(inner_radius, d);
+
+	return t;
+}
+
+highp float mask(highp vec2 uv, highp float value)
+{
+	float r = atan(uv.x, uv.y);
+	r = remap(-PI, PI, 0, 1.0, r);
+	r = step(r, value * 0.5);
+
+	uv.x = uv.x + 1.0;
+	uv.x = uv.x * -1.0;
+	uv.x += 1.0;
+	float l = atan(uv.x, uv.y);
+	l = remap(-PI, PI, 0.0, 1.0, l);
+	l = step(l, value * 0.5);
+
+	return r + l ;
+}
+
 void fragment() {
-    highp vec4 col = zTexture(UV);
-    highp vec2 center = vec2(0.5,0.5);
-    highp vec2 delta = UV.xy - center;
-    
-    highp float angle = atan(delta.x, -delta.y) + PI;
+	highp vec2 uv = (UV * 2.0) - 1.0;
 
-    highp float dist = length(delta);
-#ifdef HAS_DFDX
-    highp float dist_fwidth = fwidth(dist) * 0.67;
-#else
-    highp float dist_fwidth = 0.05;
-#endif
-    
-    highp float dist_alpha = smoothstep(0.1-dist_fwidth, 0.1, abs(dist-0.35));
-    
-    highp float angle_delta = (progress * PI * 2.0) - angle;
-    highp float arc_length = angle_delta * dist;
-    
-    highp float angle_alpha = (progress > 0.0) ? smoothstep(dist_fwidth, 0.0, arc_length) : 0.0;
+    highp float pixels = 16.0;
+    uv = floor(uv * pixels) / pixels;
 
-    COLOR = vec4(col.xyz, 1.0 - max(dist_alpha, angle_alpha));
+	highp float fill = mask(uv, progress) * 1.55;
+	highp float ring = circle(uv, 0.5);
+	COLOR = vec4(fill * ring);
 }
