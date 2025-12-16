@@ -9,7 +9,7 @@
         beaker:
           maxVol: 200
     - type: Sprite
-      sprite: Objects/Specific/Chemistry/jug.rsi
+      sprite: _ST/Items/Chemistry/jug.rsi # Stellar
       layers:
         - state: jug
         - state: jug1
@@ -17,7 +17,7 @@
           visible: false
     - type: Item
       size: Normal
-      sprite: Objects/Specific/Chemistry/jug.rsi
+      sprite: _ST/Items/Chemistry/jug.rsi # Stellar
     - type: MixableSolution
       solution: beaker
     - type: RefillableSolution
@@ -48,10 +48,10 @@
       solution: beaker
     - type: Appearance
     - type: SolutionContainerVisuals
-      maxFillLevels: 6
+      maxFillLevels: 8
       fillBaseName: jug
-      inHandsMaxFillLevels: 5
-      inHandsFillBaseName: -fill-
+      # inHandsMaxFillLevels: 5 # Stellar
+      # inHandsFillBaseName: -fill- # Stellar
     - type: StaticPrice
       price: 60
     - type: Damageable

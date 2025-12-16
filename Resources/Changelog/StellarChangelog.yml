@@ -385,3 +385,14 @@
   id: 47
   time: '2025-12-06T01:41:47.0000000+00:00'
   url: https://github.com/Stellar-Station/Stellar-Station/pull/129
+- author: AftrLite
+  changes:
+  - message: 'Respritening: Chemistry machines'
+    type: Add
+  - message: 'Respritening: All glassware'
+    type: Add
+  - message: Outlines & Cooldowns now have a new look!
+    type: Add
+  id: 48
+  time: '2025-12-16T11:10:41.0000000+00:00'
+  url: https://github.com/Stellar-Station/Stellar-Station/pull/130

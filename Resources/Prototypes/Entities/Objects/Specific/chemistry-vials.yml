@@ -17,18 +17,18 @@
     solution: beaker
   - type: SpaceGarbage
   - type: Sprite
-    sprite: Objects/Specific/Chemistry/vial.rsi
+    sprite: _ST/Items/Chemistry/vial.rsi # Stellar
     layers:
-      - state: vial-1
-      - state: vial-1-1
+      - state: vial # Stellar
+      - state: vial1 # Stellar
         map: ["enum.SolutionContainerLayers.Fill"]
         visible: false
   - type: Appearance
   - type: SolutionContainerVisuals
     maxFillLevels: 6
-    fillBaseName: vial-1-
-    inHandsMaxFillLevels: 4
-    inHandsFillBaseName: -fill-
+    fillBaseName: vial # Begin Stellar
+    # inHandsMaxFillLevels: 4
+    # inHandsFillBaseName: -fill- # End Stellar
   - type: Edible
     edible: Drink
     solution: beaker
@@ -60,7 +60,7 @@
         type: TransferAmountBoundUserInterface
   - type: Item
     size: Tiny
-    sprite: Objects/Specific/Chemistry/vial.rsi
+    sprite: _ST/Items/Chemistry/vial.rsi # Stellar
     shape:
     - 0,0,0,0
   - type: MeleeWeapon

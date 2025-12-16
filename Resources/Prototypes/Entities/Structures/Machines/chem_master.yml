@@ -7,16 +7,19 @@
     mode: SnapgridCenter
   components:
   - type: Sprite
-    sprite: Structures/Machines/mixer.rsi
-    snapCardinals: true
+    snapCardinals: true # Begin Stellar - Wallening
+    noRot: true
+    drawdepth: Mobs
+    offset: 0, 0.25
+    sprite: _ST/Tileset/Medical/chemmaster.rsi
     layers:
-    - state: mixer_empty
-    - state: mixer_screens
-      shader: unshaded
+    - state: base
+    - state: unshaded
+      shader: unshaded # End Stellar - Wallening
       map: ["enum.PowerDeviceVisualLayers.Powered"]
   - type: Icon
-    sprite: Structures/Machines/mixer.rsi
-    state: mixer_empty
+    sprite: _ST/Tileset/Medical/chemmaster.rsi # Begin Stellar - Wallening
+    state: base # End Stellar - Wallening
   - type: ItemMapper
     containerWhitelist: [beakerSlot]
     mapLayers:
