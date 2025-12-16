@@ -7,14 +7,14 @@
     tags:
     - GlassBeaker
   - type: Sprite
-    sprite: Objects/Specific/Chemistry/beaker.rsi
+    sprite: _ST/Items/Chemistry/beaker.rsi # Stellar
     layers:
       - state: beaker
       - state: beaker1
         map: ["enum.SolutionContainerLayers.Fill"]
         visible: false
   - type: Item
-    sprite: Objects/Specific/Chemistry/beaker.rsi
+    sprite: _ST/Items/Chemistry/beaker.rsi # Stellar
   - type: MeleeWeapon
     soundNoDamage:
       path: "/Audio/Effects/Fluids/splat.ogg"
@@ -55,7 +55,7 @@
     utensil: None
   - type: Appearance
   - type: SolutionContainerVisuals
-    maxFillLevels: 6
+    maxFillLevels: 8
     fillBaseName: beaker
   - type: Damageable
     damageContainer: Inorganic
@@ -107,14 +107,14 @@
     tags:
     - GlassBeaker
   - type: Sprite
-    sprite: Objects/Specific/Chemistry/beaker.rsi
+    sprite: _ST/Items/Chemistry/beaker.rsi # Stellar
     layers:
       - state: beaker
       - state: beaker1
         map: ["enum.SolutionContainerLayers.Fill"]
         visible: false
   - type: Item
-    sprite: Objects/Specific/Chemistry/beaker.rsi
+    sprite: _ST/Items/Chemistry/beaker.rsi # Stellar
   - type: MeleeWeapon
     soundNoDamage:
       path: "/Audio/Effects/Fluids/splat.ogg"
@@ -178,10 +178,10 @@
     materialComposition:
       Glass: 50
   - type: SolutionContainerVisuals
-    maxFillLevels: 6
+    maxFillLevels: 7 # Stellar
     fillBaseName: beaker
-    inHandsMaxFillLevels: 3
-    inHandsFillBaseName: -fill-
+    # inHandsMaxFillLevels: 3 # Stellar
+    # inHandsFillBaseName: -fill- # Stellar
 
 - type: entity
   suffix: cryoxadone
@@ -207,7 +207,7 @@
   - type: Spillable
     solution: beaker
   - type: Sprite
-    sprite: Objects/Specific/Chemistry/beaker_large.rsi
+    sprite: _ST/Items/Chemistry/beaker_large.rsi # Stellar
     layers:
       - state: beakerlarge
       - state: beakerlarge1
@@ -215,17 +215,17 @@
         visible: false
   - type: Item
     size: Normal
-    sprite: Objects/Specific/Chemistry/beaker_large.rsi
+    sprite: _ST/Items/Chemistry/beaker_large.rsi # Stellar
   - type: SolutionContainerManager
     solutions:
       beaker:
         maxVol: 100
   - type: Appearance
   - type: SolutionContainerVisuals
-    maxFillLevels: 6
+    maxFillLevels: 8
     fillBaseName: beakerlarge
-    inHandsMaxFillLevels: 4
-    inHandsFillBaseName: -fill-
+    # inHandsMaxFillLevels: 4 # Stellar
+    # inHandsFillBaseName: -fill- # Stellar
   - type: PhysicalComposition
     materialComposition:
       Glass: 100
@@ -278,7 +278,7 @@
   id: Dropper
   components:
   - type: Sprite
-    sprite: Objects/Specific/Chemistry/dropper.rsi
+    sprite: _ST/Items/Chemistry/dropper.rsi # Stellar
     layers:
       - state: dropper
       - state: dropper1
@@ -309,14 +309,14 @@
   - type: Spillable
     solution: injector
   - type: Item
-    sprite: Objects/Specific/Chemistry/dropper.rsi
+    sprite: _ST/Items/Chemistry/dropper.rsi # Stellar
     size: Tiny
   - type: Appearance
   - type: SolutionContainerVisuals
-    maxFillLevels: 1
+    maxFillLevels: 2 # Stellar
     fillBaseName: dropper
-    inHandsMaxFillLevels: 1
-    inHandsFillBaseName: -fill-
+    # inHandsMaxFillLevels: 1 # Stellar
+    # inHandsFillBaseName: -fill- # Stellar
   - type: StaticPrice
     price: 40
   - type: DnaSubstanceTrace
@@ -387,8 +387,8 @@
   - type: SolutionContainerVisuals
     maxFillLevels: 2
     fillBaseName: syringe
-    inHandsMaxFillLevels: 3
-    inHandsFillBaseName: -fill-
+    # inHandsMaxFillLevels: 3 # Stellar
+    # inHandsFillBaseName: -fill- # Stellar
   - type: Tag
     tags:
     - Syringe
@@ -432,8 +432,8 @@
   - type: SolutionContainerVisuals
     maxFillLevels: 3
     fillBaseName: minisyringe
-    inHandsMaxFillLevels: 3
-    inHandsFillBaseName: -fill-
+    # inHandsMaxFillLevels: 3 # Stellar
+    # inHandsFillBaseName: -fill- # Stellar
   - type: EmbeddableProjectile
     offset: "0,-0.1"
     minimumSpeed: 3

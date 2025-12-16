@@ -41,7 +41,7 @@
 - type: cargoProduct
   id: BulkPlantBGone
   icon:
-    sprite: Objects/Specific/Chemistry/jug.rsi
+    sprite: _ST/Items/Chemistry/jug.rsi # Stellar
     state: jug
   product: CratePlantBGone
   cost: 750
