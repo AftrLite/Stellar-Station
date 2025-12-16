@@ -332,9 +332,9 @@
   description: State-of-the-art hydraulic dropper built for cyborgs. It features a higher capacity than hand-powered droppers, able to hold 15 units of liquid.
   components:
   - type: Sprite
-    sprite: Objects/Specific/Chemistry/dropper.rsi
+    sprite: _ST/Items/Chemistry/dropper.rsi # Stellar
     layers:
-      - state: borgdropper
+      - state: dropper
       - state: dropper1
         map: ["enum.SolutionContainerLayers.Fill"]
         visible: false
@@ -343,7 +343,7 @@
       injector:
         maxVol: 15
   - type: Item
-    sprite: Objects/Specific/Chemistry/dropper.rsi
+    sprite: _ST/Items/Chemistry/dropper.rsi # Stellar
 
 - type: entity
   name: syringe
