@@ -14,16 +14,16 @@
       Glass: 25
   - type: SpaceGarbage
   - type: Sprite
-    sprite: Objects/Specific/Chemistry/bottle.rsi
+    sprite: _ST/Items/Chemistry/bottle.rsi # Stellar
     layers:
-    - state: bottle-1
-    - state: bottle-1-1
+    - state: bottle # Stellar
+    - state: bottle1 # Stellar
       map: ["enum.SolutionContainerLayers.Fill"]
       visible: false
   - type: Appearance
   - type: SolutionContainerVisuals
-    maxFillLevels: 6
-    fillBaseName: bottle-1-
+    maxFillLevels: 7 # Stellar
+    fillBaseName: bottle # Stellar
   - type: Edible
     edible: Drink
     solution: drink
@@ -55,7 +55,7 @@
         type: TransferAmountBoundUserInterface
   - type: Item
     size: Tiny
-    sprite: Objects/Specific/Chemistry/beaker.rsi
+    sprite: _ST/Items/Chemistry/bottle.rsi # Stellar
   - type: Spillable
     solution: drink
   - type: MeleeWeapon
@@ -110,12 +110,12 @@
   components:
   - type: Sprite
     layers:
-    - state: bottle-2
-    - state: bottle-2-1
+    - state: bottle # Stellar
+    - state: bottle1 # Stellar
       map: ["enum.SolutionContainerLayers.Fill"]
       visible: false
   - type: SolutionContainerVisuals
-    fillBaseName: bottle-2-
+    fillBaseName: bottle # Stellar
 
 - type: entity
   parent: BaseChemistryEmptyBottle
@@ -123,12 +123,12 @@
   components:
   - type: Sprite
     layers:
-    - state: bottle-3
-    - state: bottle-3-1
+    - state: bottle # Stellar
+    - state: bottle1 # Stellar
       map: ["enum.SolutionContainerLayers.Fill"]
       visible: false
   - type: SolutionContainerVisuals
-    fillBaseName: bottle-3-
+    fillBaseName: bottle # Stellar
 
 - type: entity
   parent: BaseChemistryEmptyBottle
@@ -136,12 +136,12 @@
   components:
   - type: Sprite
     layers:
-    - state: bottle-4
-    - state: bottle-4-1
+    - state: bottle # Stellar
+    - state: bottle1 # Stellar
       map: ["enum.SolutionContainerLayers.Fill"]
       visible: false
   - type: SolutionContainerVisuals
-    fillBaseName: bottle-4-
+    fillBaseName: bottle # Stellar
 
 - type: entity
   parent: BaseChemistryEmptyBottle

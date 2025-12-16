@@ -11,7 +11,7 @@
 - type: cargoProduct
   id: MedicalChemistrySupplies
   icon:
-    sprite: Objects/Specific/Chemistry/beaker.rsi
+    sprite: _ST/Items/Chemistry/beaker.rsi # Stellar
     state: beaker
   product: CrateChemistrySupplies
   cost: 750
@@ -21,7 +21,7 @@
 - type: cargoProduct
   id: MedicalChemistryVials
   icon:
-    sprite: Objects/Specific/Chemistry/vial.rsi
+    sprite: _ST/Items/Chemistry/vial.rsi # Stellar
     state: vial
   product: CrateChemistryVials
   cost: 1000
