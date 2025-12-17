@@ -6,9 +6,29 @@
   description: An industrial grade chemical dispenser.
   components:
   - type: Sprite
-    sprite: Structures/dispensers.rsi
-    state: industrial-working
-    snapCardinals: true
+    sprite: _ST/Tileset/Medical/chemdispenser.rsi # Begin Stellar - Wallening
+    noRot: true
+    drawdepth: Mobs
+    offset: 0, 0.25
+    layers:
+    - state: base
+    - state: unshaded
+      shader: unshaded # End Stellar - Wallening
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: ItemMapper
+    containerWhitelist: [beakerSlot]
+    mapLayers:
+      mixer_loaded:
+        whitelist:
+          components:
+          - FitsInDispenser # End Stellar - Wallening
   - type: Storage
     openOnActivate: false
     whitelist:
