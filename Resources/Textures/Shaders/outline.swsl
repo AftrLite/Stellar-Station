@@ -1,40 +1,22 @@
+
 light_mode unshaded; // I don't care for non-unshaded outlines. I cast PANTS
 
-const lowp int ring_count = 4;
-
-
+uniform highp float outline_width;
 uniform highp vec4 outline_color;
 
+void fragment() {
+	highp vec4 tex = zTexture(UV);
+	highp vec2 ps = TEXTURE_PIXEL_SIZE.xy;
+	highp float alpha = tex.a;
 
-highp vec2 square(highp float i){ // samples a square pattern
-	i *= 2.0;
-	return (vec2(clamp(abs(mod(i,2.0)-1.0),0.25,0.75), clamp(abs(mod(i+0.5,2.0)-1.0),0.25,0.75))-0.5) * 4.0;
-}
+    highp vec2 coord = FRAGCOORD.xy * SCREEN_PIXEL_SIZE.xy;
+    highp vec2 aspect = vec2(1.0/SCREEN_PIXEL_SIZE.x, 1.0/SCREEN_PIXEL_SIZE.y);
 
-highp vec4 tex(sampler2D sampler, highp vec2 uv){
-	vec4 clr;
-	if (uv.x > 0.0 && uv.y > 0.0 && uv.x < 1.0 && uv.y < 1.0){ // bleeding texture sampling fix
-		clr = texture(sampler, uv);
-	}else{clr = vec4(0.0);}
-	return clr;
-}
+	alpha = alpha + texture2D(TEXTURE, UV + vec2(0.0, -outline_width)*ps).a;
+	alpha = alpha + texture2D(TEXTURE, UV + vec2(0.0, outline_width)*ps).a;
+    alpha = alpha + texture2D(TEXTURE, UV + vec2(outline_width, 0.0)*ps).a;
+	alpha = alpha + texture2D(TEXTURE, UV + vec2(-outline_width,0.0)*ps).a;
 
-void fragment()
-{
-    highp vec3 transformed = projectionMatrix * viewMatrix * vec3(SCREEN_PIXEL_SIZE, 1.0);
-    highp vec2 size = TEXTURE_PIXEL_SIZE / transformed.xy * 3;
-	highp vec4 sprite_color = tex(TEXTURE, UV);
-
-	lowp float alpha = sprite_color.a;
-    highp float offset;
-
-	for(int i=0;i<ring_count;++i)
-    {
-		float r = float(i) / float(ring_count) + offset;
-		alpha = alpha+tex(TEXTURE, UV + size * square(r) * vec2(1.0, 1.0)).a * outline_color.a;
-    }
-
-    highp vec3 final_color = mix(outline_color.rgb, sprite_color.rgb, sprite_color.a);
-
+    highp vec3 final_color = mix(outline_color.rgb, tex.rgb, tex.a);
 	COLOR = vec4(final_color, clamp(alpha, 0.0, 1.0));
 }
