@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: ClothingShoesBaseButcherable
+  id: StellarClothingShoesMiscBlackDress
+  name: black dress shoes
+  description: Fashionable. Synth-leather. Pre-polished. Everything fancy shoes need.
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Shoes/shoes-dress-black.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Misc/Shoes/shoes-dress-black.rsi

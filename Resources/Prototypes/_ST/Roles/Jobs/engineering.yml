@@ -1,0 +1,42 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### ENGINEER
+- type: job
+  id: StellarJobEngineeringEngineer
+  name: stellar-job-name-engineer
+  description: stellar-job-description-engineer
+  playTimeTracker: StellarTimeTrackerEngineeringEngineer
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearEngineeringEngineer
+  icon: StellarJobIconEngineeringEngineer
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### ATMOSPHERIC TECHNICIAN
+- type: job
+  id: StellarJobEngineeringAtmosphericTechnician
+  name: stellar-job-name-atmospherictechnician
+  description: stellar-job-description-atmospherictechnician
+  playTimeTracker: StellarTimeTrackerEngineeringAtmosphericTechnician
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearEngineeringAtmosphericTechnician
+  icon: StellarJobIconEngineeringAtmosphericTechnician
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+- type: playTimeTracker
+  id: StellarTimeTrackerEngineeringEngineer
+
+- type: playTimeTracker
+  id: StellarTimeTrackerEngineeringAtmosphericTechnician
+

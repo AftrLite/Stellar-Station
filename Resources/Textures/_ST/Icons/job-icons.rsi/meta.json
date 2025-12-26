@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "license": "LicenseRef-Wallening",
+  "copyright": "By AftrLite for Stellar Station",
+  "size": {
+    "x": 8,
+    "y": 8
+  },
+  "states": [
+    {
+      "name": "command-Captain"
+    },
+    {
+      "name": "command-ChiefEngineer"
+    },
+    {
+      "name": "command-HeadOfMedicine"
+    },
+    {
+      "name": "command-HeadOfSecurity"
+    },
+    {
+      "name": "command-OperationsManager"
+    },
+    {
+      "name": "command-ResearchDirector"
+    },
+    {
+      "name": "command-ServiceDirector"
+    },
+    {
+      "name": "engineering-AtmosphericTechnician"
+    },
+    {
+      "name": "engineering-Engineer"
+    },
+    {
+      "name": "intern-Engineering"
+    },
+    {
+      "name": "intern-Medical"
+    },
+    {
+      "name": "intern-Science"
+    },
+    {
+      "name": "intern-Security"
+    },
+    {
+      "name": "intern-Supply"
+    },
+    {
+      "name": "medical-Chemist"
+    },
+    {
+      "name": "medical-Doctor"
+    },
+    {
+      "name": "medical-Paramedic"
+    },
+    {
+      "name": "medical-Psychologist"
+    },
+    {
+      "name": "misc-Admin"
+    },
+    {
+      "name": "misc-Mindshield",
+      "delays":
+      [
+        [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ]
+      ]
+    },
+    {
+      "name": "misc-Nanotrasen"
+    },
+    {
+      "name": "misc-NoId"
+    },
+    {
+      "name": "misc-Prisoner"
+    },
+    {
+      "name": "misc-Unknown"
+    },
+    {
+      "name": "science-Scientist"
+    },
+    {
+      "name": "security-Detective"
+    },
+    {
+      "name": "security-Officer"
+    },
+    {
+      "name": "security-Warden"
+    },
+    {
+      "name": "service-Assistant"
+    },
+    {
+      "name": "service-Bartender"
+    },
+    {
+      "name": "service-Botanist"
+    },
+    {
+      "name": "service-Chef"
+    },
+    {
+      "name": "service-Cleric"
+    },
+    {
+      "name": "service-Librarian"
+    },
+    {
+      "name": "service-Performer"
+    },
+    {
+      "name": "service-Reporter"
+    },
+    {
+      "name": "silicon-Ai"
+    },
+    {
+      "name": "silicon-Cyborg"
+    },
+    {
+      "name": "supply-Courier"
+    },
+    {
+      "name": "supply-Handler"
+    },
+    {
+      "name": "supply-Janitor"
+    }
+  ]
+}

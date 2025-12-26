@@ -1,0 +1,73 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### UNIFORMS
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformScienceScientist
+  name: scientist's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Science/Scientist/scientist-uniform.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Science/Scientist/scientist-uniform.rsi
+
+- type: entity
+  parent: StellarClothingUniformScienceScientist
+  id: StellarClothingUniformScienceScientistSkirt
+  name: scientist's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformScienceScientistAlt
+  name: scientist's alternate uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Science/Scientist/scientist-uniform-alt.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Science/Scientist/scientist-uniform-alt.rsi
+
+- type: entity
+  parent: StellarClothingUniformScienceScientistAlt
+  id: StellarClothingUniformScienceScientistAltSkirt
+  name: scientist's alternate uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformScienceScientistCasual
+  name: scientist's casual uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Science/Scientist/scientist-uniform-casual.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Science/Scientist/scientist-uniform-casual.rsi
+
+- type: entity
+  parent: StellarClothingUniformScienceScientistCasual
+  id: StellarClothingUniformScienceScientistCasualSkirt
+  name: scientist's casual uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt

@@ -1,0 +1,60 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### UNIFORMS
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformCommandHeadOfMedicine
+  name: head of medicine's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Command/HeadOfMedicine/headofmedicine-uniform.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Command/HeadOfMedicine/headofmedicine-uniform.rsi
+
+- type: entity
+  parent: StellarClothingUniformCommandHeadOfMedicine
+  id: StellarClothingUniformCommandHeadOfMedicineSkirt
+  name: head of medicine's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformCommandHeadOfMedicineTurtleneck
+  name: head of medicine's turtleneck uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Command/HeadOfMedicine/headofmedicine-uniform-turtleneck.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Command/HeadOfMedicine/headofmedicine-uniform-turtleneck.rsi
+
+- type: entity
+  parent: StellarClothingUniformCommandHeadOfMedicineTurtleneck
+  id: StellarClothingUniformCommandHeadOfMedicineTurtleneckSkirt
+  name: head of medicine's turtleneck uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+### BACKPACKS
+- type: entity
+  parent: [ClothingBackpack, BaseCommandContraband]
+  id: StellarClothingBackpackCommandHeadOfMedicine
+  name: head of medicine's backpack
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Back/Backpacks/backpack-base.rsi

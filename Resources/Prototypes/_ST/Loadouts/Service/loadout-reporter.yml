@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+# ROLE STARTING GEAR
+- type: startingGear
+  id: StellarGearServiceReporter
+  equipment:
+    shoes: StellarClothingShoesMiscBlackDress
+    id: StellarPDAServiceReporter
+    ears: StellarClothingHeadsetService
+  storage:
+    back:
+    - Flash
+
+# ROLE LOADOUT CONFIG
+- type: roleLoadout
+  id: StellarJobServiceReporter
+  groups:
+  - StellarReporterUniform
+  - StellarServiceBackpack
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+# LOADOUT GROUPS
+- type: loadoutGroup
+  id: StellarReporterUniform
+  name: loadout-group-rd-jumpsuit # TODO - Localization
+  loadouts:
+  - StellarReporterUniform
+  - StellarReporterUniformSkirt
+
+
+### UNIFORM
+- type: loadout
+  id: StellarReporterUniform
+  equipment:
+    jumpsuit: StellarClothingUniformServiceReporter
+
+- type: loadout
+  id: StellarReporterUniformSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformServiceReporterSkirt

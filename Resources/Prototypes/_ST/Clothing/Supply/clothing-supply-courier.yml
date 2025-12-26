@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### UNIFORMS
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformSupplyCourier
+  name: courier's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Supply/Courier/courier-uniform.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Supply/Courier/courier-uniform.rsi
+
+- type: entity
+  parent: StellarClothingUniformSupplyCourier
+  id: StellarClothingUniformSupplyCourierSkirt
+  name: courier's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt

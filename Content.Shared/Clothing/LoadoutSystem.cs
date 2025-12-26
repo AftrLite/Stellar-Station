@@ -37,7 +37,7 @@ public sealed class LoadoutSystem : EntitySystem
         if (string.IsNullOrEmpty(loadout))
             return string.Empty;
 
-        return "Job" + loadout;
+        return loadout; // Stellar DO NOT RETURN ARBITRARY STRINGS SO HELP ME GOD
     }
 
     public EntProtoId? GetFirstOrNull(LoadoutPrototype loadout)

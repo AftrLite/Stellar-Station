@@ -29,12 +29,12 @@
 
 # Silicons
 - type: roleLoadout
-  id: JobBorg
+  id: Borg # Stellar
   nameDataset: NamesBorg
   canCustomizeName: true
 
 - type: roleLoadout
-  id: JobStationAi
+  id: StationAi # Stellar
   nameDataset: NamesAI
   canCustomizeName: true
 

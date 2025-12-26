@@ -110,12 +110,12 @@
         Asphyxiation: -1.0
     maxSaturation: 15
   - type: Inventory
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Human/displacement.rsi
-            state: jumpsuit-female
+    # femaleDisplacements: # Begin Stellar
+    #   jumpsuit:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Human/displacement.rsi
+    #         state: jumpsuit-female # End Stellar
 
 - type: entity
   parent: MobHumanDummy
@@ -125,9 +125,9 @@
   - type: HumanoidAppearance
     species: SlimePerson
   - type: Inventory
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Human/displacement.rsi
-            state: jumpsuit-female
+    # femaleDisplacements: # Begin Stellar
+    #   jumpsuit:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Human/displacement.rsi
+    #         state: jumpsuit-female # End Stellar

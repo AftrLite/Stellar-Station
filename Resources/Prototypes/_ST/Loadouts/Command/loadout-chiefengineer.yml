@@ -1,0 +1,77 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+# ROLE STARTING GEAR
+- type: startingGear
+  id: StellarGearCommandChiefEngineer
+  equipment:
+    shoes: StellarClothingShoesMiscBlackDress
+    eyes: StellarClothingEyesMiscCommandGlasses
+    id: StellarPDACommandChiefEngineer
+    ears: StellarClothingHeadsetChiefEngineer
+  storage:
+    back:
+    - Flash
+
+
+
+# ROLE LOADOUT CONFIG
+- type: roleLoadout
+  id: StellarJobCommandChiefEngineer # Stellar
+  groups:
+  - StellarChiefEngineerUniform
+  - StellarChiefEngineerBackpack
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+
+# LOADOUT GROUPS
+- type: loadoutGroup
+  id: StellarChiefEngineerUniform
+  name: loadout-group-hop-jumpsuit # TODO - Localization
+  loadouts:
+  - StellarChiefEngineerUniform
+  - StellarChiefEngineerUniformSkirt
+  - StellarChiefEngineerUniformTurtleneck
+  - StellarChiefEngineerUniformTurtleneckSkirt
+
+- type: loadoutGroup
+  id: StellarChiefEngineerBackpack
+  name: loadout-group-hop-backpack # TODO - Localization
+  loadouts:
+  - StellarChiefEngineerBackpack
+
+
+
+# LOADOUT GROUP CONTENTS
+
+### UNIFORM
+- type: loadout
+  id: StellarChiefEngineerUniform
+  equipment:
+    jumpsuit: StellarClothingUniformCommandChiefEngineer
+
+- type: loadout
+  id: StellarChiefEngineerUniformSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformCommandChiefEngineerSkirt
+
+- type: loadout
+  id: StellarChiefEngineerUniformTurtleneck
+  equipment:
+    jumpsuit: StellarClothingUniformCommandChiefEngineerTurtleneck
+
+- type: loadout
+  id: StellarChiefEngineerUniformTurtleneckSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformCommandChiefEngineerTurtleneckSkirt
+
+
+### BACKPACK
+- type: loadout
+  id: StellarChiefEngineerBackpack
+  equipment:
+    back: StellarClothingBackpackCommandChiefEngineer

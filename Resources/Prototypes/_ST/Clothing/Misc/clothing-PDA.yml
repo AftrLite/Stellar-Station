@@ -1,0 +1,487 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: BasePDA
+  id: StellarPDABase
+  abstract: true
+  components:
+  - type: Icon
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+    state: icon
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+    layers:
+    - state: icon
+    - state: light_overlay
+      map: ["enum.PdaVisualLayers.Flashlight"]
+      shader: unshaded
+      visible: false
+    - state: id_overlay
+      map: ["enum.PdaVisualLayers.IdLight"]
+      shader: unshaded
+      visible: false
+
+### LEARNER JOBS
+- type: entity
+  name: engineering intern's PDA
+  parent: StellarPDABase
+  id: StellarPDAInternEngineering
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardInternEngineering
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: medical intern's PDA
+  parent: StellarPDABase
+  id: StellarPDAInternMedical
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardInternMedical
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: science intern's PDA
+  parent: StellarPDABase
+  id: StellarPDAInternScience
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardInternScience
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: security intern's PDA
+  parent: StellarPDABase
+  id: StellarPDAInternSecurity
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardInternSecurity
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: service intern's PDA
+  parent: StellarPDABase
+  id: StellarPDAInternService
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardInternService
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: supply intern's PDA
+  parent: StellarPDABase
+  id: StellarPDAInternSupply
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardInternSupply
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+
+
+### SERVICE
+- type: entity
+  name: assistant's PDA
+  parent: StellarPDABase
+  id: StellarPDAServiceAssistant
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardServiceAssistant
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: cleric's PDA
+  parent: StellarPDABase
+  id: StellarPDAServiceCleric
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardServiceCleric
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: librarian's PDA
+  parent: StellarPDABase
+  id: StellarPDAServiceLibrarian
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardServiceLibrarian
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: reporter's PDA
+  parent: StellarPDABase
+  id: StellarPDAServiceReporter
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardServiceReporter
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: performer's PDA
+  parent: StellarPDABase
+  id: StellarPDAServicePerformer
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardServicePerformer
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: bartender's PDA
+  parent: StellarPDABase
+  id: StellarPDAServiceBartender
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardServiceBartender
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: chef's PDA
+  parent: StellarPDABase
+  id: StellarPDAServiceChef
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardServiceChef
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: botanist's PDA
+  parent: StellarPDABase
+  id: StellarPDAServiceBotanist
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardServiceBotanist
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+
+
+### SCIENCE
+- type: entity
+  name: scientist's PDA
+  parent: StellarPDABase
+  id: StellarPDAScienceScientist
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardScienceScientist
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+
+
+### SECURITY
+- type: entity
+  name: botanist's PDA
+  parent: StellarPDABase
+  id: StellarPDASecurityOfficer
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardSecurityOfficer
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: botanist's PDA
+  parent: StellarPDABase
+  id: StellarPDASecurityDetective
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardSecurityDetective
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: botanist's PDA
+  parent: StellarPDABase
+  id: StellarPDASecurityWarden
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardSecurityWarden
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+
+
+### SUPPLY
+- type: entity
+  name: handler's PDA
+  parent: StellarPDABase
+  id: StellarPDASupplyHandler
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardSupplyHandler
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: courier's PDA
+  parent: StellarPDABase
+  id: StellarPDASupplyCourier
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardSupplyCourier
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: janitor's PDA
+  parent: StellarPDABase
+  id: StellarPDASupplyJanitor
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardSupplyJanitor
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+
+
+### ENGINEERING
+- type: entity
+  name: engineer's PDA
+  parent: StellarPDABase
+  id: StellarPDAEngineeringEngineer
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardEngineeringEngineer
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: engineer's PDA
+  parent: StellarPDABase
+  id: StellarPDAEngineeringAtmosphericTechnician
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardEngineeringAtmosphericTechnician
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+
+### MEDICAL
+- type: entity
+  name: psychologist's PDA
+  parent: StellarPDABase
+  id: StellarPDAMedicalPsychologist
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardMedicalPsychologist
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: doctor's PDA
+  parent: StellarPDABase
+  id: StellarPDAMedicalDoctor
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardMedicalDoctor
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: paramedic's PDA
+  parent: StellarPDABase
+  id: StellarPDAMedicalParamedic
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardMedicalParamedic
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: chemist's PDA
+  parent: StellarPDABase
+  id: StellarPDAMedicalChemist
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardMedicalChemist
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+
+
+### COMMAND
+- type: entity
+  name: captain's PDA
+  parent: StellarPDABase
+  id: StellarPDACommandCaptain
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardCommandCaptain
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: service director's PDA
+  parent: StellarPDABase
+  id: StellarPDACommandServiceDirector
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardCommandServiceDirector
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: chief engineer's PDA
+  parent: StellarPDABase
+  id: StellarPDACommandChiefEngineer
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIdCardCommandChiefEngineer
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: operations manager's PDA
+  parent: StellarPDABase
+  id: StellarPDACommandOperationsManager
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIdCardCommandOperationsManager
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: research director's PDA
+  parent: StellarPDABase
+  id: StellarPDACommandResearchDirector
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIdCardCommandResearchDirector
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: head of security's PDA
+  parent: StellarPDABase
+  id: StellarPDACommandHeadOfSecurity
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIdCardCommandHeadOfMedicine
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
+
+- type: entity
+  name: head of medicine's PDA
+  parent: StellarPDABase
+  id: StellarPDACommandHeadOfMedicine
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIdCardCommandHeadOfMedicine
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/PDA/pda-base.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"

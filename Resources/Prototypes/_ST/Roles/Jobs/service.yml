@@ -1,0 +1,155 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### BARTENDER
+- type: job
+  id: StellarJobServiceBartender
+  name: stellar-job-name-bartender
+  description: stellar-job-description-bartender
+  playTimeTracker: StellarTimeTrackerServiceBartender
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearServiceBartender
+  icon: StellarJobIconServiceBartender
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### BOTANIST
+- type: job
+  id: StellarJobServiceBotanist
+  name: stellar-job-name-botanist
+  description: stellar-job-description-botanist
+  playTimeTracker: StellarTimeTrackerServiceBotanist
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearServiceBotanist
+  icon: StellarJobIconServiceBotanist
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### CLERIC
+- type: job
+  id: StellarJobServiceCleric
+  name: stellar-job-name-cleric
+  description: stellar-job-description-cleric
+  playTimeTracker: StellarTimeTrackerServiceCleric
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearServiceCleric
+  icon: StellarJobIconServiceCleric
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### CHEF
+- type: job
+  id: StellarJobServiceChef
+  name: stellar-job-name-chef
+  description: stellar-job-description-chef
+  playTimeTracker: StellarTimeTrackerServiceChef
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearServiceChef
+  icon: StellarJobIconServiceChef
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### PERFORMER
+- type: job
+  id: StellarJobServicePerformer
+  name: stellar-job-name-performer
+  description: stellar-job-description-performer
+  playTimeTracker: StellarTimeTrackerServicePerformer
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearServicePerformer
+  icon: StellarJobIconServicePerformer
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### LIBRARIAN
+- type: job
+  id: StellarJobServiceLibrarian
+  name: stellar-job-name-librarian
+  description: stellar-job-description-librarian
+  playTimeTracker: StellarTimeTrackerServiceLibrarian
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearServiceLibrarian
+  icon: StellarJobIconServiceLibrarian
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### REPORTER
+- type: job
+  id: StellarJobServiceReporter
+  name: stellar-job-name-reporter
+  description: stellar-job-description-reporter
+  playTimeTracker: StellarTimeTrackerServiceReporter
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearServiceReporter
+  icon: StellarJobIconServiceReporter
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### ASSISTANT
+- type: job
+  id: StellarJobServiceAssistant
+  name: stellar-job-name-assistant
+  description: stellar-job-description-assistant
+  playTimeTracker: StellarTimeTrackerServiceAssistant
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearServiceAssistant
+  icon: StellarJobIconServiceAssistant
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+- type: playTimeTracker
+  id: StellarTimeTrackerServiceBartender
+
+- type: playTimeTracker
+  id: StellarTimeTrackerServiceBotanist
+
+- type: playTimeTracker
+  id: StellarTimeTrackerServiceCleric
+
+- type: playTimeTracker
+  id: StellarTimeTrackerServiceChef
+
+- type: playTimeTracker
+  id: StellarTimeTrackerServicePerformer
+
+- type: playTimeTracker
+  id: StellarTimeTrackerServiceLibrarian
+
+- type: playTimeTracker
+  id: StellarTimeTrackerServiceReporter
+
+- type: playTimeTracker
+  id: StellarTimeTrackerServiceAssistant

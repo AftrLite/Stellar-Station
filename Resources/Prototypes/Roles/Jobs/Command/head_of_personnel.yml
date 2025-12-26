@@ -24,6 +24,7 @@
   icon: "JobIconHeadOfPersonnel"
   supervisors: job-supervisors-captain
   canBeAntag: false
+  setPreference: false # Stellar
   access:
   - Command
   - HeadOfPersonnel

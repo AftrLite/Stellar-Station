@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### UNIFORMS
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformServiceBartender
+  name: bartender's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Service/Bartender/bartender-uniform.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Service/Bartender/bartender-uniform.rsi
+
+- type: entity
+  parent: StellarClothingUniformServiceBartender
+  id: StellarClothingUniformServiceBartenderSkirt
+  name: bartender's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt

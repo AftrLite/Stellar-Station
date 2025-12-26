@@ -1,0 +1,69 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+# ROLE STARTING GEAR
+- type: startingGear
+  id: StellarGearCommandResearchDirector
+  equipment:
+    shoes: StellarClothingShoesMiscBlackDress
+    eyes: StellarClothingEyesMiscCommandGlasses
+    id: StellarPDACommandResearchDirector
+    ears: StellarClothingHeadsetResearchDirector
+  storage:
+    back:
+    - Flash
+
+
+
+# ROLE LOADOUT CONFIG
+- type: roleLoadout
+  id: StellarJobCommandResearchDirector
+  groups:
+  # - StellarResearchDirectorNeck
+  - StellarResearchDirectorUniform
+  # - StellarResearchDirectorOuterClothing
+  - StellarResearchDirectorBackpack
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+
+# LOADOUT GROUPS
+- type: loadoutGroup
+  id: StellarResearchDirectorUniform
+  name: loadout-group-rd-jumpsuit # TODO - Localization
+  loadouts:
+  - StellarResearchDirectorUniform
+  - StellarResearchDirectorUniformSkirt
+
+- type: loadoutGroup
+  id: StellarResearchDirectorBackpack
+  name: loadout-group-rd-backpack # TODO - Localization
+  loadouts:
+  - StellarResearchDirectorBackpack
+
+
+
+# LOADOUT GROUP CONTENTS
+### HEAD
+
+
+
+### UNIFORM
+- type: loadout
+  id: StellarResearchDirectorUniform
+  equipment:
+    jumpsuit: StellarClothingUniformCommandResearchDirector
+
+- type: loadout
+  id: StellarResearchDirectorUniformSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformCommandResearchDirectorSkirt
+
+### BACKPACK
+- type: loadout
+  id: StellarResearchDirectorBackpack
+  equipment:
+    back: StellarClothingBackpackCommandResearchDirector

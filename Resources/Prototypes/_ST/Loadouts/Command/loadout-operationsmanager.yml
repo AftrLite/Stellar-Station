@@ -1,0 +1,77 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+# ROLE STARTING GEAR
+- type: startingGear
+  id: StellarGearCommandOperationsManager
+  equipment:
+    shoes: StellarClothingShoesMiscBlackDress
+    eyes: StellarClothingEyesMiscCommandGlasses
+    id: StellarPDACommandOperationsManager
+    ears: StellarClothingHeadsetOperationsManager
+  storage:
+    back:
+    - Flash
+
+
+
+# ROLE LOADOUT CONFIG
+- type: roleLoadout
+  id: StellarJobCommandOperationsManager
+  groups:
+  - StellarOperationsManagerUniform
+  - StellarOperationsManagerBackpack
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+
+# LOADOUT GROUPS
+- type: loadoutGroup
+  id: StellarOperationsManagerUniform
+  name: loadout-group-hop-jumpsuit # TODO - Localization
+  loadouts:
+  - StellarOperationsManagerUniform
+  - StellarOperationsManagerUniformSkirt
+  - StellarOperationsManagerUniformTurtleneck
+  - StellarOperationsManagerUniformTurtleneckSkirt
+
+- type: loadoutGroup
+  id: StellarOperationsManagerBackpack
+  name: loadout-group-hop-backpack # TODO - Localization
+  loadouts:
+  - StellarOperationsManagerBackpack
+
+
+
+# LOADOUT GROUP CONTENTS
+
+### UNIFORM
+- type: loadout
+  id: StellarOperationsManagerUniform
+  equipment:
+    jumpsuit: StellarClothingUniformCommandOperationsManager
+
+- type: loadout
+  id: StellarOperationsManagerUniformSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformCommandOperationsManagerSkirt
+
+- type: loadout
+  id: StellarOperationsManagerUniformTurtleneck
+  equipment:
+    jumpsuit: StellarClothingUniformCommandOperationsManagerTurtleneck
+
+- type: loadout
+  id: StellarOperationsManagerUniformTurtleneckSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformCommandOperationsManagerTurtleneckSkirt
+
+
+### BACKPACK
+- type: loadout
+  id: StellarOperationsManagerBackpack
+  equipment:
+    back: StellarClothingBackpackCommandOperationsManager

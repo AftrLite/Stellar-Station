@@ -1,0 +1,215 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### CAPTAIN
+- type: job
+  id: StellarJobCommandCaptain
+  name: stellar-job-name-captain
+  description: stellar-job-description-captain
+  playTimeTracker: StellarTimeTrackerCommandCaptain
+  # requirements:
+  #   - !type:RoleTimeRequirement
+  #     role: JobCargoTechnician
+  #     time: 5h
+  #   - !type:DepartmentTimeRequirement
+  #     department: Cargo
+  #     time: 10h
+  weight: 10
+  startingGear: StellarGearCommandCaptain
+  icon: "StellarJobIconCommandCaptain"
+  supervisors: job-supervisors-captain
+  joinNotifyCrew: true
+  canBeAntag: false
+  access:
+  - Maintenance
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: CommandStaff
+
+### OPERATIONS MANAGER
+- type: job
+  id: StellarJobCommandOperationsManager
+  name: stellar-job-name-operationsmanager
+  description: stellar-job-description-operationsmanager
+  playTimeTracker: StellarTimeTrackerCommandOperationsManager
+  # requirements:
+  #   - !type:RoleTimeRequirement
+  #     role: JobCargoTechnician
+  #     time: 5h
+  #   - !type:DepartmentTimeRequirement
+  #     department: Cargo
+  #     time: 10h
+  weight: 10
+  startingGear: StellarGearCommandOperationsManager
+  icon: "StellarJobIconCommandOperationsManager"
+  supervisors: job-supervisors-captain
+  canBeAntag: false
+  access:
+  - Maintenance
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: CommandStaff
+
+
+### CHIEF ENGINEER
+- type: job
+  id: StellarJobCommandChiefEngineer
+  name: stellar-job-name-chiefengineer
+  description: stellar-job-description-chiefengineer
+  playTimeTracker: StellarTimeTrackerCommandChiefEngineer
+  # requirements:
+  #   - !type:RoleTimeRequirement
+  #     role: JobCargoTechnician
+  #     time: 5h
+  #   - !type:DepartmentTimeRequirement
+  #     department: Cargo
+  #     time: 10h
+  weight: 10
+  startingGear: StellarGearCommandChiefEngineer
+  icon: "StellarJobIconCommandChiefEngineer"
+  supervisors: job-supervisors-captain
+  canBeAntag: false
+  access:
+  - Maintenance
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: CommandStaff
+
+### SERVICE DIRECTOR
+- type: job
+  id: StellarJobCommandServiceDirector
+  name: stellar-job-name-servicedirector
+  description: stellar-job-description-servicedirector
+  playTimeTracker: StellarTimeTrackerCommandServiceDirector
+  # requirements:
+  #   - !type:RoleTimeRequirement
+  #     role: JobCargoTechnician
+  #     time: 5h
+  #   - !type:DepartmentTimeRequirement
+  #     department: Cargo
+  #     time: 10h
+  weight: 10
+  startingGear: StellarGearCommandServiceDirector
+  icon: "StellarJobIconCommandServiceDirector"
+  supervisors: job-supervisors-captain
+  canBeAntag: false
+  access:
+  - Maintenance
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: CommandStaff
+
+### RESEARCH DIRECTOR
+- type: job
+  id: StellarJobCommandResearchDirector
+  name: stellar-job-name-researchdirector
+  description: stellar-job-description-researchdirector
+  playTimeTracker: StellarTimeTrackerCommandResearchDirector
+  # requirements:
+  #   - !type:RoleTimeRequirement
+  #     role: JobCargoTechnician
+  #     time: 5h
+  #   - !type:DepartmentTimeRequirement
+  #     department: Cargo
+  #     time: 10h
+  weight: 10
+  startingGear: StellarGearCommandResearchDirector
+  icon: "StellarJobIconCommandResearchDirector"
+  supervisors: job-supervisors-captain
+  canBeAntag: false
+  access:
+  - Maintenance
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: CommandStaff
+
+### HEAD OF MEDICINE
+- type: job
+  id: StellarJobCommandHeadOfMedicine
+  name: stellar-job-name-headofmedicine
+  description: stellar-job-description-headofmedicine
+  playTimeTracker: StellarTimeTrackerCommandHeadOfMedicine
+  # requirements:
+  #   - !type:RoleTimeRequirement
+  #     role: JobCargoTechnician
+  #     time: 5h
+  #   - !type:DepartmentTimeRequirement
+  #     department: Cargo
+  #     time: 10h
+  weight: 10
+  startingGear: StellarGearCommandHeadOfMedicine
+  icon: "StellarJobIconCommandHeadOfMedicine"
+  supervisors: job-supervisors-captain
+  canBeAntag: false
+  access:
+  - Maintenance
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: CommandStaff
+
+### HEAD OF SECURITY
+- type: job
+  id: StellarJobCommandHeadOfSecurity
+  name: stellar-job-name-headofsecurity
+  description: stellar-job-description-headofsecurity
+  playTimeTracker: StellarTimeTrackerCommandHeadOfSecurity
+  # requirements:
+  #   - !type:RoleTimeRequirement
+  #     role: JobCargoTechnician
+  #     time: 5h
+  #   - !type:DepartmentTimeRequirement
+  #     department: Cargo
+  #     time: 10h
+  weight: 10
+  startingGear: StellarGearCommandHeadOfSecurity
+  icon: "StellarJobIconCommandHeadOfSecurity"
+  supervisors: job-supervisors-captain
+  canBeAntag: false
+  access:
+  - Maintenance
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: CommandStaff
+
+- type: playTimeTracker
+  id: StellarTimeTrackerCommandCaptain
+
+- type: playTimeTracker
+  id: StellarTimeTrackerCommandChiefEngineer
+
+- type: playTimeTracker
+  id: StellarTimeTrackerCommandOperationsManager
+
+- type: playTimeTracker
+  id: StellarTimeTrackerCommandServiceDirector
+
+- type: playTimeTracker
+  id: StellarTimeTrackerCommandResearchDirector
+
+- type: playTimeTracker
+  id: StellarTimeTrackerCommandHeadOfSecurity
+
+- type: playTimeTracker
+  id: StellarTimeTrackerCommandHeadOfMedicine

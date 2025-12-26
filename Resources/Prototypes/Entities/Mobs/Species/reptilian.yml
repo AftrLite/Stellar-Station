@@ -72,33 +72,33 @@
   - type: Wagging
   - type: Inventory
     speciesId: reptilian
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Human/displacement.rsi
-            state: jumpsuit-female
-      head:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Reptilian/displacement.rsi
-            state: head
-      mask:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Reptilian/displacement.rsi
-            state: mask
-    displacements:
-      head:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Reptilian/displacement.rsi
-            state: head
-      mask:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Reptilian/displacement.rsi
-            state: mask
+    # femaleDisplacements: # Begin Stellar
+    #   jumpsuit:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Human/displacement.rsi
+    #         state: jumpsuit-female
+    #   head:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Reptilian/displacement.rsi
+    #         state: head
+    #   mask:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Reptilian/displacement.rsi
+    #         state: mask
+    # displacements:
+    #   head:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Reptilian/displacement.rsi
+    #         state: head
+    #   mask:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Reptilian/displacement.rsi
+    #         state: mask # End Stellar
 
 - type: entity
   parent: BaseSpeciesDummy
@@ -115,32 +115,32 @@
     undergarmentBottom: UndergarmentBottomBoxersReptilian
   - type: Inventory
     speciesId: reptilian
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Reptilian/displacement.rsi
-            state: jumpsuit-female
-      head:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Reptilian/displacement.rsi
-            state: head
-      mask:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Reptilian/displacement.rsi
-            state: mask
-    displacements:
-      head:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Reptilian/displacement.rsi
-            state: head
-      mask:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Reptilian/displacement.rsi
-            state: mask
+    # femaleDisplacements: # Begin Stellar
+    #   jumpsuit:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Reptilian/displacement.rsi
+    #         state: jumpsuit-female
+    #   head:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Reptilian/displacement.rsi
+    #         state: head
+    #   mask:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Reptilian/displacement.rsi
+    #         state: mask
+    # displacements:
+    #   head:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Reptilian/displacement.rsi
+    #         state: head
+    #   mask:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Reptilian/displacement.rsi
+    #         state: mask # End Stellar
 
 #Weh

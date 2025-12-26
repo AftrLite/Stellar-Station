@@ -1,0 +1,93 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+# ROLE STARTING GEAR
+- type: startingGear
+  id: StellarGearCommandHeadOfSecurity
+  equipment:
+    shoes: StellarClothingShoesMiscBlackDress
+    eyes: StellarClothingEyesMiscCommandGlasses
+    id: StellarPDACommandHeadOfSecurity
+    ears: StellarClothingHeadsetHeadOfSecurity
+  storage:
+    back:
+    - Flash
+
+
+
+# ROLE LOADOUT CONFIG
+- type: roleLoadout
+  id: StellarJobCommandHeadOfSecurity
+  groups:
+  # - StellarHeadOfSecurityNeck
+  - StellarHeadOfSecurityUniform
+  # - StellarHeadOfSecurityOuterClothing
+  - StellarHeadOfSecurityBackpack
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+
+# LOADOUT GROUPS
+- type: loadoutGroup
+  id: StellarHeadOfSecurityUniform
+  name: loadout-group-rd-jumpsuit # TODO - Localization
+  loadouts:
+  - StellarHeadOfSecurityUniform
+  - StellarHeadOfSecurityUniformSkirt
+  - StellarHeadOfSecurityUniformCasual
+  - StellarHeadOfSecurityUniformCasualSkirt
+  - StellarHeadOfSecurityUniformFormal
+  - StellarHeadOfSecurityUniformParade
+
+- type: loadoutGroup
+  id: StellarHeadOfSecurityBackpack
+  name: loadout-group-rd-backpack # TODO - Localization
+  loadouts:
+  - StellarHeadOfSecurityBackpack
+
+
+
+# LOADOUT GROUP CONTENTS
+
+### HEAD
+
+
+### UNIFORM
+- type: loadout
+  id: StellarHeadOfSecurityUniform
+  equipment:
+    jumpsuit: StellarClothingUniformCommandHeadOfSecurity
+
+- type: loadout
+  id: StellarHeadOfSecurityUniformSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformCommandHeadOfSecuritySkirt
+
+- type: loadout
+  id: StellarHeadOfSecurityUniformCasual
+  equipment:
+    jumpsuit: StellarClothingUniformCommandHeadOfSecurityAlt
+
+- type: loadout
+  id: StellarHeadOfSecurityUniformCasualSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformCommandHeadOfSecurityAltSkirt
+
+- type: loadout
+  id: StellarHeadOfSecurityUniformFormal
+  equipment:
+    jumpsuit: StellarClothingUniformCommandHeadOfSecurityFormal
+
+- type: loadout
+  id: StellarHeadOfSecurityUniformParade
+  equipment:
+    jumpsuit: StellarClothingUniformCommandHeadOfSecurityParade
+
+### BACKPACK
+- type: loadout
+  id: StellarHeadOfSecurityBackpack
+  equipment:
+    back: StellarClothingBackpackCommandHeadOfSecurity

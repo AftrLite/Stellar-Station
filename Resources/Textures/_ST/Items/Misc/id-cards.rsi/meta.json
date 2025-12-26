@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "ID Cards for Funky Station - Design by @Catazeus (GitHub) and Polishing + QA by @vectorassembly (GitHub).",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+    "states": [
+        {
+            "name": "base-default"
+        },
+        {
+            "name": "base-silver"
+        },
+        {
+            "name": "base-gold"
+        },
+        {
+            "name": "base-nt"
+        },
+        {
+            "name": "base-prison"
+        },
+        {
+            "name": "decal-stripe-command"
+        },
+        {
+            "name": "decal-stripe-cargo"
+        },
+        {
+            "name": "decal-stripe-cc"
+        },
+        {
+            "name": "decal-stripe-civillian"
+        },
+        {
+            "name": "decal-stripe-criminal"
+        },
+        {
+            "name": "decal-stripe-engineering"
+        },
+
+        {
+            "name": "decal-stripe-medical"
+        },
+        {
+            "name": "decal-stripe-science"
+        },
+        {
+            "name": "decal-stripe-security"
+        },
+        {
+            "name": "decal-stripe-service"
+        },
+        {
+            "name": "decal-stripe-rainbow"
+        },
+        {
+            "name": "decal-stripe-stripes"
+        },
+        {
+            "name": "decal-discriminator-command"
+        },
+        {
+            "name": "decal-discriminator-cc"
+        },
+        {
+            "name": "decal-discriminator-security"
+        }
+    ]
+}

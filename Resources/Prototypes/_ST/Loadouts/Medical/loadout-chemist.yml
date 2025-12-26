@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+# ROLE STARTING GEAR
+- type: startingGear
+  id: StellarGearMedicalChemist
+  equipment:
+    shoes: StellarClothingShoesMiscBlackDress
+    id: StellarPDAMedicalChemist
+    ears: StellarClothingHeadsetMedical
+  storage:
+    back:
+    - Flash
+
+# ROLE LOADOUT CONFIG
+- type: roleLoadout
+  id: StellarJobMedicalChemist
+  groups:
+  - StellarChemistUniform
+  - StellarMedicalBackpack
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+# LOADOUT GROUPS
+- type: loadoutGroup
+  id: StellarChemistUniform
+  name: loadout-group-rd-jumpsuit # TODO - Localization
+  loadouts:
+  - StellarChemistUniform
+  - StellarChemistUniformSkirt
+
+
+### UNIFORM
+- type: loadout
+  id: StellarChemistUniform
+  equipment:
+    jumpsuit: StellarClothingUniformMedicalChemist
+
+- type: loadout
+  id: StellarChemistUniformSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformMedicalChemistSkirt

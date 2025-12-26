@@ -120,58 +120,58 @@
         visible: false
   - type: Inventory
     speciesId: moth
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: jumpsuit-female
-      back:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: back
-      outerClothing:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: outerclothing
-      gloves:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: hand
-      shoes:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: shoes
-    displacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: jumpsuit-male
-      back:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: back
-      outerClothing:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: outerclothing
-      gloves:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: hand
-      shoes:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: shoes
+    # femaleDisplacements: # Begin Stellar
+    #   jumpsuit:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: jumpsuit-female
+    #   back:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: back
+    #   outerClothing:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: outerclothing
+    #   gloves:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: hand
+    #   shoes:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: shoes
+    # displacements:
+    #   jumpsuit:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: jumpsuit-male
+    #   back:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: back
+    #   outerClothing:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: outerclothing
+    #   gloves:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: hand
+    #   shoes:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: shoes # End Stellar
 
 - type: entity
   parent: BaseSpeciesDummy
@@ -182,55 +182,55 @@
     species: Moth
   - type: Inventory
     speciesId: moth
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: jumpsuit-female
-      back:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: back
-      outerClothing:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: outerclothing
-      gloves:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: hand
-      shoes:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: shoes
-    displacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: jumpsuit-male
-      back:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: back
-      outerClothing:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: outerclothing
-      gloves:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: hand
-      shoes:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Moth/displacement.rsi
-            state: shoes
+    # femaleDisplacements: # Begin Stellar
+    #   jumpsuit:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: jumpsuit-female
+    #   back:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: back
+    #   outerClothing:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: outerclothing
+    #   gloves:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: hand
+    #   shoes:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: shoes
+    # displacements:
+    #   jumpsuit:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: jumpsuit-male
+    #   back:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: back
+    #   outerClothing:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: outerclothing
+    #   gloves:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: hand
+    #   shoes:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Moth/displacement.rsi
+    #         state: shoes # End Stellar

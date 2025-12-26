@@ -1,0 +1,70 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+# ROLE STARTING GEAR
+- type: startingGear
+  id: StellarGearInternEngineering
+  equipment:
+    shoes: StellarClothingShoesMiscBlackDress
+    id: StellarPDAInternEngineering
+    ears: StellarClothingHeadsetEngineering
+
+- type: startingGear
+  id: StellarGearInternMedical
+  equipment:
+    shoes: StellarClothingShoesMiscBlackDress
+    id: StellarPDAInternMedical
+    ears: StellarClothingHeadsetMedical
+
+- type: startingGear
+  id: StellarGearInternScience
+  equipment:
+    shoes: StellarClothingShoesMiscBlackDress
+    id: StellarPDAInternScience
+    ears: StellarClothingHeadsetScience
+
+- type: startingGear
+  id: StellarGearInternSecurity
+  equipment:
+    shoes: StellarClothingShoesMiscBlackDress
+    id: StellarPDAInternSecurity
+    ears: StellarClothingHeadsetSecurity
+
+- type: startingGear
+  id: StellarGearInternSupply
+  equipment:
+    shoes: StellarClothingShoesMiscBlackDress
+    id: StellarPDAInternSupply
+    ears: StellarClothingHeadsetSupply
+
+# # ROLE LOADOUT CONFIG
+# - type: roleLoadout
+#   id: StellarJobSecurityWarden
+#   groups:
+#   - StellarWardenUniform
+#   - StellarSecurityBackpack
+#   - Survival
+#   - Trinkets
+#   - GroupSpeciesBreathTool
+#   - GroupTankHarness
+
+# # LOADOUT GROUPS
+# - type: loadoutGroup
+#   id: StellarWardenUniform
+#   name: loadout-group-rd-jumpsuit # TODO - Localization
+#   loadouts:
+#   - StellarWardenUniform
+#   - StellarWardenUniformSkirt
+
+
+# ### UNIFORM
+# - type: loadout
+#   id: StellarWardenUniform
+#   equipment:
+#     jumpsuit: StellarClothingUniformSecurityWarden
+
+# - type: loadout
+#   id: StellarWardenUniformSkirt
+#   equipment:
+#     jumpsuit: StellarClothingUniformSecurityWardenSkirt

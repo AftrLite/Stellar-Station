@@ -1,0 +1,80 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### DOCTOR
+- type: job
+  id: StellarJobMedicalDoctor
+  name: stellar-job-name-doctor
+  description: stellar-job-description-doctor
+  playTimeTracker: StellarTimeTrackerMedicalDoctor
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearMedicalDoctor
+  icon: StellarJobIconMedicalDoctor
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### CHEMIST
+- type: job
+  id: StellarJobMedicalChemist
+  name: stellar-job-name-chemist
+  description: stellar-job-description-chemist
+  playTimeTracker: StellarTimeTrackerMedicalChemist
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearMedicalChemist
+  icon: StellarJobIconMedicalChemist
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### PARAMEDIC
+- type: job
+  id: StellarJobMedicalParamedic
+  name: stellar-job-name-paramedic
+  description: stellar-job-description-paramedic
+  playTimeTracker: StellarTimeTrackerMedicalParamedic
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearMedicalParamedic
+  icon: StellarJobIconMedicalParamedic
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### PSYCHOLOGIST
+- type: job
+  id: StellarJobMedicalPsychologist
+  name: stellar-job-name-psychologist
+  description: stellar-job-description-psychologist
+  playTimeTracker: StellarTimeTrackerMedicalPsychologist
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearMedicalPsychologist
+  icon: StellarJobIconMedicalPsychologist
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+
+- type: playTimeTracker
+  id: StellarTimeTrackerMedicalDoctor
+
+- type: playTimeTracker
+  id: StellarTimeTrackerMedicalChemist
+
+- type: playTimeTracker
+  id: StellarTimeTrackerMedicalParamedic
+
+- type: playTimeTracker
+  id: StellarTimeTrackerMedicalPsychologist

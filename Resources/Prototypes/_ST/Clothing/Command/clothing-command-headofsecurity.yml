@@ -1,0 +1,82 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### UNIFORMS
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformCommandHeadOfSecurity
+  name: head of security's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Command/HeadOfSecurity/headofsecurity-uniform.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Command/HeadOfSecurity/headofsecurity-uniform.rsi
+
+- type: entity
+  parent: StellarClothingUniformCommandHeadOfSecurity
+  id: StellarClothingUniformCommandHeadOfSecuritySkirt
+  name: head of security's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformCommandHeadOfSecurityAlt
+  name: head of security's alternate uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Command/HeadOfSecurity/headofsecurity-uniform-alt.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Command/HeadOfSecurity/headofsecurity-uniform-alt.rsi
+
+- type: entity
+  parent: StellarClothingUniformCommandHeadOfSecurityAlt
+  id: StellarClothingUniformCommandHeadOfSecurityAltSkirt
+  name: head of security's alternate uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformCommandHeadOfSecurityFormal
+  name: head of security's formal uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Command/HeadOfSecurity/headofsecurity-uniform-formal.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Command/HeadOfSecurity/headofsecurity-uniform-formal.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformCommandHeadOfSecurityParade
+  name: head of security's parade uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Command/HeadOfSecurity/headofsecurity-uniform-parade.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Command/HeadOfSecurity/headofsecurity-uniform-parade.rsi
+
+### BACKPACKS
+- type: entity
+  parent: [ClothingBackpack, BaseCommandContraband]
+  id: StellarClothingBackpackCommandHeadOfSecurity
+  name: service director's backpack
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Back/Backpacks/backpack-base.rsi

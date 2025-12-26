@@ -11,8 +11,8 @@ public sealed class PdaVisualizerSystem : VisualizerSystem<PdaVisualsComponent>
         if (args.Sprite == null)
             return;
 
-        if (AppearanceSystem.TryGetData<string>(uid, PdaVisuals.PdaType, out var pdaType, args.Component))
-            SpriteSystem.LayerSetRsiState((uid, args.Sprite), PdaVisualLayers.Base, pdaType);
+        // if (AppearanceSystem.TryGetData<string>(uid, PdaVisuals.PdaType, out var pdaType, args.Component)) # Stellar PLEASE DON'T EVER HARDCODE SPRITE VISUALS FOR GENERIC ITEMS LIKE THESE IN THIS WAY
+        //     SpriteSystem.LayerSetRsiState((uid, args.Sprite), PdaVisualLayers.Base, pdaType); # Stellar PLEASE DON'T EVER HARDCODE SPRITE VISUALS FOR GENERIC ITEMS LIKE THESE IN THIS WAY
 
         if (AppearanceSystem.TryGetData<bool>(uid, UnpoweredFlashlightVisuals.LightOn, out var isFlashlightOn, args.Component))
             SpriteSystem.LayerSetVisible((uid, args.Sprite), PdaVisualLayers.Flashlight, isFlashlightOn);

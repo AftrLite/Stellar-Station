@@ -1,0 +1,16 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### LOADOUT GROUPS
+- type: loadoutGroup
+  id: StellarEngineeringBackpack
+  name: loadout-group-rd-backpack # TODO - Localization
+  loadouts:
+  - StellarEngineeringBackpack
+
+### BACKPACK
+- type: loadout
+  id: StellarEngineeringBackpack
+  equipment:
+    back: StellarClothingBackpackEngineering

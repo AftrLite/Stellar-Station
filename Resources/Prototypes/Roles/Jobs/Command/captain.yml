@@ -25,6 +25,7 @@
   joinNotifyCrew: true
   supervisors: job-supervisors-centcom
   canBeAntag: false
+  setPreference: false # Stellar
   accessGroups:
   - AllAccess
   special:

@@ -1,0 +1,202 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: ClothingHeadset
+  id: StellarClothingHeadsetGrey
+  name: basic headset
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Ears/Headsets/headset-base.rsi
+
+- type: entity
+  parent: ClothingHeadset
+  id: StellarClothingHeadsetService
+  name: service headset
+  description: LOREM IPSUM
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyService
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Ears/Headsets/headset-base.rsi
+
+- type: entity
+  parent: ClothingHeadset
+  id: StellarClothingHeadsetSupply
+  name: supply headset
+  description: LOREM IPSUM
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCargo
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Ears/Headsets/headset-base.rsi
+
+- type: entity
+  parent: ClothingHeadset
+  id: StellarClothingHeadsetEngineering
+  name: engineering headset
+  description: LOREM IPSUM
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyEngineering
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Ears/Headsets/headset-base.rsi
+
+- type: entity
+  parent: ClothingHeadset
+  id: StellarClothingHeadsetMedical
+  name: medical headset
+  description: LOREM IPSUM
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyMedical
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Ears/Headsets/headset-base.rsi
+
+- type: entity
+  parent: ClothingHeadset
+  id: StellarClothingHeadsetScience
+  name: science headset
+  description: LOREM IPSUM
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyScience
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Ears/Headsets/headset-base.rsi
+
+- type: entity
+  parent: [ClothingHeadset, BaseSecurityLawyerContraband]
+  id: StellarClothingHeadsetSecurity
+  name: security headset
+  description: LOREM IPSUM
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySecurity
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Ears/Headsets/headset-base.rsi
+
+
+
+# COMMAND
+- type: entity
+  parent: [ClothingHeadset, BaseCommandContraband]
+  id: StellarClothingHeadsetCaptain
+  name: captain's headset
+  description: LOREM IPSUM
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyStationMaster
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Ears/Headsets/headset-base.rsi
+
+- type: entity
+  parent: [StellarClothingHeadsetService, BaseCommandContraband]
+  id: StellarClothingHeadsetServiceDirector
+  name: service director's headset
+  description: LOREM IPSUM
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyService
+      - EncryptionKeyCommand
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Ears/Headsets/headset-base.rsi
+
+- type: entity
+  parent: [StellarClothingHeadsetSecurity, BaseCommandContraband]
+  id: StellarClothingHeadsetHeadOfSecurity
+  name: head of security's headset
+  description: LOREM IPSUM
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySecurity
+      - EncryptionKeyCommand
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Ears/Headsets/headset-base.rsi
+
+- type: entity
+  parent: [StellarClothingHeadsetMedical, BaseCommandContraband]
+  id: StellarClothingHeadsetHeadOfMedicine
+  name: head of medicine's headset
+  description: LOREM IPSUM
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyMedical
+      - EncryptionKeyCommand
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Ears/Headsets/headset-base.rsi
+
+- type: entity
+  parent: [StellarClothingHeadsetScience, BaseCommandContraband]
+  id: StellarClothingHeadsetResearchDirector
+  name: research director's headset
+  description: LOREM IPSUM
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyScience
+      - EncryptionKeyCommand
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Ears/Headsets/headset-base.rsi
+
+- type: entity
+  parent: [StellarClothingHeadsetEngineering, BaseCommandContraband]
+  id: StellarClothingHeadsetChiefEngineer
+  name: chief engineer's headset
+  description: LOREM IPSUM
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyEngineering
+      - EncryptionKeyCommand
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Ears/Headsets/headset-base.rsi
+
+- type: entity
+  parent: [StellarClothingHeadsetSupply, BaseCommandContraband]
+  id: StellarClothingHeadsetOperationsManager
+  name: operations manager's headset
+  description: LOREM IPSUM
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCargo
+      - EncryptionKeyCommand
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Ears/Headsets/headset-base.rsi

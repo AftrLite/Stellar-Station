@@ -1,0 +1,61 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### UNIFORMS
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformServicePerformerClown
+  name: clown's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Service/Performer/clown-uniform.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Service/Performer/clown-uniform.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformServicePerformerMime
+  name: mime's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Service/Performer/mime-uniform.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Service/Performer/mime-uniform.rsi
+
+- type: entity
+  parent: StellarClothingUniformServicePerformerMime
+  id: StellarClothingUniformServicePerformerMimeSkirt
+  name: mime's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformServicePerformerMusician
+  name: musician's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Service/Performer/musician-uniform.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Service/Performer/musician-uniform.rsi
+
+- type: entity
+  parent: StellarClothingUniformServicePerformerMusician
+  id: StellarClothingUniformServicePerformerMusicianSkirt
+  name: musician's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt

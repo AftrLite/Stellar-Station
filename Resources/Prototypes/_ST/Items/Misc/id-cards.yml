@@ -1,0 +1,569 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: Clothing
+  id: StellarIDCardBase
+  name: ID card
+  description: A card necessary to access various areas aboard the station.
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Misc/id-cards.rsi
+  - type: Clothing
+    slots:
+    - idcard
+  - type: Item
+    size: Small
+    heldPrefix: default
+    storedRotation: -90
+  - type: Access
+  - type: IdCard
+  - type: StationRecordKeyStorage
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    # - WhitelistChameleon
+    # - WhitelistChameleonIdCard
+  # - type: StealTarget
+  #   stealGroup: IDCard
+
+### LEARNER JOBS
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardInternEngineering
+  suffix: intern, engineering
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-engineering #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: intern-Engineering
+  - type: PresetIdCard
+    job: StellarJobInternEngineering
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardInternMedical
+  suffix: intern, medical
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-medical #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: intern-Medical
+  - type: PresetIdCard
+    job: StellarJobInternMedical
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardInternSecurity
+  suffix: intern, security
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-security #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: intern-Security
+  - type: PresetIdCard
+    job: StellarJobInternSecurity
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardInternScience
+  suffix: intern, science
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-science #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: intern-Science
+  - type: PresetIdCard
+    job: StellarJobInternScience
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardInternSupply
+  suffix: intern, supply
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-cargo #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: intern-Supply
+  - type: PresetIdCard
+    job: StellarJobInternSupply
+
+### SERVICE
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardServiceAssistant
+  suffix: assistant
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-civillian #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: service-Assistant
+  - type: PresetIdCard
+    job: StellarJobServiceAssistant
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardServicePerformer
+  suffix: performer
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-civillian #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: service-Performer
+  - type: PresetIdCard
+    job: StellarJobServicePerformer
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardServiceCleric
+  suffix: cleric
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-civillian #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: service-Cleric
+  - type: PresetIdCard
+    job: StellarJobServiceCleric
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardServiceLibrarian
+  suffix: librarian
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-civillian #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: service-Librarian
+  - type: PresetIdCard
+    job: StellarJobServiceLibrarian
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardServiceReporter
+  suffix: reporter
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-civillian #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: service-Reporter
+  - type: PresetIdCard
+    job: StellarJobServiceReporter
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardServiceBartender
+  suffix: bartender
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-service #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: service-Bartender
+  - type: PresetIdCard
+    job: StellarJobServiceBartender
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardServiceChef
+  suffix: chef
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-service #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: service-Chef
+  - type: PresetIdCard
+    job: StellarJobServiceChef
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardServiceBotanist
+  suffix: botanist
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-service #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: service-Botanist
+  - type: PresetIdCard
+    job: StellarJobServiceBotanist
+
+
+
+### SECURITY
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardSecurityOfficer
+  suffix: security officer
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-security #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: security-Officer
+  - type: PresetIdCard
+    job: StellarJobSecurityOfficer
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardSecurityDetective
+  suffix: detective
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-security #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: security-Detective
+  - type: PresetIdCard
+    job: StellarJobSecurityDetective
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardSecurityWarden
+  suffix: warden
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-security #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: security-Warden
+  - type: PresetIdCard
+    job: StellarJobSecurityWarden
+
+
+
+### SCIENCE
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardScienceScientist
+  suffix: scientist
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-science #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: science-Scientist
+  - type: PresetIdCard
+    job: StellarJobScienceScientist
+
+
+
+### SUPPLY
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardSupplyHandler
+  suffix: handler
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-cargo #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: supply-Handler
+  - type: PresetIdCard
+    job: StellarJobSupplyHandler
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardSupplyCourier
+  suffix: courier
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-cargo #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: supply-Courier
+  - type: PresetIdCard
+    job: StellarJobSupplyCourier
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardSupplyJanitor
+  suffix: janitor
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-cargo #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: supply-Janitor
+  - type: PresetIdCard
+    job: StellarJobSupplyJanitor
+
+
+
+### ENGINEERING
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardEngineeringEngineer
+  suffix: engineer
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-engineering #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: engineering-Engineer
+  - type: PresetIdCard
+    job: StellarJobEngineeringEngineer
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardEngineeringAtmosphericTechnician
+  suffix: engineer
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-engineering #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: engineering-AtmosphericTechnician
+  - type: PresetIdCard
+    job: StellarJobEngineeringAtmosphericTechnician
+
+
+
+### MEDICAL
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardMedicalPsychologist
+  suffix: psychologist
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-medical #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: medical-Psychologist
+  - type: PresetIdCard
+    job: StellarJobMedicalPsychologist
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardMedicalDoctor
+  suffix: doctor
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-medical #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: medical-Doctor
+  - type: PresetIdCard
+    job: StellarJobMedicalDoctor
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardMedicalParamedic
+  suffix: paramedic
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-medical #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: medical-Paramedic
+  - type: PresetIdCard
+    job: StellarJobMedicalParamedic
+
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardMedicalChemist
+  suffix: chemist
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-medical #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: medical-Chemist
+  - type: PresetIdCard
+    job: StellarJobMedicalChemist
+
+
+
+### COMMAND
+- type: entity
+  parent: [StellarIDCardBase, BaseGrandTheftContraband]
+  id: StellarIDCardCommandCaptain
+  suffix: captain
+  components:
+  - type: Sprite
+    layers:
+    - state: base-gold #base
+    - state: decal-stripe-command #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: command-Captain
+  - type: Item
+    heldPrefix: gold
+  - type: PresetIdCard
+    job: StellarJobCommandCaptain
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - HighRiskItem
+
+- type: entity
+  parent: [StellarIDCardBase, BaseGrandTheftContraband]
+  id: StellarIdCardCommandChiefEngineer
+  suffix: chief engineer
+  components:
+  - type: Sprite
+    layers:
+    - state: base-silver #base
+    - state: decal-stripe-engineering #decal
+    - state: decal-discriminator-command #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: command-ChiefEngineer
+  - type: Item
+    heldPrefix: silver
+  - type: PresetIdCard
+    job: StellarJobCommandChiefEngineer
+
+- type: entity
+  parent: [StellarIDCardBase, BaseGrandTheftContraband]
+  id: StellarIdCardCommandOperationsManager
+  suffix: operations manager
+  components:
+  - type: Sprite
+    layers:
+    - state: base-silver #base
+    - state: decal-stripe-cargo #decal
+    - state: decal-discriminator-command #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: command-OperationsManager
+  - type: Item
+    heldPrefix: silver
+  - type: PresetIdCard
+    job: StellarJobCommandOperationsManager
+
+- type: entity
+  parent: [StellarIDCardBase, BaseGrandTheftContraband]
+  id: StellarIDCardCommandServiceDirector
+  suffix: service director
+  components:
+  - type: Sprite
+    layers:
+    - state: base-silver #base
+    - state: decal-stripe-service #decal
+    - state: decal-discriminator-command #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: command-ServiceDirector
+  - type: Item
+    heldPrefix: gold
+  - type: PresetIdCard
+    job: StellarJobCommandServiceDirector
+
+- type: entity
+  parent: [StellarIDCardBase, BaseGrandTheftContraband]
+  id: StellarIdCardCommandResearchDirector
+  suffix: research director
+  components:
+  - type: Sprite
+    layers:
+    - state: base-silver #base
+    - state: decal-stripe-science #decal
+    - state: decal-discriminator-command #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: command-ResearchDirector
+  - type: Item
+    heldPrefix: silver
+  - type: PresetIdCard
+    job: StellarJobCommandResearchDirector
+
+- type: entity
+  parent: [StellarIDCardBase, BaseGrandTheftContraband]
+  id: StellarIdCardCommandHeadOfMedicine
+  suffix: head of medicine
+  components:
+  - type: Sprite
+    layers:
+    - state: base-silver #base
+    - state: decal-stripe-medical #decal
+    - state: decal-discriminator-command #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: command-HeadOfMedicine
+  - type: Item
+    heldPrefix: silver
+  - type: PresetIdCard
+    job: StellarJobCommandHeadOfMedicine
+
+- type: entity
+  parent: [StellarIDCardBase, BaseGrandTheftContraband]
+  id: StellarIdCardCommandHeadOfSecurity
+  suffix: head of security
+  components:
+  - type: Sprite
+    layers:
+    - state: base-silver #base
+    - state: decal-stripe-security #decal
+    - state: decal-discriminator-command #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.125, 0.09375"
+      state: command-HeadOfSecurity
+  - type: Item
+    heldPrefix: silver
+  - type: PresetIdCard
+    job: StellarJobCommandHeadOfSecurity

@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+# ROLE STARTING GEAR
+- type: startingGear
+  id: StellarGearSecurityOfficer
+  equipment:
+    shoes: StellarClothingShoesMiscBlackDress
+    id: StellarPDASecurityOfficer
+    ears: StellarClothingHeadsetSecurity
+  storage:
+    back:
+    - Flash
+
+# ROLE LOADOUT CONFIG
+- type: roleLoadout
+  id: StellarJobSecurityOfficer
+  groups:
+  - StellarOfficerUniform
+  - StellarSecurityBackpack
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+# LOADOUT GROUPS
+- type: loadoutGroup
+  id: StellarOfficerUniform
+  name: loadout-group-rd-jumpsuit # TODO - Localization
+  loadouts:
+  - StellarOfficerUniform
+  - StellarOfficerUniformSkirt
+
+
+### UNIFORM
+- type: loadout
+  id: StellarOfficerUniform
+  equipment:
+    jumpsuit: StellarClothingUniformSecurityOfficer
+
+- type: loadout
+  id: StellarOfficerUniformSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformSecurityOfficerSkirt

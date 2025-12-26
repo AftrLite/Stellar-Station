@@ -1,0 +1,282 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### COMMAND
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconCommandCaptain
+  icon:
+    sprite: &icon-rsi /Textures/_ST/Icons/job-icons.rsi
+    state: command-Captain
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconCommandChiefEngineer
+  icon:
+    sprite: *icon-rsi
+    state: command-ChiefEngineer
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconCommandOperationsManager
+  icon:
+    sprite: *icon-rsi
+    state: command-OperationsManager
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconCommandServiceDirector
+  icon:
+    sprite: *icon-rsi
+    state: command-ServiceDirector
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconCommandResearchDirector
+  icon:
+    sprite: *icon-rsi
+    state: command-ResearchDirector
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconCommandHeadOfMedicine
+  icon:
+    sprite: *icon-rsi
+    state: command-HeadOfMedicine
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconCommandHeadOfSecurity
+  icon:
+    sprite: *icon-rsi
+    state: command-HeadOfSecurity
+  jobName: LOREM IPSUM
+
+
+### SERVICE
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconServiceBartender
+  icon:
+    sprite: *icon-rsi
+    state: service-Bartender
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconServiceBotanist
+  icon:
+    sprite: *icon-rsi
+    state: service-Botanist
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconServiceCleric
+  icon:
+    sprite: *icon-rsi
+    state: service-Cleric
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconServiceChef
+  icon:
+    sprite: *icon-rsi
+    state: service-Chef
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconServicePerformer
+  icon:
+    sprite: *icon-rsi
+    state: service-Performer
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconServiceLibrarian
+  icon:
+    sprite: *icon-rsi
+    state: service-Librarian
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconServiceReporter
+  icon:
+    sprite: *icon-rsi
+    state: service-Reporter
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconServiceAssistant
+  icon:
+    sprite: *icon-rsi
+    state: service-Assistant
+  jobName: LOREM IPSUM
+
+
+### SCIENCE
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconScienceScientist
+  icon:
+    sprite: *icon-rsi
+    state: science-Scientist
+  jobName: LOREM IPSUM
+
+
+### SUPPLY
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconSupplyHandler
+  icon:
+    sprite: *icon-rsi
+    state: supply-Handler
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconSupplyCourier
+  icon:
+    sprite: *icon-rsi
+    state: supply-Courier
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconSupplyJanitor
+  icon:
+    sprite: *icon-rsi
+    state: supply-Janitor
+  jobName: LOREM IPSUM
+
+
+### SECURITY
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconSecurityOfficer
+  icon:
+    sprite: *icon-rsi
+    state: security-Officer
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconSecurityDetective
+  icon:
+    sprite: *icon-rsi
+    state: security-Detective
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconSecurityWarden
+  icon:
+    sprite: *icon-rsi
+    state: security-Warden
+  jobName: LOREM IPSUM
+
+
+### ENGINEERING
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconEngineeringEngineer
+  icon:
+    sprite: *icon-rsi
+    state: engineering-Engineer
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconEngineeringAtmosphericTechnician
+  icon:
+    sprite: *icon-rsi
+    state: engineering-AtmosphericTechnician
+  jobName: LOREM IPSUM
+
+### MEDICAL
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconMedicalDoctor
+  icon:
+    sprite: *icon-rsi
+    state: medical-Doctor
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconMedicalParamedic
+  icon:
+    sprite: *icon-rsi
+    state: medical-Paramedic
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconMedicalPsychologist
+  icon:
+    sprite: *icon-rsi
+    state: medical-Psychologist
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconMedicalChemist
+  icon:
+    sprite: *icon-rsi
+    state: medical-Chemist
+  jobName: LOREM IPSUM
+
+
+### INTERNS
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconInternEngineering
+  icon:
+    sprite: *icon-rsi
+    state: intern-Engineering
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconInternMedical
+  icon:
+    sprite: *icon-rsi
+    state: intern-Medical
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconInternSecurity
+  icon:
+    sprite: *icon-rsi
+    state: intern-Security
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconInternScience
+  icon:
+    sprite: *icon-rsi
+    state: intern-Science
+  jobName: LOREM IPSUM
+
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconInternSupply
+  icon:
+    sprite: *icon-rsi
+    state: intern-Supply
+  jobName: LOREM IPSUM

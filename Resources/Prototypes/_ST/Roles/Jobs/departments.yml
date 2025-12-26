@@ -1,0 +1,113 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+  - type: department
+    id: StellarDepartmentCommand
+    name: Command # TODO: Localization
+    description: LOREM IPSUM # TODO: Localization
+    color: "#334E6D"
+    roles:
+    - StellarJobCommandCaptain
+    - StellarJobCommandOperationsManager
+    - StellarJobCommandChiefEngineer
+    - StellarJobCommandServiceDirector
+    - StellarJobCommandResearchDirector
+    - StellarJobCommandHeadOfMedicine
+    - StellarJobCommandHeadOfSecurity
+    primary: false
+    weight: 2
+
+  - type: department
+    id: StellarDepartmentSupply
+    name: Supply # TODO: Localization
+    description: LOREM IPSUM # TODO: Localization
+    color: "#A46106"
+    roles:
+    - StellarJobSupplyJanitor
+    - StellarJobSupplyHandler
+    - StellarJobSupplyCourier
+    - StellarJobCommandOperationsManager # Command
+
+  - type: department
+    id: StellarDepartmentService
+    name: Service # TODO: Localization
+    description: LOREM IPSUM # TODO: Localization
+    color: "#9FED58"
+    weight: -1
+    roles:
+    - StellarJobServiceBartender
+    - StellarJobServiceBotanist
+    - StellarJobServiceCleric
+    - StellarJobServiceChef
+    - StellarJobServicePerformer
+    - StellarJobServiceLibrarian
+    - StellarJobServiceReporter
+    - StellarJobServiceAssistant
+    - StellarJobCommandServiceDirector # Command
+
+  - type: department
+    id: StellarDepartmentScience
+    name: Science # TODO: Localization
+    description: LOREM IPSUM # TODO: Localization
+    color: "#D381C9"
+    roles:
+    - StellarJobScienceScientist
+    - StellarJobCommandResearchDirector # Command
+
+  - type: department
+    id: StellarDepartmentSecurity
+    name: Security # TODO: Localization
+    description: LOREM IPSUM # TODO: Localization
+    color: "#DE3A3A"
+    weight: 1
+    roles:
+    - StellarJobSecurityOfficer
+    - StellarJobSecurityDetective
+    - StellarJobSecurityWarden
+    - StellarJobCommandHeadOfSecurity # Command
+
+  - type: department
+    id: StellarDepartmentMedical
+    name: Medical # TODO: Localization
+    description: LOREM IPSUM # TODO: Localization
+    color: "#52B4E9"
+    roles:
+    - StellarJobMedicalChemist
+    - StellarJobMedicalDoctor
+    - StellarJobMedicalPsychologist
+    - StellarJobMedicalParamedic
+    - StellarJobCommandHeadOfMedicine # Command
+
+  - type: department
+    id: StelalrDepartmentEngineering
+    name: Engineering # TODO: Localization
+    description: LOREM IPSUM # TODO: Localization
+    color: "#EFB341"
+    roles:
+    - StellarJobEngineeringEngineer
+    - StellarJobEngineeringAtmosphericTechnician
+    - StellarJobCommandChiefEngineer # Command
+
+  - type: department
+    id: StellarDepartmentSilicon
+    name: Silicon # TODO: Localization
+    description: LOREM IPSUM # TODO: Localization
+    color: "#D381C9"
+    roles:
+    - Borg
+    - StationAi # Command
+    weight: -2
+
+  - type: department
+    id: StellarDepartmentIntern
+    name: Intern # TODO: Localization
+    description: LOREM IPSUM # TODO: Localization
+    color: "#bbbbbb"
+    roles:
+    - StellarJobInternEngineering
+    - StellarJobInternMedical
+    - StellarJobInternScience
+    - StellarJobInternSecurity
+    - StellarJobInternSupply
+    weight: -3

@@ -1,0 +1,98 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+# ROLE STARTING GEAR
+- type: startingGear
+  id: StellarGearCommandServiceDirector
+  equipment:
+    shoes: StellarClothingShoesMiscBlackDress
+    eyes: StellarClothingEyesMiscCommandGlasses
+    id: StellarPDACommandServiceDirector
+    ears: StellarClothingHeadsetServiceDirector
+  storage:
+    back:
+    - Flash
+
+
+
+# ROLE LOADOUT CONFIG
+- type: roleLoadout
+  id: StellarJobCommandServiceDirector # Stellar
+  groups:
+  - StellarServiceDirectorHead
+  # - StellarServiceDirectorNeck
+  - StellarServiceDirectorUniform
+  # - StellarServiceDirectorOuterClothing
+  - StellarServiceDirectorBackpack
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+
+# LOADOUT GROUPS
+- type: loadoutGroup
+  id: StellarServiceDirectorHead
+  name: loadout-group-hop-head # TODO - Localization
+  minLimit: 0
+  loadouts:
+  - StellarServiceDirectorHat
+
+- type: loadoutGroup
+  id: StellarServiceDirectorUniform
+  name: loadout-group-hop-jumpsuit # TODO - Localization
+  loadouts:
+  - StellarServiceDirectorUniform
+  - StellarServiceDirectorUniformSkirt
+  - StellarServiceDirectorUniformCasual
+  - StellarServiceDirectorUniformCasualSkirt
+  - StellarServiceDirectorUniformFormal
+
+- type: loadoutGroup
+  id: StellarServiceDirectorBackpack
+  name: loadout-group-hop-backpack # TODO - Localization
+  loadouts:
+  - StellarServiceDirectorBackpack
+
+
+
+# LOADOUT GROUP CONTENTS
+
+### HEAD
+- type: loadout
+  id: StellarServiceDirectorHat
+  equipment:
+    head: StellarClothingHatCommandServiceDirector
+
+### UNIFORM
+- type: loadout
+  id: StellarServiceDirectorUniform
+  equipment:
+    jumpsuit: StellarClothingUniformCommandServiceDirector
+
+- type: loadout
+  id: StellarServiceDirectorUniformSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformCommandServiceDirectorSkirt
+
+- type: loadout
+  id: StellarServiceDirectorUniformCasual
+  equipment:
+    jumpsuit: StellarClothingUniformCommandServiceDirectorAlt
+
+- type: loadout
+  id: StellarServiceDirectorUniformCasualSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformCommandServiceDirectorAltSkirt
+
+- type: loadout
+  id: StellarServiceDirectorUniformFormal
+  equipment:
+    jumpsuit: StellarClothingUniformCommandServiceDirectorFormal
+
+### BACKPACK
+- type: loadout
+  id: StellarServiceDirectorBackpack
+  equipment:
+    back: StellarClothingBackpackCommandServiceDirector

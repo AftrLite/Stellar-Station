@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### UNIFORMS
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformServiceLibrarian
+  name: librarian's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Service/Librarian/librarian-uniform.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Service/Librarian/librarian-uniform.rsi
+
+- type: entity
+  parent: StellarClothingUniformServiceLibrarian
+  id: StellarClothingUniformServiceLibrarianSkirt
+  name: librarian's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt

@@ -1,0 +1,84 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: ClothingBackpack
+  id: StellarClothingBackpackGrey
+  name: basic backpack
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Back/Backpacks/backpack-base.rsi
+
+- type: entity
+  parent: ClothingBackpack
+  id: StellarClothingBackpackService
+  name: service backpack
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Back/Backpacks/backpack-base.rsi
+
+- type: entity
+  parent: ClothingBackpack
+  id: StellarClothingBackpackSupply
+  name: supply backpack
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Back/Backpacks/backpack-base.rsi
+
+- type: entity
+  parent: ClothingBackpack
+  id: StellarClothingBackpackEngineering
+  name: engineering backpack
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Back/Backpacks/backpack-base.rsi
+
+- type: entity
+  parent: ClothingBackpack
+  id: StellarClothingBackpackAtmospherics
+  name: atmospherics backpack
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Back/Backpacks/backpack-base.rsi
+
+- type: entity
+  parent: ClothingBackpack
+  id: StellarClothingBackpackMedical
+  name: medical backpack
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Back/Backpacks/backpack-base.rsi
+
+- type: entity
+  parent: ClothingBackpack
+  id: StellarClothingBackpackChemistry
+  name: chemistry backpack
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Back/Backpacks/backpack-base.rsi
+
+- type: entity
+  parent: ClothingBackpack
+  id: StellarClothingBackpackScience
+  name: science backpack
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Back/Backpacks/backpack-base.rsi
+
+- type: entity
+  parent: [ClothingBackpack, BaseSecurityContraband]
+  id: StellarClothingBackpackSecurity
+  name: security backpack
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Back/Backpacks/backpack-base.rsi

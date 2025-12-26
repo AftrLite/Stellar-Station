@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+# ROLE STARTING GEAR
+- type: startingGear
+  id: StellarGearEngineeringAtmosphericTechnician
+  equipment:
+    shoes: StellarClothingShoesMiscBlackDress
+    id: StellarPDAEngineeringAtmosphericTechnician
+    ears: StellarClothingHeadsetEngineering
+  storage:
+    back:
+    - Flash
+
+# ROLE LOADOUT CONFIG
+- type: roleLoadout
+  id: StellarJobEngineeringAtmosphericTechnician
+  groups:
+  - StellarAtmosphericTechnicianUniform
+  - StellarEngineeringBackpack
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+# LOADOUT GROUPS
+- type: loadoutGroup
+  id: StellarAtmosphericTechnicianUniform
+  name: loadout-group-rd-jumpsuit # TODO - Localization
+  loadouts:
+  - StellarAtmosphericTechnicianUniform
+  - StellarAtmosphericTechnicianUniformSkirt
+
+
+### UNIFORM
+- type: loadout
+  id: StellarAtmosphericTechnicianUniform
+  equipment:
+    jumpsuit: StellarClothingUniformEngineeringAtmosphericTechnician
+
+- type: loadout
+  id: StellarAtmosphericTechnicianUniformSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformEngineeringAtmosphericTechnicianSkirt

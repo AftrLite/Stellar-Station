@@ -21,6 +21,7 @@
   icon: "JobIconHeadOfSecurity"
   supervisors: job-supervisors-captain
   canBeAntag: false
+  setPreference: false # Stellar
   access:
   - HeadOfSecurity
   - Command

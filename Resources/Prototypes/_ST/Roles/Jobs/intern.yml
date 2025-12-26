@@ -1,0 +1,98 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### INTERN-MEDICAL
+- type: job
+  id: StellarJobInternMedical
+  name: stellar-job-name-intern-medical
+  description: stellar-job-description-intern-medical
+  playTimeTracker: StellarTimeTrackerInternMedical
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearInternMedical
+  icon: StellarJobIconInternMedical
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### INTERN-SECURITY
+- type: job
+  id: StellarJobInternSecurity
+  name: stellar-job-name-intern-security
+  description: stellar-job-description-intern-security
+  playTimeTracker: StellarTimeTrackerInternSecurity
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearInternSecurity
+  icon: StellarJobIconInternSecurity
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### INTERN-SCIENCE
+- type: job
+  id: StellarJobInternScience
+  name: stellar-job-name-intern-science
+  description: stellar-job-description-intern-science
+  playTimeTracker: StellarTimeTrackerInternScience
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearInternScience
+  icon: StellarJobIconInternScience
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### INTERN-SCIENCE
+- type: job
+  id: StellarJobInternSupply
+  name: stellar-job-name-intern-supply
+  description: stellar-job-description-intern-supply
+  playTimeTracker: StellarTimeTrackerInternSupply
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearInternSupply
+  icon: StellarJobIconInternSupply
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### INTERN-ENGINEERING
+- type: job
+  id: StellarJobInternEngineering
+  name: stellar-job-name-intern-engineering
+  description: stellar-job-description-intern-engineering
+  playTimeTracker: StellarTimeTrackerInternEngineering
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearInternEngineering
+  icon: StellarJobIconInternEngineering
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+- type: playTimeTracker
+  id: StellarTimeTrackerInternEngineering
+
+- type: playTimeTracker
+  id: StellarTimeTrackerInternMedical
+
+- type: playTimeTracker
+  id: StellarTimeTrackerInternScience
+
+- type: playTimeTracker
+  id: StellarTimeTrackerInternSecurity
+
+- type: playTimeTracker
+  id: StellarTimeTrackerInternSupply

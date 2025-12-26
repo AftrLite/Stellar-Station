@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: ClothingEyesBase
+  id: StellarClothingEyesMiscSunglasses
+  name: sunglasses
+  description: A pair of black sunglasses. A delightfully stylish accessory.
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Eyes/sunglasses.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Misc/Eyes/sunglasses.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: IdentityBlocker
+    coverage: EYES
+
+- type: entity
+  parent: [ClothingEyesBase, BaseCommandContraband]
+  id: StellarClothingEyesMiscCommandGlasses
+  name: administration glasses
+  description: Augmented glasses that show the ID card status of nearby individuals.
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Eyes/commandglasses.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Misc/Eyes/commandglasses.rsi
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: IdentityBlocker
+    coverage: EYES
+  - type: ShowJobIcons

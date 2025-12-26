@@ -1,0 +1,60 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### OFFICER
+- type: job
+  id: StellarJobSecurityOfficer
+  name: stellar-job-name-officer
+  description: stellar-job-description-officer
+  playTimeTracker: StellarTimeTrackerSecurityOfficer
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearSecurityOfficer
+  icon: StellarJobIconSecurityOfficer
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### DETECTIVE
+- type: job
+  id: StellarJobSecurityDetective
+  name: stellar-job-name-detective
+  description: stellar-job-description-detective
+  playTimeTracker: StellarTimeTrackerSecurityDetective
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearSecurityDetective
+  icon: StellarJobIconSecurityDetective
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### WARDEN
+- type: job
+  id: StellarJobSecurityWarden
+  name: stellar-job-name-warden
+  description: stellar-job-description-warden
+  playTimeTracker: StellarTimeTrackerSecurityWarden
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearSecurityWarden
+  icon: StellarJobIconSecurityWarden
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+- type: playTimeTracker
+  id: StellarTimeTrackerSecurityOfficer
+
+- type: playTimeTracker
+  id: StellarTimeTrackerSecurityDetective
+
+- type: playTimeTracker
+  id: StellarTimeTrackerSecurityWarden

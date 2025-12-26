@@ -1,0 +1,60 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### UNIFORMS
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformCommandOperationsManager
+  name: operations manager's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Command/OperationsManager/operationsmanager-uniform.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Command/OperationsManager/operationsmanager-uniform.rsi
+
+- type: entity
+  parent: StellarClothingUniformCommandOperationsManager
+  id: StellarClothingUniformCommandOperationsManagerSkirt
+  name: operations manager's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformCommandOperationsManagerTurtleneck
+  name: operations manager's turtleneck uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Command/OperationsManager/operationsmanager-uniform-turtleneck.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Command/OperationsManager/operationsmanager-uniform-turtleneck.rsi
+
+- type: entity
+  parent: StellarClothingUniformCommandOperationsManagerTurtleneck
+  id: StellarClothingUniformCommandOperationsManagerTurtleneckSkirt
+  name: operations manager's turtleneck uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+### BACKPACKS
+- type: entity
+  parent: [ClothingBackpack, BaseCommandContraband]
+  id: StellarClothingBackpackCommandOperationsManager
+  name: operations manager's backpack
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Back/Backpacks/backpack-base.rsi

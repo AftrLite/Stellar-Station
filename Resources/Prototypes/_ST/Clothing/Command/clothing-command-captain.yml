@@ -1,0 +1,107 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### UNIFORMS
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformCommandCaptainFormal
+  name: captain's formal uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Command/Captain/captain-uniform-formal.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Command/Captain/captain-uniform-formal.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformCommandCaptain
+  name: captain's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Command/Captain/captain-uniform.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Command/Captain/captain-uniform.rsi
+
+- type: entity
+  parent: StellarClothingUniformCommandCaptain
+  id: StellarClothingUniformCommandCaptainSkirt
+  name: captain's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformCommandCaptainCasual
+  name: captain's casual uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Command/Captain/captain-uniform-casual.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Command/Captain/captain-uniform-casual.rsi
+
+- type: entity
+  parent: StellarClothingUniformCommandCaptainCasual
+  id: StellarClothingUniformCommandCaptainCasualSkirt
+  name: captain's casual uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+### HATS
+- type: entity
+  parent: ClothingHeadBase
+  id: StellarClothingHatCommandCaptain
+  name: captain's cap
+  description: A grand, stylish cap worn by the Captain. Shows the station who's in charge.
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Command/Captain/captain-hat-cap.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Command/Captain/captain-hat-cap.rsi
+  - type: Item
+    sprite: _ST/Clothing/Command/Captain/captain-hat-cap.rsi
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+    - WhitelistChameleon
+
+### GLOVES
+- type: entity
+  parent: [ClothingHandsBase, BaseCommandContraband]
+  id: StellarClothingGlovesCommandCaptain
+  name: captain's gloves
+  description: Regal blue gloves, with a nice gold trim. Swanky.
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Command/Captain/captain-gloves.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Command/Captain/captain-gloves.rsi
+  - type: Insulated
+  - type: Fiber
+    fiberMaterial: fibers-durathread
+    fiberColor: fibers-regal-blue
+  - type: FingerprintMask
+
+### BACKPACKS
+- type: entity
+  parent: [ClothingBackpack, BaseCommandContraband]
+  id: StellarClothingBackpackCommandCaptain
+  name: captain's backpack
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Back/Backpacks/backpack-base.rsi

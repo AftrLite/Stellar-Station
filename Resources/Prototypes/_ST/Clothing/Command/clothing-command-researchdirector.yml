@@ -1,0 +1,38 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### UNIFORMS
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformCommandResearchDirector
+  name: research director's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Command/ResearchDirector/researchdirector-uniform.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Command/ResearchDirector/researchdirector-uniform.rsi
+
+- type: entity
+  parent: StellarClothingUniformCommandResearchDirector
+  id: StellarClothingUniformCommandResearchDirectorSkirt
+  name: research director's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+
+### BACKPACKS
+- type: entity
+  parent: [ClothingBackpack, BaseCommandContraband]
+  id: StellarClothingBackpackCommandResearchDirector
+  name: research director's backpack
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Back/Backpacks/backpack-base.rsi

@@ -1,0 +1,60 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### HANDLER
+- type: job
+  id: StellarJobSupplyHandler
+  name: stellar-job-name-handler
+  description: stellar-job-description-handler
+  playTimeTracker: StellarTimeTrackerSupplyHandler
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearSupplyHandler
+  icon: StellarJobIconSupplyHandler
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### COURIER
+- type: job
+  id: StellarJobSupplyCourier
+  name: stellar-job-name-courier
+  description: stellar-job-description-courier
+  playTimeTracker: StellarTimeTrackerSupplyCourier
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearSupplyCourier
+  icon: StellarJobIconSupplyCourier
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+### JANITOR
+- type: job
+  id: StellarJobSupplyJanitor
+  name: stellar-job-name-janitor
+  description: stellar-job-description-janitor
+  playTimeTracker: StellarTimeTrackerSupplyJanitor
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearSupplyJanitor
+  icon: StellarJobIconSupplyJanitor
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+- type: playTimeTracker
+  id: StellarTimeTrackerSupplyHandler
+
+- type: playTimeTracker
+  id: StellarTimeTrackerSupplyCourier
+
+- type: playTimeTracker
+  id: StellarTimeTrackerSupplyJanitor

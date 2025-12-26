@@ -1,0 +1,6 @@
+version = 1
+
+[[annotations]]
+path = ["*.png"]
+SPDX-FileCopyrightText = "AftrLite, FaeWilds"
+SPDX-License-Identifier = "LicenseRef-Wallening"

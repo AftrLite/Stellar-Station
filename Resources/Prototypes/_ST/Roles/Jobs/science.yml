@@ -1,0 +1,22 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### SCIENTIST
+- type: job
+  id: StellarJobScienceScientist
+  name: stellar-job-name-scientist
+  description: stellar-job-description-scientist
+  playTimeTracker: StellarTimeTrackerScienceScientist
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearScienceScientist
+  icon: StellarJobIconScienceScientist
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+
+- type: playTimeTracker
+  id: StellarTimeTrackerScienceScientist

@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### UNIFORMS
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformMedicalDoctor
+  name: doctor's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Medical/Doctor/doctor-uniform.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Medical/Doctor/doctor-uniform.rsi
+
+- type: entity
+  parent: StellarClothingUniformMedicalDoctor
+  id: StellarClothingUniformMedicalDoctorSkirt
+  name: doctor's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt

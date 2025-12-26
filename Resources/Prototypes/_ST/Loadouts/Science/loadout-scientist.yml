@@ -1,0 +1,68 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+# ROLE STARTING GEAR
+- type: startingGear
+  id: StellarGearScienceScientist
+  equipment:
+    shoes: StellarClothingShoesMiscBlackDress
+    id: StellarPDAScienceScientist
+    ears: StellarClothingHeadsetScience
+  storage:
+    back:
+    - Flash
+
+# ROLE LOADOUT CONFIG
+- type: roleLoadout
+  id: StellarJobScienceScientist
+  groups:
+  - StellarScientistUniform
+  - StellarScienceBackpack
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+# LOADOUT GROUPS
+- type: loadoutGroup
+  id: StellarScientistUniform
+  name: loadout-group-rd-jumpsuit # TODO - Localization
+  loadouts:
+  - StellarScientistUniform
+  - StellarScientistUniformSkirt
+  - StellarScientistUniformAlt
+  - StellarScientistUniformAltSkirt
+  - StellarScientistUniformCasual
+  - StellarScientistUniformCasualSkirt
+
+### UNIFORM
+- type: loadout
+  id: StellarScientistUniform
+  equipment:
+    jumpsuit: StellarClothingUniformScienceScientist
+
+- type: loadout
+  id: StellarScientistUniformSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformScienceScientistSkirt
+
+- type: loadout
+  id: StellarScientistUniformAlt
+  equipment:
+    jumpsuit: StellarClothingUniformScienceScientistAlt
+
+- type: loadout
+  id: StellarScientistUniformAltSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformScienceScientistAltSkirt
+
+- type: loadout
+  id: StellarScientistUniformCasual
+  equipment:
+    jumpsuit: StellarClothingUniformScienceScientistCasual
+
+- type: loadout
+  id: StellarScientistUniformCasualSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformScienceScientistCasualSkirt

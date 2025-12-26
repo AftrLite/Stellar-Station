@@ -1,0 +1,77 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+# ROLE STARTING GEAR
+- type: startingGear
+  id: StellarGearCommandHeadOfMedicine
+  equipment:
+    shoes: StellarClothingShoesMiscBlackDress
+    eyes: StellarClothingEyesMiscCommandGlasses
+    id: StellarPDACommandHeadOfMedicine
+    ears: StellarClothingHeadsetHeadOfMedicine
+  storage:
+    back:
+    - Flash
+
+
+
+# ROLE LOADOUT CONFIG
+- type: roleLoadout
+  id: StellarJobCommandHeadOfMedicine # Stellar
+  groups:
+  - StellarHeadOfMedicineUniform
+  - StellarHeadOfMedicineBackpack
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+
+# LOADOUT GROUPS
+- type: loadoutGroup
+  id: StellarHeadOfMedicineUniform
+  name: loadout-group-hop-jumpsuit # TODO - Localization
+  loadouts:
+  - StellarHeadOfMedicineUniform
+  - StellarHeadOfMedicineUniformSkirt
+  - StellarHeadOfMedicineUniformTurtleneck
+  - StellarHeadOfMedicineUniformTurtleneckSkirt
+
+- type: loadoutGroup
+  id: StellarHeadOfMedicineBackpack
+  name: loadout-group-hop-backpack # TODO - Localization
+  loadouts:
+  - StellarHeadOfMedicineBackpack
+
+
+
+# LOADOUT GROUP CONTENTS
+
+### UNIFORM
+- type: loadout
+  id: StellarHeadOfMedicineUniform
+  equipment:
+    jumpsuit: StellarClothingUniformCommandHeadOfMedicine
+
+- type: loadout
+  id: StellarHeadOfMedicineUniformSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformCommandHeadOfMedicineSkirt
+
+- type: loadout
+  id: StellarHeadOfMedicineUniformTurtleneck
+  equipment:
+    jumpsuit: StellarClothingUniformCommandHeadOfMedicineTurtleneck
+
+- type: loadout
+  id: StellarHeadOfMedicineUniformTurtleneckSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformCommandHeadOfMedicineTurtleneckSkirt
+
+
+### BACKPACK
+- type: loadout
+  id: StellarHeadOfMedicineBackpack
+  equipment:
+    back: StellarClothingBackpackCommandHeadOfMedicine

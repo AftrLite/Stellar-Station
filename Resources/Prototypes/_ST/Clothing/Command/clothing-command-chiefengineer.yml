@@ -1,0 +1,60 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### UNIFORMS
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformCommandChiefEngineer
+  name: chief engineer's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Command/ChiefEngineer/chiefengineer-uniform.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Command/ChiefEngineer/chiefengineer-uniform.rsi
+
+- type: entity
+  parent: StellarClothingUniformCommandChiefEngineer
+  id: StellarClothingUniformCommandChiefEngineerSkirt
+  name: chief engineer's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformCommandChiefEngineerTurtleneck
+  name: chief engineer's turtleneck uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Command/ChiefEngineer/chiefengineer-uniform-turtleneck.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Command/ChiefEngineer/chiefengineer-uniform-turtleneck.rsi
+
+- type: entity
+  parent: StellarClothingUniformCommandChiefEngineerTurtleneck
+  id: StellarClothingUniformCommandChiefEngineerTurtleneckSkirt
+  name: chief engineer's turtleneck uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+### BACKPACKS
+- type: entity
+  parent: [ClothingBackpack, BaseCommandContraband]
+  id: StellarClothingBackpackCommandChiefEngineer
+  name: chief engineer's backpack
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Misc/Back/Backpacks/backpack-base.rsi
