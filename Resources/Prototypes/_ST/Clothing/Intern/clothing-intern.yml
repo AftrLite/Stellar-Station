@@ -1,0 +1,118 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### UNIFORMS
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformInternSupply
+  name: supply intern's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Intern/intern-uniform-supply.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Intern/intern-uniform-supply.rsi
+
+- type: entity
+  parent: StellarClothingUniformInternSupply
+  id: StellarClothingUniformInternSupplySkirt
+  name: supply intern's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformInternSecurity
+  name: security intern's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Intern/intern-uniform-security.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Intern/intern-uniform-security.rsi
+
+- type: entity
+  parent: StellarClothingUniformInternSecurity
+  id: StellarClothingUniformInternSecuritySkirt
+  name: security intern's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformInternScience
+  name: science intern's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Intern/intern-uniform-science.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Intern/intern-uniform-science.rsi
+
+- type: entity
+  parent: StellarClothingUniformInternScience
+  id: StellarClothingUniformInternScienceSkirt
+  name: science intern's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformInternMedical
+  name: medical intern's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Intern/intern-uniform-medical.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Intern/intern-uniform-medical.rsi
+
+- type: entity
+  parent: StellarClothingUniformInternMedical
+  id: StellarClothingUniformInternMedicalSkirt
+  name: medical intern's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformInternEngineering
+  name: engineering intern's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Intern/intern-uniform-engineering.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Intern/intern-uniform-engineering.rsi
+
+- type: entity
+  parent: StellarClothingUniformInternEngineering
+  id: StellarClothingUniformInternEngineeringSkirt
+  name: engineering intern's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt

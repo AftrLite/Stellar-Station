@@ -25,3 +25,21 @@
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING-skirt
+
+### HATS
+- type: entity
+  parent: ClothingHeadBase
+  id: StellarClothingHatServiceChef
+  name: chef's hat
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Service/Chef/chef-hat.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Service/Chef/chef-hat.rsi
+  - type: Item
+    sprite: _ST/Clothing/Service/Chef/chef-hat.rsi
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable

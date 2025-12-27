@@ -17,29 +17,43 @@
 - type: roleLoadout
   id: StellarJobServiceChef
   groups:
+  - StellarChefHat
   - StellarChefUniform
   - StellarServiceBackpack
   - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - GroupTankHarness
 
 # LOADOUT GROUPS
 - type: loadoutGroup
+  id: StellarChefHat
+  name: stellar-loadout-head
+  minLimit: 0
+  loadouts:
+  - StellarChefHat
+
+- type: loadoutGroup
   id: StellarChefUniform
-  name: loadout-group-rd-jumpsuit # TODO - Localization
+  name: stellar-loadout-uniform
   loadouts:
   - StellarChefUniform
   - StellarChefUniformSkirt
 
+### HEAD
+- type: loadout
+  id: StellarChefHat
+  equipment:
+    head: StellarClothingHatServiceChef
 
 ### UNIFORM
 - type: loadout
   id: StellarChefUniform
   equipment:
     jumpsuit: StellarClothingUniformServiceChef
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarChefUniformSkirt
   equipment:
     jumpsuit: StellarClothingUniformServiceChefSkirt
+  groupBy: "uniform-skirt"

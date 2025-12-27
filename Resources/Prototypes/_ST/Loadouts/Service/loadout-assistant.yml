@@ -20,14 +20,13 @@
   - StellarAssistantUniform
   - StellarServiceBackpack
   - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - GroupTankHarness
 
 # LOADOUT GROUPS
 - type: loadoutGroup
   id: StellarAssistantUniform
-  name: loadout-group-rd-jumpsuit # TODO - Localization
+  name: stellar-loadout-uniform
   loadouts:
   - StellarAssistantUniform
   - StellarAssistantUniformSkirt
@@ -37,8 +36,10 @@
   id: StellarAssistantUniform
   equipment:
     jumpsuit: StellarClothingUniformServiceAssistant
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarAssistantUniformSkirt
   equipment:
     jumpsuit: StellarClothingUniformServiceAssistantSkirt
+  groupBy: "uniform-skirt"

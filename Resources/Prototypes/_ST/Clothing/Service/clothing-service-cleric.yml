@@ -25,3 +25,25 @@
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING-skirt
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformServiceClericRobeDark
+  name: cleric's dark robe
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Service/Cleric/cleric-uniform-robe-dark.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Service/Cleric/cleric-uniform-robe-dark.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformServiceClericRobeLight
+  name: cleric's light robe
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Service/Cleric/cleric-uniform-robe-light.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Service/Cleric/cleric-uniform-robe-light.rsi

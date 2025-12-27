@@ -25,7 +25,6 @@
   # - StellarResearchDirectorOuterClothing
   - StellarResearchDirectorBackpack
   - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - GroupTankHarness
 
@@ -33,14 +32,14 @@
 # LOADOUT GROUPS
 - type: loadoutGroup
   id: StellarResearchDirectorUniform
-  name: loadout-group-rd-jumpsuit # TODO - Localization
+  name: stellar-loadout-uniform
   loadouts:
   - StellarResearchDirectorUniform
   - StellarResearchDirectorUniformSkirt
 
 - type: loadoutGroup
   id: StellarResearchDirectorBackpack
-  name: loadout-group-rd-backpack # TODO - Localization
+  name: stellar-loadout-backpack
   loadouts:
   - StellarResearchDirectorBackpack
 
@@ -56,11 +55,13 @@
   id: StellarResearchDirectorUniform
   equipment:
     jumpsuit: StellarClothingUniformCommandResearchDirector
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarResearchDirectorUniformSkirt
   equipment:
     jumpsuit: StellarClothingUniformCommandResearchDirectorSkirt
+  groupBy: "uniform-skirt"
 
 ### BACKPACK
 - type: loadout

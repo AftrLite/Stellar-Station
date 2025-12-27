@@ -20,14 +20,13 @@
   - StellarDetectiveUniform
   - StellarSecurityBackpack
   - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - GroupTankHarness
 
 # LOADOUT GROUPS
 - type: loadoutGroup
   id: StellarDetectiveUniform
-  name: loadout-group-rd-jumpsuit # TODO - Localization
+  name: stellar-loadout-uniform
   loadouts:
   - StellarDetectiveUniform
   - StellarDetectiveUniformSkirt
@@ -38,8 +37,10 @@
   id: StellarDetectiveUniform
   equipment:
     jumpsuit: StellarClothingUniformSecurityDetective
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarDetectiveUniformSkirt
   equipment:
     jumpsuit: StellarClothingUniformSecurityDetectiveSkirt
+  groupBy: "uniform-skirt"

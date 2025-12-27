@@ -5,7 +5,7 @@
 ### LOADOUT GROUPS
 - type: loadoutGroup
   id: StellarEngineeringBackpack
-  name: loadout-group-rd-backpack # TODO - Localization
+  name: stellar-loadout-backpack
   loadouts:
   - StellarEngineeringBackpack
 

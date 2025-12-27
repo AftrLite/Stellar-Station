@@ -25,7 +25,6 @@
   # - StellarHeadOfSecurityOuterClothing
   - StellarHeadOfSecurityBackpack
   - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - GroupTankHarness
 
@@ -33,7 +32,7 @@
 # LOADOUT GROUPS
 - type: loadoutGroup
   id: StellarHeadOfSecurityUniform
-  name: loadout-group-rd-jumpsuit # TODO - Localization
+  name: stellar-loadout-uniform
   loadouts:
   - StellarHeadOfSecurityUniform
   - StellarHeadOfSecurityUniformSkirt
@@ -44,7 +43,7 @@
 
 - type: loadoutGroup
   id: StellarHeadOfSecurityBackpack
-  name: loadout-group-rd-backpack # TODO - Localization
+  name: stellar-loadout-backpack
   loadouts:
   - StellarHeadOfSecurityBackpack
 
@@ -60,31 +59,37 @@
   id: StellarHeadOfSecurityUniform
   equipment:
     jumpsuit: StellarClothingUniformCommandHeadOfSecurity
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarHeadOfSecurityUniformSkirt
   equipment:
     jumpsuit: StellarClothingUniformCommandHeadOfSecuritySkirt
+  groupBy: "uniform-skirt"
 
 - type: loadout
   id: StellarHeadOfSecurityUniformCasual
   equipment:
     jumpsuit: StellarClothingUniformCommandHeadOfSecurityAlt
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarHeadOfSecurityUniformCasualSkirt
   equipment:
     jumpsuit: StellarClothingUniformCommandHeadOfSecurityAltSkirt
+  groupBy: "uniform-skirt"
 
 - type: loadout
   id: StellarHeadOfSecurityUniformFormal
   equipment:
     jumpsuit: StellarClothingUniformCommandHeadOfSecurityFormal
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarHeadOfSecurityUniformParade
   equipment:
     jumpsuit: StellarClothingUniformCommandHeadOfSecurityParade
+  groupBy: "uniform"
 
 ### BACKPACK
 - type: loadout

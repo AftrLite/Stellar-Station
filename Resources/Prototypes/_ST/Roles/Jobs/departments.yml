@@ -2,10 +2,11 @@
 #
 # SPDX-License-Identifier: LicenseRef-Wallening
 
+### COMMAND
   - type: department
     id: StellarDepartmentCommand
-    name: Command # TODO: Localization
-    description: LOREM IPSUM # TODO: Localization
+    name: stellar-department-name-command
+    description: stellar-department-description-command
     color: "#334E6D"
     roles:
     - StellarJobCommandCaptain
@@ -18,10 +19,11 @@
     primary: false
     weight: 2
 
+### SUPPLY
   - type: department
     id: StellarDepartmentSupply
-    name: Supply # TODO: Localization
-    description: LOREM IPSUM # TODO: Localization
+    name: stellar-department-name-supply
+    description: stellar-department-description-supply
     color: "#A46106"
     roles:
     - StellarJobSupplyJanitor
@@ -29,10 +31,11 @@
     - StellarJobSupplyCourier
     - StellarJobCommandOperationsManager # Command
 
+### SERVICE
   - type: department
     id: StellarDepartmentService
-    name: Service # TODO: Localization
-    description: LOREM IPSUM # TODO: Localization
+    name: stellar-department-name-service
+    description: stellar-department-description-service
     color: "#9FED58"
     weight: -1
     roles:
@@ -46,19 +49,21 @@
     - StellarJobServiceAssistant
     - StellarJobCommandServiceDirector # Command
 
+### SCIENCE
   - type: department
     id: StellarDepartmentScience
-    name: Science # TODO: Localization
-    description: LOREM IPSUM # TODO: Localization
+    name: stellar-department-name-science
+    description: stellar-department-description-science
     color: "#D381C9"
     roles:
     - StellarJobScienceScientist
     - StellarJobCommandResearchDirector # Command
 
+### SECURITY
   - type: department
     id: StellarDepartmentSecurity
-    name: Security # TODO: Localization
-    description: LOREM IPSUM # TODO: Localization
+    name: stellar-department-name-security
+    description: stellar-department-description-security
     color: "#DE3A3A"
     weight: 1
     roles:
@@ -67,10 +72,11 @@
     - StellarJobSecurityWarden
     - StellarJobCommandHeadOfSecurity # Command
 
+### MEDICAL
   - type: department
     id: StellarDepartmentMedical
-    name: Medical # TODO: Localization
-    description: LOREM IPSUM # TODO: Localization
+    name: stellar-department-name-medical
+    description: stellar-department-description-medical
     color: "#52B4E9"
     roles:
     - StellarJobMedicalChemist
@@ -79,30 +85,33 @@
     - StellarJobMedicalParamedic
     - StellarJobCommandHeadOfMedicine # Command
 
+### ENGINEERING
   - type: department
     id: StelalrDepartmentEngineering
-    name: Engineering # TODO: Localization
-    description: LOREM IPSUM # TODO: Localization
+    name: stellar-department-name-engineering
+    description: stellar-department-description-engineering
     color: "#EFB341"
     roles:
     - StellarJobEngineeringEngineer
     - StellarJobEngineeringAtmosphericTechnician
     - StellarJobCommandChiefEngineer # Command
 
+### SILICON
   - type: department
     id: StellarDepartmentSilicon
-    name: Silicon # TODO: Localization
-    description: LOREM IPSUM # TODO: Localization
+    name: stellar-department-name-silicon
+    description: stellar-department-description-silicon
     color: "#D381C9"
     roles:
     - Borg
     - StationAi # Command
     weight: -2
 
+### INTERN
   - type: department
     id: StellarDepartmentIntern
-    name: Intern # TODO: Localization
-    description: LOREM IPSUM # TODO: Localization
+    name: stellar-department-name-intern
+    description: stellar-department-description-intern
     color: "#bbbbbb"
     roles:
     - StellarJobInternEngineering

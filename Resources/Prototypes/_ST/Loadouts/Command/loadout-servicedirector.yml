@@ -26,7 +26,6 @@
   # - StellarServiceDirectorOuterClothing
   - StellarServiceDirectorBackpack
   - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - GroupTankHarness
 
@@ -34,14 +33,14 @@
 # LOADOUT GROUPS
 - type: loadoutGroup
   id: StellarServiceDirectorHead
-  name: loadout-group-hop-head # TODO - Localization
+  name: stellar-loadout-head
   minLimit: 0
   loadouts:
   - StellarServiceDirectorHat
 
 - type: loadoutGroup
   id: StellarServiceDirectorUniform
-  name: loadout-group-hop-jumpsuit # TODO - Localization
+  name: stellar-loadout-uniform
   loadouts:
   - StellarServiceDirectorUniform
   - StellarServiceDirectorUniformSkirt
@@ -51,7 +50,7 @@
 
 - type: loadoutGroup
   id: StellarServiceDirectorBackpack
-  name: loadout-group-hop-backpack # TODO - Localization
+  name: stellar-loadout-backpack
   loadouts:
   - StellarServiceDirectorBackpack
 
@@ -70,26 +69,31 @@
   id: StellarServiceDirectorUniform
   equipment:
     jumpsuit: StellarClothingUniformCommandServiceDirector
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarServiceDirectorUniformSkirt
   equipment:
     jumpsuit: StellarClothingUniformCommandServiceDirectorSkirt
+  groupBy: "uniform-skirt"
 
 - type: loadout
   id: StellarServiceDirectorUniformCasual
   equipment:
     jumpsuit: StellarClothingUniformCommandServiceDirectorAlt
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarServiceDirectorUniformCasualSkirt
   equipment:
     jumpsuit: StellarClothingUniformCommandServiceDirectorAltSkirt
+  groupBy: "uniform-skirt"
 
 - type: loadout
   id: StellarServiceDirectorUniformFormal
   equipment:
     jumpsuit: StellarClothingUniformCommandServiceDirectorFormal
+  groupBy: "uniform"
 
 ### BACKPACK
 - type: loadout

@@ -23,7 +23,6 @@
   - StellarHeadOfMedicineUniform
   - StellarHeadOfMedicineBackpack
   - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - GroupTankHarness
 
@@ -31,7 +30,7 @@
 # LOADOUT GROUPS
 - type: loadoutGroup
   id: StellarHeadOfMedicineUniform
-  name: loadout-group-hop-jumpsuit # TODO - Localization
+  name: stellar-loadout-uniform
   loadouts:
   - StellarHeadOfMedicineUniform
   - StellarHeadOfMedicineUniformSkirt
@@ -40,7 +39,7 @@
 
 - type: loadoutGroup
   id: StellarHeadOfMedicineBackpack
-  name: loadout-group-hop-backpack # TODO - Localization
+  name: stellar-loadout-backpack
   loadouts:
   - StellarHeadOfMedicineBackpack
 
@@ -53,21 +52,25 @@
   id: StellarHeadOfMedicineUniform
   equipment:
     jumpsuit: StellarClothingUniformCommandHeadOfMedicine
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarHeadOfMedicineUniformSkirt
   equipment:
     jumpsuit: StellarClothingUniformCommandHeadOfMedicineSkirt
+  groupBy: "uniform-skirt"
 
 - type: loadout
   id: StellarHeadOfMedicineUniformTurtleneck
   equipment:
     jumpsuit: StellarClothingUniformCommandHeadOfMedicineTurtleneck
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarHeadOfMedicineUniformTurtleneckSkirt
   equipment:
     jumpsuit: StellarClothingUniformCommandHeadOfMedicineTurtleneckSkirt
+  groupBy: "uniform-skirt"
 
 
 ### BACKPACK

@@ -20,14 +20,13 @@
   - StellarScientistUniform
   - StellarScienceBackpack
   - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - GroupTankHarness
 
 # LOADOUT GROUPS
 - type: loadoutGroup
   id: StellarScientistUniform
-  name: loadout-group-rd-jumpsuit # TODO - Localization
+  name: stellar-loadout-uniform
   loadouts:
   - StellarScientistUniform
   - StellarScientistUniformSkirt
@@ -41,28 +40,34 @@
   id: StellarScientistUniform
   equipment:
     jumpsuit: StellarClothingUniformScienceScientist
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarScientistUniformSkirt
   equipment:
     jumpsuit: StellarClothingUniformScienceScientistSkirt
+  groupBy: "uniform-skirt"
 
 - type: loadout
   id: StellarScientistUniformAlt
   equipment:
     jumpsuit: StellarClothingUniformScienceScientistAlt
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarScientistUniformAltSkirt
   equipment:
     jumpsuit: StellarClothingUniformScienceScientistAltSkirt
+  groupBy: "uniform-skirt"
 
 - type: loadout
   id: StellarScientistUniformCasual
   equipment:
     jumpsuit: StellarClothingUniformScienceScientistCasual
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarScientistUniformCasualSkirt
   equipment:
     jumpsuit: StellarClothingUniformScienceScientistCasualSkirt
+  groupBy: "uniform-skirt"

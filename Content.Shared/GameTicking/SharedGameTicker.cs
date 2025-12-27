@@ -26,7 +26,7 @@ namespace Content.Shared.GameTicking
         //TODO: Move these, they really belong in StationJobsSystem or a cvar.
         public static readonly ProtoId<JobPrototype> FallbackOverflowJob = "StellarJobServiceAssistant"; // Stellar
 
-        public const string FallbackOverflowJobName = "stellar-job-name-assistant"; // TODO: LOCALIZATION (Stellar  )
+        public const string FallbackOverflowJobName = "stellar-job-name-assistant"; // Stellar
 
         // TODO network.
         // Probably most useful for replays, round end info, and probably things like lobby menus.

@@ -25,3 +25,26 @@
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING-skirt
+
+- type: entity
+  parent: ClothingUniformBase
+  id: StellarClothingUniformServiceReporterAlt
+  name: reporter's alternate uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Service/Reporter/reporter-uniform-alt.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Service/Reporter/reporter-uniform-alt.rsi
+
+- type: entity
+  parent: StellarClothingUniformServiceReporterAlt
+  id: StellarClothingUniformServiceReporterAltSkirt
+  name: reporter's alternate uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt

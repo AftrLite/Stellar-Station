@@ -20,26 +20,40 @@
   - StellarClericUniform
   - StellarServiceBackpack
   - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - GroupTankHarness
 
 # LOADOUT GROUPS
 - type: loadoutGroup
   id: StellarClericUniform
-  name: loadout-group-rd-jumpsuit # TODO - Localization
+  name: stellar-loadout-uniform
   loadouts:
   - StellarClericUniform
   - StellarClericUniformSkirt
-
+  - StellarClericUniformRobeDark
+  - StellarClericUniformRobeLight
 
 ### UNIFORM
 - type: loadout
   id: StellarClericUniform
   equipment:
     jumpsuit: StellarClothingUniformServiceCleric
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarClericUniformSkirt
   equipment:
     jumpsuit: StellarClothingUniformServiceClericSkirt
+  groupBy: "uniform-skirt"
+
+- type: loadout
+  id: StellarClericUniformRobeDark
+  equipment:
+    jumpsuit: StellarClothingUniformServiceClericRobeDark
+  groupBy: "uniform"
+
+- type: loadout
+  id: StellarClericUniformRobeLight
+  equipment:
+    jumpsuit: StellarClothingUniformServiceClericRobeLight
+  groupBy: "uniform"

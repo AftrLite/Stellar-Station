@@ -1,5 +1,7 @@
-loadout-group-cleric-head = Cleric head
-loadout-group-cleric-mask = Cleric mask
-loadout-group-cleric-jumpsuit = Cleric jumpsuit
-loadout-group-cleric-outerclothing = Cleric outer clothing
-loadout-group-cleric-neck = Cleric neck
+stellar-loadout-head = Headwear
+stellar-loadout-neck = Neckwear
+stellar-loadout-outerclothing = Coats
+stellar-loadout-uniform = Uniforms
+stellar-loadout-gloves = Gloves
+stellar-loadout-shoes = Shoes
+stellar-loadout-backpack = Backpacks

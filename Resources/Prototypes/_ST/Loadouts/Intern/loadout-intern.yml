@@ -38,33 +38,138 @@
     id: StellarPDAInternSupply
     ears: StellarClothingHeadsetSupply
 
-# # ROLE LOADOUT CONFIG
-# - type: roleLoadout
-#   id: StellarJobSecurityWarden
-#   groups:
-#   - StellarWardenUniform
-#   - StellarSecurityBackpack
-#   - Survival
-#   - Trinkets
-#   - GroupSpeciesBreathTool
-#   - GroupTankHarness
 
-# # LOADOUT GROUPS
-# - type: loadoutGroup
-#   id: StellarWardenUniform
-#   name: loadout-group-rd-jumpsuit # TODO - Localization
-#   loadouts:
-#   - StellarWardenUniform
-#   - StellarWardenUniformSkirt
+# ROLE LOADOUT CONFIG
+- type: roleLoadout
+  id: StellarJobInternSupply
+  groups:
+  - StellarInternUniformSupply
+  - StellarSupplyBackpack
+  - Survival
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+- type: roleLoadout
+  id: StellarJobInternSecurity
+  groups:
+  - StellarInternUniformSecurity
+  - StellarSecurityBackpack
+  - Survival
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+- type: roleLoadout
+  id: StellarJobInternScience
+  groups:
+  - StellarInternUniformScience
+  - StellarScienceBackpack
+  - Survival
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+- type: roleLoadout
+  id: StellarJobInternMedical
+  groups:
+  - StellarInternUniformMedical
+  - StellarMedicalBackpack
+  - Survival
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+- type: roleLoadout
+  id: StellarJobInternEngineering
+  groups:
+  - StellarInternUniformEngineering
+  - StellarEngineeringBackpack
+  - Survival
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
 
 
-# ### UNIFORM
-# - type: loadout
-#   id: StellarWardenUniform
-#   equipment:
-#     jumpsuit: StellarClothingUniformSecurityWarden
+# LOADOUT GROUPS
+- type: loadoutGroup
+  id: StellarInternUniformSupply
+  name: stellar-loadout-uniform
+  loadouts:
+  - StellarInternUniformSupply
+  - StellarInternUniformSupplySkirt
 
-# - type: loadout
-#   id: StellarWardenUniformSkirt
-#   equipment:
-#     jumpsuit: StellarClothingUniformSecurityWardenSkirt
+- type: loadoutGroup
+  id: StellarInternUniformSecurity
+  name: stellar-loadout-uniform
+  loadouts:
+  - StellarInternUniformSecurity
+  - StellarInternUniformSecuritySkirt
+
+- type: loadoutGroup
+  id: StellarInternUniformScience
+  name: stellar-loadout-uniform
+  loadouts:
+  - StellarInternUniformScience
+  - StellarInternUniformScienceSkirt
+
+- type: loadoutGroup
+  id: StellarInternUniformMedical
+  name: stellar-loadout-uniform
+  loadouts:
+  - StellarInternUniformMedical
+  - StellarInternUniformMedicalSkirt
+
+- type: loadoutGroup
+  id: StellarInternUniformEngineering
+  name: stellar-loadout-uniform
+  loadouts:
+  - StellarInternUniformEngineering
+  - StellarInternUniformEngineeringSkirt
+
+
+### UNIFORM
+- type: loadout
+  id: StellarInternUniformSupply
+  equipment:
+    jumpsuit: StellarClothingUniformInternSupply
+
+- type: loadout
+  id: StellarInternUniformSupplySkirt
+  equipment:
+    jumpsuit: StellarClothingUniformInternSupplySkirt
+
+- type: loadout
+  id: StellarInternUniformSecurity
+  equipment:
+    jumpsuit: StellarClothingUniformInternSecurity
+
+- type: loadout
+  id: StellarInternUniformSecuritySkirt
+  equipment:
+    jumpsuit: StellarClothingUniformInternSecuritySkirt
+
+- type: loadout
+  id: StellarInternUniformScience
+  equipment:
+    jumpsuit: StellarClothingUniformInternScience
+
+- type: loadout
+  id: StellarInternUniformScienceSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformInternScienceSkirt
+
+- type: loadout
+  id: StellarInternUniformMedical
+  equipment:
+    jumpsuit: StellarClothingUniformInternMedical
+
+- type: loadout
+  id: StellarInternUniformMedicalSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformInternMedicalSkirt
+
+- type: loadout
+  id: StellarInternUniformEngineering
+  equipment:
+    jumpsuit: StellarClothingUniformInternEngineering
+
+- type: loadout
+  id: StellarInternUniformEngineeringSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformInternEngineeringSkirt

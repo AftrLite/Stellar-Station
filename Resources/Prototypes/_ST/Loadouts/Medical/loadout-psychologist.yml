@@ -20,14 +20,13 @@
   - StellarPsychologistUniform
   - StellarMedicalBackpack
   - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - GroupTankHarness
 
 # LOADOUT GROUPS
 - type: loadoutGroup
   id: StellarPsychologistUniform
-  name: loadout-group-rd-jumpsuit # TODO - Localization
+  name: stellar-loadout-uniform
   loadouts:
   - StellarPsychologistUniform
   - StellarPsychologistUniformSkirt
@@ -38,8 +37,10 @@
   id: StellarPsychologistUniform
   equipment:
     jumpsuit: StellarClothingUniformMedicalPsychologist
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarPsychologistUniformSkirt
   equipment:
     jumpsuit: StellarClothingUniformMedicalPsychologistSkirt
+  groupBy: "uniform-skirt"

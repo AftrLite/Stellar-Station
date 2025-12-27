@@ -27,7 +27,6 @@
   # - StellarCaptainOuterClothing
   - StellarCaptainBackpack
   - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
 
 
@@ -35,7 +34,7 @@
 # LOADOUT GROUPS
 - type: loadoutGroup
   id: StellarCaptainHead
-  name: loadout-group-captain-head # TODO - Localization
+  name: stellar-loadout-head
   minLimit: 0
   loadouts:
   - StellarCaptainHat
@@ -51,7 +50,7 @@
 
 - type: loadoutGroup
   id: StellarCaptainUniform
-  name: loadout-group-captain-jumpsuit # TODO - Localization
+  name: stellar-loadout-uniform
   loadouts:
   - StellarCaptainUniform
   - StellarCaptainUniformSkirt
@@ -69,7 +68,7 @@
 
 - type: loadoutGroup
   id: StellarCaptainBackpack
-  name: loadout-group-captain-backpack # TODO - Localization
+  name: stellar-loadout-backpack
   loadouts:
   - StellarCaptainBackpack
   # - CaptainSatchel
@@ -90,26 +89,31 @@
   id: StellarCaptainUniform
   equipment:
     jumpsuit: StellarClothingUniformCommandCaptain
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarCaptainUniformSkirt
   equipment:
     jumpsuit: StellarClothingUniformCommandCaptainSkirt
+  groupBy: "uniform-skirt"
 
 - type: loadout
   id: StellarCaptainUniformCasual
   equipment:
     jumpsuit: StellarClothingUniformCommandCaptainCasual
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarCaptainUniformCasualSkirt
   equipment:
     jumpsuit: StellarClothingUniformCommandCaptainCasualSkirt
+  groupBy: "uniform-skirt"
 
 - type: loadout
   id: StellarCaptainUniformFormal
   equipment:
     jumpsuit: StellarClothingUniformCommandCaptainFormal
+  groupBy: "uniform"
 
 ### NECK
 # - type: loadout

@@ -20,26 +20,40 @@
   - StellarReporterUniform
   - StellarServiceBackpack
   - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - GroupTankHarness
 
 # LOADOUT GROUPS
 - type: loadoutGroup
   id: StellarReporterUniform
-  name: loadout-group-rd-jumpsuit # TODO - Localization
+  name: stellar-loadout-uniform
   loadouts:
   - StellarReporterUniform
   - StellarReporterUniformSkirt
-
+  - StellarReporterUniformAlt
+  - StellarReporterUniformAltSkirt
 
 ### UNIFORM
 - type: loadout
   id: StellarReporterUniform
   equipment:
     jumpsuit: StellarClothingUniformServiceReporter
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarReporterUniformSkirt
   equipment:
     jumpsuit: StellarClothingUniformServiceReporterSkirt
+  groupBy: "uniform-skirt"
+
+- type: loadout
+  id: StellarReporterUniformAlt
+  equipment:
+    jumpsuit: StellarClothingUniformServiceReporterAlt
+  groupBy: "uniform"
+
+- type: loadout
+  id: StellarReporterUniformAltSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformServiceReporterAltSkirt
+  groupBy: "uniform-skirt"

@@ -20,14 +20,13 @@
   - StellarPerformerUniform
   - StellarServiceBackpack
   - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - GroupTankHarness
 
 # LOADOUT GROUPS
 - type: loadoutGroup
   id: StellarPerformerUniform
-  name: loadout-group-rd-jumpsuit # TODO - Localization
+  name: stellar-loadout-uniform
   loadouts:
   - StellarPerformerUniformClown
   - StellarPerformerUniformMime
@@ -41,23 +40,28 @@
   id: StellarPerformerUniformClown
   equipment:
     jumpsuit: StellarClothingUniformServicePerformerClown
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarPerformerUniformMime
   equipment:
     jumpsuit: StellarClothingUniformServicePerformerMime
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarPerformerUniformMimeSkirt
   equipment:
     jumpsuit: StellarClothingUniformServicePerformerMimeSkirt
+  groupBy: "uniform-skirt"
 
 - type: loadout
   id: StellarPerformerUniformMusician
   equipment:
     jumpsuit: StellarClothingUniformServicePerformerMusician
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarPerformerUniformMusicianSkirt
   equipment:
     jumpsuit: StellarClothingUniformServicePerformerMusicianSkirt
+  groupBy: "uniform-skirt"

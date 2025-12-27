@@ -20,14 +20,13 @@
   - StellarAtmosphericTechnicianUniform
   - StellarEngineeringBackpack
   - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - GroupTankHarness
 
 # LOADOUT GROUPS
 - type: loadoutGroup
   id: StellarAtmosphericTechnicianUniform
-  name: loadout-group-rd-jumpsuit # TODO - Localization
+  name: stellar-loadout-uniform
   loadouts:
   - StellarAtmosphericTechnicianUniform
   - StellarAtmosphericTechnicianUniformSkirt
@@ -38,8 +37,10 @@
   id: StellarAtmosphericTechnicianUniform
   equipment:
     jumpsuit: StellarClothingUniformEngineeringAtmosphericTechnician
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarAtmosphericTechnicianUniformSkirt
   equipment:
     jumpsuit: StellarClothingUniformEngineeringAtmosphericTechnicianSkirt
+  groupBy: "uniform-skirt"

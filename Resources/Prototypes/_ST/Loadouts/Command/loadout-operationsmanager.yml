@@ -23,7 +23,6 @@
   - StellarOperationsManagerUniform
   - StellarOperationsManagerBackpack
   - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - GroupTankHarness
 
@@ -31,7 +30,7 @@
 # LOADOUT GROUPS
 - type: loadoutGroup
   id: StellarOperationsManagerUniform
-  name: loadout-group-hop-jumpsuit # TODO - Localization
+  name: stellar-loadout-uniform
   loadouts:
   - StellarOperationsManagerUniform
   - StellarOperationsManagerUniformSkirt
@@ -40,7 +39,7 @@
 
 - type: loadoutGroup
   id: StellarOperationsManagerBackpack
-  name: loadout-group-hop-backpack # TODO - Localization
+  name: stellar-loadout-backpack
   loadouts:
   - StellarOperationsManagerBackpack
 
@@ -53,22 +52,25 @@
   id: StellarOperationsManagerUniform
   equipment:
     jumpsuit: StellarClothingUniformCommandOperationsManager
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarOperationsManagerUniformSkirt
   equipment:
     jumpsuit: StellarClothingUniformCommandOperationsManagerSkirt
+  groupBy: "uniform-skirt"
 
 - type: loadout
   id: StellarOperationsManagerUniformTurtleneck
   equipment:
     jumpsuit: StellarClothingUniformCommandOperationsManagerTurtleneck
+  groupBy: "uniform"
 
 - type: loadout
   id: StellarOperationsManagerUniformTurtleneckSkirt
   equipment:
     jumpsuit: StellarClothingUniformCommandOperationsManagerTurtleneckSkirt
-
+  groupBy: "uniform-skirt"
 
 ### BACKPACK
 - type: loadout
