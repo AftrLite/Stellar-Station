@@ -32,3 +32,5 @@ st-floor-grey-dotted-wide-n = dotted grey wide tile N
 st-floor-grey-dotted-wide-s = dotted grey wide tile S
 st-floor-grey-dotted-wide-w = dotted grey wide tile W
 st-floor-grey-dotted-wide-e = dotted grey wide tile E
+
+st-floor-lobby-1 = disintegrating tile

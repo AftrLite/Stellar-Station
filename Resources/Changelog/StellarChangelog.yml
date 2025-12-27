@@ -396,3 +396,14 @@
   id: 48
   time: '2025-12-16T11:10:41.0000000+00:00'
   url: https://github.com/Stellar-Station/Stellar-Station/pull/130
+- author: AftrLite
+  changes:
+  - message: There's a new lobby!
+    type: Add
+  - message: Space is now bright! Ported from Ephemeral space.
+    type: Add
+  - message: The old lobby is gone.
+    type: Remove
+  id: 49
+  time: '2025-12-27T02:14:05.0000000+00:00'
+  url: https://github.com/Stellar-Station/Stellar-Station/pull/128

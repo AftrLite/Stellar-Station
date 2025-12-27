@@ -1,0 +1,11 @@
+version = 1
+
+[[annotations]]
+path = ["cosmicvoid.yml"]
+SPDX-FileCopyrightText = "By AftrLite(GitHub) for Cosmic Cult."
+SPDX-License-Identifier = "LicenseRef-CosmicCult"
+
+[[annotations]]
+path = ["bluespace_lobby.yml"]
+SPDX-FileCopyrightText = "By AftrLite(GitHub)"
+SPDX-License-Identifier = "LicenseRef-Wallening"

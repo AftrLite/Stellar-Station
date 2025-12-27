@@ -1323,9 +1323,12 @@
   description: The traditional greytide defense.
   components:
   - type: Sprite
-    sprite: Structures/Walls/wood.rsi
+    # Begin Stellar - Wallening
+    sprite: _ST/Tileset/Walls/wood.rsi
   - type: Icon
-    sprite: Structures/Walls/wood.rsi
+    sprite: _ST/Tileset/Walls/wood.rsi
+    state: full
+      # End Stellar - Wallening
   - type: Construction
     graph: Barricade
     node: woodWall
@@ -1352,8 +1355,8 @@
       - !type:DoActsBehavior
         acts: ["Destruction"]
   - type: IconSmooth
-    key: woods
-    base: wood
+    key: wallsbase # Stellar - Wallening
+    base: wall # Stellar - Wallening
 
 - type: entity
   parent: BaseWall

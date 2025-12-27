@@ -1,0 +1,78 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  id: StellarCabinetDecorative
+  parent: LockerBase
+  name: decorative cabinet
+  description: Has a glossy lacquer finish.
+  components:
+  - type: Appearance
+  - type: EntityStorageVisuals
+  - type: Sprite
+    sprite: _ST/Tileset/Storage/cabinet.rsi
+    layers:
+    - state: base
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: door-closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      visible: false
+    - state: welded
+      sprite: _ST/Tileset/Storage/Lockers/base-locker-effects.rsi
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: paper
+      visible: false
+      sprite: _ST/Tileset/Storage/Lockers/base-locker-effects.rsi # End Stellar - Lockers
+      offset: "-0.065,0"
+      map: ["enum.PaperLabelVisuals.Layer"]
+  - type: EntityStorage
+    closeSound:
+      path: /Audio/Effects/woodenclosetclose.ogg
+    openSound:
+      path: /Audio/Effects/woodenclosetopen.ogg
+  - type: Paintable
+    group: null
+  - type: AccessReader
+    access: [["Bar"]]
+
+- type: entity
+  id: StellarCabinetGlassDecorative
+  parent: LockerBase
+  name: decorative cabinet
+  suffix: glass
+  description: Has a glossy lacquer finish.
+  components:
+  - type: Appearance
+  - type: EntityStorageVisuals
+  - type: Sprite
+    sprite: _ST/Tileset/Storage/cabinet-glass.rsi
+    layers:
+    - state: base
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: door-closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      visible: false
+    - state: welded
+      sprite: _ST/Tileset/Storage/Lockers/base-locker-effects.rsi
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: paper
+      visible: false
+      sprite: _ST/Tileset/Storage/Lockers/base-locker-effects.rsi # End Stellar - Lockers
+      offset: "-0.065,0"
+      map: ["enum.PaperLabelVisuals.Layer"]
+  - type: EntityStorage
+    closeSound:
+      path: /Audio/Effects/woodenclosetclose.ogg
+    openSound:
+      path: /Audio/Effects/woodenclosetopen.ogg
+  - type: Paintable
+    group: null
+  - type: AccessReader
+    access: [["Bar"]]
