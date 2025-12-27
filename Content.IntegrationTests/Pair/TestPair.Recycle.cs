@@ -89,7 +89,10 @@ public sealed partial class TestPair
 
         if (settings.InLobby)
         {
-            Assert.That(session.AttachedEntity, Is.Null);
+// ES START
+            // We have a diagetic lobby so this needs to check if we have an entity.
+            Assert.That(session.AttachedEntity, Is.Not.Null);
+// ES END
             return;
         }
 
