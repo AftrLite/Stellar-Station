@@ -104,7 +104,7 @@ public sealed class WindowSheetlet<T> : Sheetlet<T>
             // Title
             E<Label>()
                 .Class("FancyWindowTitle") // TODO: hardcoding class name
-                .Font(ResCache.GetFont("/Fonts/Boxfont-round/Boxfont Round.ttf", 13)) // TODO: hardcoding font
+                .Font(sheet.BaseFont.GetFont(13, FontKind.Bold)) // Stellar - we want to use Saira
                 .FontColor(sheet.HighlightPalette.Text),
 
             // Help Button

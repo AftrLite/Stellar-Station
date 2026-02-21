@@ -1,18 +1,18 @@
 - type: font
   id: Default
-  path: /Fonts/NotoSans/NotoSans-Regular.ttf
+  path: /Fonts/Saira/Saira-Regular.ttf # Stellar - Saira
 
 - type: font
   id: DefaultItalic
-  path: /Fonts/NotoSans/NotoSans-Italic.ttf
+  path: /Fonts/Saira/Saira-Italic.ttf # Stellar - Saira
 
 - type: font
   id: DefaultBold
-  path: /Fonts/NotoSans/NotoSans-Bold.ttf
+  path: /Fonts/Saira/Saira-Bold.ttf # Stellar - Saira
 
 - type: font
   id: DefaultBoldItalic
-  path: /Fonts/NotoSans/NotoSans-BoldItalic.ttf
+  path: /Fonts/Saira/Saira-BoldItalic.ttf # Stellar - Saira
 
 - type: font
   id: NotoSansDisplay
