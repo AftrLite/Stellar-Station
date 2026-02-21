@@ -11,7 +11,7 @@ public sealed partial class CCVars
         CVarDef.Create("viewport.fixed_scale_factor", 2, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     public static readonly CVarDef<int> ViewportSnapToleranceMargin =
-        CVarDef.Create("viewport.snap_tolerance_margin", 64, CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("stellar.viewport.snap_tolerance_margin", 0, CVar.CLIENTONLY | CVar.ARCHIVE); // Stellar - let's just force this on for us
 
     public static readonly CVarDef<int> ViewportSnapToleranceClip =
         CVarDef.Create("viewport.snap_tolerance_clip", 32, CVar.CLIENTONLY | CVar.ARCHIVE);
@@ -32,5 +32,5 @@ public sealed partial class CCVars
         CVarDef.Create("viewport.vertical_fit", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     public static readonly CVarDef<string> ViewportScalingFilterMode =
-        CVarDef.Create("viewport.scaling_filter", "nearest", CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("stellar.viewport.scaling_filter", "bilinear", CVar.CLIENTONLY | CVar.ARCHIVE); // Stellar - let's just force this on for us
 }
