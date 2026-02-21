@@ -52,7 +52,7 @@ public sealed class ResourceBarsSystem : SharedResourceBarsSystem
 
     private void OnLocalPlayerDetached(Entity<ResourceBarsComponent> ent, ref LocalPlayerDetachedEvent args)
     {
-        if (_playerManager.LocalEntity != ent.Owner)
+        if (args.Entity != ent.Owner)
             return;
 
         ClearResourceBars?.Invoke();
