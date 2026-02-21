@@ -36,12 +36,6 @@ public sealed partial class StellarHazardSectorRuleComponent : Component
     public Color MapLight;
 
     /// <summary>
-    /// Travel time to reach the hazard sector.
-    /// </summary>
-    [DataField(required: true)]
-    public TimeSpan TravelTime;
-
-    /// <summary>
     /// The currently active Hazard Sector Map EntityUid.
     /// </summary>
     public EntityUid SectorMap;
@@ -78,16 +72,7 @@ public sealed partial class StellarHazardSectorAmbienceConfig
     public TimeSpan? TimeBeforeEnd;
 
     [DataField]
-    public TimeSpan MinLightToggleTime = TimeSpan.FromSeconds(15);
-
-    [DataField]
-    public TimeSpan MaxLightToggleTime = TimeSpan.FromSeconds(30);
-
-    [DataField]
     public SoundSpecifier? StageMusic;
-
-    [DataField]
-    public bool? TravelSetup;
 
     [DataField]
     public bool? FlickerLights;

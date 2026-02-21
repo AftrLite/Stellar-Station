@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "license": "LicenseRef-Wallening",
+  "copyright": "By AftrLite",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+      {
+          "name": "pod-closed",
+          "directions": 4
+      },
+      {
+          "name": "pod-open",
+          "directions": 4
+      },
+      {
+          "name": "pod-closed-overlay",
+          "directions": 4
+      },
+      {
+          "name": "pod-open-overlay",
+          "directions": 4
+      }
+  ]
+}

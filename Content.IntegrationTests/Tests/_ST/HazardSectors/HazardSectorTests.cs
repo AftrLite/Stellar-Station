@@ -59,8 +59,7 @@ public sealed class HazardSectorTests : GameTest
             Assert.That(SQuerySingle<StellarMajorThreatRuleComponent>(out var threatRule));
             Assert.That(SQuerySingle<StellarShiftIntensityRuleComponent>(out var intensityRule));
             Assert.That(SQuerySingle<FTLComponent>(out var ftl), "Station is in FTL");
-
-            Assert.That(sectorRule!.Value.Comp.AmbiencePhases.Last().TravelSetup, Is.True, "First ambience phase in a hazard sector should have travel setup");
+            
             Assert.That(threatRule!.Value.Comp.ExpectedRoundEndTime, Is.Not.EqualTo(TimeSpan.Zero), "The threat rule should have decided a round time");
             Assert.That(intensityRule!.Value.Comp.ShiftIntensityPreset, Is.Not.EqualTo(string.Empty), "Hazard sector should have a non-null shift intensity");
             Assert.That(ftl!.Value.Owner, Is.EqualTo(sectorRule!.Value.Comp.SectorStation));

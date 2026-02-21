@@ -1,0 +1,69 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: StellarStructureBase
+  id: StellarCryosleepPod
+  name: cryosleep pod
+  description: A specialized sleeping pod that keeps crewmates safe during bluespace transit.
+  suffix: Spawner - LateJoin & RoundStart
+  categories: [ ForkFiltered ]
+  components:
+  - type: ContainerSpawnPoint
+    containerId: storage
+  - type: Sprite
+    drawdepth: Mobs
+    offset: 0, 0.2
+    noRot: true
+    sprite: _ST/Tileset/Machines/cryosleep.rsi
+    layers:
+    - state: pod-closed
+      map: ["base"]
+    - state: pod-closed-overlay
+      shader: unshaded
+      map: ["overlay"]
+  - type: UserInterface
+    interfaces:
+      enum.CryostorageUIKey.Key:
+        type: CryostorageBoundUserInterface
+  - type: ActivatableUI
+    key: enum.CryostorageUIKey.Key
+  - type: AccessReader
+    breakOnAccessBreaker: false
+    access: [["Cryogenics"]]
+    examinationText: access-reader-examination-functionality-restricted
+  - type: InteractionOutline
+  - type: Cryostorage
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.05"
+        density: 190
+        mask:
+        - TableMask
+  - type: DragInsertContainer
+    containerId: storage
+    entryDelay: 2
+  - type: ExitContainerOnMove
+    containerId: storage
+  - type: PointLight
+    color: Lime
+    radius: 1.5
+    energy: 0.5
+    castShadows: false
+  - type: ContainerContainer
+    containers:
+      storage: !type:ContainerSlot
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.CryostorageVisuals.Full:
+        base:
+          True: { state: pod-closed }
+          False: { state: pod-open }
+        overlay:
+          True: { state: pod-closed-overlay }
+          False: { state: pod-open-overlay }

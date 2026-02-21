@@ -26,12 +26,6 @@
   id: StellarBaseHazardSectorRule
   components:
   - type: StellarHazardSectorRule
-    travelTime: 30
-    ambiencePhases:
-    - timeAfterStart: 1s
-      travelSetup: true
-      minLightToggleTime: 15s
-      maxLightToggleTime: 30s
   - type: StellarMajorThreatRule
 
 - type: entity

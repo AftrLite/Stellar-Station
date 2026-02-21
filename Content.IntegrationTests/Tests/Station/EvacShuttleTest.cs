@@ -17,7 +17,10 @@ public sealed class EvacShuttleTest
     /// <summary>
     /// Ensure that the emergency shuttle can be called, and that it will travel to centcomm
     /// </summary>
-    [Test]
+    // Begin Stellar Changes
+    // We don't have an evac shuttle.
+    // [Test]
+    // End Stellar Changes
     public async Task EmergencyEvacTest()
     {
         await using var pair = await PoolManager.GetServerClient(new PoolSettings { DummyTicker = true, Dirty = true });
