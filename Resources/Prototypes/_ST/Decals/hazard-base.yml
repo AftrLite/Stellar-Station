@@ -1,0 +1,95 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: decal
+  abstract: true
+  parent: StellarDecal
+  id: StellarDecalHazard
+  tags: [ "warning" ]
+
+## ACTUAL DECALS
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardBaseCornerNe
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-base.rsi
+    state: corner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardBaseCornerSe
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-base.rsi
+    state: corner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardBaseCornerNw
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-base.rsi
+    state: corner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardBaseCornerSw
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-base.rsi
+    state: corner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardBaseInnerNe
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-base.rsi
+    state: inner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardBaseInnerSe
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-base.rsi
+    state: inner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardBaseInnerNw
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-base.rsi
+    state: inner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardBaseInnerSw
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-base.rsi
+    state: inner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardBaseLineN
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-base.rsi
+    state: line_n
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardBaseLineE
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-base.rsi
+    state: line_e
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardBaseLineS
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-base.rsi
+    state: line_s
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardBaseLineW
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-base.rsi
+    state: line_w

@@ -1,0 +1,115 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: decal
+  parent: [ StellarDecal ]
+  id: StellarDecalGlyphGorlex1
+  tags: [ "glyph" ]
+  sprite:
+    sprite: _ST/Decals/glyphs.rsi
+    state: gorlex1
+
+- type: decal
+  parent: [ StellarDecal ]
+  id: StellarDecalGlyphGorlex2
+  tags: [ "glyph" ]
+  sprite:
+    sprite: _ST/Decals/glyphs.rsi
+    state: gorlex2
+
+- type: decal
+  parent: [ StellarDecal ]
+  id: StellarDecalGlyphGorlexSmall
+  tags: [ "glyph" ]
+  sprite:
+    sprite: _ST/Decals/glyphs.rsi
+    state: gorlex-small
+
+- type: decal
+  parent: [ StellarDecal ]
+  id: StellarDecalGlyphNanoTrasenSmall
+  tags: [ "glyph" ]
+  sprite:
+    sprite: _ST/Decals/glyphs.rsi
+    state: nanotrasen-small
+
+- type: decal
+  parent: [ StellarDecal ]
+  id: StellarDecalGlyphNanoTrasenBig
+  tags: [ "glyph" ]
+  sprite:
+    sprite: _ST/Decals/glyphs.rsi
+    state: nanotrasen-big
+
+- type: decal
+  parent: [ StellarDecal ]
+  id: StellarDecalGlyphEngineering
+  tags: [ "glyph" ]
+  sprite:
+    sprite: _ST/Decals/glyphs.rsi
+    state: eng
+
+- type: decal
+  parent: [ StellarDecal ]
+  id: StellarDecalGlyphMedical
+  tags: [ "glyph" ]
+  sprite:
+    sprite: _ST/Decals/glyphs.rsi
+    state: med
+
+- type: decal
+  parent: [ StellarDecal ]
+  id: StellarDecalGlyphSecurity
+  tags: [ "glyph" ]
+  sprite:
+    sprite: _ST/Decals/glyphs.rsi
+    state: sec
+
+- type: decal
+  parent: [ StellarDecal ]
+  id: StellarDecalGlyphScience
+  tags: [ "glyph" ]
+  sprite:
+    sprite: _ST/Decals/glyphs.rsi
+    state: sci
+
+- type: decal
+  parent: [ StellarDecal ]
+  id: StellarDecalGlyphAir
+  tags: [ "glyph" ]
+  sprite:
+    sprite: _ST/Decals/glyphs.rsi
+    state: air
+
+- type: decal
+  parent: [ StellarDecal ]
+  id: StellarDecalGlyphOxygen
+  tags: [ "glyph" ]
+  sprite:
+    sprite: _ST/Decals/glyphs.rsi
+    state: oxygen
+
+- type: decal
+  parent: [ StellarDecal ]
+  id: StellarDecalGlyphNitrogen
+  tags: [ "glyph" ]
+  sprite:
+    sprite: _ST/Decals/glyphs.rsi
+    state: nitrogen
+
+- type: decal
+  parent: [ StellarDecal ]
+  id: StellarDecalGlyphRadiation1
+  tags: [ "glyph" ]
+  sprite:
+    sprite: _ST/Decals/glyphs.rsi
+    state: radiation-1
+
+- type: decal
+  parent: [ StellarDecal ]
+  id: StellarDecalGlyphRadiation2
+  tags: [ "glyph" ]
+  sprite:
+    sprite: _ST/Decals/glyphs.rsi
+    state: radiation-2

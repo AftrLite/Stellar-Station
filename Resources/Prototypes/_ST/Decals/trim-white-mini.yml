@@ -1,0 +1,122 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteMiniBox
+  sprite:
+    sprite: _ST/Decals/trim-white-mini.rsi
+    state: box
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteMiniCornerNe
+  sprite:
+    sprite: _ST/Decals/trim-white-mini.rsi
+    state: corner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteMiniCornerSe
+  sprite:
+    sprite: _ST/Decals/trim-white-mini.rsi
+    state: corner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteMiniCornerNw
+  sprite:
+    sprite: _ST/Decals/trim-white-mini.rsi
+    state: corner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteMiniCornerSw
+  sprite:
+    sprite: _ST/Decals/trim-white-mini.rsi
+    state: corner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteMiniInnerNe
+  sprite:
+    sprite: _ST/Decals/trim-white-mini.rsi
+    state: inner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteMiniInnerSe
+  sprite:
+    sprite: _ST/Decals/trim-white-mini.rsi
+    state: inner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteMiniInnerNw
+  sprite:
+    sprite: _ST/Decals/trim-white-mini.rsi
+    state: inner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteMiniInnerSw
+  sprite:
+    sprite: _ST/Decals/trim-white-mini.rsi
+    state: inner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteMiniEndN
+  sprite:
+    sprite: _ST/Decals/trim-white-mini.rsi
+    state: end_n
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteMiniEndE
+  sprite:
+    sprite: _ST/Decals/trim-white-mini.rsi
+    state: end_e
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteMiniEndS
+  sprite:
+    sprite: _ST/Decals/trim-white-mini.rsi
+    state: end_s
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteMiniEndW
+  sprite:
+    sprite: _ST/Decals/trim-white-mini.rsi
+    state: end_w
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteMiniLineN
+  sprite:
+    sprite: _ST/Decals/trim-white-mini.rsi
+    state: line_n
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteMiniLineE
+  sprite:
+    sprite: _ST/Decals/trim-white-mini.rsi
+    state: line_e
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteMiniLineS
+  sprite:
+    sprite: _ST/Decals/trim-white-mini.rsi
+    state: line_s
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteMiniLineW
+  sprite:
+    sprite: _ST/Decals/trim-white-mini.rsi
+    state: line_w

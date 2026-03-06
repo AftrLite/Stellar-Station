@@ -1,0 +1,95 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: decal
+  abstract: true
+  parent: StellarDecal
+  id: StellarDecalGrey
+  tags: [ "grey" ]
+
+## ACTUAL DECALS
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalGrey ]
+  id: StellarDecalTrimGreyBaseCornerNe
+  sprite:
+    sprite: _ST/Decals/trim-grey-base.rsi
+    state: corner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalGrey ]
+  id: StellarDecalTrimGreyBaseCornerSe
+  sprite:
+    sprite: _ST/Decals/trim-grey-base.rsi
+    state: corner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalGrey ]
+  id: StellarDecalTrimGreyBaseCornerNw
+  sprite:
+    sprite: _ST/Decals/trim-grey-base.rsi
+    state: corner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalGrey ]
+  id: StellarDecalTrimGreyBaseCornerSw
+  sprite:
+    sprite: _ST/Decals/trim-grey-base.rsi
+    state: corner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalGrey ]
+  id: StellarDecalTrimGreyBaseInnerNe
+  sprite:
+    sprite: _ST/Decals/trim-grey-base.rsi
+    state: inner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalGrey ]
+  id: StellarDecalTrimGreyBaseInnerSe
+  sprite:
+    sprite: _ST/Decals/trim-grey-base.rsi
+    state: inner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalGrey ]
+  id: StellarDecalTrimGreyBaseInnerNw
+  sprite:
+    sprite: _ST/Decals/trim-grey-base.rsi
+    state: inner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalGrey ]
+  id: StellarDecalTrimGreyBaseInnerSw
+  sprite:
+    sprite: _ST/Decals/trim-grey-base.rsi
+    state: inner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalGrey ]
+  id: StellarDecalTrimGreyBaseLineN
+  sprite:
+    sprite: _ST/Decals/trim-grey-base.rsi
+    state: line_n
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalGrey ]
+  id: StellarDecalTrimGreyBaseLineE
+  sprite:
+    sprite: _ST/Decals/trim-grey-base.rsi
+    state: line_e
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalGrey ]
+  id: StellarDecalTrimGreyBaseLineS
+  sprite:
+    sprite: _ST/Decals/trim-grey-base.rsi
+    state: line_s
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalGrey ]
+  id: StellarDecalTrimGreyBaseLineW
+  sprite:
+    sprite: _ST/Decals/trim-grey-base.rsi
+    state: line_w

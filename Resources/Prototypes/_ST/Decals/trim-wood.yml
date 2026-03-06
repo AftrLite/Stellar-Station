@@ -1,0 +1,146 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: decal
+  abstract: true
+  id: StellarDecal
+  showMenu: true
+  snapCardinals: true
+  defaultSnap: true
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: box
+
+- type: decal
+  abstract: true
+  parent: StellarDecal
+  id: StellarDecalTrim
+  tags: [ "trim" ]
+
+- type: decal
+  abstract: true
+  parent: StellarDecal
+  id: StellarDecalWood
+  tags: [ "wood" ]
+
+## ACTUAL DECALS
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWood ]
+  id: StellarDecalTrimWoodBox
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: box
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWood ]
+  id: StellarDecalTrimWoodCornerNe
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: corner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWood ]
+  id: StellarDecalTrimWoodCornerSe
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: corner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWood ]
+  id: StellarDecalTrimWoodCornerNw
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: corner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWood ]
+  id: StellarDecalTrimWoodCornerSw
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: corner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWood ]
+  id: StellarDecalTrimWoodInnerNe
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: inner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWood ]
+  id: StellarDecalTrimWoodInnerSe
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: inner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWood ]
+  id: StellarDecalTrimWoodInnerNw
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: inner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWood ]
+  id: StellarDecalTrimWoodInnerSw
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: inner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWood ]
+  id: StellarDecalTrimWoodEndN
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: end_n
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWood ]
+  id: StellarDecalTrimWoodEndE
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: end_e
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWood ]
+  id: StellarDecalTrimWoodEndS
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: end_s
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWood ]
+  id: StellarDecalTrimWoodEndW
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: end_w
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWood ]
+  id: StellarDecalTrimWoodLineN
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: line_n
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWood ]
+  id: StellarDecalTrimWoodLineE
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: line_e
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWood ]
+  id: StellarDecalTrimWoodLineS
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: line_s
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWood ]
+  id: StellarDecalTrimWoodLineW
+  sprite:
+    sprite: _ST/Decals/trim-wood.rsi
+    state: line_w

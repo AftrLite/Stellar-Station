@@ -1,0 +1,95 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: decal
+  abstract: true
+  parent: StellarDecal
+  id: StellarDecalDark
+  tags: [ "dark" ]
+
+## ACTUAL DECALS
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkBaseCornerNe
+  sprite:
+    sprite: _ST/Decals/trim-dark-base.rsi
+    state: corner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkBaseCornerSe
+  sprite:
+    sprite: _ST/Decals/trim-dark-base.rsi
+    state: corner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkBaseCornerNw
+  sprite:
+    sprite: _ST/Decals/trim-dark-base.rsi
+    state: corner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkBaseCornerSw
+  sprite:
+    sprite: _ST/Decals/trim-dark-base.rsi
+    state: corner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkBaseInnerNe
+  sprite:
+    sprite: _ST/Decals/trim-dark-base.rsi
+    state: inner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkBaseInnerSe
+  sprite:
+    sprite: _ST/Decals/trim-dark-base.rsi
+    state: inner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkBaseInnerNw
+  sprite:
+    sprite: _ST/Decals/trim-dark-base.rsi
+    state: inner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkBaseInnerSw
+  sprite:
+    sprite: _ST/Decals/trim-dark-base.rsi
+    state: inner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkBaseLineN
+  sprite:
+    sprite: _ST/Decals/trim-dark-base.rsi
+    state: line_n
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkBaseLineE
+  sprite:
+    sprite: _ST/Decals/trim-dark-base.rsi
+    state: line_e
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkBaseLineS
+  sprite:
+    sprite: _ST/Decals/trim-dark-base.rsi
+    state: line_s
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkBaseLineW
+  sprite:
+    sprite: _ST/Decals/trim-dark-base.rsi
+    state: line_w

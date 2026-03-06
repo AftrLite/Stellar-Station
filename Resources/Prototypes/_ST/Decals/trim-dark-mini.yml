@@ -1,0 +1,122 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkMiniBox
+  sprite:
+    sprite: _ST/Decals/trim-dark-mini.rsi
+    state: box
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkMiniCornerNe
+  sprite:
+    sprite: _ST/Decals/trim-dark-mini.rsi
+    state: corner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkMiniCornerSe
+  sprite:
+    sprite: _ST/Decals/trim-dark-mini.rsi
+    state: corner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkMiniCornerNw
+  sprite:
+    sprite: _ST/Decals/trim-dark-mini.rsi
+    state: corner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkMiniCornerSw
+  sprite:
+    sprite: _ST/Decals/trim-dark-mini.rsi
+    state: corner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkMiniInnerNe
+  sprite:
+    sprite: _ST/Decals/trim-dark-mini.rsi
+    state: inner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkMiniInnerSe
+  sprite:
+    sprite: _ST/Decals/trim-dark-mini.rsi
+    state: inner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkMiniInnerNw
+  sprite:
+    sprite: _ST/Decals/trim-dark-mini.rsi
+    state: inner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkMiniInnerSw
+  sprite:
+    sprite: _ST/Decals/trim-dark-mini.rsi
+    state: inner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkMiniEndN
+  sprite:
+    sprite: _ST/Decals/trim-dark-mini.rsi
+    state: end_n
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkMiniEndE
+  sprite:
+    sprite: _ST/Decals/trim-dark-mini.rsi
+    state: end_e
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkMiniEndS
+  sprite:
+    sprite: _ST/Decals/trim-dark-mini.rsi
+    state: end_s
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkMiniEndW
+  sprite:
+    sprite: _ST/Decals/trim-dark-mini.rsi
+    state: end_w
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkMiniLineN
+  sprite:
+    sprite: _ST/Decals/trim-dark-mini.rsi
+    state: line_n
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkMiniLineE
+  sprite:
+    sprite: _ST/Decals/trim-dark-mini.rsi
+    state: line_e
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkMiniLineS
+  sprite:
+    sprite: _ST/Decals/trim-dark-mini.rsi
+    state: line_s
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalDark ]
+  id: StellarDecalTrimDarkMiniLineW
+  sprite:
+    sprite: _ST/Decals/trim-dark-mini.rsi
+    state: line_w

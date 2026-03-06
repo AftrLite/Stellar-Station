@@ -1,0 +1,66 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardMiscArrowsE
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-misc.rsi
+    state: arrows_two_e
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardMiscArrowsN
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-misc.rsi
+    state: arrows_two_n
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardMiscArrowsS
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-misc.rsi
+    state: arrows_two_s
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardMiscArrowsW
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-misc.rsi
+    state: arrows_two_w
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardMiscBox
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-misc.rsi
+    state: box
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardMiscBoxDashed
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-misc.rsi
+    state: box-dashed
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardMiscOutline
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-misc.rsi
+    state: outline
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardMiscOutlineDashed
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-misc.rsi
+    state: outline-dashed
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalHazard ]
+  id: StellarDecalTrimHazardMiscTarget
+  sprite:
+    sprite: _ST/Decals/Hazard/hazard-misc.rsi
+    state: target

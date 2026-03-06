@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: decal
+  id: StellarDecalBurnt1
+  tags: [ "stellarburnt" ]
+  sprite:
+    sprite: _ST/Decals/burnt.rsi
+    state: burnt1
+
+- type: decal
+  id: StellarDecalBurnt2
+  tags: [ "stellarburnt" ]
+  sprite:
+    sprite: _ST/Decals/burnt.rsi
+    state: burnt2
+
+- type: decal
+  id: StellarDecalBurnt3
+  tags: [ "stellarburnt" ]
+  sprite:
+    sprite: _ST/Decals/burnt.rsi
+    state: burnt3
+
+- type: decal
+  id: StellarDecalBurnt4
+  tags: [ "stellarburnt" ]
+  sprite:
+    sprite: _ST/Decals/burnt.rsi
+    state: burnt4

@@ -1,0 +1,95 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: decal
+  abstract: true
+  parent: StellarDecal
+  id: StellarDecalWhite
+  tags: [ "white" ]
+
+## ACTUAL DECALS
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteBaseCornerNe
+  sprite:
+    sprite: _ST/Decals/trim-white-base.rsi
+    state: corner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteBaseCornerSe
+  sprite:
+    sprite: _ST/Decals/trim-white-base.rsi
+    state: corner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteBaseCornerNw
+  sprite:
+    sprite: _ST/Decals/trim-white-base.rsi
+    state: corner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteBaseCornerSw
+  sprite:
+    sprite: _ST/Decals/trim-white-base.rsi
+    state: corner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteBaseInnerNe
+  sprite:
+    sprite: _ST/Decals/trim-white-base.rsi
+    state: inner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteBaseInnerSe
+  sprite:
+    sprite: _ST/Decals/trim-white-base.rsi
+    state: inner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteBaseInnerNw
+  sprite:
+    sprite: _ST/Decals/trim-white-base.rsi
+    state: inner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteBaseInnerSw
+  sprite:
+    sprite: _ST/Decals/trim-white-base.rsi
+    state: inner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteBaseLineN
+  sprite:
+    sprite: _ST/Decals/trim-white-base.rsi
+    state: line_n
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteBaseLineE
+  sprite:
+    sprite: _ST/Decals/trim-white-base.rsi
+    state: line_e
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteBaseLineS
+  sprite:
+    sprite: _ST/Decals/trim-white-base.rsi
+    state: line_s
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalWhite ]
+  id: StellarDecalTrimWhiteBaseLineW
+  sprite:
+    sprite: _ST/Decals/trim-white-base.rsi
+    state: line_w

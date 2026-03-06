@@ -1,0 +1,122 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalOverlay ]
+  id: StellarDecalTrimOverlayMiniBox
+  sprite:
+    sprite: _ST/Decals/Overlays/overlay-mini.rsi
+    state: box
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalOverlay ]
+  id: StellarDecalTrimOverlayMiniCornerNe
+  sprite:
+    sprite: _ST/Decals/Overlays/overlay-mini.rsi
+    state: corner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalOverlay ]
+  id: StellarDecalTrimOverlayMiniCornerSe
+  sprite:
+    sprite: _ST/Decals/Overlays/overlay-mini.rsi
+    state: corner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalOverlay ]
+  id: StellarDecalTrimOverlayMiniCornerNw
+  sprite:
+    sprite: _ST/Decals/Overlays/overlay-mini.rsi
+    state: corner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalOverlay ]
+  id: StellarDecalTrimOverlayMiniCornerSw
+  sprite:
+    sprite: _ST/Decals/Overlays/overlay-mini.rsi
+    state: corner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalOverlay ]
+  id: StellarDecalTrimOverlayMiniInnerNe
+  sprite:
+    sprite: _ST/Decals/Overlays/overlay-mini.rsi
+    state: inner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalOverlay ]
+  id: StellarDecalTrimOverlayMiniInnerSe
+  sprite:
+    sprite: _ST/Decals/Overlays/overlay-mini.rsi
+    state: inner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalOverlay ]
+  id: StellarDecalTrimOverlayMiniInnerNw
+  sprite:
+    sprite: _ST/Decals/Overlays/overlay-mini.rsi
+    state: inner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalOverlay ]
+  id: StellarDecalTrimOverlayMiniInnerSw
+  sprite:
+    sprite: _ST/Decals/Overlays/overlay-mini.rsi
+    state: inner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalOverlay ]
+  id: StellarDecalTrimOverlayMiniEndN
+  sprite:
+    sprite: _ST/Decals/Overlays/overlay-mini.rsi
+    state: end_n
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalOverlay ]
+  id: StellarDecalTrimOverlayMiniEndE
+  sprite:
+    sprite: _ST/Decals/Overlays/overlay-mini.rsi
+    state: end_e
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalOverlay ]
+  id: StellarDecalTrimOverlayMiniEndS
+  sprite:
+    sprite: _ST/Decals/Overlays/overlay-mini.rsi
+    state: end_s
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalOverlay ]
+  id: StellarDecalTrimOverlayMiniEndW
+  sprite:
+    sprite: _ST/Decals/Overlays/overlay-mini.rsi
+    state: end_w
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalOverlay ]
+  id: StellarDecalTrimOverlayMiniLineN
+  sprite:
+    sprite: _ST/Decals/Overlays/overlay-mini.rsi
+    state: line_n
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalOverlay ]
+  id: StellarDecalTrimOverlayMiniLineE
+  sprite:
+    sprite: _ST/Decals/Overlays/overlay-mini.rsi
+    state: line_e
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalOverlay ]
+  id: StellarDecalTrimOverlayMiniLineS
+  sprite:
+    sprite: _ST/Decals/Overlays/overlay-mini.rsi
+    state: line_s
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalOverlay ]
+  id: StellarDecalTrimOverlayMiniLineW
+  sprite:
+    sprite: _ST/Decals/Overlays/overlay-mini.rsi
+    state: line_w

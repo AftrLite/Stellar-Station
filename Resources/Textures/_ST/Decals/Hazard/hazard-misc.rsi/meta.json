@@ -1,0 +1,38 @@
+{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "By AftrLite",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "arrows_two_e"
+        },
+        {
+            "name": "arrows_two_n"
+        },
+        {
+            "name": "arrows_two_s"
+        },
+        {
+            "name": "arrows_two_w"
+        },
+        {
+            "name": "box"
+        },
+        {
+            "name": "box-dashed"
+        },
+        {
+            "name": "outline"
+        },
+        {
+            "name": "outline-dashed"
+        },
+        {
+            "name": "target"
+        }
+    ]
+}

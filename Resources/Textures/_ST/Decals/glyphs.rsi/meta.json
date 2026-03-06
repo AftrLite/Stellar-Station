@@ -1,0 +1,53 @@
+{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "By AftrLite",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "gorlex1"
+        },
+        {
+            "name": "gorlex2"
+        },
+        {
+            "name": "gorlex-small"
+        },
+        {
+            "name": "nanotrasen-small"
+        },
+        {
+            "name": "nanotrasen-big"
+        },
+        {
+            "name": "eng"
+        },
+        {
+            "name": "med"
+        },
+        {
+            "name": "sec"
+        },
+        {
+            "name": "sci"
+        },
+        {
+            "name": "air"
+        },
+        {
+            "name": "oxygen"
+        },
+        {
+            "name": "nitrogen"
+        },
+        {
+            "name": "radiation-1"
+        },
+        {
+            "name": "radiation-2"
+        }
+    ]
+}
