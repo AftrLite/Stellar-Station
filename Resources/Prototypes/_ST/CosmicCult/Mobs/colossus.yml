@@ -226,7 +226,7 @@
     speed: 8
     distance: 7
   - type: Reflect
-    reflectProb: .15
+    reflectProb: .95
     spread: 120
     soundOnReflect:
       path: /Audio/_ST/CosmicCult/cosmicsword_glance.ogg

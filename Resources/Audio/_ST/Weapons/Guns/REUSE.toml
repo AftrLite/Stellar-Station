@@ -1,0 +1,6 @@
+version = 1
+
+[[annotations]]
+path = ["echion.ogg", "echion-cerberus.ogg", "echion-chimera.ogg", "echion-echidna.ogg", "echion-gorgon.ogg", "echion-hydra.ogg", "echion-minotaur.ogg", "echion-no-ammo.ogg"]
+SPDX-FileCopyrightText = "Custom gun sounds by AftrLite, Darklyac, and Pigeonbeans."
+SPDX-License-Identifier = "LicenseRef-Wallening"

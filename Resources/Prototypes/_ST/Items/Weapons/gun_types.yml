@@ -1,0 +1,71 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### KINETICS
+- type: stellarGunType
+  id: StellarGunTypePistol
+  ammo: stellar-ammo-pistol
+  suffix: stellar-ammo-suffix-ammo
+
+- type: stellarGunType
+  id: StellarGunTypeShotgun
+  ammo: stellar-ammo-shotgun
+  suffix: stellar-ammo-suffix-shells
+
+- type: stellarGunType
+  id: StellarGunTypeSniper
+  ammo: stellar-ammo-sniper
+  suffix: stellar-ammo-suffix-ammo
+
+- type: stellarGunType
+  id: StellarGunTypeSubmachine
+  ammo: stellar-ammo-submachine
+  suffix: stellar-ammo-suffix-ammo
+
+- type: stellarGunType
+  id: StellarGunTypeRevolver
+  ammo: stellar-ammo-revolver
+  suffix: stellar-ammo-suffix-ammo
+
+- type: stellarGunType
+  id: StellarGunTypeRifle
+  ammo: stellar-ammo-rifle
+  suffix: stellar-ammo-suffix-ammo
+
+### ENERGY
+- type: stellarGunType
+  id: StellarGunTypeEnergyPistol
+  ammo: stellar-ammo-pistol
+  suffix: stellar-ammo-suffix-cells
+
+- type: stellarGunType
+  id: StellarGunTypeEnergyShotgun
+  ammo: stellar-ammo-shotgun
+  suffix: stellar-ammo-suffix-cells
+
+- type: stellarGunType
+  id: StellarGunTypeEnergySniper
+  ammo: stellar-ammo-sniper
+  suffix: stellar-ammo-suffix-cells
+
+- type: stellarGunType
+  id: StellarGunTypeEnergySubmachine
+  ammo: stellar-ammo-submachine
+  suffix: stellar-ammo-suffix-cells
+
+- type: stellarGunType
+  id: StellarGunTypeEnergyRevolver
+  ammo: stellar-ammo-revolver
+  suffix: stellar-ammo-suffix-cells
+
+- type: stellarGunType
+  id: StellarGunTypeEnergyRifle
+  ammo: stellar-ammo-rifle
+  suffix: stellar-ammo-suffix-cells
+
+### UNIQUE / EXOTIC
+- type: stellarGunType
+  id: StellarGunTypeEchion # Yummy!
+  ammo: stellar-ammo-echion
+  suffix: stellar-ammo-suffix-injection

@@ -9,7 +9,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 namespace Content.Shared.Weapons.Ranged.Components;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true), AutoGenerateComponentPause]
-[Access(typeof(SharedGunSystem))]
+// [Access(typeof(SharedGunSystem))]
 public sealed partial class GunComponent : Component
 {
     #region Sound
@@ -61,6 +61,7 @@ public sealed partial class GunComponent : Component
     /// Used for recoil purposes.
     /// </summary>
     [DataField]
+    [AutoNetworkedField] // Stellar - we predict around these parts
     public TimeSpan LastFire = TimeSpan.Zero;
 
     /// <summary>

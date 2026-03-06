@@ -11,7 +11,7 @@ public sealed class WeaponTests : InteractionTest
 {
     protected override string PlayerPrototype => "MobHuman"; // The default test mob only has one hand
     private static readonly EntProtoId MobHuman = "MobHuman";
-    private static readonly EntProtoId SniperMosin = "WeaponSniperMosin";
+    private static readonly EntProtoId SniperMosin = "StellarWeaponEchionMinotaur"; // Stellar - Replaces this with a gun that actually works.
 
     [Test]
     public async Task GunRequiresWieldTest()

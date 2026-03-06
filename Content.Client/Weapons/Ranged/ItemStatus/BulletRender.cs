@@ -176,10 +176,10 @@ public sealed class BulletRender : BaseBulletRenderer
         MinCountPerRow = MinCountPerRow
     };
 
-    private static readonly Color ColorA = Color.FromHex("#b68f0e");
-    private static readonly Color ColorB = Color.FromHex("#d7df60");
-    private static readonly Color ColorGoneA = Color.FromHex("#000000");
-    private static readonly Color ColorGoneB = Color.FromHex("#222222");
+    private static readonly Color ColorA = Color.FromHex("#81cedd");  // Begin Stellar - Bullet colors
+    private static readonly Color ColorB = Color.FromHex("#619fc4");
+    private static readonly Color ColorGoneA = Color.FromHex("#a66c22");
+    private static readonly Color ColorGoneB = Color.FromHex("#833c0c");  // Begin Stellar - Bullet colors
 
     private readonly Texture _bulletTiny;
     private readonly Texture _bulletNormal;
@@ -236,8 +236,8 @@ public sealed class BulletRender : BaseBulletRenderer
 
 public sealed class BatteryBulletRenderer : BaseBulletRenderer
 {
-    private static readonly Color ItemColor = Color.FromHex("#E00000");
-    private static readonly Color ItemColorGone = Color.Black;
+    private static readonly Color ItemColor = Color.FromHex("#91e4e8"); // Stellar
+    private static readonly Color ItemColorGone = Color.FromHex("#b1732b"); // Stellar
 
     private const int SizeH = 10;
     private const int SizeV = 10;

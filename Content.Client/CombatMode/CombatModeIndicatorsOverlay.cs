@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.Client.Hands.Systems;
+using Content.Shared._ST.Crosshair; // Stellar
 using Content.Shared.Weapons.Ranged.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -23,6 +24,11 @@ public sealed class CombatModeIndicatorsOverlay : Overlay
     private readonly IEyeManager _eye;
     private readonly CombatModeSystem _combat;
     private readonly HandsSystem _hands = default!;
+
+    // Begin Stellar - Custom crosshair functionality from RMC
+    private readonly SharedStellarCrosshairSystem _crosshair;
+    private readonly SpriteSystem _sprite;
+    // End Stellar - Custom crosshair functionality from RMC
 
     private readonly Texture _gunSight;
     private readonly Texture _gunBoltSight;
@@ -50,6 +56,11 @@ public sealed class CombatModeIndicatorsOverlay : Overlay
             "gun_bolt_sight"));
         _meleeSight = spriteSys.Frame0(new SpriteSpecifier.Rsi(new ResPath("/Textures/Interface/Misc/crosshair_pointers.rsi"),
              "melee_sight"));
+
+        // Begin Stellar - Custom crosshair functionality from RMC
+        _crosshair = entMan.System<SharedStellarCrosshairSystem>();
+        _sprite = entMan.System<SpriteSystem>();
+        // End Stellar - Custom crosshair functionality from RMC
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
@@ -75,10 +86,21 @@ public sealed class CombatModeIndicatorsOverlay : Overlay
 
 
         var mousePos = mouseScreenPosition.Position;
-        var uiScale = (args.ViewportControl as Control)?.UIScale ?? 1f;
+        var uiScale = (args.ViewportControl as Control)?.UIScale ?? 6f;
         var limitedScale = uiScale > 1.25f ? 1.25f : uiScale;
 
+        // Begin Stellar - Custom crosshair functionality from RMC
+        var crosshairEntity = handEntity;
         var sight = isHandGunItem ? (isGunBolted ? _gunSight : _gunBoltSight) : _meleeSight;
+        if (crosshairEntity != null && _crosshair.GetCrosshair(crosshairEntity.Value) is { } crosshair)
+        {
+            sight = _sprite.Frame0(crosshair);
+            var sightSize = sight.Size * 2f; // Stellar
+            var rect = UIBox2.FromDimensions(mousePos - sightSize * 0.5f, sightSize);
+            args.ScreenHandle.DrawTextureRect(sight, rect);
+            return;
+        }
+        // End Stellar - Custom crosshair functionality from RMC
         DrawSight(sight, args.ScreenHandle, mousePos, limitedScale * Scale);
     }
 

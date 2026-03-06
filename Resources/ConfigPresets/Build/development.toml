@@ -48,7 +48,7 @@ ssd_sleep_time = 3600
 
 # Begin Stellar Changes
 [st_station_wakeup]
-enabled = true
+#enabled = true
 ftl_time = 30
 sleep_time = 1
 # End Stellar Changes

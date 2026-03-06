@@ -2,12 +2,17 @@ using Content.Shared.Weapons.Hitscan.Components;
 using Content.Shared.Weapons.Hitscan.Events;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Reflect;
+using Robust.Shared.Network; // Stellar - Don't reflect predicted hitscans
 using Robust.Shared.Random;
 
 namespace Content.Shared.Weapons.Hitscan.Systems;
 
 public sealed class HitscanReflectSystem : EntitySystem
 {
+    // Begin Stellar - Don't reflect predicted hitscans
+    [Dependency] private readonly INetManager _netManager = default!;
+    // End Stellar - Don't reflect predicted hitscans
+
     public override void Initialize()
     {
         base.Initialize();
@@ -18,6 +23,11 @@ public sealed class HitscanReflectSystem : EntitySystem
     private void OnHitscanHit(Entity<HitscanReflectComponent> hitscan, ref AttemptHitscanRaycastFiredEvent args)
     {
         var data = args.Data;
+
+        // Begin Stellar - Don't reflect predicted hitscans
+        if (_netManager.IsClient)
+            return;
+        // End Stellar - Don't reflect predicted hitscans
 
         if (hitscan.Comp.ReflectiveType == ReflectType.None || data.HitEntity == null)
             return;

@@ -7,6 +7,7 @@ using Content.Shared.Camera;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage;
 using Content.Shared.Weapons.Hitscan.Components;
+using Content.Shared.Weapons.Hitscan.Events;
 using Content.Shared.Weapons.Ranged;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
@@ -268,6 +269,9 @@ public sealed partial class GunSystem : SharedGunSystem
                         RemoveShootable(ent.Value);
                     break;
                 case HitscanAmmoComponent:
+                    if (ent == null)
+                        break;
+
                     Audio.PlayPredicted(gun.Comp.SoundGunshotModified, gun, user);
                     Recoil(user, direction, gun.Comp.CameraRecoilScalarModified);
                     break;

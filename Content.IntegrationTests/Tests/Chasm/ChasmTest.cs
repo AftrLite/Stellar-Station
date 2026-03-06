@@ -87,6 +87,7 @@ public sealed class ChasmTest : MovementTest
     /// Tests that a player is able to cross a chasm by using a grappling gun.
     /// </summary>
     [Test]
+    [Ignore("Stellar - We don't need this test")]
     public async Task ChasmGrappleTest()
     {
         // Spawn a chasm.

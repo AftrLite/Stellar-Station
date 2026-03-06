@@ -1,0 +1,65 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  abstract: true
+  id: StellarHitscanVisualsBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicRaycast
+  - type: StellarGunHitscan
+    lightColor: "#FFFFFF"
+    unshaded: false
+    muzzleFlash: StellarMuzzleFlashBase
+    ray:
+      sprite: _ST/Projectiles/Guns/base.rsi
+      state: bullet
+
+- type: entity
+  abstract: true
+  id: StellarMuzzleFlashBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.4
+  - type: Sprite
+    sprite: _ST/Projectiles/Guns/base.rsi
+    loop: false
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.StellarHitscanLayers.Unshaded"]
+      offset: 0.5, 0
+      shader: unshaded
+      state: muzzle
+  - type: PointLight
+    color: "#FFFFFF"
+    radius: 5
+    energy: 3.4
+    mask: /Textures/_ST/LightMasks/cone-rotated.png
+    enabled: true
+    autoRot: true
+    castShadows: false
+    netsync: false
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  id: StellarHitscanBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ESTimedDespawn
+    lifetime: 2.0
+  - type: Sprite
+    loop: false
+    drawdepth: BelowMobs
+    layers:
+    - map: ["enum.StellarHitscanLayers.Unshaded"]
+      shader: unshaded
+    - map: ["enum.StellarHitscanLayers.Shaded"]
+      shader: shaded
+  - type: Tag
+    tags:
+    - HideContextMenu
+  - type: AnimationPlayer

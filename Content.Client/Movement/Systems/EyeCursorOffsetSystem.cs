@@ -64,7 +64,7 @@ public sealed partial class EyeCursorOffsetSystem : EntitySystem
             var mouseActualRelativePos = Vector2.Transform(mouseNormalizedPos, System.Numerics.Quaternion.CreateFromAxisAngle(-System.Numerics.Vector3.UnitZ, (float)(eyeRotation.Opposite().Theta))); // I don't know, it just works.
 
             // Caps the offset into a circle around the player.
-            mouseActualRelativePos *= component.MaxOffset;
+            mouseActualRelativePos *= Easings.InOutSine(component.MaxOffset); // Stellar - Less motion sickness, thanks.
             if (mouseActualRelativePos.Length() > component.MaxOffset)
             {
                 mouseActualRelativePos = mouseActualRelativePos.Normalized() * component.MaxOffset;

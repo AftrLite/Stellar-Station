@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Numerics;
 using Content.Shared._ES.Camera;
 using Content.Shared.ActionBlocker;
@@ -407,9 +408,13 @@ public abstract partial class SharedGunSystem : EntitySystem
         }
 
         // Shoot confirmed - sounds also played here in case it's invalid (e.g. cartridge already spent).
-        Shoot(gun, ev.Ammo, fromCoordinates, toCoordinates.Value, out var userImpulse, user, throwItems: attemptEv.ThrowItems);
-        var shotEv = new GunShotEvent(user, ev.Ammo);
-        RaiseLocalEvent(gun, ref shotEv);
+        // End Stellar - TO HELL WITH THIS, WE RUN OUR OWN EVENT INSTEAD.
+        var stellarShotEv = new StellarGunShotEvent(user, ev.Ammo.First(), gun, gun.Comp, GetNetCoordinates(toCoordinates), GetNetCoordinates(fromCoordinates));
+        RaiseLocalEvent(gun, ref stellarShotEv);
+
+        // Shoot(gun, ev.Ammo, fromCoordinates, toCoordinates.Value, out var userImpulse, user, throwItems: attemptEv.ThrowItems);
+        // var shotEv = new GunShotEvent(user, ev.Ammo);
+        // RaiseLocalEvent(gun, ref shotEv);s
 
         // ES START
         // this is a suspicious place to do this but whatever.
@@ -417,8 +422,9 @@ public abstract partial class SharedGunSystem : EntitySystem
         _shake.Screenshake(user, null, gunShakeRotation);
         // ES END
 
-        if (!userImpulse || !TryComp<PhysicsComponent>(user, out var userPhysics))
+        if (!TryComp<PhysicsComponent>(user, out var userPhysics))
             return true;
+        // End Stellar - TO HELL WITH THIS, WE RUN OUR OWN EVENT INSTEAD.
 
         var shooterEv = new ShooterImpulseEvent();
         RaiseLocalEvent(user, ref shooterEv);
@@ -702,6 +708,11 @@ public record struct AttemptShootEvent(EntityUid User, string? Message, bool Can
 /// <param name="User">The user that fired this gun.</param>
 [ByRefEvent]
 public record struct GunShotEvent(EntityUid User, List<(EntityUid? Uid, IShootable Shootable)> Ammo);
+
+// BEGIN Stellar - To hell with this
+[ByRefEvent]
+public record struct StellarGunShotEvent(EntityUid UserUid, (EntityUid? Uid, IShootable Shootable) Ammo, EntityUid GunUid, GunComponent? Gun, NetCoordinates? To, NetCoordinates From);
+// END Stellar - To hell with this
 
 /// <summary>
 /// Raised on an entity after firing a gun to see if any components or systems would allow this entity to be pushed

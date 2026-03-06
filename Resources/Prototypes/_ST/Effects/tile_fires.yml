@@ -4,7 +4,7 @@
 
 - type: entity
   id: StellarTileFire
-  categories: [ ForkFiltered ]
+  categories: [ HideSpawnMenu ]
   placement:
     mode: SnapgridCenter
   components:
@@ -89,6 +89,7 @@
   id: StellarTileFireStage2
   parent: StellarTileFire
   suffix: Stage 2
+  categories: [ HideSpawnMenu ]
   components:
   - type: Flammable
     fireStacks: 7
@@ -97,6 +98,7 @@
   id: StellarTileFireStage3
   parent: StellarTileFire
   suffix: Stage 3
+  categories: [ HideSpawnMenu ]
   components:
   - type: Flammable
     fireStacks: 11
@@ -105,6 +107,7 @@
   id: StellarTileFireStage4
   parent: StellarTileFire
   suffix: Stage 4
+  categories: [ HideSpawnMenu ]
   components:
   - type: Flammable
     fireStacks: 15

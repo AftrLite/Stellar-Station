@@ -1,0 +1,74 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: BaseItem
+  id: StellarAmmoConsumable
+  name: Ammo Consumable
+  suffix: DEBUG
+  categories: [ ForkFiltered ]
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Boxes/pistol.rsi
+    layers:
+    - state: base
+  - type: StellarGunTypesAmmo
+    weaponType: StellarGunTypeEchion
+    behaviour: Ammo
+    maxAmmo: 20
+
+- type: entity
+  parent: StellarAmmoConsumable
+  id: StellarAmmoConsumableDoAfter
+  suffix: DoAfter, DEBUG
+  components:
+  - type: StellarGunTypesAmmo
+    usesDoAfter: true
+
+- type: entity
+  parent: StellarStructureBase
+  id: StellarAmmoReloader
+  name: Ammo Reloader
+  suffix: DEBUG
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 60
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    sprite: Structures/Storage/tanks.rsi
+    layers:
+    - state: watercooler-2
+  - type: StellarGunTypesAmmo
+    weaponType: StellarGunTypeEchion
+    behaviour: Reloader
+    maxAmmo: 999
+    infiniteAmmo: True
+
+- type: entity
+  parent: StellarAmmoReloader
+  id: StellarAmmoReloaderDoAfter
+  suffix: DoAfter, DEBUG
+  components:
+  - type: StellarGunTypesAmmo
+    usesDoAfter: true

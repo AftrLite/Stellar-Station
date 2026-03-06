@@ -1,0 +1,498 @@
+// SPDX-FileCopyrightText: 2026 AftrLite
+//
+// SPDX-License-Identifier: LicenseRef-Wallening
+
+using System.Numerics;
+using Content.Client.Animations;
+using Content.Shared.Damage.Components;
+using Content.Shared.IdentityManagement;
+using Content.Shared.Physics;
+using Content.Shared.Weapons.Hitscan.Events;
+using Content.Shared.Weapons.Ranged.Components;
+using Content.Shared.Weapons.Ranged.Systems;
+using Content.Stellar.Shared.Weapons;
+using Robust.Client.Animations;
+using Robust.Client.GameObjects;
+using Robust.Shared.Animations;
+using Robust.Shared.Containers;
+using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Systems;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
+using Robust.Shared.Spawners;
+using Robust.Shared.Timing;
+using Robust.Shared.Utility;
+using DrawDepth = Content.Shared.DrawDepth.DrawDepth;
+
+namespace Content.Stellar.Client.Weapons;
+
+public sealed partial class StellarGunSystem : SharedStellarGunSystem // What's this? Interpolating, predicted clientside hitscans? Yes. Yes it is.
+{
+    [Dependency] private readonly IRobustRandom _random = default!;
+
+    [Dependency] private readonly AnimationPlayerSystem _animPlayer = default!;
+    [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly SharedMapSystem _maps = default!;
+    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+
+    private static readonly EntProtoId HitscanProto = "StellarHitscanBase";
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeAllEvent<StellarHitscanEvent>(OnHitscan);
+        SubscribeAllEvent<StellarMuzzleFlashEvent>(OnMuzzleFlash);
+    }
+
+
+    private void OnMuzzleFlash(StellarMuzzleFlashEvent args)
+    {
+        // RenderMuzzleFlash(GetEntity(args.Uid), args.Angle, args.Prototype); // Why is this here? Idk.
+    }
+
+    protected override void StellarMuzzleFlash(EntityUid gunUid, StellarMuzzleFlashEvent args, EntityUid? user = null)
+    {
+        var shooter = user ?? gunUid;
+        RenderMuzzleFlash(shooter, args.Angle, args.Prototype);
+    }
+
+    private void OnHitscan(StellarHitscanEvent args)
+    {
+        var gunUid = GetEntity(args.Gun);
+        var shooterUid = GetEntity(args.Shooter);
+        var targetUid = GetEntity(args.Target);
+        var fromCoords = GetCoordinates(args.FromCoordinates);
+
+        CalculateHitscan(args.CollisionMask, args.Unshaded, args.LightColor, gunUid, shooterUid, targetUid, fromCoords, args.ShotDirection, args.MaxDistance, args.RayBullet, args.RayStart, args.RayMiddle, args.RayEnd);
+    }
+
+    protected override void StellarHitscan(EntityUid gunUid, StellarHitscanEvent args, EntityUid? tracked = null)
+    {
+        var shooterUid = GetEntity(args.Shooter);
+        var targetUid = GetEntity(args.Target);
+        var fromCoords = GetCoordinates(args.FromCoordinates);
+
+        CalculateHitscan(args.CollisionMask, args.Unshaded, args.LightColor, gunUid, shooterUid, targetUid, fromCoords, args.ShotDirection, args.MaxDistance, args.RayBullet, args.RayStart, args.RayMiddle, args.RayEnd);
+    }
+
+
+    private void CalculateHitscan(CollisionGroup mask, bool unshaded, Color lightColor, EntityUid gunUid, EntityUid? shooterUid, EntityUid? targetUid, EntityCoordinates fromCoords, Vector2 shotDirection, float maxDist, SpriteSpecifier.Rsi bullet, SpriteSpecifier.Rsi start, SpriteSpecifier.Rsi middle, SpriteSpecifier.Rsi end)
+    {
+        var wiggleDist = maxDist + _random.NextFloat(-0.5f, 0.5f); // This is purely visual, and makes close-range weapons look considerably better.
+        var shooter = shooterUid ?? gunUid;
+        var mapCords = _transform.ToMapCoordinates(fromCoords);
+        var ray = new CollisionRay(mapCords.Position, shotDirection, (int)mask);
+        var rayCastResults = _physics.IntersectRay(mapCords.MapId, ray, maxDist, shooter, false);
+        var target = targetUid;
+        var result = _container.IsEntityOrParentInContainer(shooter) ? rayCastResults.FirstOrNull() : rayCastResults.FirstOrNull(hit => hit.HitEntity == target || CompOrNull<RequireProjectileTargetComponent>(hit.HitEntity)?.Active != true);
+        var distanceTried = result?.Distance ?? wiggleDist;
+
+        CreateHitscanVisuals(unshaded, lightColor, shooter, distanceTried, shotDirection.ToAngle(), bullet, start, middle, end);
+    }
+
+    private void CreateHitscanVisuals(bool unshaded, Color lightColor, EntityUid shooter, float distance, Angle shotAngle, SpriteSpecifier.Rsi bullet, SpriteSpecifier.Rsi start, SpriteSpecifier.Rsi middle, SpriteSpecifier.Rsi end)
+    {
+        var mod = 75f;
+        var speed = distance / mod;
+
+        if (distance > 1.25f) // The order these are created in matters!
+        {
+            RenderMiddle(shooter, shotAngle, middle, distance, speed, mod, unshaded);
+            RenderStart(shooter, shotAngle, start, speed, mod, unshaded);
+            RenderEnd(shooter, shotAngle, end, distance, speed, mod, unshaded);
+            RenderBullet(shooter, shotAngle, bullet, distance, speed, mod);
+        }
+    }
+#region Rendering
+    private void RenderMuzzleFlash(EntityUid shooter, Angle shotAngle, EntProtoId muzzle)
+    {
+        if (shooter == EntityUid.Invalid)
+            return;
+
+        var time = 1f;
+        var gunXform = Transform(shooter);
+        var gridUid = gunXform.GridUid;
+        EntityCoordinates coordinates;
+
+        if (TryComp(gridUid, out MapGridComponent? mapGrid))
+            coordinates = new EntityCoordinates(gridUid.Value, _maps.LocalToGrid(gridUid.Value, mapGrid, gunXform.Coordinates));
+        else if (gunXform.MapUid != null)
+            coordinates = new EntityCoordinates(gunXform.MapUid.Value, _transform.GetWorldPosition(gunXform));
+        else
+            return;
+
+        var effectEnt = Spawn(muzzle, coordinates);
+        var effectSprite = Comp<SpriteComponent>(effectEnt);
+        var effectLight = Comp<PointLightComponent>(effectEnt);
+        var track = EnsureComp<TrackUserComponent>(effectEnt);
+        track.User = shooter;
+
+        var lightEnergy = effectLight.Energy;
+        _transform.SetWorldRotationNoLerp(effectEnt, shotAngle);
+
+        if (TryComp<TimedDespawnComponent>(effectEnt, out var despawn))
+            time = despawn.Lifetime;
+
+        var muzzleAnim = new Animation()
+        {
+            Length = TimeSpan.FromSeconds(time),
+            AnimationTracks =
+            {
+                new AnimationTrackComponentProperty
+                {
+                    ComponentType = typeof(PointLightComponent),
+                    Property = nameof(PointLightComponent.Energy),
+                    InterpolationMode = AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(lightEnergy, 0),
+                        new AnimationTrackProperty.KeyFrame(lightEnergy*2f, time / 2),
+                        new AnimationTrackProperty.KeyFrame(0f, time / 2),
+                    }
+                },
+                new AnimationTrackComponentProperty
+                {
+                    ComponentType = typeof(PointLightComponent),
+                    Property = nameof(PointLightComponent.AnimatedEnable),
+                    InterpolationMode = AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(true, 0),
+                        new AnimationTrackProperty.KeyFrame(false, time),
+                    }
+                },
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Color),
+                    InterpolationMode = AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(effectSprite.Color, 0f),
+                        new AnimationTrackProperty.KeyFrame(effectSprite.Color.WithAlpha(1f), time/2),
+                        new AnimationTrackProperty.KeyFrame(effectSprite.Color.WithAlpha(0f), time/2),
+                    },
+                },
+            },
+        };
+
+        _animPlayer.Stop(effectEnt, "muzzle-effect");
+        _animPlayer.Play(effectEnt, muzzleAnim, "muzzle-effect");
+    }
+
+    private void RenderBullet(EntityUid shooter, Angle shotAngle, SpriteSpecifier.Rsi sprite, float distance, float speed, float mod)
+    {
+        if (sprite is not { } rsi || shooter == EntityUid.Invalid)
+            return;
+
+        var time = speed + mod;
+        var gunXform = Transform(shooter);
+        var gridUid = gunXform.GridUid;
+        EntityCoordinates coordinates;
+
+        if (TryComp(gridUid, out MapGridComponent? mapGrid))
+            coordinates = new EntityCoordinates(gridUid.Value, _maps.LocalToGrid(gridUid.Value, mapGrid, gunXform.Coordinates));
+        else if (gunXform.MapUid != null)
+            coordinates = new EntityCoordinates(gunXform.MapUid.Value, _transform.GetWorldPosition(gunXform));
+        else
+            return;
+
+        var effectEnt = Spawn(HitscanProto, coordinates);
+        var effectSprite = Comp<SpriteComponent>(effectEnt);
+        _transform.SetWorldRotationNoLerp(effectEnt, shotAngle);
+        _sprite.LayerSetSprite((effectEnt, effectSprite), StellarHitscanLayers.Unshaded, rsi);
+        _sprite.LayerSetRsiState((effectEnt, effectSprite), StellarHitscanLayers.Unshaded, rsi.RsiState);
+        _sprite.SetScale((effectEnt, effectSprite), new Vector2(1, 1f));
+        _sprite.SetDrawDepth((effectEnt, effectSprite), (int)DrawDepth.OverMobs);
+        effectSprite[StellarHitscanLayers.Unshaded].Visible = true;
+        effectSprite[StellarHitscanLayers.Unshaded].AutoAnimated = true;
+
+        var muzzleAnim = new Animation()
+        {
+            Length = TimeSpan.FromSeconds(time),
+            AnimationTracks =
+            {
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Offset),
+                    InterpolationMode = AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(new Vector2(0, 0f), 0),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(0.5f, 0f), time / 1000),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(distance - 0.25f, 0f), time / 750),
+                    },
+                },
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Scale),
+                    InterpolationMode = AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(new Vector2(1, 1f), 0),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(1f, 1f), time / 750),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(0.2f, 0.5f), time / 500),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(0.01f, 0.1f), time / 500),
+                    },
+                },
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Color),
+                    InterpolationMode = AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(effectSprite.Color, 0f),
+                        new AnimationTrackProperty.KeyFrame(effectSprite.Color.WithAlpha(1f), time / 500),
+                        new AnimationTrackProperty.KeyFrame(effectSprite.Color.WithAlpha(0f), time / 300),
+                    },
+                },
+            },
+        };
+        _animPlayer.Play(effectEnt, muzzleAnim, "bullet-effect");
+    }
+
+    private void RenderStart(EntityUid shooter, Angle shotAngle, SpriteSpecifier.Rsi sprite, float speed, float mod, bool setUnshaded)
+    {
+        if (sprite is not { } rsi || shooter == EntityUid.Invalid)
+            return;
+
+        var time = speed + mod;
+        var gunXform = Transform(shooter);
+        var gridUid = gunXform.GridUid;
+        EntityCoordinates coordinates;
+
+        if (TryComp(gridUid, out MapGridComponent? mapGrid))
+            coordinates = new EntityCoordinates(gridUid.Value, _maps.LocalToGrid(gridUid.Value, mapGrid, gunXform.Coordinates));
+        else if (gunXform.MapUid != null)
+            coordinates = new EntityCoordinates(gunXform.MapUid.Value, _transform.GetWorldPosition(gunXform));
+        else
+            return;
+
+        var effectEnt = Spawn(HitscanProto, coordinates);
+        var effectSprite = Comp<SpriteComponent>(effectEnt);
+        _transform.SetWorldRotationNoLerp(effectEnt, shotAngle);
+        _sprite.LayerSetSprite((effectEnt, effectSprite), StellarHitscanLayers.Shaded, rsi);
+        _sprite.LayerSetRsiState((effectEnt, effectSprite), StellarHitscanLayers.Shaded, rsi.RsiState);
+        _sprite.SetScale((effectEnt, effectSprite), new Vector2(1f, 1f));
+        _sprite.SetOffset((effectEnt, effectSprite), new Vector2(0.5f, 0f));
+        effectSprite[StellarHitscanLayers.Shaded].Visible = true;
+        effectSprite[StellarHitscanLayers.Shaded].AutoAnimated = true;
+        if (setUnshaded)
+            effectSprite.LayerSetShader(StellarHitscanLayers.Shaded, "unshaded");
+
+        var muzzleAnim = new Animation()
+        {
+            Length = TimeSpan.FromSeconds(time),
+            AnimationTracks =
+            {
+                new AnimationTrackSpriteFlick()
+                {
+                    LayerKey = StellarHitscanLayers.Shaded,
+                    KeyFrames =
+                    {
+                        new AnimationTrackSpriteFlick.KeyFrame(rsi.RsiState, (time - mod) / 500),
+                    },
+                },
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Scale),
+                    InterpolationMode = AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(new Vector2(0.01f, 1f), 0),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(1f, 0.5f), time / 1000),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(1, 1f), time / 750),
+                    },
+                },
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Color),
+                    InterpolationMode = AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(effectSprite.Color, 0f),
+                        new AnimationTrackProperty.KeyFrame(effectSprite.Color.WithAlpha(1f), time/200),
+                        new AnimationTrackProperty.KeyFrame(effectSprite.Color.WithAlpha(0f), time/1000),
+                    },
+                },
+            },
+        };
+
+        _animPlayer.Play(effectEnt, muzzleAnim, "muzzle-effect");
+    }
+
+    private void RenderMiddle(EntityUid shooter, Angle shotAngle, SpriteSpecifier.Rsi sprite, float distance, float speed, float mod, bool setUnshaded)
+    {
+        if (sprite is not { } rsi || shooter == EntityUid.Invalid)
+            return;
+
+        var time = speed + mod;
+        var gunXform = Transform(shooter);
+        var gridUid = gunXform.GridUid;
+        EntityCoordinates coordinates;
+
+        if (TryComp(gridUid, out MapGridComponent? mapGrid))
+            coordinates = new EntityCoordinates(gridUid.Value, _maps.LocalToGrid(gridUid.Value, mapGrid, gunXform.Coordinates));
+        else if (gunXform.MapUid != null)
+            coordinates = new EntityCoordinates(gunXform.MapUid.Value, _transform.GetWorldPosition(gunXform));
+        else
+            return;
+
+        var effectEnt = Spawn(HitscanProto, coordinates);
+        var effectSprite = Comp<SpriteComponent>(effectEnt);
+        _transform.SetWorldRotationNoLerp(effectEnt, shotAngle);
+        _sprite.LayerSetSprite((effectEnt, effectSprite), StellarHitscanLayers.Shaded, rsi);
+        _sprite.LayerSetRsiState((effectEnt, effectSprite), StellarHitscanLayers.Shaded, rsi.RsiState);
+        _sprite.SetScale((effectEnt, effectSprite), new Vector2(1f, 1f));
+        effectSprite[StellarHitscanLayers.Shaded].Visible = true;
+        effectSprite[StellarHitscanLayers.Shaded].AutoAnimated = true;
+        if (setUnshaded)
+            effectSprite.LayerSetShader(StellarHitscanLayers.Shaded, "unshaded");
+
+        var spriteAnim = new Animation()
+        {
+            Length = TimeSpan.FromSeconds(time),
+            AnimationTracks =
+            {
+                new AnimationTrackSpriteFlick()
+                {
+                    LayerKey = StellarHitscanLayers.Shaded,
+                    KeyFrames =
+                    {
+                        new AnimationTrackSpriteFlick.KeyFrame(rsi.RsiState, (time - mod) / 500),
+                    },
+                },
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Scale),
+                    InterpolationMode = AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(new Vector2(0.01f, 1f), 0),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(1f, 0.5f), time / 1000),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(distance - 1.25f, 1f), time / 750),
+                    },
+                },
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Offset),
+                    InterpolationMode = AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(new Vector2(0, 0f), 0),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(1f, 0f), time / 1000),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(distance * 0.5f, 0f), time / 750),
+                    },
+                },
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Color),
+                    InterpolationMode = AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(effectSprite.Color, 0f),
+                        new AnimationTrackProperty.KeyFrame(effectSprite.Color.WithAlpha(1f), time/200),
+                        new AnimationTrackProperty.KeyFrame(effectSprite.Color.WithAlpha(0f), time/1000),
+                    },
+                },
+            },
+        };
+        _animPlayer.Play(effectEnt, spriteAnim, "sprite-effect");
+    }
+
+    private void RenderEnd(EntityUid shooter, Angle shotAngle, SpriteSpecifier.Rsi sprite, float distance, float speed, float mod, bool setUnshaded)
+    {
+        if (sprite is not { } rsi || shooter == EntityUid.Invalid)
+            return;
+
+        var time = speed + mod;
+        var gunXform = Transform(shooter);
+        var gridUid = gunXform.GridUid;
+        EntityCoordinates coordinates;
+
+        if (TryComp(gridUid, out MapGridComponent? mapGrid))
+            coordinates = new EntityCoordinates(gridUid.Value, _maps.LocalToGrid(gridUid.Value, mapGrid, gunXform.Coordinates));
+        else if (gunXform.MapUid != null)
+            coordinates = new EntityCoordinates(gunXform.MapUid.Value, _transform.GetWorldPosition(gunXform));
+        else
+            return;
+
+        var effectEnt = Spawn(HitscanProto, coordinates);
+        var effectSprite = Comp<SpriteComponent>(effectEnt);
+        _transform.SetWorldRotationNoLerp(effectEnt, shotAngle);
+        _sprite.LayerSetSprite((effectEnt, effectSprite), StellarHitscanLayers.Shaded, rsi);
+        _sprite.LayerSetRsiState((effectEnt, effectSprite), StellarHitscanLayers.Shaded, rsi.RsiState);
+        _sprite.SetScale((effectEnt, effectSprite), new Vector2(1f, 1f));
+        effectSprite[StellarHitscanLayers.Shaded].Visible = true;
+        effectSprite[StellarHitscanLayers.Shaded].AutoAnimated = true;
+        if (setUnshaded)
+            effectSprite.LayerSetShader(StellarHitscanLayers.Shaded, "unshaded");
+
+        var spriteAnim = new Animation()
+        {
+            Length = TimeSpan.FromSeconds(time),
+            AnimationTracks =
+            {
+                new AnimationTrackSpriteFlick()
+                {
+                    LayerKey = StellarHitscanLayers.Shaded,
+                    KeyFrames =
+                    {
+                        new AnimationTrackSpriteFlick.KeyFrame(rsi.RsiState, (time - mod) / 500),
+                    },
+                },
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Scale),
+                    InterpolationMode = AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(new Vector2(0.01f, 1f), 0),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(1f, 0.5f), time / 1000),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(1f, 1f), time / 750),
+                    },
+                },
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Offset),
+                    InterpolationMode = AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(new Vector2(0, 0f), 0),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(1.5f, 0f), time / 1000),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(distance - 0.25f, 0f), time / 750),
+                    },
+                },
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Color),
+                    InterpolationMode = AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(effectSprite.Color, 0f),
+                        new AnimationTrackProperty.KeyFrame(effectSprite.Color.WithAlpha(1f), time/200),
+                        new AnimationTrackProperty.KeyFrame(effectSprite.Color.WithAlpha(0f), time/1000),
+                    },
+                },
+            },
+        };
+        _animPlayer.Play(effectEnt, spriteAnim, "impact-effect");
+    }
+    #endregion
+}

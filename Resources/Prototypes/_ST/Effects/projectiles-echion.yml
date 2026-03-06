@@ -1,0 +1,191 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  abstract: true
+  parent: StellarMuzzleFlashBase
+  id: StellarMuzzleFlashEchionBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PointLight
+    color: "#83db2b"
+    radius: 10
+    energy: 0.9
+    mask: /Textures/_ST/LightMasks/cone-rotated.png
+    enabled: true
+    autoRot: true
+    castShadows: false
+    netsync: false
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  parent: StellarMuzzleFlashEchionBase
+  id: StellarMuzzleFlashEchionLight
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ST/Projectiles/Guns/echion-muzzle-light.rsi
+  - type: PointLight
+    radius: 8
+    energy: 0.6
+
+- type: entity
+  parent: StellarMuzzleFlashEchionBase
+  id: StellarMuzzleFlashEchionMedium
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ST/Projectiles/Guns/echion-muzzle-medium.rsi
+  - type: PointLight
+    radius: 10
+    energy: 0.9
+
+- type: entity
+  parent: StellarMuzzleFlashEchionBase
+  id: StellarMuzzleFlashEchionHeavy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ST/Projectiles/Guns/echion-muzzle-heavy.rsi
+    offset: 0.25, 0
+  - type: PointLight
+    radius: 14
+    energy: 1.33
+
+
+- type: entity
+  abstract: true
+  parent: StellarHitscanVisualsBase
+  id: StellarHitscanEchionBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicRaycast
+    collisionMask: BulletImpassable
+  - type: HitscanReflect
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 10
+        Radiation: 10
+        Structural: 50
+  - type: StellarGunHitscan
+    multiShotAmount: 1
+    collisionMask: BulletImpassable
+    lightColor: "#83db2b"
+    hitColor: "#83db2b"
+    unshaded: true
+    muzzleFlash: StellarMuzzleFlashEchion
+    ray:
+      sprite: _ST/Projectiles/Guns/echion-beam-medium.rsi
+
+- type: entity
+  parent: StellarHitscanEchionBase
+  id: StellarHitscanEchionCerberus
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 5
+        Radiation: 55
+  - type: HitscanBasicRaycast
+    maxDistance: 15
+  - type: StellarGunHitscan
+    maxDistance: 15
+    muzzleFlash: StellarMuzzleFlashEchionHeavy
+    ray:
+      sprite: _ST/Projectiles/Guns/echion-beam-heavy.rsi
+
+- type: entity
+  parent: StellarHitscanEchionBase
+  id: StellarHitscanEchionChimera
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 6
+        Radiation: 10
+  - type: HitscanBasicRaycast
+    maxDistance: 12.5
+  - type: StellarGunHitscan
+    maxDistance: 12.5
+    muzzleFlash: StellarMuzzleFlashEchionMedium
+    ray:
+      sprite: _ST/Projectiles/Guns/echion-beam-medium.rsi
+
+- type: entity
+  parent: StellarHitscanEchionBase
+  id: StellarHitscanEchionEchidna
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 3
+        Radiation: 20
+  - type: HitscanBasicRaycast
+    maxDistance: 10
+  - type: StellarGunHitscan
+    maxDistance: 10
+    muzzleFlash: StellarMuzzleFlashEchionLight
+    ray:
+      sprite: _ST/Projectiles/Guns/echion-beam-light.rsi
+
+- type: entity
+  parent: StellarHitscanEchionBase
+  id: StellarHitscanEchionGorgon
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 22
+        Radiation: 32
+  - type: StellarGunHitscan
+    muzzleFlash: StellarMuzzleFlashEchionMedium
+    ray:
+      sprite: _ST/Projectiles/Guns/echion-beam-medium.rsi
+
+- type: entity
+  parent: StellarHitscanEchionBase
+  id: StellarHitscanEchionHydra
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 2
+        Radiation: 8
+  - type: HitscanBasicRaycast
+    maxDistance: 5.33
+  - type: StellarGunHitscan
+    maxDistance: 5.33
+    multiShotSpread: 45
+    multiShotWiggleMin: -10
+    multiShotWiggleMax: 10
+    multiShotAmount: 6
+    muzzleFlash: StellarMuzzleFlashEchionHeavy
+    ray:
+      sprite: _ST/Projectiles/Guns/echion-beam-heavy.rsi
+
+- type: entity
+  parent: StellarHitscanEchionBase
+  id: StellarHitscanEchionMinotaur
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 2
+        Radiation: 8
+  - type: HitscanBasicRaycast
+    maxDistance: 12
+  - type: StellarGunHitscan
+    maxDistance: 12
+    muzzleFlash: StellarMuzzleFlashEchionLight
+    ray:
+      sprite: _ST/Projectiles/Guns/echion-beam-light.rsi
