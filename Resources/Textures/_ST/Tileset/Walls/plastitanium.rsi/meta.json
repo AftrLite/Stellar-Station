@@ -41,6 +41,38 @@
         {
             "name": "wall7",
             "directions": 4
+        },
+        {
+            "name": "downwall0",
+            "directions": 4
+        },
+        {
+            "name": "downwall1",
+            "directions": 4
+        },
+        {
+            "name": "downwall2",
+            "directions": 4
+        },
+        {
+            "name": "downwall3",
+            "directions": 4
+        },
+        {
+            "name": "downwall4",
+            "directions": 4
+        },
+        {
+            "name": "downwall5",
+            "directions": 4
+        },
+        {
+            "name": "downwall6",
+            "directions": 4
+        },
+        {
+            "name": "downwall7",
+            "directions": 4
         }
     ]
 }

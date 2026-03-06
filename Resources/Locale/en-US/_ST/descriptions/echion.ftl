@@ -2,6 +2,7 @@
 #
 # SPDX-License-Identifier: LicenseRef-Wallening
 
+### WEAPONS
 ent-StellarWeaponEchionCerberus =
    .desc = "All you need is a little monopoly on violence."
    —Johannes Lysander Echion IV, CEO
@@ -23,3 +24,17 @@ ent-StellarWeaponEchionHydra =
 ent-StellarWeaponEchionMinotaur =
    .desc = "Subverted law, captive regulation, and no planetary government can stop us now."
    —Danidas Echion XXI
+
+
+### HARDSUITS
+ent-StellarHardsuitGorlexInfiltrator =
+   .desc = "They don't care about our laws. They proved that centuries ago." —Kyris Iskiks, Attorney General
+
+ent-StellarHardsuitGorlexTactician =
+   .desc = "We are FUCKED." —InterDyne Chief Tycho Sousa, moments before the crash of RS-Lepidoptera
+
+ent-StellarHardsuitGorlexJuggernaut =
+   .desc = "It doesn't have to be accurate if it means they die." —A previous GORLEX Juggernaut Operative
+
+ent-StellarHardsuitGorlexTriage =
+   .desc = "It's a shame something so sophisticated belongs to... Them." —Juurin Matsuda, CyberSun Affiliate

@@ -1,0 +1,77 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  id: StellarGorlexFlag
+  name: Gorlex Flag
+  abstract: true
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: Transform
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.1,-0.1,0.1,0.1"
+        density: 999
+        layer:
+        - Impassable
+        - MidImpassable
+        - HighImpassable
+        - LowImpassable
+        hard: False
+  - type: Sprite
+    noRot: true
+    drawdepth: Overdoors
+    offset: 0, -0.095
+    sprite: _ST/Tileset/Decor/Gorlex/flags.rsi
+    state: black
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  parent: StellarGorlexFlag
+  id: StellarGorlexFlagBlack
+  name: Gorlex Flag, Black
+  suffix: Indestructable
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Decor/Gorlex/flags.rsi
+    state: black
+
+- type: entity
+  parent: StellarGorlexFlagBlack
+  id: StellarGorlexFlagBlackSmall
+  suffix: Small, Indestructable
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Decor/Gorlex/flags.rsi
+    state: black-small
+
+- type: entity
+  parent: StellarGorlexFlag
+  id: StellarGorlexFlagRed
+  name: Gorlex Flag, Red
+  suffix: Indestructable
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Decor/Gorlex/flags.rsi
+    state: red
+
+- type: entity
+  parent: StellarGorlexFlagRed
+  id: StellarGorlexFlagRedSmall
+  suffix: Small, Indestructable
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Decor/Gorlex/flags.rsi
+    state: red-small

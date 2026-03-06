@@ -17,143 +17,66 @@
 
 - type: tile
   id: StellarFloorWhiteDottedCornerNw
-  editorHidden: false
+  parent: StellarFloorWhiteDottedBase
   name: st-floor-white-dotted-corner-nw
   sprite: /Textures/_ST/Tileset/Floor/White_Dotted/white_dotted_corner_nw.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
 
 - type: tile
   id: StellarFloorWhiteDottedCornerNe
-  editorHidden: false
+  parent: StellarFloorWhiteDottedBase
   name: st-floor-white-dotted-corner-ne
   sprite: /Textures/_ST/Tileset/Floor/White_Dotted/white_dotted_corner_ne.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
 
 - type: tile
   id: StellarFloorWhiteDottedCornerSe
-  editorHidden: false
+  parent: StellarFloorWhiteDottedBase
   name: st-floor-white-dotted-corner-se
   sprite: /Textures/_ST/Tileset/Floor/White_Dotted/white_dotted_corner_se.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
 
 - type: tile
   id: StellarFloorWhiteDottedCornerSw
-  editorHidden: false
+  parent: StellarFloorWhiteDottedBase
   name: st-floor-white-dotted-corner-sw
   sprite: /Textures/_ST/Tileset/Floor/White_Dotted/white_dotted_corner_sw.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
 
 - type: tile
   id: StellarFloorWhiteDottedDouble1
-  editorHidden: false
+  parent: StellarFloorWhiteDottedBase
   name: st-floor-white-dotted-double1
   sprite: /Textures/_ST/Tileset/Floor/White_Dotted/white_dotted_doublewide_1.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
 
 - type: tile
   id: StellarFloorWhiteDottedDouble2
-  editorHidden: false
+  parent: StellarFloorWhiteDottedBase
   name: st-floor-white-dotted-double2
   sprite: /Textures/_ST/Tileset/Floor/White_Dotted/white_dotted_doublewide_2.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
 
 - type: tile
   id: StellarFloorWhiteDottedMono
-  editorHidden: false
+  parent: StellarFloorWhiteDottedBase
   name: st-floor-white-dotted-mono
   sprite: /Textures/_ST/Tileset/Floor/White_Dotted/white_dotted_mono.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
 
 - type: tile
   id: StellarFloorWhiteDottedWideE
-  editorHidden: false
+  parent: StellarFloorWhiteDottedBase
   name: st-floor-white-dotted-wide-e
   sprite: /Textures/_ST/Tileset/Floor/White_Dotted/white_dotted_wide_e.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
 
 - type: tile
   id: StellarFloorWhiteDottedWideN
-  editorHidden: false
+  parent: StellarFloorWhiteDottedBase
   name: st-floor-white-dotted-wide-n
   sprite: /Textures/_ST/Tileset/Floor/White_Dotted/white_dotted_wide_n.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
 
 - type: tile
   id: StellarFloorWhiteDottedWideS
-  editorHidden: false
+  parent: StellarFloorWhiteDottedBase
   name: st-floor-white-dotted-wide-s
   sprite: /Textures/_ST/Tileset/Floor/White_Dotted/white_dotted_wide_s.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000
 
 - type: tile
   id: StellarFloorWhiteDottedWideW
-  editorHidden: false
+  parent: StellarFloorWhiteDottedBase
   name: st-floor-white-dotted-wide-w
   sprite: /Textures/_ST/Tileset/Floor/White_Dotted/white_dotted_wide_w.png
-  baseTurf: Plating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
-  heatCapacity: 10000

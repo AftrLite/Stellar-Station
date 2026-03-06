@@ -124,6 +124,8 @@
   - type: StellarWallSmooth
     key: WallSolid
     fullState: wall
+    downState: downwall
+  - type: StellarCutaway
 
 - type: entity
   parent:

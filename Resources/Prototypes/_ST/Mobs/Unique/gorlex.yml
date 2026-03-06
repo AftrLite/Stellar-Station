@@ -1,0 +1,327 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: [ BaseMob, FlyingMobBase ]
+  id: StellarMobGorlexDrone
+  name: Triage Drone
+  description: No substitute for a doctor, but better than nothing.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: MovedByPressure
+  - type: Physics
+    bodyType: KinematicController
+  - type: StatusEffects
+    allowed:
+    - Electrocution
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: Sprite
+    offset: 0, 0.5
+    sprite: _ST/Mobs/Gorlex/triage-drone.rsi
+    layers:
+    - state: shadow-playable
+      offset: 0, -0.25
+      sprite: _ST/Effects/dropshadow.rsi
+    - state: base
+    - state: base-unshaded
+      shader: unshaded
+  - type: HTN
+    rootTask:
+      task: MedibotCompound
+  - type: DoAfter
+  - type: ZombieImmune
+  - type: ProtectedFromStepTriggers
+  - type: Pullable
+  - type: PointLight
+    enabled: true
+    color: "#83db2b"
+    radius: 2
+    energy: 1
+    castShadows: false
+    autoRot: true
+    netsync: false
+
+
+- type: entity
+  parent: StellarMobGorlexSlime
+  id: StellarMobGorlexOperative # Reinforcement exclusive to nukeops uplink
+  name: Gorlex Operative NPC
+  categories: [ ForkFiltered ]
+  components:
+  - type: NukeOperative
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSyndicateNormal
+    nameFormat: name-format-nukie-operator
+#  - type: Loadout
+#    prototypes: [SyndicateOperativeGearFullNoUplink]
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
+  - type: RandomHumanoidAppearance
+
+## ALTERNATE SPECIES APPEARANCE STUFF BEYOND THIS POINT, WOE UPON YOU
+- type: entity
+  parent: OrganSlimePerson
+  id: StellarOrganGorlexSlimeInternal
+  categories: [ HideSpawnMenu ]
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Slime/organs.rsi
+
+- type: entity
+  parent: OrganSlimePerson
+  id: StellarOrganGorlexSlimeExternal
+  categories: [ HideSpawnMenu ]
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _ST/Mobs/Gorlex/gorlex-slime.rsi
+  - type: VisualOrgan
+    data:
+      sprite: _ST/Mobs/Gorlex/gorlex-slime.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: StellarSlimeGorlex
+
+- type: markingsGroup
+  parent: StellarSlime
+  id: StellarSlimeGorlex
+
+- type: entity
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, StellarOrganGorlexSlimeExternal ]
+  id: StellarOrganGorlexSlimeTorso
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ OrganBaseHead, StellarOrganGorlexSlimeExternal ]
+  id: StellarOrganGorlexSlimeHead
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ OrganBaseArmLeft, StellarOrganGorlexSlimeExternal ]
+  id: StellarOrganGorlexSlimeArmLeft
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ OrganBaseArmRight, StellarOrganGorlexSlimeExternal ]
+  id: StellarOrganGorlexSlimeArmRight
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ OrganBaseHandLeft, StellarOrganGorlexSlimeExternal ]
+  id: StellarOrganGorlexSlimeHandLeft
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ OrganBaseHandRight, StellarOrganGorlexSlimeExternal ]
+  id: StellarOrganGorlexSlimeHandRight
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ OrganBaseLegLeft, StellarOrganGorlexSlimeExternal ]
+  id: StellarOrganGorlexSlimeLegLeft
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ OrganBaseLegRight, StellarOrganGorlexSlimeExternal ]
+  id: StellarOrganGorlexSlimeLegRight
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ OrganBaseFootLeft, StellarOrganGorlexSlimeExternal ]
+  id: StellarOrganGorlexSlimeFootLeft
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ OrganBaseFootRight, StellarOrganGorlexSlimeExternal ]
+  id: StellarOrganGorlexSlimeFootRight
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  parent: [ OrganBaseBrain, StellarOrganGorlexSlimeInternal, OrganSlimePersonMetabolizer ]
+  id: StellarOrganGorlexSlimeCore
+  categories: [ HideSpawnMenu ]
+  name: sentient slime core
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      stomach:
+        maxVol: 50.0
+  - type: Stomach
+  - type: Metabolizer
+    maxReagents: 6
+    metabolizerTypes: [ Slime ]
+    stages: [ Digestion, Bloodstream, Metabolites ]
+
+- type: entity
+  parent: [ OrganBaseLungs, StellarOrganGorlexSlimeInternal, OrganSlimePersonMetabolizer ]
+  id: StellarOrganGorlexSlimeLungs
+  categories: [ HideSpawnMenu ]
+  name: gas sacs
+  components:
+  - type: Lung
+    alert: LowNitrogen
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: StellarAppearanceGorlexSlime
+  name: Gorlex Slime appearance
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Inventory
+  - type: InitialBody
+    organs:
+      Torso: StellarOrganGorlexSlimeTorso
+      Head: StellarOrganGorlexSlimeHead
+      ArmLeft: StellarOrganGorlexSlimeArmLeft
+      ArmRight: StellarOrganGorlexSlimeArmRight
+      HandRight: StellarOrganGorlexSlimeHandRight
+      HandLeft: StellarOrganGorlexSlimeHandLeft
+      LegLeft: StellarOrganGorlexSlimeLegLeft
+      LegRight: StellarOrganGorlexSlimeLegRight
+      FootLeft: StellarOrganGorlexSlimeFootLeft
+      FootRight: StellarOrganGorlexSlimeFootRight
+      Brain: StellarOrganGorlexSlimeCore
+      Lungs: StellarOrganGorlexSlimeLungs
+  - type: HumanoidProfile
+    species: StellarGorlexSlime
+
+- type: species
+  id: StellarGorlexSlime
+  name: species-name-slime
+  roundStart: false
+  prototype: StellarMobGorlexSlime
+  dollPrototype: StellarAppearanceGorlexSlime
+  skinColoration: StellarFlatcolorSpecific
+
+- type: skinColoration
+  id: StellarFlatcolorSpecific
+  strategy: !type:ClampedHsvColoration
+    saturation: [0, 1]
+    value: [0, 1]
+
+- type: entity
+  abstract: true
+  parent: [ BaseSpeciesMobOrganic, StellarAppearanceGorlexSlime ]
+  id: StellarMobGorlexSlime
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.HumanoidVisualLayers.Tail" ]
+    - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
+    - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
+    - map: [ "enum.HumanoidVisualLayers.Head" ]
+    - map: [ "enum.HumanoidVisualLayers.Snout" ]
+    - map: [ "enum.HumanoidVisualLayers.SnoutCover" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+    - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+      state: eyes
+      sprite: _ST/Mobs/Gorlex/gorlex-slime.rsi
+      shader: unshaded
+    - map: [ "enum.HumanoidVisualLayers.Chest" ]
+    - map: [ "enum.HumanoidVisualLayers.LArm" ]
+    - map: [ "enum.HumanoidVisualLayers.RArm" ]
+    - map: [ "enum.HumanoidVisualLayers.LHand" ]
+    - map: [ "enum.HumanoidVisualLayers.RHand" ]
+    - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+    - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+    - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+    - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+    - map: [ "enum.HumanoidVisualLayers.Hair" ]
+      sprite: _ST/Mobs/Gorlex/gorlex-slime.rsi
+    - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+    - map: [ "enum.HumanoidVisualLayers.Overlay" ]
+    - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+  - type: RandomSprite
+    available:
+    - enum.HumanoidVisualLayers.Hair:
+        hairbald: ""
+        hair1: ""
+        hair2: ""
+        hair3: ""
+        hair4: ""
+        hair5: ""
+        hair6: ""
+  - type: Appearance
+  - type: Speech
+    speechVerb: Slime
+    speechSounds: Slime
+    allowedEmotes: ['Squish']
+  - type: TypingIndicator
+    proto: slime
+  - type: Vocal
+    sounds:
+      Male: MaleSlime
+      Female: FemaleSlime
+      Unsexed: MaleSlime
+  - type: Damageable
+    damageModifierSet: Slime
+  - type: PassiveDamage # Around 8 damage a minute healed
+    allowedStates:
+    - Alive
+    damageCap: 65
+    damage:
+      types:
+        Heat: -0.14
+      groups:
+        Brute: -0.14
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: _ST/Effects/damage-overlay_brute.rsi # Stellar
+        color: "#2cf274"
+      Burn:
+        sprite: _ST/Effects/damage-overlay_burn.rsi # Stellar
+  - type: Bloodstream
+    bloodReferenceSolution: # TODO Color slime blood based on their slime color or smth
+      reagents:
+      - ReagentId: Slime
+        Quantity: 300
+  - type: Barotrauma
+    damage:
+      types:
+        Blunt: 0.50 #per second, scales with pressure and other constants.
+        Heat: 0.2 # 0.1 more than humans, i feel like low pressure would make slime boil more than blunt stretch them so i decided on this instead.
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+    reactions:
+    - reagents: [ Water, SpaceCleaner ]
+      methods: [ Touch ]
+      effects:
+      - !type:WashCreamPie
+    - reagents: [ Water ]
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Heat: 0.05
+      - !type:PopupMessage
+        type: Local
+        visualType: Large
+        messages: [ "slime-hurt-by-water-popup" ]
+        probability: 0.25
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatSlime
+      amount: 5
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 0.2
+    damageRecovery:
+      types:
+        Asphyxiation: -1.0
+    maxSaturation: 15

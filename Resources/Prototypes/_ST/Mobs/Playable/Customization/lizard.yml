@@ -6,7 +6,6 @@
 - type: marking
   id: StellarLizardSnoutDefault
   bodyPart: Snout
-  forcedColoring: true
   groupWhitelist: [StellarReptilian]
   sprites:
   - sprite: _ST/Mobs/Playable/lizard.rsi

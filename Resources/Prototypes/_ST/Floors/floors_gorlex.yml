@@ -1,0 +1,57 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+## FLOORING
+- type: tile
+  id: StellarFloorGorlexDottedBase
+  editorHidden: false
+  name: base gorlex floor
+  sprite: /Textures/_ST/Tileset/Floor/Gorlex/gorlex-dotted-base.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteel
+  heatCapacity: 10000
+
+- type: tile
+  parent: StellarFloorGorlexDottedBase
+  id: StellarFloorGorlexDottedMono
+  name: mono gorlex floor
+  sprite: /Textures/_ST/Tileset/Floor/Gorlex/gorlex-dotted-mono.png
+
+- type: tile
+  parent: StellarFloorGorlexDottedBase
+  id: StellarFloorGorlexDottedDiamond
+  name: diamond-grip gorlex floor
+  sprite: /Textures/_ST/Tileset/Floor/Gorlex/gorlex-diamond.png
+
+- type: tile
+  id: StellarFloorGorlexPlating
+  editorHidden: false
+  name: gorlex plating
+  sprite: /Textures/_ST/Tileset/Floor/Gorlex/gorlex-plating.png
+  baseTurf: Lattice
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepPlating
+  friction: 1.5
+  heatCapacity: 10000
+
+
+## CATWALK
+- type: entity
+  parent: StellarCatwalkHazard
+  id: StellarCatwalkGorlex
+  name: plastitanium catwalk
+  description: A GORLEX-brand catwalk for superior maneuvering and cable placement.
+  placement:
+    mode: SnapgridCenter
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Floor/catwalk-gorlex.rsi
+  - type: Icon
+    sprite: _ST/Tileset/Floor/catwalk-gorlex.rsi

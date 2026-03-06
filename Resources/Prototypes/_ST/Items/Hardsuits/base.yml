@@ -4,7 +4,7 @@
 
 - type: entity
   abstract: true
-  parent: [StellarClothingOuterBase]
+  parent: StellarClothingOuterBase
   id: StellarHardsuitBase
   categories: [ HideSpawnMenu ]
   components:
@@ -34,6 +34,10 @@
         Piercing: 0.9
         Heat: 0.9
         Radiation: 0.9
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - state: equipped-OUTERCLOTHING
   - type: ToggleableClothing
     slot: head
   - type: ContainerContainer
@@ -43,7 +47,6 @@
   - type: Tag
     tags:
     - Hardsuit
-    - WhitelistChameleon
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
   - type: DamageOnInteractProtection
@@ -52,19 +55,8 @@
         Heat: 10 # the average lightbulb only does around four damage!
     slots: OUTERCLOTHING
   - type: HideLayerClothing
-    slots: # THE CHARACTER IS WEARING A HARDSUIT. WE DO NOT NEED TO SEE THE CHARACTER. HIDE EVERYTHING THAT ISN'T ON THE HEAD.
-    - Tail
-    - UndergarmentTop
-    - UndergarmentBottom
-    - Chest
-    - RArm
-    - LArm
-    - RHand
-    - LHand
-    - RLeg
-    - LLeg
-    - RFoot
-    - LFoot
+    layers:
+      Tail: OUTERCLOTHING
 
 - type: entity
   abstract: true
@@ -76,11 +68,14 @@
   #    slots: [ears, eyes, mask]
   - type: BreathMask
   - type: Sprite
-    state: icon # default state used by most inheritors
+    state: icon-helmet
   - type: Clickable
   - type: InteractionOutline
   - type: Clothing
-    #Apparently the hardsuit helmet equip sound is from a walking mech?
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+    #Apparently the hardsuit helmet equip sound is from a walking mech? | AftrLite: Guess these need changing lmao TODO: LOREM IPSUM
     equipSound: /Audio/Mecha/mechmove03.ogg
     unequipSound: /Audio/Mecha/mechmove03.ogg
     quickEquip: false
@@ -91,24 +86,27 @@
   - type: TemperatureProtection
     heatingCoefficient: 0.1
     coolingCoefficient: 0.1
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.90
-        Slash: 0.90
-        Piercing: 0.95
-        Heat: 0.90
-        Radiation: 0.25
   - type: GroupExamine
   - type: IngestionBlocker
-  - type: Tag
-    tags:
-    - WhitelistChameleon
   - type: IdentityBlocker
   - type: HideLayerClothing
-    slots:
-    - Hair
-    - Snout
-    - HeadTop
-    - HeadSide
-    - FacialHair
+    layers:
+      Hair: HEAD
+      FacialHair: HEAD
+      HeadTop : HEAD
+      HeadSide : HEAD
+      Snout : HEAD
+
+- type: entity
+  abstract: true
+  parent: StellarHardsuitHelmetBase
+  id: StellarHardsuitHelmetBaseUnshaded
+  name: hardsuit helmet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+      - state: equipped-HELMET-unshaded
+        shader: unshaded
