@@ -51,9 +51,6 @@
       types:
         Slash: 10
   - type: StellarGunHitscan
-    multiShotAmount: 5
-    multiShotWiggleMin: -5
-    multiShotWiggleMax: 5
     collisionMask: BulletImpassable
     lightColor: "#db812a"
     unshaded: false

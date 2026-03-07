@@ -5,11 +5,7 @@
 using System.Numerics;
 using Content.Client.Animations;
 using Content.Shared.Damage.Components;
-using Content.Shared.IdentityManagement;
 using Content.Shared.Physics;
-using Content.Shared.Weapons.Hitscan.Events;
-using Content.Shared.Weapons.Ranged.Components;
-using Content.Shared.Weapons.Ranged.Systems;
 using Content.Stellar.Shared.Weapons;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
@@ -22,7 +18,6 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Spawners;
-using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using DrawDepth = Content.Shared.DrawDepth.DrawDepth;
 
@@ -49,7 +44,6 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem // What's 
         SubscribeAllEvent<StellarMuzzleFlashEvent>(OnMuzzleFlash);
     }
 
-
     private void OnMuzzleFlash(StellarMuzzleFlashEvent args)
     {
         // RenderMuzzleFlash(GetEntity(args.Uid), args.Angle, args.Prototype); // Why is this here? Idk.
@@ -64,41 +58,38 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem // What's 
     private void OnHitscan(StellarHitscanEvent args)
     {
         var gunUid = GetEntity(args.Gun);
-        var shooterUid = GetEntity(args.Shooter);
-        var targetUid = GetEntity(args.Target);
-        var fromCoords = GetCoordinates(args.FromCoordinates);
 
-        CalculateHitscan(args.CollisionMask, args.Unshaded, args.LightColor, gunUid, shooterUid, targetUid, fromCoords, args.ShotDirection, args.MaxDistance, args.RayBullet, args.RayStart, args.RayMiddle, args.RayEnd);
+        CalculateHitscan(gunUid, args);
     }
 
     protected override void StellarHitscan(EntityUid gunUid, StellarHitscanEvent args, EntityUid? tracked = null)
     {
-        var shooterUid = GetEntity(args.Shooter);
-        var targetUid = GetEntity(args.Target);
-        var fromCoords = GetCoordinates(args.FromCoordinates);
-
-        CalculateHitscan(args.CollisionMask, args.Unshaded, args.LightColor, gunUid, shooterUid, targetUid, fromCoords, args.ShotDirection, args.MaxDistance, args.RayBullet, args.RayStart, args.RayMiddle, args.RayEnd);
+        CalculateHitscan(gunUid, args);
     }
 
-
-    private void CalculateHitscan(CollisionGroup mask, bool unshaded, Color lightColor, EntityUid gunUid, EntityUid? shooterUid, EntityUid? targetUid, EntityCoordinates fromCoords, Vector2 shotDirection, float maxDist, SpriteSpecifier.Rsi bullet, SpriteSpecifier.Rsi start, SpriteSpecifier.Rsi middle, SpriteSpecifier.Rsi end)
+    private void CalculateHitscan(EntityUid gunUid, StellarHitscanEvent args)
     {
-        var wiggleDist = maxDist + _random.NextFloat(-0.5f, 0.5f); // This is purely visual, and makes close-range weapons look considerably better.
-        var shooter = shooterUid ?? gunUid;
-        var mapCords = _transform.ToMapCoordinates(fromCoords);
-        var ray = new CollisionRay(mapCords.Position, shotDirection, (int)mask);
-        var rayCastResults = _physics.IntersectRay(mapCords.MapId, ray, maxDist, shooter, false);
-        var target = targetUid;
+        var wiggleDist = args.MaxDistance + _random.NextFloat(-0.5f, 0.5f); // This is purely visual, and makes close-range weapons look considerably better.
+        var shooter = GetEntity(args.Shooter) ?? gunUid;
+        var mapCords = _transform.ToMapCoordinates(GetCoordinates(args.FromCoordinates));
+        var ray = new CollisionRay(mapCords.Position, args.ShotDirection, (int)args.CollisionMask);
+        var rayCastResults = _physics.IntersectRay(mapCords.MapId, ray, args.MaxDistance, shooter, false);
+        var target = GetEntity(args.Target);
         var result = _container.IsEntityOrParentInContainer(shooter) ? rayCastResults.FirstOrNull() : rayCastResults.FirstOrNull(hit => hit.HitEntity == target || CompOrNull<RequireProjectileTargetComponent>(hit.HitEntity)?.Active != true);
         var distanceTried = result?.Distance ?? wiggleDist;
 
-        CreateHitscanVisuals(unshaded, lightColor, shooter, distanceTried, shotDirection.ToAngle(), bullet, start, middle, end);
+        CreateHitscanVisuals(args.Unshaded, args.LightColor, shooter, distanceTried, args.ShotDirection.ToAngle(), args.RayVisuals);
     }
 
-    private void CreateHitscanVisuals(bool unshaded, Color lightColor, EntityUid shooter, float distance, Angle shotAngle, SpriteSpecifier.Rsi bullet, SpriteSpecifier.Rsi start, SpriteSpecifier.Rsi middle, SpriteSpecifier.Rsi end)
+    private void CreateHitscanVisuals(bool unshaded, Color lightColor, EntityUid shooter, float distance, Angle shotAngle, SpriteSpecifier.Rsi rayVisuals)
     {
         var mod = 75f;
         var speed = distance / mod;
+
+        var bullet = new SpriteSpecifier.Rsi(rayVisuals.RsiPath, "bullet");
+        var start = new SpriteSpecifier.Rsi(rayVisuals.RsiPath, "start");
+        var middle = new SpriteSpecifier.Rsi(rayVisuals.RsiPath, "middle");
+        var end = new SpriteSpecifier.Rsi(rayVisuals.RsiPath, "end");
 
         if (distance > 1.25f) // The order these are created in matters!
         {

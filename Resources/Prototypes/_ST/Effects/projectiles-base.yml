@@ -11,7 +11,6 @@
   - type: StellarGunHitscan
     lightColor: "#FFFFFF"
     unshaded: false
-    muzzleFlash: StellarMuzzleFlashBase
     ray:
       sprite: _ST/Projectiles/Guns/base.rsi
       state: bullet
@@ -49,7 +48,7 @@
   id: StellarHitscanBase
   categories: [ HideSpawnMenu ]
   components:
-  - type: ESTimedDespawn
+  - type: TimedDespawn
     lifetime: 2.0
   - type: Sprite
     loop: false

@@ -224,6 +224,11 @@
     size: Small
     shape:
     - 0,0,1,1
+  - type: StellarGunTypesReloadable
+    multiShotSpread: 45
+    multiShotWiggleMin: -10
+    multiShotWiggleMax: 10
+    multiShotAmount: 6
   - type: Gun
     cameraRecoilScalar: 2.2
     minAngle: 6

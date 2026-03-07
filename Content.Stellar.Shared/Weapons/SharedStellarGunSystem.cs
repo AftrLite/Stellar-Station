@@ -34,8 +34,9 @@ public abstract partial class SharedStellarGunSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<StellarGunHitscanComponent, HitscanTraceEvent>(OnHitscan);
-        SubscribeLocalEvent<StellarGunTypesReloadableComponent, StellarGunShotEvent>(OnGunShot);
         SubscribeLocalEvent<StellarGunHitscanComponent, HitscanDamageDealtEvent>(OnHitscanDamageDealt);
+
+        SubscribeLocalEvent<StellarGunTypesReloadableComponent, StellarGunShotEvent>(OnGunShot);
     }
 
     private void OnGunShot(Entity<StellarGunTypesReloadableComponent> ent, ref StellarGunShotEvent args)
@@ -59,16 +60,30 @@ public abstract partial class SharedStellarGunSystem : EntitySystem
         toMap = fromMap + angle.ToVec() * mapDirection.Length();
         mapDirection = toMap - fromMap;
 
-        var ev = new StellarMuzzleFlashEvent(GetNetEntity(ent), hitscan.MuzzleFlash, mapDirection.ToAngle());
-        StellarMuzzleFlash(args.GunUid, ev, ent);
-
-        if (hitscan.MultiShotAmount > 1)
+        // Muzzle flash!
+        if (hitscan.MuzzleFlash != null)
         {
-            var angles = LinearSpread(mapDirection.ToAngle() - hitscan.MultiShotSpread / 2, mapDirection.ToAngle() + hitscan.MultiShotSpread / 2, hitscan.MultiShotAmount);
+            var ev = new StellarMuzzleFlashEvent(GetNetEntity(ent), hitscan.MuzzleFlash, mapDirection.ToAngle());
+            StellarMuzzleFlash(args.GunUid, ev, ent);
+        }
 
-            for (var i = 0; i < hitscan.MultiShotAmount; i++)
+        // Ramping firerate for guns that do that!
+        if (ent.Comp.RampingFireRate is not null)
+        {
+            var lerp = Math.Clamp(args.Gun.ShotCounter / ent.Comp.RampingBulletsNeeded, 0, 1);
+            args.Gun.FireRateModified = MathHelper.Lerp(args.Gun.FireRate, ent.Comp.RampingFireRate.Value, lerp);
+            Dirty(args.GunUid, args.Gun);
+            Log.Info($"firerate lerp is at {lerp}");
+        }
+
+        // Handle multishot & hitscan visuals!
+        if (ent.Comp.MultiShotAmount > 1)
+        {
+            var angles = LinearSpread(mapDirection.ToAngle() - ent.Comp.MultiShotSpread / 2, mapDirection.ToAngle() + ent.Comp.MultiShotSpread / 2, ent.Comp.MultiShotAmount);
+
+            for (var i = 0; i < ent.Comp.MultiShotAmount; i++)
             {
-                var angleWiggle = _random.NextAngle(hitscan.MultiShotWiggleMin, hitscan.MultiShotWiggleMax) + angles[i];
+                var angleWiggle = _random.NextAngle(ent.Comp.MultiShotWiggleMin, ent.Comp.MultiShotWiggleMax) + angles[i];
                 var hitscanEv = new HitscanTraceEvent
                 {
                     FromCoordinates = GetCoordinates(args.From),
@@ -96,11 +111,6 @@ public abstract partial class SharedStellarGunSystem : EntitySystem
 
     private void OnHitscan(Entity<StellarGunHitscanComponent> ent, ref HitscanTraceEvent args)
     {
-        var bullet = new SpriteSpecifier.Rsi(ent.Comp.Ray.RsiPath, "bullet");
-        var start = new SpriteSpecifier.Rsi(ent.Comp.Ray.RsiPath, "start");
-        var middle = new SpriteSpecifier.Rsi(ent.Comp.Ray.RsiPath, "middle");
-        var end = new SpriteSpecifier.Rsi(ent.Comp.Ray.RsiPath, "end");
-
         var ev = new StellarHitscanEvent(
             ent.Comp.CollisionMask,
             GetNetCoordinates(args.FromCoordinates),
@@ -112,10 +122,7 @@ public abstract partial class SharedStellarGunSystem : EntitySystem
             ent.Comp.LightColor,
             ent.Comp.MaxDistance,
             ent.Comp.MuzzleFlash,
-            bullet,
-            start,
-            middle,
-            end);
+            ent.Comp.Ray);
         StellarHitscan(args.Gun, ev, args.Shooter);
     }
 
@@ -208,17 +215,14 @@ public sealed class StellarHitscanEvent : EntityEventArgs
 
     public float MaxDistance;
 
-    public SpriteSpecifier.Rsi RayStart;
+    /// <summary>
+    /// RSI containing the appropriate sprites for the hitscan- expecting "start", "middle", "end", and "bullet" states.
+    /// </summary>
+    public SpriteSpecifier.Rsi RayVisuals;
 
-    public SpriteSpecifier.Rsi RayMiddle;
+    public EntProtoId? MuzzleFlash;
 
-    public SpriteSpecifier.Rsi RayEnd;
-
-    public SpriteSpecifier.Rsi RayBullet;
-
-    public EntProtoId MuzzleFlash;
-
-    public StellarHitscanEvent(CollisionGroup collisionMask, NetCoordinates fromCoords, Vector2 shotDirection, NetEntity gun, NetEntity? shooter, NetEntity? target, bool unshaded, Color lightColor, float maxDist, EntProtoId muzzleFlash, SpriteSpecifier.Rsi rayBullet, SpriteSpecifier.Rsi rayStart, SpriteSpecifier.Rsi rayMiddle, SpriteSpecifier.Rsi rayEnd )
+    public StellarHitscanEvent(CollisionGroup collisionMask, NetCoordinates fromCoords, Vector2 shotDirection, NetEntity gun, NetEntity? shooter, NetEntity? target, bool unshaded, Color lightColor, float maxDist, EntProtoId? muzzleFlash, SpriteSpecifier.Rsi rayVisuals)
     {
         CollisionMask = collisionMask;
         FromCoordinates = fromCoords;
@@ -230,9 +234,6 @@ public sealed class StellarHitscanEvent : EntityEventArgs
         LightColor = lightColor;
         MaxDistance = maxDist;
         MuzzleFlash = muzzleFlash;
-        RayBullet = rayBullet;
-        RayStart = rayStart;
-        RayMiddle = rayMiddle;
-        RayEnd = rayEnd;
+        RayVisuals = rayVisuals;
     }
 }

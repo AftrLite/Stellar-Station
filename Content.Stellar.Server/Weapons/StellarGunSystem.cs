@@ -39,11 +39,11 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
         toMap = fromMap + angle.ToVec() * mapDirection.Length();
         mapDirection = toMap - fromMap;
 
-        if (ent.Comp.MultiShotAmount > 1)
+        if (TryComp<StellarGunTypesReloadableComponent>(args.GunUid, out var gun) && gun.MultiShotAmount > 1)
         {
-            var angles = LinearSpread(mapAngle - ent.Comp.MultiShotSpread / 2, mapAngle + ent.Comp.MultiShotSpread / 2, ent.Comp.MultiShotAmount);
+            var angles = LinearSpread(mapAngle - gun.MultiShotSpread / 2, mapAngle + gun.MultiShotSpread / 2, gun.MultiShotAmount);
 
-            for (var i = 0; i < ent.Comp.MultiShotAmount; i++)
+            for (var i = 0; i < gun.MultiShotAmount; i++)
             {
                 var hitscanEv = new HitscanTraceEvent()
                 {

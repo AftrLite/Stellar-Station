@@ -10,17 +10,12 @@ using Robust.Shared.Utility;
 
 namespace Content.Stellar.Shared.Weapons;
 
+/// <summary>
+/// This component lives on the hitscans
+/// </summary>
 [RegisterComponent, NetworkedComponent]
 public sealed partial class StellarGunHitscanComponent : Component, IShootable
 {
-    [DataField] public Angle MultiShotSpread = Angle.FromDegrees(5);
-
-    [DataField] public Angle MultiShotWiggleMin = Angle.FromDegrees(-0.5);
-
-    [DataField] public Angle MultiShotWiggleMax = Angle.FromDegrees(0.5);
-
-    [DataField] public int MultiShotAmount = 1;
-
     [DataField] public Color? HitColor = Color.Red;
 
     [DataField] public Color LightColor;
@@ -32,12 +27,12 @@ public sealed partial class StellarGunHitscanComponent : Component, IShootable
     [DataField] public CollisionGroup CollisionMask = CollisionGroup.Opaque;
 
     /// <summary>
-    /// RSI containing the appropriate sprites for the hitscan- expecting start, middle, end, bullet states
+    /// RSI containing the appropriate sprites for the hitscan- expecting "start", "middle", "end", and "bullet" states.
     /// </summary>
     [DataField]
     [AlwaysPushInheritance]
     public SpriteSpecifier.Rsi Ray;
 
-    [DataField] public EntProtoId MuzzleFlash;
+    [DataField] public EntProtoId? MuzzleFlash;
 }
 
