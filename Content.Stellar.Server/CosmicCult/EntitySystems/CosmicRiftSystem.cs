@@ -107,22 +107,6 @@ public sealed class CosmicRiftSystem : EntitySystem
             };
             _doAfter.TryStartDoAfter(doargs);
         }
-        else if (TryComp<CleanseOnUseComponent>(args.Used, out var comp) && comp.CanPurge)
-        {
-            uid.Comp.Occupied = true;
-            _popup.PopupEntity(Loc.GetString("cosmiccult-rift-beginpurge"), args.User, args.User);
-            var doargs = new DoAfterArgs(EntityManager,
-                args.User,
-                uid.Comp.ChaplainTime,
-                new EventPurgeRiftDoAfter(),
-                uid,
-                uid)
-            {
-                DistanceThreshold = 1.5f, Hidden = false, BreakOnDamage = true, BreakOnDropItem = true,
-                BreakOnMove = true, MovementThreshold = 2f,
-            };
-            _doAfter.TryStartDoAfter(doargs);
-        }
     }
 
     private void OnAbsorbDoAfter(Entity<CosmicCultComponent> uid, ref EventAbsorbRiftDoAfter args)

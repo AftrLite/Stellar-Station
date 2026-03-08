@@ -8,7 +8,6 @@ SPDX-License-Identifier: LicenseRef-CosmicCult
   # Deconversion
   <Box>
     <GuideEntityEmbed Entity="Bible" Caption=""/>
-    <GuideEntityEmbed Entity="CosmicCenser" Caption=""/>
   </Box>
 
   When mounting an effort to thwart the [color=#4cabb3]Cosmic Cult[/color], there are several methods the crew might employ to ensure their survival and safety. One of these methods is [color=Yellow]Deconversion[/color].
@@ -20,7 +19,6 @@ SPDX-License-Identifier: LicenseRef-CosmicCult
   <Box>
     <GuideEntityEmbed Entity="Bible" Caption=""/>
     <GuideEntityEmbed Entity="MindShieldImplanter" Caption=""/>
-    <GuideEntityEmbed Entity="CosmicCenser" Caption=""/>
   </Box>
 
   Deconversion is but one method for dealing with an encroaching cult. Crew aboard the station may alternatively wish to invest in [color=Green]Mindshield[/color] implanters.

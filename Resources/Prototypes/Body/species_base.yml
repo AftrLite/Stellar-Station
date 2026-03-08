@@ -159,7 +159,6 @@
     - FootstepSound
     - DoorBumpOpener
     - AnomalyHost
-  - type: CosmicCenserTarget # Stellar - Cosmic Cult
   - type: Dropshadow # Begin Stellar - Wallening
     sprite:
       sprite: _ST/Effects/dropshadow.rsi

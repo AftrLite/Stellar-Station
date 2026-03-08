@@ -10,12 +10,11 @@
   components:
   - type: Sprite
     noRot: true
-    sprite: _ST/CosmicCult/Mobs/cosmicgod.rsi
+    sprite: _ST/CosmicCult/Mobs/wisp.rsi
     offset: 0, 2
     drawdepth: Ghosts
-    scale: 2,2
     layers:
-    - state: god
+    - state: wisp
       shader: unshaded
 
 # spawn animation, spawns actual god when it ends
@@ -28,10 +27,6 @@
   - type: EmitSoundOnSpawn
     sound:
       path: /Audio/_ST/CosmicCult/god_summon.ogg
-  - type: Sprite
-    layers:
-    - state: spawn
-      shader: unshaded
   # the spawn animation is exactly 4.62 seconds long, so we time our entity spawn-in to be the same.
   - type: TimedDespawn
     lifetime: 4.62
