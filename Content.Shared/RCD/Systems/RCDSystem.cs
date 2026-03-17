@@ -22,6 +22,7 @@ using Robust.Shared.Physics.Dynamics;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using System.Linq;
+using Content.Shared._ST.Interaction; // Stellar
 
 namespace Content.Shared.RCD.Systems;
 
@@ -143,6 +144,12 @@ public sealed class RCDSystem : EntitySystem
             _popup.PopupClient(Loc.GetString("rcd-component-no-valid-grid"), uid, user);
             return;
         }
+
+        // Begin Stellar - Block construction under Stellar circumstances
+        if (HasComp<BlockGridConstructionComponent>(user) || HasComp<BlockGridConstructionComponent>(gridUid))
+            return;
+        // End Stellar - Block construction under Stellar circumstances
+
         var tile = _mapSystem.GetTileRef(gridUid.Value, mapGrid, location);
         var position = _mapSystem.TileIndicesFor(gridUid.Value, mapGrid, location);
 

@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Client.Popups;
+using Content.Shared._ST.Interaction;
 using Content.Shared.Construction;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Examine;
@@ -243,6 +244,11 @@ namespace Content.Client.Construction
 
             if (!HasComp<ConstructionGhostComponent>(args.EntityUid))
                 return false;
+
+            // Begin Stellar - Block construction under Stellar circumstances
+            if (HasComp<BlockGridConstructionComponent>(_transformSystem.GetGrid(args.EntityUid)) || args.Session != null && args.Session.AttachedEntity != null && HasComp<BlockGridConstructionComponent>(args.Session.AttachedEntity.Value))
+                return false;
+            // End Stellar - Block construction under Stellar circumstances
 
             TryStartConstruction(args.EntityUid);
             return true;
