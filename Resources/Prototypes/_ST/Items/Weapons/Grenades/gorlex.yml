@@ -1,0 +1,302 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: StellarGrenadeBase
+  components:
+  - type: StellarExplosive
+    whitelist:
+      components:
+      - MobState
+    triggerKey: timer
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Grenades/gorlex-hcsnade.rsi
+    layers:
+    - state: icon
+      map: ["base"]
+    - state: icon-primed-unshaded
+      shader: unshaded
+      visible: false
+      map: ["unshaded"]
+  - type: TriggerOnUse
+  - type: DeleteOnTrigger
+    keysIn:
+    - timer
+  - type: TimerTrigger
+    beepSound:
+      path: "/Audio/Effects/beep1.ogg"
+      params:
+        volume: 5
+        variation: 0.025
+    initialBeepDelay: 0
+    beepInterval: 0.5
+    delay: 3
+  - type: Appearance
+  - type: AnimationPlayer
+  - type: GenericVisualizer
+    visuals:
+      enum.Trigger.TriggerVisuals.VisualState:
+        base:
+          Unprimed: { state: icon }
+          Primed: { state: icon-primed }
+        unshaded:
+          Unprimed: { visible: false }
+          Primed: { visible: true }
+
+- type: entity
+  parent: StellarGrenadeBase
+  id: StellarGrenadeGorlexExplosive
+  name: carmine grenade
+  description: Guaranteed to light up the mood.
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarExplosive
+    knockback: true
+  - type: ExplodeOnTrigger
+    keysIn:
+    - timer
+  - type: Explosive
+    explosionType: StellarDefault
+    maxIntensity: 10
+    intensitySlope: 3
+    totalIntensity: 120
+    canCreateVacuum: false
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Grenades/gorlex-explosivenade.rsi
+
+- type: entity
+  parent: StellarGrenadeBase
+  id: StellarGrenadeGorlexC4
+  name: cruor breaching charge
+  description: Guaranteed to light up the mood.
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarExplosive
+    range: 2.5
+    knockback: true
+    knockdown: true
+    stun: true
+    ignoreObstruction: true
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Grenades/gorlex-c4explosive.rsi
+  - type: Explosive # Powerful explosion in a very small radius. Doesn't break underplating.
+    explosionType: StellarDemolition
+    totalIntensity: 60
+    intensitySlope: 5
+    maxIntensity: 30
+    canCreateVacuum: false
+  - type: ExplodeOnTrigger
+    keysIn:
+    - timer
+  - type: DeleteOnTrigger
+    keysIn:
+    - timer
+  - type: TriggerOnActivate
+  - type: TriggerOnStuck
+    keyOut: stuck
+  - type: ToggleTriggerCondition # for toggling the start on stuck ability
+    keys:
+    - stuck
+    toggleVerb: toggle-trigger-condition-stick-verb
+    toggleOn: toggle-trigger-condition-stick-on
+    toggleOff: toggle-trigger-condition-stick-off
+  - type: TimerTrigger
+    keysIn:
+    - trigger
+    - stuck
+    delay: 5
+    delayOptions: [5, 10, 20, 30, 60]
+    initialBeepDelay: 0
+    beepSound: /Audio/Machines/Nuke/general_beep.ogg
+  - type: StickyVisualizer
+  - type: Sticky
+    stickDelay: 3
+    unstickDelay: 3
+    stickPopupStart: comp-sticky-start-stick-bomb
+    stickPopupSuccess: comp-sticky-success-stick-bomb
+    unstickPopupStart: comp-sticky-start-unstick-bomb
+    unstickPopupSuccess: comp-sticky-success-unstick-bomb
+    whitelist:
+      tags:
+      - Wall
+
+- type: entity
+  parent: StellarGrenadeBase
+  id: StellarGrenadeGorlexHCS
+  name: HCS fragmentation device
+  description: Houses a fragmentation cluster of HCS. Volatile!
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarExplosive
+    explosion: StellarExplosionHCS
+    minShrapnel: 25
+    maxShrapnel: 30
+    shrapnelEffects:
+      - StellarGrenadeShrapnelHCS
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Grenades/gorlex-hcsnade.rsi
+
+- type: entity
+  name: HCS shard
+  parent: BaseItem
+  id: StellarGrenadeShrapnelHCS
+  description: A shard of HCS, also known as "Supermatter". Radioactive and razor sharp!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    layers:
+    - sprite: _ST/Items/Misc/crystal-fragments.rsi
+      state: shard-1
+      map: [ "base" ]
+  - type: RandomSprite
+    available:
+    - base:
+        shard-1: ""
+        shard-2: ""
+        shard-3: ""
+  - type: EmbeddableProjectile
+    deleteOnRemove: true
+    sound:
+      collection: GlassBreak
+      params:
+        volume: -4
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 3.75
+        Slash: 3.75
+        Radiation: 2.5
+  - type: ThrowingAngle
+    angle: 225
+  - type: LandAtCursor
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PolygonShape
+          vertices:
+          - -0.40,-0.30
+          - -0.30,-0.40
+          - 0.40,0.30
+          - 0.30,0.40
+        density: 20
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+  - type: RadiationSource
+    slope: 0.5
+    intensity: 1
+
+- type: entity
+  parent: StellarGrenadeBase
+  id: StellarGrenadeGorlexFirestorm
+  name: cruor firestorm detonator
+  description: Guaranteed to light up the mood.
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarExplosive
+    explosion: StellarExplosionFirestorm
+    setFire: true
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Grenades/gorlex-firenade.rsi
+    layers:
+    - state: icon
+      map: ["base"]
+    - state: icon-unshaded
+      shader: unshaded
+      map: ["unshaded"]
+  - type: GenericVisualizer
+    visuals:
+      enum.Trigger.TriggerVisuals.VisualState:
+        base:
+          Unprimed: { state: icon }
+          Primed: { state: icon-primed }
+        unshaded:
+          Unprimed: { state: icon-unshaded }
+          Primed: { state: icon-primed-unshaded }
+
+
+- type: entity
+  parent: StellarGrenadeBase
+  id: StellarGrenadeGorlexFlash
+  name: carmine flashbang
+  description: Guaranteed to light up the mood.
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarExplosive
+    sound:
+        path: "/Audio/Effects/flash_bang.ogg"
+        params:
+          variation: 0.2
+          volume: -4
+    explosion: StellarExplosionFlash
+    range: 7
+  - type: FlashOnTrigger
+    keysIn:
+    - timer
+    range: 7
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Grenades/gorlex-flashnade.rsi
+
+- type: entity
+  parent: StellarGrenadeBase
+  id: StellarGrenadeGorlexEchion
+  name: echion catalysis phial
+  description: RUN.
+  categories: [ ForkFiltered ]
+  components:
+  - type: ExplodeOnTrigger
+    keysIn:
+    - timer
+  - type: StellarExplosive
+    explosion: StellarExplosionEchion
+    shakeIntensity: 5
+    knockback: true
+    knockdown: true
+    knockbackSpeed: 4
+    range: 10
+    sound:
+      path: "/Audio/_ST/Weapons/Grenades/gorlex-echionphial-explosion.ogg"
+      params:
+        variation: 0.005
+        volume: 12
+    soundFar:
+      path: "/Audio/_ST/Weapons/Grenades/gorlex-echionphial-explosion-far.ogg"
+      params:
+        variation: 0.005
+        volume: 12
+  - type: Explosive
+    explosionType: StellarDefault
+    totalIntensity: 3500
+    intensitySlope: 15
+    maxIntensity: 70
+    canCreateVacuum: true
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Grenades/gorlex-echionnade.rsi
+    layers:
+    - state: icon
+      map: ["base"]
+    - state: icon-unshaded
+      shader: unshaded
+      map: ["unshaded"]
+  - type: GenericVisualizer
+    visuals:
+      enum.Trigger.TriggerVisuals.VisualState:
+        base:
+          Unprimed: { state: icon }
+          Primed: { state: icon-primed }
+        unshaded:
+          Unprimed: { state: icon-unshaded }
+          Primed: { state: icon-primed-unshaded }
+  - type: TimerTrigger
+    beepSound:
+      path: "/Audio/_ST/Weapons/Grenades/gorlex-echionphial-timer.ogg"
+      params:
+        volume: 6
+        pitch: 1.075
+    initialBeepDelay: 0
+    beepInterval: 9
+    delay: 5

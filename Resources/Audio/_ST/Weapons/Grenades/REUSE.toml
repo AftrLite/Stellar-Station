@@ -1,0 +1,6 @@
+version = 1
+
+[[annotations]]
+path = ["gorlex-echionphial-explosion.ogg", "gorlex-echionphial-explosion-far.ogg", "gorlex-echionphial-timer.ogg"]
+SPDX-FileCopyrightText = "Custom grenade sounds by Darklyac."
+SPDX-License-Identifier = "LicenseRef-Wallening"

@@ -7,6 +7,11 @@ SPDX-License-Identifier = "LicenseRef-Wallening"
 SPDX-FileAttributionText = "This file is ALL RIGHTS RESERVED, Copyright (c) 2025 CrystallEdge & 2026 Stellar Station, with usage rights granted to Stellar Station by the Copyright Holder."
 
 [[annotations]]
+path = ["shock_wave.swsl"]
+SPDX-FileCopyrightText = "AftrLite"
+SPDX-License-Identifier = "LicenseRef-Wallening"
+
+[[annotations]]
 path = ["*.png"]
 SPDX-FileCopyrightText = "AftrLite"
 SPDX-License-Identifier = "LicenseRef-Wallening"

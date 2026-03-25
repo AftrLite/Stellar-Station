@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "By Frogoo for Stellar Station",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "shard-1"
+        },
+        {
+            "name": "shard-2"
+        },
+        {
+            "name": "shard-3"
+        },
+        {
+            "name": "cluster-1"
+        },
+        {
+            "name": "cluster-2"
+        }
+    ]
+}

@@ -28,8 +28,8 @@ public sealed class ExplosionOverlay : Overlay
 
     private ShaderInstance _shader;
 
-    private const int FireStates = 3; // Begin Stellar - Fire
-    private const string FireRsiPath = "/Textures/_ST/Effects/tile-fire-explode.rsi";
+    private const int FireStates = 1; // Begin Stellar - Fire
+    private const string FireRsiPath = "/Textures/_ST/Effects/explosion-tile.rsi";
     private readonly float[] _fireTimer = new float[FireStates];
     private readonly float[][] _fireFrameDelays = new float[FireStates][];
     private readonly int[] _fireFrameCounter = new int[FireStates];

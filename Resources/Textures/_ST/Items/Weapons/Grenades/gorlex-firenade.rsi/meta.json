@@ -1,0 +1,31 @@
+{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "By AftrLite",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "icon"
+        },
+        {
+            "name": "icon-unshaded"
+        },
+        {
+            "name": "icon-primed"
+        },
+        {
+            "name": "icon-primed-unshaded",
+            "delays": [
+                [
+                    0.05,
+                    0.05,
+                    0.05,
+                    0.05
+                ]
+            ]
+        }
+    ]
+}

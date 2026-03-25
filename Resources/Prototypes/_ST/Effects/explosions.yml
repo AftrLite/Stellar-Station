@@ -1,0 +1,173 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: explosion
+  id: StellarDefault
+  damagePerIntensity:
+    types:
+      Heat: 5
+      Blunt: 5
+      Piercing: 5
+  temperature: 800
+  tileBreakChance: [0, 0.5, 1]
+  tileBreakIntensity: [0, 10, 30]
+  tileBreakRerollReduction: 20
+  texturePath: /Textures/_ST/Effects/explosion-tile.rsi
+  lightColor: "#000000"
+  fireColor: "#b60034"
+  fireStates: 1
+
+- type: explosion
+  id: StellarDemolition
+  damagePerIntensity:
+    types:
+      Heat: 3
+      Blunt: 3
+      Piercing: 3
+      Structural: 50
+  temperature: 800
+  tileBreakChance: [ 0, 0.5, 1 ]
+  tileBreakIntensity: [ 0, 10, 30 ]
+  tileBreakRerollReduction: 20
+  texturePath: /Textures/_ST/Effects/explosion-tile.rsi
+  lightColor: "#000000"
+  fireColor: "#b60034"
+  fireStates: 1
+
+- type: entity
+  id: StellarExplosionDefault
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarShockwave
+    duration: 0.75
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    loop: false
+    sprite: _ST/Effects/explosion.rsi
+    layers:
+    - state: vfx
+      shader: unshaded
+  - type: TimedDespawn
+    lifetime: 0.9
+  - type: Appearance
+  - type: AnimationPlayer
+  - type: PointLight
+    radius: 7
+    energy: 20
+    falloff: 2
+    color: "#bc4500"
+    netsync: false
+  - type: LightFade
+    duration: 0.9
+
+- type: entity
+  id: StellarExplosionFlash
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarShockwave
+    duration: 0.4
+    visualRange: 4
+    visualForce: 0.02
+    visualWidth: 0.15
+    visualAberration: 0.05
+  - type: PointLight
+    enabled: true
+    radius: 5
+    energy: 8
+    netsync: false
+  - type: LightFade
+    duration: 0.5
+  - type: TimedDespawn
+    lifetime: 0.5
+
+- type: entity
+  id: StellarExplosionFirestorm
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarShockwave
+    duration: 0.8
+    visualRange: 3
+    visualForce: 0.02
+    visualWidth: 0.15
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    loop: false
+    sprite: _ST/Effects/explosion.rsi
+    layers:
+    - state: vfx
+      shader: unshaded
+  - type: EffectVisuals
+  - type: TimedDespawn
+    lifetime: 0.9
+  - type: Appearance
+  - type: AnimationPlayer
+  - type: PointLight
+    color: "#bc4500"
+    enabled: true
+    radius: 5
+    energy: 8
+    netsync: false
+  - type: LightFade
+    duration: 0.9
+
+- type: entity
+  id: StellarExplosionHCS
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarShockwave
+    duration: 0.75
+    visualAberration: 0.05
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    loop: false
+    sprite: _ST/Effects/explosion.rsi
+    layers:
+    - state: vfx-hcs
+      shader: unshaded
+  - type: TimedDespawn
+    lifetime: 1.1
+  - type: Appearance
+  - type: AnimationPlayer
+  - type: PointLight
+    radius: 7
+    energy: 10
+    falloff: 2
+    color: "#dcad1b"
+    netsync: false
+  - type: LightFade
+    duration: 0.8
+
+- type: entity
+  id: StellarExplosionEchion
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarShockwave
+    duration: 1
+    visualRange: 6
+    visualForce: 0.075
+    visualWidth: 0.175
+    visualAberration: 0.5
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    loop: false
+    sprite: _ST/Effects/explosion.rsi
+    layers:
+    - state: vfx-echion
+      shader: unshaded
+  - type: TimedDespawn
+    lifetime: 1.1
+  - type: Appearance
+  - type: AnimationPlayer
+  - type: PointLight
+    radius: 7
+    energy: 10
+    falloff: 2
+    color: "#108e44"
+    netsync: false
+  - type: LightFade
+    duration: 1.1

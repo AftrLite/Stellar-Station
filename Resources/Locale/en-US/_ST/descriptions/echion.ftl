@@ -3,25 +3,25 @@
 # SPDX-License-Identifier: LicenseRef-Wallening
 
 ### WEAPONS
-ent-StellarWeaponEchionCerberus =
+ent-StellarWeaponGorlexCerberus =
    .desc = "All you need is a little monopoly on violence."
    —Johannes Lysander Echion IV, CEO
 
-ent-StellarWeaponEchionChimera =
+ent-StellarWeaponGorlexChimera =
    .desc = "I like this one. It doesn't stand out, and neither should you." —Lundmila Echion II
 
-ent-StellarWeaponEchionEchidna =
+ent-StellarWeaponGorlexEchidna =
    .desc = "Father favours this one, i think. It's as boorish as him." —Annalise Lyara Echion I
 
-ent-StellarWeaponEchionGorgon =
+ent-StellarWeaponGorlexGorgon =
    .desc = "Just make the family's problems dissapear."
    —Alis Lissalia Echion I
 
-ent-StellarWeaponEchionHydra =
+ent-StellarWeaponGorlexHydra =
    .desc = "The boots shouldn't have to aim, so they came up with this. This lovely horror of mine."
    —Patreus Ixtar Echion VII
 
-ent-StellarWeaponEchionMinotaur =
+ent-StellarWeaponGorlexMinotaur =
    .desc = "Subverted law, captive regulation, and no planetary government can stop us now."
    —Danidas Echion XXI
 

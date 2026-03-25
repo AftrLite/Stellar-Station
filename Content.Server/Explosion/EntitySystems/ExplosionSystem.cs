@@ -37,10 +37,6 @@ namespace Content.Server.Explosion.EntitySystems;
 
 public sealed partial class ExplosionSystem : SharedExplosionSystem
 {
-    // ES START
-    [Dependency] private readonly ESScreenshakeSystem _shake = default!;
-    // ES END
-
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IRobustRandom _robustRandom = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
@@ -361,9 +357,10 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
         // ES START
         // CameraShake(iterationIntensity.Count * 4f, pos, queued.TotalIntensity);
         // ES END
+        // Begin Stellar - Turn off Explosion Sounds
 
         //For whatever bloody reason, sound system requires ENTITY coordinates.
-        var mapEntityCoords = _transformSystem.ToCoordinates(_map.GetMap(pos.MapId), pos);
+        // var mapEntityCoords = _transformSystem.ToCoordinates(_map.GetMap(pos.MapId), pos);
 
         // play sound.
         // for the normal audio, we want everyone in pvs range
@@ -375,40 +372,24 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
         // Use the Filter.Pvs range-multiplier option instead of AddInRange.
         // Also the default PVS range is 25*2 = 50. So capping it at 30 makes no sense here.
         // So actually maybe don't use Filter.Pvs at all and only use AddInRange?
-        var audioRange = Math.Min(iterationIntensity.Count * 2, MaxExplosionAudioRange);
-        var filter = Filter.Pvs(pos).AddInRange(pos, audioRange);
-        var sound = iterationIntensity.Count < queued.Proto.SmallSoundIterationThreshold
-            ? queued.Proto.SmallSound
-            : queued.Proto.Sound;
+        // var audioRange = Math.Min(iterationIntensity.Count * 2, MaxExplosionAudioRange);
+        // var filter = Filter.Pvs(pos).AddInRange(pos, audioRange);
+        // var sound = iterationIntensity.Count < queued.Proto.SmallSoundIterationThreshold
+        //    ? queued.Proto.SmallSound
+        //    : queued.Proto.Sound;
 
-        _audio.PlayStatic(sound, filter, mapEntityCoords, true, sound.Params);
+        // _audio.PlayStatic(sound, filter, mapEntityCoords, true, sound.Params);
 
         // play far sound
         // far sound should play for anyone who wasn't in range of any of the effects of the bomb
-        var farAudioRange = iterationIntensity.Count * 5;
-        var farFilter = Filter.Empty().AddInRange(pos, farAudioRange).RemoveInRange(pos, audioRange);
-        var farSound = iterationIntensity.Count < queued.Proto.SmallSoundIterationThreshold
-            ? queued.Proto.SmallSoundFar
-            : queued.Proto.SoundFar;
+        // var farAudioRange = iterationIntensity.Count * 5;
+        // var farFilter = Filter.Empty().AddInRange(pos, farAudioRange).RemoveInRange(pos, audioRange);
+        // var farSound = iterationIntensity.Count < queued.Proto.SmallSoundIterationThreshold
+        //     ? queued.Proto.SmallSoundFar
+        //     : queued.Proto.SoundFar;
 
-        // ES - STELLAR START
-        var shakeFilter = Filter.Empty().AddInRange(pos, farAudioRange);
-        foreach (var player in shakeFilter.Recipients)
-        {
-            if (player.AttachedEntity == null)
-                continue; // huh???
-            var playerPos = _transformSystem.ToMapCoordinates(Transform(player.AttachedEntity.Value).Coordinates);
-            var distance = (playerPos.Position - pos.Position).LengthSquared() / 525f;
-            distance = Math.Clamp(distance, 0f, 525f); // clamp it to prevent nonsense
-
-            var lerpedTrauma = MathHelper.Lerp(2f, 0.75f, distance);
-            var lerpedDecay = MathHelper.Lerp(0.75f, 1.5f, distance);
-            var lerpedFrequency = MathHelper.Lerp(0.008f, 0.004f, distance);
-            var shake = new ESScreenshakeParameters() { Trauma = lerpedTrauma, DecayRate = lerpedDecay, Frequency = lerpedFrequency};
-            _shake.Screenshake(player.AttachedEntity.Value, shake, null);
-        }
-        // ES - STELLAR END
-        _audio.PlayGlobal(farSound, farFilter, true, farSound.Params);
+        // _audio.PlayGlobal(farSound, farFilter, true, farSound.Params);
+        // End Stellar - Turn off Explosion Sounds
 
         return new Explosion(this,
             queued.Proto,

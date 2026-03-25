@@ -1,0 +1,39 @@
+// SPDX-FileCopyrightText: 2026 AftrLite
+//
+// SPDX-License-Identifier: LicenseRef-Wallening
+
+uniform sampler2D SCREEN_TEXTURE;
+uniform highp vec2 renderScale;
+uniform highp vec2 position;
+uniform highp float lifeTime;
+uniform highp float expiryTime;
+
+uniform highp float aberration; // default: 0.1
+uniform highp float force; // default: 0.025
+uniform highp float range; // default: 5
+uniform highp float width; // default: 0.1
+
+highp float outCubic(highp float value)
+{
+    return 1 - pow(1 - value, 3);
+}
+
+void fragment()
+{
+    highp float scalar = clamp((expiryTime / lifeTime), 0, 1);
+    highp float scalarInverted = clamp(1 - (expiryTime / lifeTime), 0, 1);
+
+    highp float rangeMod = range * 0.1 * 1.5;
+    highp float sizeMod = outCubic(rangeMod * scalarInverted) * rangeMod;
+    highp float forceMod = outCubic(force * scalar);
+
+	highp float mask = (1.0 - smoothstep(sizeMod-0.1,sizeMod, length(UV - position))) * smoothstep(sizeMod-width-0.1,sizeMod-width, length(UV - position));
+	highp vec2 disp = normalize(UV - position) * forceMod * mask;
+    highp vec2 abber_vec = disp*aberration*mask;
+    highp vec2 final_st = UV*(1.0-mask) + (UV - disp)*mask;
+
+    highp vec4 red = texture(SCREEN_TEXTURE, final_st + abber_vec);
+    highp vec4 blue = texture(SCREEN_TEXTURE, final_st - abber_vec);
+    highp vec4 ori = texture(SCREEN_TEXTURE, final_st);
+    COLOR = vec4(red.r, ori.g, blue.b, ( 1.0 * 2.5 * scalar ));
+}
