@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: 2026 Janet Blackquill
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  id: StellarBaseStationDefensiveOvercharge
+  abstract: true
+  components:
+  - type: StellarOverchargeable
+    requiredOvercharge: StellarOverchargeDefensive
+  - type: StellarDefensiveOvercharge

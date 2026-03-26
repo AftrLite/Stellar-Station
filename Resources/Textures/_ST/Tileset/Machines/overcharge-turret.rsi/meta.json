@@ -1,0 +1,78 @@
+{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "By AftrLite",
+    "size":
+    {
+    "x": 32,
+    "y": 32
+    },
+  "states": [
+      {
+          "name": "base",
+          "directions": 8
+      },
+      {
+          "name": "glow",
+          "directions": 8
+      },
+      {
+          "name": "glow-hyper",
+          "directions": 8
+      },
+      {
+          "name": "support"
+      },
+      {
+          "name": "shadow"
+      },
+      {
+          "name": "cover_closed"
+      },
+      {
+          "name": "cover_open"
+      },
+      {
+          "name": "cover_opening",
+          "delays": [
+              [
+                  0.1,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065
+              ]
+          ]
+      },
+      {
+          "name": "cover_closing",
+          "delays": [
+              [
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.065,
+                  0.1
+              ]
+          ]
+      }
+  ]
+}

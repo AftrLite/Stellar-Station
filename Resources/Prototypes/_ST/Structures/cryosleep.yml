@@ -18,9 +18,9 @@
     noRot: true
     sprite: _ST/Tileset/Machines/cryosleep.rsi
     layers:
-    - state: pod-closed
+    - state: pod-open
       map: ["base"]
-    - state: pod-closed-overlay
+    - state: pod-open-overlay
       shader: unshaded
       map: ["overlay"]
   - type: UserInterface

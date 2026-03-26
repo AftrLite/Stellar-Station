@@ -48,7 +48,7 @@ namespace Content.Server.GameTicking
 
         // ES START (& Stellar)
         [Dependency] private readonly WeatherSystem _weather = default!;
-        private static readonly ProtoId<WeatherPrototype> LobbyWeather = "StellarDetailFog";
+        private static readonly ProtoId<WeatherPrototype> LobbyWeather = "StellarWeatherDetailFog";
         private static readonly EntProtoId PlayerInLobbyEntity = "StellarLobbyPlayer";
         public MapId? DiegeticLobbyMapId = null;
 

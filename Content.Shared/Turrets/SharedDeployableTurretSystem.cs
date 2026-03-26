@@ -38,6 +38,8 @@ public abstract partial class SharedDeployableTurretSystem : EntitySystem
 
     private void OnGetVerb(Entity<DeployableTurretComponent> ent, ref GetVerbsEvent<Verb> args)
     {
+        return; // Stellar - we don't need this verb
+        
         if (!args.CanAccess || !args.CanInteract || !args.CanComplexInteract)
             return;
 

@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: stellarOvercharge
+  id: StellarOverchargeOffensive
+  name: overcharge-name-offensive
+  announcementText: overcharge-announcement-offensive
+  announcementTextHyper: overcharge-announcement-hyper-offensive
+
+- type: stellarOvercharge
+  id: StellarOverchargeDefensive
+  name: overcharge-name-defensive
+  announcementText: overcharge-announcement-defensive
+  announcementTextHyper: overcharge-announcement-hyper-defensive
+
+- type: stellarOvercharge
+  id: StellarOverchargeCurative
+  name: overcharge-name-curative
+  announcementText: overcharge-announcement-curative
+  announcementTextHyper: overcharge-announcement-hyper-curative
+
+- type: stellarOvercharge
+  id: StellarOverchargeScientific
+  name: overcharge-name-scientific
+  announcementText: overcharge-announcement-scientific
+  announcementTextHyper: overcharge-announcement-hyper-scientific

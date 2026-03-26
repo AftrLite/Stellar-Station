@@ -7,8 +7,14 @@
     "y": 1024
   },
   "states": [
-    {
-      "name": "fog"
-    }
+      {
+          "name": "fog"
+      },
+      {
+          "name": "shield"
+      },
+      {
+          "name": "shield-hyper"
+      }
   ]
 }

@@ -10,10 +10,10 @@
   - type: Projectile
     damage: {}
     deleteOnCollide: false
-  - type: Meteor
-    damageTypes:
-      types:
-        Blunt: 1
+#  - type: Meteor # Begin Stellar - Defensive Overcharge
+#    damageTypes:
+#      types:
+#        Blunt: 1 # End Stellar - Defensive Overcharge
   - type: TimedDespawn
     lifetime: 120
   - type: Clickable
@@ -43,7 +43,12 @@
     tileBreakScale: 2
   - type: TileFrictionModifier
     modifier: 0
-
+  # Begin Stellar - Defensive Overcharge
+  - type: StellarDefendableMeteor
+    damageTypes:
+      types:
+        Blunt: 1
+  # End Stellar - Defensive Overcharge
 
 - type: entity
   parent: BaseMeteor

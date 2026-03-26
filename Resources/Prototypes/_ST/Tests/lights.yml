@@ -121,6 +121,31 @@
 - type: entity
   name: light fixture
   description: A light fixture! Requires a light tube to function.
+  id: StellarLightTubeLed
+  suffix: LED
+  parent: Poweredlight
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Lighting/light_tube.rsi
+    layers:
+    - map: ["enum.PoweredLightLayers.Base"]
+      state: base
+    - map: ["enum.PoweredLightLayers.Glow"]
+      color: "#EEEEFF"
+      state: glow
+      shader: unshaded
+  - type: PoweredLight
+    hasLampOnSpawn: LedLightTube
+  - type: PointLight
+    radius: 15
+    energy: 1
+    softness: 0.9
+    color: "#EEEEFF"
+
+- type: entity
+  name: light fixture
+  description: A light fixture! Requires a light tube to function.
   id: StellarLightTubeCyan
   suffix: Cyan
   parent: Poweredlight
@@ -199,6 +224,15 @@
 - type: entity
   name: corner light fixture
   description: A corner-shaped light fixture! Requires a light tube to function.
+  id: StellarLightCornerLed
+  parent: StellarLightTubeLed
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Lighting/light_tube_corner.rsi
+
+- type: entity
+  name: corner light fixture
+  description: A corner-shaped light fixture! Requires a light tube to function.
   id: StellarLightCornerCyan
   parent: StellarLightTubeCyan
   components:
@@ -240,6 +274,16 @@
   description: A heavy-duty light fixture! Requires a light tube to function.
   id: StellarLightIndustrialSodium
   parent: StellarLightTubeSodium
+  components:
+  - type: Sprite
+    drawdepth: Overdoors
+    sprite: _ST/Tileset/Lighting/light_tube_industrial.rsi
+
+- type: entity
+  name: industrial light fixture
+  description: A heavy-duty light fixture! Requires a light tube to function.
+  id: StellarLightIndustrialLed
+  parent: StellarLightTubeLed
   components:
   - type: Sprite
     drawdepth: Overdoors

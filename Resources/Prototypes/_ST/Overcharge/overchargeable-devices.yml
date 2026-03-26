@@ -1,0 +1,101 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: BaseWeaponEnergyTurret
+  id: StellarOverchargeDeviceOffensiveTurret
+  name: overcharge turret
+  description: A high-tech autonomous weapons system designed to keep unauthorized personnel out of sensitive areas.
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarOverchargeable
+    requiredOvercharge: StellarOverchargeOffensive
+  - type: Rotatable
+  - type: Fixtures
+    fixtures:
+      body:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 60
+        mask:
+        - Impassable
+      turret:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 60
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+        hard: false
+  - type: Sprite
+    sprite: _ST/Tileset/Machines/overcharge-turret.rsi
+    drawdepth: HighFloorObjects
+    granularLayersRendering: true
+    layers:
+    - state: cover_closed
+      map: [ "enum.DeployableTurretVisuals.Turret" ]
+      renderingStrategy: NoRotation
+    - state: support
+      visible: false
+      map: [ "enum.DeployableTurretVisuals.Strut" ]
+      renderingStrategy: NoRotation
+    - state: base
+      visible: false
+      map: [ "enum.DeployableTurretVisuals.Base" ]
+    - state: glow
+      map: [ "enum.DeployableTurretVisuals.Weapon" ]
+      shader: "unshaded"
+      visible: false
+    - state: shadow
+      renderingStrategy: NoRotation
+  - type: AnimationPlayer
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.OverchargeVisuals.Visuals:
+        enum.DeployableTurretVisuals.Weapon:
+          Overcharged: { state: glow }
+          Hypercharged: { state: glow-hyper }
+  - type: HTN
+    enabled: false
+  - type: NpcFactionMember
+    factions:
+    - NanoTrasen
+  - type: BatteryAmmoProvider
+    proto: BulletEnergyTurretDisabler
+    fireCost: 250
+  - type: DeployableTurret
+    retractedDamageModifierSetId: Metallic
+    deployedDamageModifierSetId: FlimsyMetallic
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Repairable
+    doAfterDelay: 10
+    allowSelfRepair: false
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Breakage" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: UseDelay
+    delay: 1.2
+  - type: StellarOverchargeableTurret

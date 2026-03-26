@@ -143,6 +143,10 @@ public sealed partial class DeployableTurretComponent : Component
 [Serializable, NetSerializable]
 public enum DeployableTurretVisuals : byte
 {
+    // Begin Stellar - More turret layers
+    Strut,
+    Base,
+    // End Stellar - More turret layers
     Turret,
     Weapon,
     Broken,

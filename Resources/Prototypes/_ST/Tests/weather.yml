@@ -3,10 +3,28 @@
 # SPDX-License-Identifier: LicenseRef-Wallening
 
 - type: weather
-  id: StellarDetailFog
+  id: StellarWeatherDetailFog
   scrollSpeed: -0.04, 0.05
   color: "#7987a7"
   override: true
   sprite:
     sprite: /Textures/_ST/Effects/weather.rsi
     state: fog
+
+- type: weather
+  id: StellarWeatherStationShield
+  scrollSpeed: 0.25, 0.25
+  override: true
+  opacity: 0.2
+  sprite:
+    sprite: /Textures/_ST/Effects/weather.rsi
+    state: shield
+
+- type: weather
+  id: StellarWeatherStationHyperShield
+  scrollSpeed: 0.25, 0.25
+  override: true
+  opacity: 0.2
+  sprite:
+    sprite: /Textures/_ST/Effects/weather.rsi
+    state: shield-hyper

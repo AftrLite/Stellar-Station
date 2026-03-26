@@ -93,8 +93,8 @@ public sealed partial class DeployableTurretSystem : SharedDeployableTurretSyste
         ent.Comp.VisualState = state;
 
         // Toggle layer visibility
-        _sprite.LayerSetVisible((ent.Owner, sprite), DeployableTurretVisuals.Weapon, (targetState & DeployableTurretState.Deployed) > 0);
-        _sprite.LayerSetVisible((ent.Owner, sprite), PowerDeviceVisualLayers.Powered, HasAmmo(ent) && targetState == DeployableTurretState.Retracted);
+        // _sprite.LayerSetVisible((ent.Owner, sprite), DeployableTurretVisuals.Weapon, (targetState & DeployableTurretState.Deployed) > 0); // Stellar - Moved elsewhere
+        // _sprite.LayerSetVisible((ent.Owner, sprite), PowerDeviceVisualLayers.Powered, HasAmmo(ent) && targetState == DeployableTurretState.Retracted); // Stellar - Don't need this
 
         // Change the visual state
         switch (targetState)
@@ -103,13 +103,19 @@ public sealed partial class DeployableTurretSystem : SharedDeployableTurretSyste
                 _animation.Play((ent, animPlayer), (Animation)ent.Comp.DeploymentAnimation, DeployableTurretComponent.AnimationKey);
                 break;
 
-            case DeployableTurretState.Retracting:
+            case DeployableTurretState.Retracting: // Begin Stellar - Move turret visuals around a bit
+                _sprite.LayerSetVisible((ent.Owner, sprite), DeployableTurretVisuals.Strut, false);
+                _sprite.LayerSetVisible((ent.Owner, sprite), DeployableTurretVisuals.Base, false);
+                _sprite.LayerSetVisible((ent.Owner, sprite), DeployableTurretVisuals.Weapon, false);
                 _animation.Play((ent, animPlayer), (Animation)ent.Comp.RetractionAnimation, DeployableTurretComponent.AnimationKey);
                 break;
 
             case DeployableTurretState.Deployed:
+                _sprite.LayerSetVisible((ent.Owner, sprite), DeployableTurretVisuals.Strut, true);
+                _sprite.LayerSetVisible((ent.Owner, sprite), DeployableTurretVisuals.Base, true);
+                _sprite.LayerSetVisible((ent.Owner, sprite), DeployableTurretVisuals.Weapon, true);
                 _sprite.LayerSetRsiState((ent.Owner, sprite), DeployableTurretVisuals.Turret, ent.Comp.DeployedState);
-                break;
+                break; // End Stellar - Move turret visuals around a bit
 
             case DeployableTurretState.Retracted:
                 _sprite.LayerSetRsiState((ent.Owner, sprite), DeployableTurretVisuals.Turret, ent.Comp.RetractedState);

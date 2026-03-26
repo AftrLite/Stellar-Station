@@ -63,10 +63,12 @@
         enum.DeployableTurretVisuals.Weapon:
           BulletEnergyTurretDisabler: { state: stun }
           BulletEnergyTurretLaser: { state: lethal }
-      enum.DeployableTurretVisuals.Broken:
-        base:
-          True: { state: destroyed }
-          False: { state: base }
+      # Begin Stellar Removals - no
+      # enum.DeployableTurretVisuals.Broken:
+      #   base:
+      #     True: { state: destroyed }
+      #     False: { state: base }
+      # End Stellar Removals - no
       enum.WiresVisuals.MaintenancePanelState:
         enum.WiresVisualLayers.MaintenancePanel:
           True: { visible: false }
