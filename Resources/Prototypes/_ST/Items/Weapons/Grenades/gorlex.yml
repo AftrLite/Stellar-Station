@@ -71,7 +71,6 @@
   parent: StellarGrenadeBase
   id: StellarGrenadeGorlexC4
   name: cruor breaching charge
-  description: Guaranteed to light up the mood.
   categories: [ ForkFiltered ]
   components:
   - type: StellarExplosive
@@ -127,7 +126,6 @@
   parent: StellarGrenadeBase
   id: StellarGrenadeGorlexHCS
   name: HCS fragmentation device
-  description: Houses a fragmentation cluster of HCS. Volatile!
   categories: [ ForkFiltered ]
   components:
   - type: StellarExplosive

@@ -38,3 +38,23 @@ ent-StellarHardsuitGorlexJuggernaut =
 
 ent-StellarHardsuitGorlexTriage =
    .desc = "It's a shame something so sophisticated belongs to... Them." —Juurin Matsuda, CyberSun Affiliate
+
+
+### GRENADES
+ent-StellarGrenadeGorlexExplosive =
+   .desc = "Go out with a bang. More of a boom." — Tuuris Nopxa, GORLEX Agent
+
+ent-StellarGrenadeGorlexC4 =
+   .desc = "Doors are a frame of mind." —A previous GORLEX Tactician Operative
+
+ent-StellarGrenadeGorlexHCS =
+   .desc = "They'll be picking pieces out of corpses for a while with this one."  —Sylop Sousa, GORLEX R&D
+
+ent-StellarGrenadeGorlexFirestorm =
+   .desc = "Something for the little arsonist in you."  —Sylop Sousa, GORLEX R&D
+
+ent-StellarGrenadeGorlexFlash =
+   .desc = "Protesters too loud? Try our Carmine Flashbang! It'll flash your troubles away."  —Advertising
+
+ent-StellarGrenadeGorlexEchion =
+   .desc = 9 out of 10 operatives don't recommend drinking this. The other one is not available for comment.
