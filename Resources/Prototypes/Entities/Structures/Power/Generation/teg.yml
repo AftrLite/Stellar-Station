@@ -194,6 +194,7 @@
     - type: Sprite
       sprite: Markers/teg_arrow.rsi
       color: "#FFFFFFBB"
+      drawdepth: Effects
       layers:
         - state: arrow
           offset: 0, 0.75

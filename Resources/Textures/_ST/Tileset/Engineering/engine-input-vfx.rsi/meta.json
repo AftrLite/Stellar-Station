@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "license": "LicenseRef-Wallening",
+  "copyright": "By AftrLite",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states":
+  [
+      {
+          "name": "curative"
+      },
+      {
+          "name": "defensive"
+      },
+      {
+          "name": "offensive"
+      },
+      {
+          "name": "scientific"
+      },
+      {
+          "name": "doors-closed"
+      },
+      {
+          "name": "doors-closing",
+          "delays": [
+              [
+                  0.075,
+                  0.075,
+                  0.075,
+                  0.075,
+                  0.075,
+                  0.075,
+                  0.075,
+                  0.075,
+                  0.075,
+                  0.075,
+                  0.075,
+                  0.075,
+                  0.075,
+                  0.075,
+                  99
+              ]
+          ]
+      },
+      {
+          "name": "doors-opening",
+          "delays": [
+              [
+                  0.075,
+                  0.075,
+                  0.075,
+                  0.075,
+                  0.075,
+                  99
+              ]
+          ]
+      }
+  ]
+}

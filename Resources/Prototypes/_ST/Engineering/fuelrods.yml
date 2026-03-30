@@ -1,0 +1,106 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: BaseItem
+  abstract: true
+  id: StellarBaseFuelRodItem
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarFuelRod
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+  - type: Tag
+    tags:
+    - Crowbar
+  - type: Sprite
+    sprite: Objects/Tools/crowbar.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Tools/crowbar.rsi
+    size: Normal
+    shape:
+    - 0,0,0,1
+
+- type: entity
+  parent: BaseItem
+  id: StellarFuelRodDepleted
+  name: depleted fuel rod
+  description: A depleted fuel rod. Can be "sustainably" recycled into a lower grade of fuel rod!
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Misc/fuel-rods.rsi
+    layers:
+    - state: base
+
+# These fuel rods are basically just placeholder.
+- type: entity
+  parent: StellarBaseFuelRodItem
+  id: StellarFuelRodPlasma
+  name: plasma fuel rod
+  description: LOREM IPSUM
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarFuelRod
+    providedOvercharge: StellarOverchargeScientific
+    canHypercharge: false
+  - type: Sprite
+    sprite: _ST/Items/Misc/fuel-rods.rsi
+    layers:
+    - state: base
+    - state: overlay-plasma
+      shader: unshaded
+
+- type: entity
+  parent: StellarBaseFuelRodItem
+  id: StellarFuelRodUranium
+  name: uranium fuel rod
+  description: LOREM IPSUM
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarFuelRod
+    providedOvercharge: StellarOverchargeCurative
+    canHypercharge: false
+  - type: Sprite
+    sprite: _ST/Items/Misc/fuel-rods.rsi
+    layers:
+      - state: base
+      - state: overlay-uranium
+        shader: unshaded
+
+- type: entity
+  parent: StellarBaseFuelRodItem
+  id: StellarFuelRodSuperMatter
+  name: HCS fuel rod
+  description: Contains a core made of Hyperdense Crystalline Substrate, aka "Supermatter".
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarFuelRod
+    providedOvercharge: StellarOverchargeDefensive
+    canHypercharge: true
+  - type: Sprite
+    sprite: _ST/Items/Misc/fuel-rods.rsi
+    layers:
+    - state: base
+    - state: overlay-supermatter
+      shader: unshaded
+
+- type: entity
+  parent: StellarBaseFuelRodItem
+  id: StellarFuelRodEchion
+  name: echion fuel rod
+  description: Houses a volume of "Echion", an artificially produced amorphous quasicrystal derived from HCS, aka "Supermatter". Volatile beyond belief.
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarFuelRod
+    providedOvercharge: StellarOverchargeOffensive
+    canHypercharge: true
+  - type: Sprite
+    sprite: _ST/Items/Misc/fuel-rods.rsi
+    layers:
+    - state: base-gorlex
+    - state: overlay-echion
+      shader: unshaded

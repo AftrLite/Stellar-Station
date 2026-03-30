@@ -9,3 +9,5 @@ st-floor-wood-patterned = wood patterned tile
 st-floor-checker-base = checkered tile
 st-floor-checker-brick = checkered brick tile
 st-floor-checker-herringbone = checkered herringbone tile
+
+st-floor-fireproof = fireproof underlay

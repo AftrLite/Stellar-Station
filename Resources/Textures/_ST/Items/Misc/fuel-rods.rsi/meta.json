@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "license": "LicenseRef-Wallening",
+  "copyright": "By AftrLite for Stellar Station",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+    "states": [
+        {
+            "name": "base"
+        },
+        {
+            "name": "base-gorlex"
+        },
+        {
+            "name": "overlay-plasma"
+        },
+        {
+            "name": "overlay-uranium"
+        },
+        {
+            "name": "overlay-supermatter"
+        },
+        {
+            "name": "overlay-echion"
+        }
+    ]
+}

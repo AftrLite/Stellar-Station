@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "license": "LicenseRef-Wallening",
+  "copyright": "By AftrLite",
+  "size": {
+    "x": 48,
+    "y": 64
+  },
+    "states":
+    [
+        {
+            "name": "base_left"
+        },
+        {
+            "name": "zap_left",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "base_right"
+        },
+        {
+            "name": "zap_right",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        }
+    ]
+}

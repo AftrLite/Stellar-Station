@@ -1,0 +1,540 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  id: StellarEngineCore
+  parent: StellarStructureBase
+  name: stellarator reactor core
+  description: The Stellarator Hybrid Fusion Reactor. A compact marvel of advanced hybrid fusion engineering, capable of fusing a variety of different fuels.
+  components:
+  - type: StellarEngineCore
+  - type: AtmosDevice
+    requireAnchored: false
+    joinSystem: true
+  - type: InteractionOutline
+  - type: Physics
+  - type: Transform
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.7,-0.6,1.7,1.7"
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - GlassAirlockLayer
+
+  # VISUAL STUFF
+  - type: Sprite
+    sprite: _ST/Tileset/Engineering/engine-core.rsi
+    noRot: true
+    offset: 0, 0.6
+    drawdepth: Mobs
+    layers:
+    - state: base
+    - state: core-overcharged
+      sprite: _ST/Tileset/Engineering/engine-core-charge-vfx.rsi
+      offset: 0, 1
+      shader: unshaded
+      visible: false
+      map: [ "enum.EngineCoreLayers.CoreVfx" ]
+    - state: progress-left-overcharge-1
+      sprite: _ST/Tileset/Engineering/engine-core-progress-vfx.rsi
+      offset: -1, 0.5
+      shader: unshaded
+      visible: false
+      map: ["enum.EngineCoreLayers.ProgressLeft"]
+    - state: progress-right-overcharge-1
+      sprite: _ST/Tileset/Engineering/engine-core-progress-vfx.rsi
+      offset: 1, 0.5
+      shader: unshaded
+      visible: false
+      map: [ "enum.EngineCoreLayers.ProgressRight" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.EngineCoreVisuals.Core:
+        enum.EngineCoreLayers.ProgressLeft:
+          50: {visible: False}
+          1: {visible: True, state: progress-left-overcharge-0}
+          2: {visible: True, state: progress-left-overcharge-1}
+          3: {visible: True, state: progress-left-overcharge-2}
+          4: {visible: True, state: progress-left-overcharge-3}
+          5: {visible: True, state: progress-left-overcharge-4}
+          10: {visible: True, state: progress-left-overcharged}
+          11: {visible: True, state: progress-left-hypercharge-0}
+          12: {visible: True, state: progress-left-hypercharge-1}
+          13: {visible: True, state: progress-left-hypercharge-2}
+          14: {visible: True, state: progress-left-hypercharge-3}
+          15: {visible: True, state: progress-left-hypercharge-4}
+          20: {visible: True, state: progress-left-hypercharged}
+        enum.EngineCoreLayers.ProgressRight:
+          50: {visible: False}
+          1: {visible: True, state: progress-right-overcharge-0}
+          2: {visible: True, state: progress-right-overcharge-1}
+          3: {visible: True, state: progress-right-overcharge-2}
+          4: {visible: True, state: progress-right-overcharge-3}
+          5: {visible: True, state: progress-right-overcharge-4}
+          10: {visible: True, state: progress-right-overcharged}
+          11: {visible: True, state: progress-right-hypercharge-0}
+          12: {visible: True, state: progress-right-hypercharge-1}
+          13: {visible: True, state: progress-right-hypercharge-2}
+          14: {visible: True, state: progress-right-hypercharge-3}
+          15: {visible: True, state: progress-right-hypercharge-4}
+          20: {visible: True, state: progress-right-hypercharged}
+        enum.EngineCoreLayers.CoreVfx:
+          50: {visible: False}
+          1: {visible: True, state: core-overcharging}
+          10: {visible: True, state: core-overcharged}
+          11: {visible: True, state: core-hypercharging}
+          20: {visible: True, state: core-hypercharged}
+          # SPRITE STUFF
+
+  - type: PointLight
+    enabled: true
+    castShadows: false
+    radius: 5
+    energy: 5
+    color: "#000000"
+
+  # NODEGROUP & POWER STUFF
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      output:
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
+#        inlet: # Not interested in adding Gas-driven "Fuel Rod Tempering" to the engine yet.
+#          !type:PipeNode
+#          nodeGroupID: Pipe
+#          pipeDirection: North
+#          volume: 100
+  - type: PowerMonitoringDevice
+    group: Generator
+    loadNode: output
+    sprite: Structures/Power/power.rsi
+    state: generator
+  - type: PowerSupplier
+    supplyRate: 3000000
+    supplyRampRate: 1000000
+    supplyRampTolerance: 50009
+  - type: StellarEngineFires
+  - type: StellarEngineGasLeaks
+  - type: StellarEngineWires
+
+- type: entity
+  id: StellarEngineInput
+  parent: StellarStructureBase
+  name: fuel injection interface
+  description: The Stellarator's fuel injection interface. Careful to not get your fingers caught when the fuel hatch closes.
+  components:
+  - type: StellarEnginePart
+  - type: StellarEngineInput
+  - type: InteractionOutline
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.7,0.8,1.7,0"
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - GlassAirlockLayer
+
+  # VISUAL STUFF
+  - type: Sprite
+    sprite: _ST/Tileset/Engineering/engine-input.rsi
+    offset: 0, 0.5
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - state: base
+    - state: doors-closed
+      sprite: _ST/Tileset/Engineering/engine-input-vfx.rsi
+      offset: 0, -0.5
+      visible: false
+      map: [ "enum.EngineInputLayers.InputDoors" ]
+    - state: scientific
+      sprite: _ST/Tileset/Engineering/engine-input-vfx.rsi
+      offset: 0, 0.69
+      shader: unshaded
+      visible: false
+      map: [ "enum.EngineInputLayers.OverchargeDisplay" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.EngineInputVisuals.EngineInput:
+        enum.EngineInputLayers.InputDoors:
+          Closing: {visible: True, state: doors-closing}
+          Closed: {visible: True, state: doors-closed}
+          Opening: {visible: True, state: doors-opening}
+          Open: {visible: False}
+      enum.EngineInputVisuals.EngineDisplay:
+        enum.EngineInputLayers.OverchargeDisplay:
+          Off: {visible: False}
+          Offensive: {visible: True, state: offensive}
+          Defensive: {visible: True, state: defensive}
+          Curative: {visible: True, state: curative}
+          Scientific: {visible: True, state: scientific}
+
+- type: entity
+  id: StellarEngineTuner
+  parent: StellarStructureBase
+  abstract: true
+  name: tuning module
+  description: One of the Stellarator's Tuning Modules, which govern the reactor's calibration.
+  components:
+  - type: StellarEnginePart
+  - type: StellarEngineGasLeakSource
+  - type: StellarEngineTuner
+  - type: Weldable
+    fuel: 5
+    time: 2.5
+  - type: InteractionOutline
+  - type: Physics
+  - type: Transform
+    noRot: true
+  - type: PointLight
+    enabled: true
+    castShadows: false
+    radius: 2
+    energy: 12
+    color: "#000000" # green: 64d89c, yellow: d4aa4b, red: d60e4a
+  - type: TriggerOnCollide
+    fixtureID: contactPad
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/UserInterface/click.ogg
+
+- type: entity
+  id: StellarEngineTunerLeft
+  parent: StellarEngineTuner
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "1,0.65,-0.5,0"
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - GlassAirlockLayer
+      contactPad:
+        shape:
+          !type:PhysShapeAabb
+          # left: 15/32/2
+          # bottom: 14/32
+          # right: 15/32/2
+          # top: 0/32
+          bounds: "-0.234375,-0.4375,0.234375,0"
+        mask:
+        - ItemMask
+        layer:
+        - SlipLayer
+        hard: false
+  # SPRITE STUFF
+  - type: Sprite
+    sprite: _ST/Tileset/Engineering/engine-tuner.rsi
+    offset: 0.21875, 0.15625 # 7/32, 5/32
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - state: base_left
+      map: ["enum.TunerLayers.Base"]
+    - state: screen-red
+      sprite: _ST/Tileset/Engineering/engine-tuner-vfx.rsi
+      offset: -0.1875, -0.21875 # 6/32, 7/32
+      shader: unshaded
+      visible: false
+      map: ["enum.TunerLayers.Screen"]
+    - state: pistons-idle
+      sprite: _ST/Tileset/Engineering/engine-tuner-vfx.rsi
+      offset: -0.28125, 0.53125 # 9/32, 17/32
+      map: ["enum.TunerLayers.Pistons"]
+    - state: venting-left
+      sprite: _ST/Tileset/Engineering/engine-tuner-vfx.rsi
+      offset: -1, 0.5 # 32/32, 16/32
+      visible: false
+      map: [ "enum.TunerLayers.Vents" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.TunerVisuals.Broken:
+        enum.TunerLayers.Base:
+          Broken: { state: broken_left }
+          Intact: { state: base_left }
+      enum.TunerVisuals.Tuner:
+        enum.TunerLayers.Screen:
+          Calibrated: {visible: True, state: screen-green}
+          NearCalibrated: {visible: True, state: screen-yellow}
+          NotCalibrated: {visible: True, state: screen-red}
+          Broken: {visible: False}
+          Off: {visible: False}
+        enum.TunerLayers.Pistons:
+          Calibrated: {state: pistons-active}
+          NearCalibrated: {state: pistons-active}
+          NotCalibrated: {state: pistons-active}
+          Broken: {state: pistons-idle}
+          Off: {state: pistons-idle}
+      enum.TunerVisuals.Venting:
+        enum.TunerLayers.Vents:
+          Inert: { visible: False }
+          Venting: { visible: True }
+          # SPRITE STUFF
+
+- type: entity
+  id: StellarEngineTunerRight
+  parent: StellarEngineTuner
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.5,0,-1,0.65"
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - GlassAirlockLayer
+      contactPad:
+        shape:
+          !type:PhysShapeAabb
+          # left: 15/32/2
+          # bottom: 14/32
+          # right: 15/32/2
+          # top: 0/32
+          bounds: "-0.234375,-0.4375,0.234375,0"
+        mask:
+        - ItemMask
+        layer:
+        - SlipLayer
+        hard: false
+  # SPRITE STUFF
+  - type: Sprite
+    sprite: _ST/Tileset/Engineering/engine-tuner.rsi
+    offset: -0.21875, 0.15625 # 7/32, 5/32
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - state: base_right
+      map: ["enum.TunerLayers.Base"]
+    - state: screen-green
+      sprite: _ST/Tileset/Engineering/engine-tuner-vfx.rsi
+      offset: 0.1875, -0.21875 # 6/32, 7/32
+      shader: unshaded
+      visible: false
+      map: ["enum.TunerLayers.Screen"]
+    - state: pistons-idle
+      sprite: _ST/Tileset/Engineering/engine-tuner-vfx.rsi
+      offset: 0.28125, 0.53125 # 9/32, 17/32
+      map: ["enum.TunerLayers.Pistons"]
+    - state: venting-right
+      sprite: _ST/Tileset/Engineering/engine-tuner-vfx.rsi
+      offset: 1, 0.5 # 32/32, 16/32
+      visible: false
+      map: [ "enum.TunerLayers.Vents" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.TunerVisuals.Broken:
+        enum.TunerLayers.Base:
+          Broken: { state: broken_right }
+          Intact: { state: base_right }
+      enum.TunerVisuals.Tuner:
+        enum.TunerLayers.Screen:
+          Calibrated: {visible: True, state: screen-green}
+          NearCalibrated: {visible: True, state: screen-yellow}
+          NotCalibrated: {visible: True, state: screen-red}
+          Broken: {visible: False}
+          Off: {visible: False}
+        enum.TunerLayers.Pistons:
+          Calibrated: {state: pistons-active}
+          NearCalibrated: {state: pistons-active}
+          NotCalibrated: {state: pistons-active}
+          Broken: {state: pistons-idle}
+          Off: {state: pistons-idle}
+      enum.TunerVisuals.Venting:
+        enum.TunerLayers.Vents:
+          Inert: { visible: False }
+          Venting: { visible: True }
+          # SPRITE STUFF
+
+- type: entity
+  id: StellarEngineContactPad
+  name: contact pad
+  placement:
+    mode: SnapgridCenter
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarEnginePart
+  - type: StellarEngineFireSource
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Transform
+    noRot: true
+  - type: Sprite
+    sprite: _ST/Tileset/Engineering/engine-tuner-contactplate.rsi
+    offset: 0, 0.375
+    noRot: true
+    layers:
+    - state: base
+
+- type: entity
+  id: StellarEngineCables
+  name: engine cable cluster
+  placement:
+    mode: SnapgridCenter
+  categories: [ ForkFiltered ]
+  components:
+  - type: Physics
+    canCollide: false
+  - type: Transform
+    noRot: true
+  - type: Sprite
+    sprite: _ST/Tileset/Engineering/engine-cables-lower.rsi
+    noRot: true
+    layers:
+    - state: base_left
+      offset: -2.375, -0.305
+    - state: base_right
+      sprite: _ST/Tileset/Engineering/engine-cables-lower.rsi
+      offset: 2.375, -0.305
+    - state: base_left
+      offset: -1.31, 3
+      sprite: _ST/Tileset/Engineering/engine-cables-upper.rsi
+    - state: base_right
+      offset: 1.31, 3
+      sprite: _ST/Tileset/Engineering/engine-cables-upper.rsi
+  - type: Icon
+    sprite: _ST/Tileset/Engineering/engine-cables-lower.rsi
+    state: base_left
+
+- type: entity
+  id: StellarEngineCablesElectrifiedOverlay
+  parent: StellarStructureBase
+  placement:
+    mode: SnapgridCenter
+  categories: [ ForkFiltered ]
+  components:
+  - type: Physics
+  - type: Sprite
+    sprite: _ST/Tileset/Engineering/engine-cables-lower.rsi
+    noRot: true
+    layers:
+    - state: zap_left
+      shader: unshaded
+      offset: -2.375, -0.305
+    - state: zap_right
+      shader: unshaded
+      sprite: _ST/Tileset/Engineering/engine-cables-lower.rsi
+      offset: 2.375, -0.305
+    - state: zap_left
+      shader: unshaded
+      offset: -1.31, 3
+      sprite: _ST/Tileset/Engineering/engine-cables-upper.rsi
+    - state: zap_right
+      shader: unshaded
+      offset: 1.31, 3
+      sprite: _ST/Tileset/Engineering/engine-cables-upper.rsi
+  - type: Icon
+    sprite: _ST/Tileset/Engineering/engine-cables-lower.rsi
+    state: base_left
+  - type: StepTrigger
+    requiredTriggeredSpeed: 0
+    intersectRatio: 0.1
+  - type: ESTimedDespawnSpriteFade
+    fadeTime: 0.5
+  - type: AnimationPlayer
+  - type: ESTimedDespawn
+    lifetime: 6.9 # Ayyy
+  - type: StellarEngineWire
+    throwSpeed: 10
+    throwRange: 15
+    damage:
+      types:
+        Shock: 20
+        Heat: 10
+  - type: TileEntityEffect
+    effects:
+    - !type:Flammable
+      multiplier: 3
+      multiplierOnExisting: 0.1
+    - !type:Ignite
+  - type: Fixtures #  WHY STOP AT ONE FIXTURE WHEN WE CAN HAVE SEVEN? THERE ARE NO RULES HERE. BEHOLD MY WORKS, YE MIGHTY, AND DESPAIR.
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "2.52,0.65,-2.58,0.25"
+        layer:
+        - SlipLayer
+        mask:
+        - ItemMask
+        hard: False
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-2.25,0.25,-2.58,-0.75"
+        layer:
+        - SlipLayer
+        mask:
+        - ItemMask
+        hard: False
+      fix3:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "2.22,0.25,2.52,-0.75"
+        layer:
+        - SlipLayer
+        mask:
+        - ItemMask
+        hard: False
+      fix4:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.35,3.25,2,3.1"
+        layer:
+        - SlipLayer
+        mask:
+        - ItemMask
+        hard: False
+      fix5:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-2,3.25,-0.38,3.1"
+        layer:
+        - SlipLayer
+        mask:
+        - ItemMask
+        hard: False
+      fix6:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.7,2,-0.38,3.1"
+        layer:
+        - SlipLayer
+        mask:
+        - ItemMask
+        hard: False
+      fix7:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.35,2,0.65,3.1"
+        layer:
+        - SlipLayer
+        mask:
+        - ItemMask
+        hard: False
+  - type: Tag
+    tags:
+    - HideContextMenu
