@@ -31,6 +31,7 @@ namespace Content.IntegrationTests.Tests
     {
         private const bool SkipTestMaps = true;
         private const string TestMapsPath = "/Maps/Test/";
+        private const string StellarTestMapsPath = "/Maps/_ST/Test/"; // Stellar - Unique Devmap
 
         private static readonly string[] NoSpawnMaps =
         {
@@ -212,7 +213,7 @@ namespace Content.IntegrationTests.Tests
                 var rootedPath = map.ToRootedPath();
 
                 // ReSharper disable once RedundantLogicalConditionalExpressionOperand
-                if (SkipTestMaps && rootedPath.ToString().StartsWith(TestMapsPath, StringComparison.Ordinal))
+                if (SkipTestMaps && rootedPath.ToString().StartsWith(TestMapsPath, StringComparison.Ordinal) || rootedPath.ToString().StartsWith(StellarTestMapsPath, StringComparison.Ordinal)) // Stellar
                 {
                     continue;
                 }

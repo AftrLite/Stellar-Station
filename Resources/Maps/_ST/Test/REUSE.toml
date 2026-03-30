@@ -1,0 +1,6 @@
+version = 1
+
+[[annotations]]
+path = ["stellar_devmap.yml"]
+SPDX-FileCopyrightText = "By AftrLite(GitHub)"
+SPDX-License-Identifier = "LicenseRef-Wallening"

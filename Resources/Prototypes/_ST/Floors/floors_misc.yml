@@ -2,6 +2,20 @@
 #
 # SPDX-License-Identifier: LicenseRef-Wallening
 
+#### ENGINE TILE.
+- type: tile
+  id: StellarFloorFireproof
+  editorHidden: false
+  name: st-floor-fireproof
+  sprite: /Textures/_ST/Tileset/Floor/Misc/fireproof.png
+  baseTurf: Plating
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepTile
+  itemDrop: FloorTileItemSteel
+  heatCapacity: 10000
+  flammability: 0
+
 #### CHECKERBOARD
 - type: tile
   id: StellarFloorCheckerBase

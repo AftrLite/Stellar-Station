@@ -16,7 +16,7 @@
 - type: gameMap
   id: Dev
   mapName: Dev
-  mapPath: /Maps/Test/dev_map.yml
+  mapPath: /Maps/_ST/Test/stellar_devmap.yml # Stellar
   minPlayers: 0
   stations:
     Dev:
