@@ -33,6 +33,11 @@ namespace Content.Shared.Interaction
         /// </summary>
         public bool CanReach { get; }
 
+        /// <summary>
+        /// Stellar - should we spawn an interaction particle for this event?
+        /// </summary>
+        public bool SpawnInteractionParticles = true;
+
         public InteractEvent(EntityUid user, EntityUid used, EntityUid? target,
             EntityCoordinates clickLocation, bool canReach)
         {

@@ -1104,10 +1104,10 @@ namespace Content.Shared.Interaction
 
             var afterInteractEvent = new AfterInteractEvent(user, used, target, clickLocation, canReach);
             RaiseLocalEvent(used, afterInteractEvent);
-            DoContactInteraction(user, used, null, true, afterInteractEvent); // Interaction particles
+            DoContactInteraction(user, used, null, true, afterInteractEvent, interactionParticles: afterInteractEvent.SpawnInteractionParticles); // Stellar - Interaction particles
             if (canReach)
             {
-                DoContactInteraction(user, target, used, true, afterInteractEvent); // Interaction particles
+                DoContactInteraction(user, target, used, true, afterInteractEvent, interactionParticles: afterInteractEvent.SpawnInteractionParticles); // Stellar - Interaction particles
                 // Contact interactions are currently only used for forensics, so we don't raise used -> target
             }
 
@@ -1121,10 +1121,10 @@ namespace Content.Shared.Interaction
             var afterInteractUsingEvent = new AfterInteractUsingEvent(user, used, target, clickLocation, canReach);
             RaiseLocalEvent(target.Value, afterInteractUsingEvent);
 
-            DoContactInteraction(user, used, null, true, afterInteractUsingEvent); // Interaction particles
+            DoContactInteraction(user, used, null, true, afterInteractUsingEvent, interactionParticles: afterInteractUsingEvent.SpawnInteractionParticles); // Stellar - Interaction particles
             if (canReach)
             {
-                DoContactInteraction(user, target, used, true, afterInteractUsingEvent); // Interaction particles
+                DoContactInteraction(user, target, used, true, afterInteractUsingEvent, interactionParticles: afterInteractUsingEvent.SpawnInteractionParticles); // Stellar - Interaction particles
                 // Contact interactions are currently only used for forensics, so we don't raise used -> target
             }
 
@@ -1429,7 +1429,7 @@ namespace Content.Shared.Interaction
         /// <summary>
         ///     Simple convenience function to raise contact events (disease, forensics, etc).
         /// </summary>
-        public void DoContactInteraction(EntityUid uidA, EntityUid? uidB, EntityUid? used, bool predicted, HandledEntityEventArgs? args = null) // Stellar - interaction particles
+        public void DoContactInteraction(EntityUid uidA, EntityUid? uidB, EntityUid? used, bool predicted, HandledEntityEventArgs? args = null, bool interactionParticles = true) // Stellar - interaction particles
         {
             if (uidB == null || args?.Handled == false)
                 return;
@@ -1451,6 +1451,9 @@ namespace Content.Shared.Interaction
             RaiseLocalEvent(uidB.Value, ev);
 
             // Begin Stellar Additions - Interaction particles
+            if (!interactionParticles)
+                return;
+
             if (_net.IsServer)
             {
                 var filter = predicted
