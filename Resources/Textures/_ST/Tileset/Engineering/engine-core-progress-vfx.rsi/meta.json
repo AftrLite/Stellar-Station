@@ -9,7 +9,7 @@
   "states":
   [
       {
-          "name": "progress-left-overcharge-0",
+          "name": "progress-overcharge-0",
           "delays": [
               [
                   0.075,
@@ -24,7 +24,7 @@
           ]
       },
       {
-          "name": "progress-left-overcharge-1",
+          "name": "progress-overcharge-1",
           "delays": [
               [
                   0.075,
@@ -39,7 +39,7 @@
           ]
       },
       {
-          "name": "progress-left-overcharge-2",
+          "name": "progress-overcharge-2",
           "delays": [
               [
                   0.075,
@@ -54,7 +54,7 @@
           ]
       },
       {
-          "name": "progress-left-overcharge-3",
+          "name": "progress-overcharge-3",
           "delays": [
               [
                   0.075,
@@ -69,7 +69,7 @@
           ]
       },
       {
-          "name": "progress-left-overcharge-4",
+          "name": "progress-overcharge-4",
           "delays": [
               [
                   0.075,
@@ -84,192 +84,7 @@
           ]
       },
       {
-          "name": "progress-left-overcharged",
-          "delays": [
-              [
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075
-              ]
-          ]
-      },
-
-      {
-          "name": "progress-left-hypercharge-0",
-          "delays": [
-              [
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075
-              ]
-          ]
-      },
-      {
-          "name": "progress-left-hypercharge-1",
-          "delays": [
-              [
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075
-              ]
-          ]
-      },
-      {
-          "name": "progress-left-hypercharge-2",
-          "delays": [
-              [
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075
-              ]
-          ]
-      },
-      {
-          "name": "progress-left-hypercharge-3",
-          "delays": [
-              [
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075
-              ]
-          ]
-      },
-      {
-          "name": "progress-left-hypercharge-4",
-          "delays": [
-              [
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075
-              ]
-          ]
-      },
-      {
-          "name": "progress-left-hypercharged",
-          "delays": [
-              [
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075
-              ]
-          ]
-      },
-
-
-
-
-      {
-          "name": "progress-right-overcharge-0",
-          "delays": [
-              [
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075
-              ]
-          ]
-      },
-      {
-          "name": "progress-right-overcharge-1",
-          "delays": [
-              [
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075
-              ]
-          ]
-      },
-      {
-          "name": "progress-right-overcharge-2",
-          "delays": [
-              [
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075
-              ]
-          ]
-      },
-      {
-          "name": "progress-right-overcharge-3",
-          "delays": [
-              [
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075
-              ]
-          ]
-      },
-      {
-          "name": "progress-right-overcharge-4",
-          "delays": [
-              [
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075,
-                  0.075
-              ]
-          ]
-      },
-      {
-          "name": "progress-right-overcharged",
+          "name": "progress-overcharged",
           "delays": [
               [
                   0.075,
@@ -285,7 +100,7 @@
       },
 
       {
-          "name": "progress-right-hypercharge-0",
+          "name": "progress-hypercharge-0",
           "delays": [
               [
                   0.075,
@@ -300,7 +115,7 @@
           ]
       },
       {
-          "name": "progress-right-hypercharge-1",
+          "name": "progress-hypercharge-1",
           "delays": [
               [
                   0.075,
@@ -315,7 +130,7 @@
           ]
       },
       {
-          "name": "progress-right-hypercharge-2",
+          "name": "progress-hypercharge-2",
           "delays": [
               [
                   0.075,
@@ -330,7 +145,7 @@
           ]
       },
       {
-          "name": "progress-right-hypercharge-3",
+          "name": "progress-hypercharge-3",
           "delays": [
               [
                   0.075,
@@ -345,7 +160,7 @@
           ]
       },
       {
-          "name": "progress-right-hypercharge-4",
+          "name": "progress-hypercharge-4",
           "delays": [
               [
                   0.075,
@@ -360,7 +175,7 @@
           ]
       },
       {
-          "name": "progress-right-hypercharged",
+          "name": "progress-hypercharged",
           "delays": [
               [
                   0.075,

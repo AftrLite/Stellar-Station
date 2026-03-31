@@ -9,25 +9,10 @@
     "states":
     [
         {
-            "name": "base_left"
+            "name": "base"
         },
         {
-            "name": "zap_left",
-            "delays": [
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ]
-            ]
-        },
-        {
-            "name": "base_right"
-        },
-        {
-            "name": "zap_right",
+            "name": "zap",
             "delays": [
                 [
                     0.1,

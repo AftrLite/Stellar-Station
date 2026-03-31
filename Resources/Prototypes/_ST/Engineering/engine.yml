@@ -42,15 +42,16 @@
       shader: unshaded
       visible: false
       map: [ "enum.EngineCoreLayers.CoreVfx" ]
-    - state: progress-left-overcharge-1
+    - state: progress-overcharge-1
       sprite: _ST/Tileset/Engineering/engine-core-progress-vfx.rsi
       offset: -1, 0.5
       shader: unshaded
       visible: false
       map: ["enum.EngineCoreLayers.ProgressLeft"]
-    - state: progress-right-overcharge-1
+    - state: progress-overcharge-1
       sprite: _ST/Tileset/Engineering/engine-core-progress-vfx.rsi
-      offset: 1, 0.5
+      scale: -1, 1
+      offset: 0.975, 0.5
       shader: unshaded
       visible: false
       map: [ "enum.EngineCoreLayers.ProgressRight" ]
@@ -60,32 +61,32 @@
       enum.EngineCoreVisuals.Core:
         enum.EngineCoreLayers.ProgressLeft:
           50: {visible: False}
-          1: {visible: True, state: progress-left-overcharge-0}
-          2: {visible: True, state: progress-left-overcharge-1}
-          3: {visible: True, state: progress-left-overcharge-2}
-          4: {visible: True, state: progress-left-overcharge-3}
-          5: {visible: True, state: progress-left-overcharge-4}
-          10: {visible: True, state: progress-left-overcharged}
-          11: {visible: True, state: progress-left-hypercharge-0}
-          12: {visible: True, state: progress-left-hypercharge-1}
-          13: {visible: True, state: progress-left-hypercharge-2}
-          14: {visible: True, state: progress-left-hypercharge-3}
-          15: {visible: True, state: progress-left-hypercharge-4}
-          20: {visible: True, state: progress-left-hypercharged}
+          1: {visible: True, state: progress-overcharge-0}
+          2: {visible: True, state: progress-overcharge-1}
+          3: {visible: True, state: progress-overcharge-2}
+          4: {visible: True, state: progress-overcharge-3}
+          5: {visible: True, state: progress-overcharge-4}
+          10: {visible: True, state: progress-overcharged}
+          11: {visible: True, state: progress-hypercharge-0}
+          12: {visible: True, state: progress-hypercharge-1}
+          13: {visible: True, state: progress-hypercharge-2}
+          14: {visible: True, state: progress-hypercharge-3}
+          15: {visible: True, state: progress-hypercharge-4}
+          20: {visible: True, state: progress-hypercharged}
         enum.EngineCoreLayers.ProgressRight:
           50: {visible: False}
-          1: {visible: True, state: progress-right-overcharge-0}
-          2: {visible: True, state: progress-right-overcharge-1}
-          3: {visible: True, state: progress-right-overcharge-2}
-          4: {visible: True, state: progress-right-overcharge-3}
-          5: {visible: True, state: progress-right-overcharge-4}
-          10: {visible: True, state: progress-right-overcharged}
-          11: {visible: True, state: progress-right-hypercharge-0}
-          12: {visible: True, state: progress-right-hypercharge-1}
-          13: {visible: True, state: progress-right-hypercharge-2}
-          14: {visible: True, state: progress-right-hypercharge-3}
-          15: {visible: True, state: progress-right-hypercharge-4}
-          20: {visible: True, state: progress-right-hypercharged}
+          1: {visible: True, state: progress-overcharge-0}
+          2: {visible: True, state: progress-overcharge-1}
+          3: {visible: True, state: progress-overcharge-2}
+          4: {visible: True, state: progress-overcharge-3}
+          5: {visible: True, state: progress-overcharge-4}
+          10: {visible: True, state: progress-overcharged}
+          11: {visible: True, state: progress-hypercharge-0}
+          12: {visible: True, state: progress-hypercharge-1}
+          13: {visible: True, state: progress-hypercharge-2}
+          14: {visible: True, state: progress-hypercharge-3}
+          15: {visible: True, state: progress-hypercharge-4}
+          20: {visible: True, state: progress-hypercharged}
         enum.EngineCoreLayers.CoreVfx:
           50: {visible: False}
           1: {visible: True, state: core-overcharging}
@@ -195,6 +196,7 @@
   - type: StellarEngineGasLeakSource
   - type: StellarEngineTuner
   - type: Weldable
+    weldedExamineMessage: null
     fuel: 5
     time: 2.5
   - type: InteractionOutline
@@ -248,11 +250,11 @@
     noRot: true
     drawdepth: Mobs
     layers:
-    - state: base_left
+    - state: base
       map: ["enum.TunerLayers.Base"]
     - state: screen-red
       sprite: _ST/Tileset/Engineering/engine-tuner-vfx.rsi
-      offset: -0.1875, -0.21875 # 6/32, 7/32
+      offset: -0.21875, -0.21875 # 7/32, 7/32
       shader: unshaded
       visible: false
       map: ["enum.TunerLayers.Screen"]
@@ -260,7 +262,7 @@
       sprite: _ST/Tileset/Engineering/engine-tuner-vfx.rsi
       offset: -0.28125, 0.53125 # 9/32, 17/32
       map: ["enum.TunerLayers.Pistons"]
-    - state: venting-left
+    - state: venting
       sprite: _ST/Tileset/Engineering/engine-tuner-vfx.rsi
       offset: -1, 0.5 # 32/32, 16/32
       visible: false
@@ -270,8 +272,8 @@
     visuals:
       enum.TunerVisuals.Broken:
         enum.TunerLayers.Base:
-          Broken: { state: broken_left }
-          Intact: { state: base_left }
+          Broken: { state: broken }
+          Intact: { state: base }
       enum.TunerVisuals.Tuner:
         enum.TunerLayers.Screen:
           Calibrated: {visible: True, state: screen-green}
@@ -322,25 +324,26 @@
   # SPRITE STUFF
   - type: Sprite
     sprite: _ST/Tileset/Engineering/engine-tuner.rsi
-    offset: -0.21875, 0.15625 # 7/32, 5/32
+    offset: -0.24875, 0.15625 # 7/32, 5/32
+    scale: -1, 1
     noRot: true
     drawdepth: Mobs
     layers:
-    - state: base_right
+    - state: base
       map: ["enum.TunerLayers.Base"]
-    - state: screen-green
+    - state: screen-red
       sprite: _ST/Tileset/Engineering/engine-tuner-vfx.rsi
-      offset: 0.1875, -0.21875 # 6/32, 7/32
+      offset: -0.21875, -0.21875 # 7/32, 7/32
       shader: unshaded
-      visible: false
+      visible: true
       map: ["enum.TunerLayers.Screen"]
     - state: pistons-idle
       sprite: _ST/Tileset/Engineering/engine-tuner-vfx.rsi
-      offset: 0.28125, 0.53125 # 9/32, 17/32
+      offset: -0.28125, 0.53125 # 9/32, 17/32
       map: ["enum.TunerLayers.Pistons"]
-    - state: venting-right
+    - state: venting
       sprite: _ST/Tileset/Engineering/engine-tuner-vfx.rsi
-      offset: 1, 0.5 # 32/32, 16/32
+      offset: -1, 0.5 # 32/32, 16/32
       visible: false
       map: [ "enum.TunerLayers.Vents" ]
   - type: Appearance
@@ -348,8 +351,8 @@
     visuals:
       enum.TunerVisuals.Broken:
         enum.TunerLayers.Base:
-          Broken: { state: broken_right }
-          Intact: { state: base_right }
+          Broken: { state: broken }
+          Intact: { state: base }
       enum.TunerVisuals.Tuner:
         enum.TunerLayers.Screen:
           Calibrated: {visible: True, state: screen-green}
@@ -404,20 +407,18 @@
     sprite: _ST/Tileset/Engineering/engine-cables-lower.rsi
     noRot: true
     layers:
-    - state: base_left
+    - state: base
       offset: -2.375, -0.305
-    - state: base_right
-      sprite: _ST/Tileset/Engineering/engine-cables-lower.rsi
-      offset: 2.375, -0.305
-    - state: base_left
+    - state: base
+      scale: -1, 1
+      offset: 2.3475, -0.305
+    - state: base
       offset: -1.31, 3
       sprite: _ST/Tileset/Engineering/engine-cables-upper.rsi
-    - state: base_right
-      offset: 1.31, 3
+    - state: base
+      scale: -1, 1
+      offset: 1.28, 3
       sprite: _ST/Tileset/Engineering/engine-cables-upper.rsi
-  - type: Icon
-    sprite: _ST/Tileset/Engineering/engine-cables-lower.rsi
-    state: base_left
 
 - type: entity
   id: StellarEngineCablesElectrifiedOverlay
@@ -431,24 +432,18 @@
     sprite: _ST/Tileset/Engineering/engine-cables-lower.rsi
     noRot: true
     layers:
-    - state: zap_left
-      shader: unshaded
+    - state: zap
       offset: -2.375, -0.305
-    - state: zap_right
-      shader: unshaded
-      sprite: _ST/Tileset/Engineering/engine-cables-lower.rsi
-      offset: 2.375, -0.305
-    - state: zap_left
-      shader: unshaded
+    - state: zap
+      scale: -1, 1
+      offset: 2.3475, -0.305
+    - state: zap
       offset: -1.31, 3
       sprite: _ST/Tileset/Engineering/engine-cables-upper.rsi
-    - state: zap_right
-      shader: unshaded
-      offset: 1.31, 3
+    - state: zap
+      scale: -1, 1
+      offset: 1.28, 3
       sprite: _ST/Tileset/Engineering/engine-cables-upper.rsi
-  - type: Icon
-    sprite: _ST/Tileset/Engineering/engine-cables-lower.rsi
-    state: base_left
   - type: StepTrigger
     requiredTriggeredSpeed: 0
     intersectRatio: 0.1

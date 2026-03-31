@@ -9,16 +9,10 @@
   "states":
   [
       {
-          "name": "base_left"
+          "name": "base"
       },
       {
-          "name": "base_right"
-      },
-      {
-          "name": "broken_left"
-      },
-      {
-          "name": "broken_right"
+          "name": "broken"
       }
   ]
 }
