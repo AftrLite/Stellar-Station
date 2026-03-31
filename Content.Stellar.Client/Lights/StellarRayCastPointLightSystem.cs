@@ -3,6 +3,11 @@
 // SPDX-License-Identifier: LicenseRef-Wallening
 
 using System.Numerics;
+using Content.Client.Light.Components;
+using Content.Client.Light.EntitySystems;
+using Content.Shared.Light.Components;
+using Content.Shared.Toggleable;
+using Robust.Client.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
@@ -14,12 +19,15 @@ public sealed class StellarRayCastPointLightSystem : EntitySystem
     [Dependency] private readonly SharedPointLightSystem _pointLight = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly LightBehaviorSystem _lightBehavior = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<StellarRayCastPointLightComponent, ComponentShutdown>(OnShutdown);
+        SubscribeLocalEvent<StellarRayCastPointLightComponent, AppearanceChangeEvent>(OnAppearanceChange);
     }
 
     public override void Update(float frameTime)
@@ -44,7 +52,10 @@ public sealed class StellarRayCastPointLightSystem : EntitySystem
             }
 
             if (comp.SpawnedLight is null)
+            {
                 comp.SpawnedLight = Spawn(comp.LightPrototype);
+                UpdateLightAppearance((uid, comp));
+            }
 
             var (position, rotation) = _transform.GetWorldPositionRotation(xform);
 
@@ -75,4 +86,41 @@ public sealed class StellarRayCastPointLightSystem : EntitySystem
             QueueDel(light);
     }
 
+    private void UpdateLightAppearance(Entity<StellarRayCastPointLightComponent> ent, AppearanceComponent? component = null)
+    {
+        if (ent.Comp.SpawnedLight is not { } light)
+            return;
+
+        if (!_appearance.TryGetData<bool>(ent, ToggleableVisuals.Enabled, out var enabled, component))
+            return;
+
+        if (!_appearance.TryGetData<HandheldLightPowerStates>(ent, HandheldLightVisuals.Power, out var state, component))
+            return;
+
+        if (!TryComp<LightBehaviourComponent>(light, out var lightBehaviour))
+            return;
+
+        if (_lightBehavior.HasRunningBehaviours((light, lightBehaviour)))
+            _lightBehavior.StopLightBehaviour((light, lightBehaviour), resetToOriginalSettings: true);
+
+        if (!enabled)
+            return;
+
+        switch (state)
+        {
+            case HandheldLightPowerStates.FullPower:
+                break;
+            case HandheldLightPowerStates.LowPower:
+                _lightBehavior.StartLightBehaviour((light, lightBehaviour), "radiating");
+                break;
+            case HandheldLightPowerStates.Dying:
+                _lightBehavior.StartLightBehaviour((light, lightBehaviour), "blinking");
+                break;
+        }
+    }
+
+    private void OnAppearanceChange(Entity<StellarRayCastPointLightComponent> ent, ref AppearanceChangeEvent args)
+    {
+        UpdateLightAppearance(ent, args.Component);
+    }
 }

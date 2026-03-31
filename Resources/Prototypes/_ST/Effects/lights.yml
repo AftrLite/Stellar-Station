@@ -3,11 +3,37 @@
 # SPDX-License-Identifier: LicenseRef-Wallening
 
 - type: entity
-  id: StellarPointLight
+  id: StellarCastedLight
   categories: [ HideSpawnMenu ]
   components:
+  - type: LightBehaviour
+    behaviours:
+    - !type:FadeBehaviour
+      id: radiating
+      maxDuration: 2.0
+      startValue: 3.0
+      endValue: 2.0
+      isLooped: true
+      reverseWhenFinished: true
+    - !type:PulseBehaviour
+      id: blinking
+      interpolate: Nearest
+      maxDuration: 1.0
+      startValue: 0.1
+      endValue: 2.0
+      isLooped: true
   - type: PointLight
     enabled: true
     radius: 3
     energy: 2
-    falloff: 4
+    falloff: 8
+
+- type: entity
+  parent: StellarCastedLight
+  id: StellarCastedLightStrong
+  components:
+  - type: PointLight
+    enabled: true
+    radius: 4
+    energy: 2
+    falloff: 8

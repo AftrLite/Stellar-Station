@@ -10,8 +10,8 @@ namespace Content.Stellar.Client.Lights;
 [RegisterComponent]
 public sealed partial class StellarRayCastPointLightComponent : Component
 {
-    [DataField]
-    public EntProtoId LightPrototype = "StellarPointLight";
+    [DataField(required: true)]
+    public EntProtoId LightPrototype;
 
     [DataField]
     public EntityUid? SpawnedLight;
