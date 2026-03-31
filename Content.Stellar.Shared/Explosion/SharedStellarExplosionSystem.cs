@@ -4,7 +4,6 @@
 
 using System.Numerics;
 using Content.Shared._ES.Camera;
-using Content.Shared._ES.TileFires;
 using Content.Shared._ST.Shockwave;
 using Content.Shared.Interaction;
 using Content.Shared.Physics;
@@ -31,7 +30,6 @@ public sealed class SharedStellarExplosionsSystem : EntitySystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly ESScreenshakeSystem _shake = default!;
-    [Dependency] private readonly ESSharedTileFireSystem _tileFire = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedInteractionSystem _interaction = default!; // Shouldn't InRangeUnobstructed and InRangeUnoccluded be in a generic helper method at this point?
@@ -140,9 +138,6 @@ public sealed class SharedStellarExplosionsSystem : EntitySystem
                 }
             }
         }
-
-        if (comp.SetFire)
-            _tileFire.TryDoTileFire(target, stage: 4);
     }
 
     private void ExplodeUnobstructed(EntityUid target, StellarExplosiveComponent comp)

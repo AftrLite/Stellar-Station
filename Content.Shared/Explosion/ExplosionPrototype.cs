@@ -116,6 +116,17 @@ public sealed partial class ExplosionPrototype : IPrototype
     [DataField("fireStates")]
     public int FireStates = 3;
 
+    // ES START
+    [DataField]
+    public float FireChance = 0f;
+
+    [DataField]
+    public int MinFireLevel = 1;
+
+    [DataField]
+    public int MaxFireLevel = 1;
+    // ES END
+
     /// <summary>
     ///     Basic function for linear interpolation of the _tileBreakChance and _tileBreakIntensity arrays
     /// </summary>

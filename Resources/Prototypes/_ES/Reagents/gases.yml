@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: 2026 MirrorCult
+#
+# SPDX-License-Identifier: MIT
+
+- type: reagent
+  id: Smoke
+  name: es-reagent-name-smoke
+  desc: es-reagent-desc-smoke
+  physicalDesc: es-reagent-physical-desc-smoky
+  flavor: smokey
+  color: "#2e2e2e"
+  metabolisms:
+    Bloodstream:
+      effects:
+      - !type:HealthChange
+        ignoreResistances: true
+        damage:
+          types:
+            Poison:
+              1.5
+    Respiration:
+      effects:
+      - !type:HealthChange
+        minScale: 0.5
+        ignoreResistances: true
+        damage:
+          types:
+            Asphyxiation:
+              4
+      - !type:Oxygenate # carbon dioxide displaces oxygen from the bloodstream, causing asphyxiation
+        factor: -3
+      - !type:ModifyStatusEffect
+        minScale: 0.5
+        effectProto: ESStatusEffectCoughingAccent
+        time: 6
+        type: Add
+      - !type:ModifyStatusEffect
+        effectProto: ESStatusEffectCoughingAccent
+        time: 4
+        type: Update
+      - !type:Emote
+        minScale: 0.2
+        emote: Cough
+        showInChat: true
+        probability: 0.25

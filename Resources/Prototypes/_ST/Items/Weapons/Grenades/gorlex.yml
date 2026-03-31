@@ -197,7 +197,6 @@
   components:
   - type: StellarExplosive
     explosion: StellarExplosionFirestorm
-    setFire: true
   - type: Sprite
     sprite: _ST/Items/Weapons/Grenades/gorlex-firenade.rsi
     layers:
@@ -206,6 +205,15 @@
     - state: icon-unshaded
       shader: unshaded
       map: ["unshaded"]
+  - type: ExplodeOnTrigger
+    keysIn:
+    - timer
+  - type: Explosive
+    explosionType: StellarFireExplosion
+    maxIntensity: 3
+    intensitySlope: 5
+    totalIntensity: 25
+    canCreateVacuum: false
   - type: GenericVisualizer
     visuals:
       enum.Trigger.TriggerVisuals.VisualState:

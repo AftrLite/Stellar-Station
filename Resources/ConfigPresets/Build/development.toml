@@ -47,6 +47,11 @@ random_species_weights = ""
 ssd_sleep_time = 3600
 
 # Begin Stellar Changes
+[atmos]
+#monstermos_depressurization = false
+#monstermos_equalization = false
+excited_groups = false
+
 [st_station_wakeup]
 #enabled = true
 ftl_time = 30

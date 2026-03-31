@@ -1,0 +1,17 @@
+# SPDX-FileCopyrightText: 2026 MirrorCult
+#
+# SPDX-License-Identifier: MIT
+
+- type: gas
+  id: Smoke
+  name: gases-smoke
+  specificHeat: 25
+  heatCapacityRatio: 1.4
+  molarMass: 40
+  gasOverlaySprite: /Textures/_ST/Effects/atmospherics.rsi # Stellar
+  gasOverlayState: water_vapor
+  color: 2e2e2e
+  reagent: Smoke
+  pricePerMole: 1
+  gasMolesVisible: 0.25
+  gasMolesVisibleMax: 3

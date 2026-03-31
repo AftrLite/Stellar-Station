@@ -11,6 +11,11 @@ public static partial class PoolManager
     public static readonly (string cvar, string value)[] TestCvars =
     {
         // @formatter:off
+        // ES START
+        // (CCVars.MonstermosDepressurization.Name, "true"),
+        // (CCVars.MonstermosEqualization.Name,     "true"),
+        (CCVars.ExcitedGroups.Name,     "true"),
+        // ES END
         (CCVars.DatabaseSynchronous.Name,     "true"),
         (CCVars.DatabaseSqliteDelay.Name,     "0"),
         (CCVars.HolidaysEnabled.Name,         "false"),

@@ -16,8 +16,9 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
-namespace Content.Stellar.Server._ES.TileFires;
+namespace Content.Server._ES.TileFires;
 
 /// <summary>
 ///     Server-side logic for tile fire growth logic, e.g. stages, requiring oxygen, etc.
@@ -29,6 +30,7 @@ public sealed class ESTileFireSystem : ESSharedTileFireSystem
     [Dependency] private readonly FlammableSystem _flammable = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     private static EntProtoId _stage1Fire = "StellarTileFire";
@@ -41,6 +43,29 @@ public sealed class ESTileFireSystem : ESSharedTileFireSystem
         SubscribeLocalEvent<ESTileFireComponent, SpreadNeighborsEvent>(OnSpreadNeighbors);
     }
 
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        // handle smoldering behavior for tilefires
+        // everything else is generally handled by flammable
+        var query = EntityQueryEnumerator<ESTileFireComponent, FlammableComponent>();
+        while (query.MoveNext(out var uid, out var tilefire, out var flammable))
+        {
+            if (_timing.CurTime < tilefire.SmolderTime)
+                continue;
+
+            // lower it to a random lower stage fire and disable growing in strength
+            var randomDivisor = _random.Next(2, 6);
+            _flammable.SetFireStacks(uid, flammable.FireStacks / randomDivisor, flammable);
+            flammable.FirestackFade = 0f;
+            Dirty(uid, flammable);
+
+            // remove comp so it cant smolder again + cant spread + doesnt get queried
+            RemCompDeferred<ESTileFireComponent>(uid);
+        }
+    }
+
     #region Events
     private void OnMapInit(Entity<ESTileFireComponent> ent, ref MapInitEvent args)
     {
@@ -50,6 +75,8 @@ public sealed class ESTileFireSystem : ESSharedTileFireSystem
 
         var tile = MapSys.GetTileRef((grid, mapGrid), xform.Coordinates);
         _atmos.TryAddBurntDecalsToTile(grid, tile.GridIndices, _random.Next(1, 3));
+
+        ent.Comp.SmolderTime = _timing.CurTime + _random.Next(ent.Comp.MinSmolderTime, ent.Comp.MaxSmolderTime);
     }
 
     private void OnSpreadNeighbors(Entity<ESTileFireComponent> ent, ref SpreadNeighborsEvent args)
@@ -57,18 +84,18 @@ public sealed class ESTileFireSystem : ESSharedTileFireSystem
         if (!TryComp<FlammableComponent>(ent, out var flammable))
             return;
 
+        if (args.NeighborFreeTiles.Count == 0)
+        {
+            RemCompDeferred<ActiveEdgeSpreaderComponent>(ent);
+            return;
+        }
+
         if (!_random.Prob(ent.Comp.BaseSpreadChance))
             return;
 
         // random alteration to firestacks required for variance
         if (flammable.FireStacks < ent.Comp.MinFirestacksToSpread * _random.NextFloat(0.75f, 1.25f))
             return;
-
-        if (args.NeighborFreeTiles.Count == 0)
-        {
-            RemCompDeferred<ActiveEdgeSpreaderComponent>(ent);
-            return;
-        }
 
         // Score neighboring tiles based on criteria, then do a weighted pick to spread
         Dictionary<EntityCoordinates, float> weights = new(args.NeighborFreeTiles.Count);
@@ -119,7 +146,6 @@ public sealed class ESTileFireSystem : ESSharedTileFireSystem
                 return;
 
             var coords = _random.PickAndTake(weights);
-
             Spawn(ent.Comp.Prototype, coords);
 
             _flammable.AdjustFireStacks(ent, _random.NextFloat(0.25f, 1.25f) * -ent.Comp.FirestacksRemoveOnSpread, flammable);
@@ -150,6 +176,7 @@ public sealed class ESTileFireSystem : ESSharedTileFireSystem
         var ev = new ESTileFireCreatedEvent(coords, originatingUser, stage);
         RaiseLocalEvent(ref ev);
 
+        // TODO arsonist update counter objective for originating user u get the idea etc etc
         return true;
     }
 

@@ -19,6 +19,21 @@
   fireStates: 1
 
 - type: explosion
+  id: StellarFireExplosion
+  damagePerIntensity:
+    types:
+      Heat: 1
+      Blunt: 2
+  texturePath: /Textures/_ST/Effects/explosion-tile.rsi
+  lightColor: "#000000"
+  fireColor: "#b60034"
+  fireStates: 1
+  fireChance: 0.8
+  minFireLevel: 1
+  maxFireLevel: 3
+  temperature: 1500
+
+- type: explosion
   id: StellarDemolition
   damagePerIntensity:
     types:

@@ -27,11 +27,6 @@ public sealed partial class StellarExplosiveComponent : Component
     [DataField, AutoNetworkedField] public float ShakeIntensity = 2;
 
     /// <summary>
-    /// Does this explosion spawn Tile Fire?
-    /// </summary>
-    [DataField] public bool SetFire;
-
-    /// <summary>
     /// Does this explosion inflict knockback?
     /// </summary>
     [DataField] public bool Knockback;

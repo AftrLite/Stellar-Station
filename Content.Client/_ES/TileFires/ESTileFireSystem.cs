@@ -5,7 +5,7 @@
 
 using Content.Shared._ES.TileFires;
 
-namespace Content.Stellar.Client._ES.TileFires;
+namespace Content.Client._ES.TileFires;
 
 public sealed class ESTileFireSystem : ESSharedTileFireSystem
 {
