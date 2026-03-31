@@ -1,0 +1,13 @@
+# SPDX-FileCopyrightText: 2026 Janet Blackquill
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  id: StellarPointLight
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PointLight
+    enabled: true
+    radius: 3
+    energy: 2
+    falloff: 4

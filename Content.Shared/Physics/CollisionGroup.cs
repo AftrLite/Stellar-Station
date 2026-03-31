@@ -24,6 +24,7 @@ public enum CollisionGroup
     InteractImpassable = 1 << 7, // 128 Blocks interaction/InRangeUnobstructed
     // Y dis door passable when all the others impassable / collision.
     DoorPassable       = 1 << 8, // 256 Allows door to close over top, Like blast doors over conveyors for disposals rooms/cargo.
+    StellarLightImpassable = 1 << 9, // Stellar - 512 Blocks raycasted lights
 
     MapGrid = MapGridHelpers.CollisionGroup, // Map grids, like shuttles. This is the actual grid itself, not the walls or other entities connected to the grid.
 
@@ -75,8 +76,8 @@ public enum CollisionGroup
     SlipLayer = MidImpassable | LowImpassable,
     ItemMask = Impassable | HighImpassable,
     ThrownItem = Impassable | HighImpassable | BulletImpassable,
-    WallLayer = Opaque | Impassable | HighImpassable | MidImpassable | LowImpassable | BulletImpassable | InteractImpassable,
-    GlassLayer = Impassable | HighImpassable | MidImpassable | LowImpassable | BulletImpassable | InteractImpassable,
+    WallLayer = Opaque | Impassable | HighImpassable | MidImpassable | LowImpassable | BulletImpassable | InteractImpassable | StellarLightImpassable, // Stellar
+    GlassLayer = Impassable | HighImpassable | MidImpassable | LowImpassable | BulletImpassable | InteractImpassable | StellarLightImpassable, // Stellar
     HalfWallLayer = MidImpassable | LowImpassable,
     FlimsyLayer = Opaque | HighImpassable | MidImpassable | LowImpassable | InteractImpassable,
 

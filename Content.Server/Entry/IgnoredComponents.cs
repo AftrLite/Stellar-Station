@@ -30,7 +30,8 @@ namespace Content.Server.Entry
             // ES END
             // Stellar Start
             "StellarWallSmooth",
-            "StellarInteractionRecoilTarget"
+            "StellarInteractionRecoilTarget",
+            "StellarRayCastPointLight",
             // Stellar End
         };
     }
