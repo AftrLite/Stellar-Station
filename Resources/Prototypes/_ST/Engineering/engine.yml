@@ -335,7 +335,7 @@
       sprite: _ST/Tileset/Engineering/engine-tuner-vfx.rsi
       offset: -0.21875, -0.21875 # 7/32, 7/32
       shader: unshaded
-      visible: true
+      visible: false
       map: ["enum.TunerLayers.Screen"]
     - state: pistons-idle
       sprite: _ST/Tileset/Engineering/engine-tuner-vfx.rsi

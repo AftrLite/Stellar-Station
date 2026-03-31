@@ -64,7 +64,7 @@
     shape:
     - 0,0,1,1
   - type: Gun
-    cameraRecoilScalar: 2.2
+    cameraRecoilScalar: 2.375
     minAngle: 0
     maxAngle: 8
     fireRate: 1.4
@@ -101,7 +101,7 @@
     shape:
     - 0,0,1,1
   - type: Gun
-    cameraRecoilScalar: 1
+    cameraRecoilScalar: 0.7
     minAngle: 1.5
     maxAngle: 18
     fireRate: 5
@@ -143,7 +143,7 @@
     - 0,0,1,1
   - type: Gun
     burstCooldown: 0.67
-    cameraRecoilScalar: 1.2
+    cameraRecoilScalar: 0.75
     minAngle: 1.5
     maxAngle: 18
     burstFireRate: 14
@@ -181,7 +181,7 @@
     shape:
     - 0,0,1,1
   - type: Gun
-    cameraRecoilScalar: 1
+    cameraRecoilScalar: 2.35
     minAngle: 0
     maxAngle: 6
     fireRate: 1.33
@@ -230,7 +230,7 @@
     multiShotWiggleMax: 10
     multiShotAmount: 6
   - type: Gun
-    cameraRecoilScalar: 2.2
+    cameraRecoilScalar: 2.8
     minAngle: 6
     maxAngle: 30
     fireRate: 1.33
@@ -270,7 +270,7 @@
     shape:
     - 0,0,1,1
   - type: Gun
-    cameraRecoilScalar: 0.45
+    cameraRecoilScalar: 0.7
     minAngle: 1.25
     maxAngle: 18
     fireRate: 7.5

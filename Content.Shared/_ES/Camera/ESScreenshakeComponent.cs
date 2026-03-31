@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: MIT
 
+using System.Numerics;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
@@ -64,4 +65,10 @@ public partial record ESScreenshakeParameters()
     /// </summary>
     [DataField]
     public float Frequency = 0.01f;
+
+    /// <summary>
+    ///     What direction to shake in, if any. Only applies on Translational shake.
+    /// </summary>
+    [DataField]
+    public Vector2? Direction;
 };

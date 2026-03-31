@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: LicenseRef-Wallening
 
 using System.Numerics;
+using Content.Shared._ES.Camera;
 using Content.Shared.Effects;
 using Content.Shared.Physics;
 using Content.Shared.Weapons.Hitscan.Events;
@@ -25,6 +26,7 @@ public abstract partial class SharedStellarGunSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _netManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly ESScreenshakeSystem _shake = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
@@ -47,15 +49,21 @@ public abstract partial class SharedStellarGunSystem : EntitySystem
         if (!TryComp<StellarGunHitscanComponent>(args.Ammo.Uid, out var hitscan))
             return;
 
+        var fromMap = _transform.ToMapCoordinates(args.From).Position;
+        var toMap = _transform.ToMapCoordinates(args.To.Value).Position;
+        var mapDirection = toMap - fromMap;
+
+        var gunShakeTranslate = new ESScreenshakeParameters() { Trauma = 0.9f * args.Gun.CameraRecoilScalarModified, DecayRate = 15f, Frequency = 0.008f, Direction = mapDirection.Normalized()};
+        var gunShakeRotate = new ESScreenshakeParameters() { Trauma = 0.075f * args.Gun.CameraRecoilScalarModified, DecayRate = 25f, Frequency = 0.012f};
+        _shake.Screenshake(args.UserUid, gunShakeTranslate, gunShakeRotate);
+
         if (_netManager.IsClient && !_timing.IsFirstTimePredicted) // Don't overpredict clients!
             return;
 
         _audio.PlayPredicted(args.Gun.SoundGunshotModified, args.GunUid, args.UserUid);
 
         var ammo = args.Ammo.Uid;
-        var fromMap = _transform.ToMapCoordinates(args.From).Position;
-        var toMap = _transform.ToMapCoordinates(args.To.Value).Position;
-        var mapDirection = toMap - fromMap;
+
         var angle = GetRecoilAngle(_timing.CurTime, args.GunUid, args.Gun, mapDirection.ToAngle());
         toMap = fromMap + angle.ToVec() * mapDirection.Length();
         mapDirection = toMap - fromMap;
