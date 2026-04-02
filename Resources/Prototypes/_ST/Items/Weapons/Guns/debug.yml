@@ -1,0 +1,47 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+#- type: entity
+#  parent: BaseItem
+#  id: StellarWeaponDebug
+#  categories: [ ForkFiltered ]
+#  components:
+#  - type: Sprite
+#    sprite: _ST/Items/Weapons/Guns/echion-echidna.rsi
+#    layers:
+#    - state: base
+#      map: ["enum.GunVisualLayers.Base"]
+#    - state: mag-unshaded-4
+#      map: ["enum.GunVisualLayers.MagUnshaded"]
+#      shader: unshaded
+#  - type: Appearance
+#  - type: MagazineVisuals
+#    magState: mag
+#    steps: 5
+#    zeroVisible: true
+#  - type: Item
+#    sprite: _ST/Items/Weapons/Guns/echion-echidna.rsi
+#    size: Small
+#    shape:
+#    - 0,0,1,1
+#  - type: Gun
+#    clumsyProof: false
+#    showExamineText: false
+#    availableModes:
+#    - Burst
+#    - SemiAuto
+#    soundGunshot:
+#      path: /Audio/_ST/Weapons/Guns/echion.ogg
+#      params:
+#        variation: 0.1
+#    soundEmpty:
+#      path: /Audio/_ST/Weapons/Guns/echion-no-ammo.ogg
+#      params:
+#        variation: 0.05
+#  - type: StellarGunTypesReloadable
+#    shootable: StellarProjectileDebug
+#    muzzleFlash: StellarMuzzleFlashKinetic
+#    shootingMethod: Projectile
+#    ammoCapacity: 999
+#    weaponType: StellarGunTypeEchion

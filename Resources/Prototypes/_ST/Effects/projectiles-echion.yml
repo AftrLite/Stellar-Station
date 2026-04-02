@@ -72,12 +72,10 @@
         Radiation: 10
         Structural: 50
   - type: StellarGunHitscan
-    multiShotAmount: 1
     collisionMask: BulletImpassable
     lightColor: "#83db2b"
     hitColor: "#83db2b"
     unshaded: true
-#    muzzleFlash: StellarMuzzleFlashEchion
     ray:
       sprite: _ST/Projectiles/Guns/echion-beam-medium.rsi
 
@@ -95,7 +93,6 @@
     maxDistance: 15
   - type: StellarGunHitscan
     maxDistance: 15
-    muzzleFlash: StellarMuzzleFlashEchionHeavy
     ray:
       sprite: _ST/Projectiles/Guns/echion-beam-heavy.rsi
 
@@ -113,7 +110,6 @@
     maxDistance: 12.5
   - type: StellarGunHitscan
     maxDistance: 12.5
-    muzzleFlash: StellarMuzzleFlashEchionMedium
     ray:
       sprite: _ST/Projectiles/Guns/echion-beam-medium.rsi
 
@@ -131,7 +127,6 @@
     maxDistance: 10
   - type: StellarGunHitscan
     maxDistance: 10
-    muzzleFlash: StellarMuzzleFlashEchionLight
     ray:
       sprite: _ST/Projectiles/Guns/echion-beam-light.rsi
 
@@ -146,7 +141,6 @@
         Heat: 22
         Radiation: 32
   - type: StellarGunHitscan
-    muzzleFlash: StellarMuzzleFlashEchionMedium
     ray:
       sprite: _ST/Projectiles/Guns/echion-beam-medium.rsi
 
@@ -164,7 +158,6 @@
     maxDistance: 5.33
   - type: StellarGunHitscan
     maxDistance: 5.33
-    muzzleFlash: StellarMuzzleFlashEchionHeavy
     ray:
       sprite: _ST/Projectiles/Guns/echion-beam-heavy.rsi
 
@@ -182,6 +175,5 @@
     maxDistance: 12
   - type: StellarGunHitscan
     maxDistance: 12
-    muzzleFlash: StellarMuzzleFlashEchionLight
     ray:
       sprite: _ST/Projectiles/Guns/echion-beam-light.rsi

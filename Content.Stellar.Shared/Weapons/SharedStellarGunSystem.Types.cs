@@ -6,38 +6,34 @@ using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
-using Content.Shared.Weapons.Ranged.Components;
+using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
-using Robust.Shared.Timing;
 
 namespace Content.Stellar.Shared.Weapons;
 
-public sealed class SharedStellarGunTypesSystem : EntitySystem
+public abstract partial class SharedStellarGunSystem
 {
     [Dependency] private readonly INetManager _netManager = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedGunSystem _gun = default!;
     [Dependency] private readonly SharedPopupSystem _popUp = default!;
 
-    public override void Initialize()
+    private void InitializeTypes()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<StellarGunTypesReloadableComponent, StellarAmmoSourceDoAfter>(OnAmmoSourceDoAfter);
-        SubscribeLocalEvent<StellarGunTypesReloadableComponent, InteractUsingEvent>(OnReloadableInteractUsing);
         SubscribeLocalEvent<StellarGunTypesAmmoComponent, InteractUsingEvent>(OnAmmoInteractUsing);
+        SubscribeLocalEvent<StellarGunTypesAmmoComponent, MapInitEvent>(OnAmmoInit);
+        SubscribeLocalEvent<StellarGunTypesAmmoComponent, ExaminedEvent>(OnAmmoExamined);
 
         SubscribeLocalEvent<StellarGunTypesReloadableComponent, MapInitEvent>(OnReloadableInit);
-        SubscribeLocalEvent<StellarGunTypesAmmoComponent, MapInitEvent>(OnAmmoInit);
-
+        SubscribeLocalEvent<StellarGunTypesReloadableComponent, StellarAmmoSourceDoAfter>(OnAmmoSourceDoAfter);
+        SubscribeLocalEvent<StellarGunTypesReloadableComponent, InteractUsingEvent>(OnReloadableInteractUsing);
+        SubscribeLocalEvent<StellarGunTypesReloadableComponent, GetAmmoCountEvent>(OnReloadableAmmoCount);
         SubscribeLocalEvent<StellarGunTypesReloadableComponent, ExaminedEvent>(OnReloadableExamined);
-        SubscribeLocalEvent<StellarGunTypesAmmoComponent, ExaminedEvent>(OnAmmoExamined);
     }
 
     private void OnReloadableInit(Entity<StellarGunTypesReloadableComponent> ent, ref MapInitEvent args)
@@ -46,9 +42,13 @@ public sealed class SharedStellarGunTypesSystem : EntitySystem
         {
             ent.Comp.AmmoName = proto.Ammo;
             ent.Comp.AmmoSuffix = proto.Suffix;
-        }  // if we're not overriding in YML, set it to the gunType's preset name and suffix.
+        }
+
+        if (ent.Comp.AmmoCount is null)
+            ent.Comp.AmmoCount = ent.Comp.AmmoCapacity;
 
         Dirty(ent);
+        UpdateReloadableAppearance(ent);
     }
 
     private void OnAmmoInit(Entity<StellarGunTypesAmmoComponent> ent, ref MapInitEvent args)
@@ -57,9 +57,9 @@ public sealed class SharedStellarGunTypesSystem : EntitySystem
         {
             ent.Comp.AmmoName = proto.Ammo;
             ent.Comp.AmmoSuffix = proto.Suffix;
-        }  // if we're not overriding in YML, set it to the gunType's preset name and suffix.
+        }
 
-        if (ent.Comp.CurrentAmmo is null) // If the currentAmmo isn't set, init it to the max ammo.
+        if (ent.Comp.CurrentAmmo is null)
             ent.Comp.CurrentAmmo = ent.Comp.MaxAmmo;
 
         Dirty(ent);
@@ -70,14 +70,13 @@ public sealed class SharedStellarGunTypesSystem : EntitySystem
         if (args.Handled || args.Cancelled || args.Used is null)
             return;
 
-        if (!TryComp<BasicEntityAmmoProviderComponent>(ent, out var ammoTarget)
-            || !TryComp<StellarGunTypesAmmoComponent>(args.Used, out var ammoSource)
+        if (!TryComp<StellarGunTypesAmmoComponent>(args.Used, out var ammoSource)
             || ent.Comp.WeaponType != ammoSource.WeaponType)
             return;
 
-        var handled = TryTransferAmmo(args.User, ammoSource.AmmoPerDoAfter, (args.Used.Value, ammoSource), (ent, ammoTarget));
+        var handled = TryTransferAmmo(args.User, ammoSource.AmmoPerDoAfter, (args.Used.Value, ammoSource), ent);
         args.Handled = handled;
-        if (ammoTarget.Count != ammoTarget.Capacity && ammoSource.CurrentAmmo > ammoSource.MinAmmo)
+        if (ent.Comp.AmmoCount != ent.Comp.AmmoCapacity && ammoSource.CurrentAmmo > ammoSource.MinAmmo)
             args.Repeat = handled;
     }
 
@@ -86,10 +85,9 @@ public sealed class SharedStellarGunTypesSystem : EntitySystem
         if (args.Handled || TerminatingOrDeleted(ent) || TerminatingOrDeleted(args.Used))
             return;
 
-        if (!TryComp<BasicEntityAmmoProviderComponent>(ent, out var ammoTarget)
-            || !TryComp<StellarGunTypesAmmoComponent>(args.Used, out var ammoSource)
+        if (!TryComp<StellarGunTypesAmmoComponent>(args.Used, out var ammoSource)
             || ent.Comp.WeaponType != ammoSource.WeaponType
-            || ammoTarget.Capacity == ammoTarget.Count)
+            || ent.Comp.AmmoCapacity == ent.Comp.AmmoCount)
             return;
 
         if (ammoSource.UsesDoAfter)
@@ -98,7 +96,7 @@ public sealed class SharedStellarGunTypesSystem : EntitySystem
             return;
         }
 
-        args.Handled = TryTransferAmmo(args.User, (args.Used, ammoSource), (ent, ammoTarget));
+        args.Handled = TryTransferAmmo(args.User, (args.Used, ammoSource), ent);
     }
 
     private void OnAmmoInteractUsing(Entity<StellarGunTypesAmmoComponent> ammoTarget, ref InteractUsingEvent args)
@@ -108,16 +106,15 @@ public sealed class SharedStellarGunTypesSystem : EntitySystem
 
         if (ammoTarget.Comp.Behaviour == StellarAmmoBehaviour.Reloader
             && TryComp<StellarGunTypesReloadableComponent>(args.Used, out var weaponSource)
-            && TryComp<BasicEntityAmmoProviderComponent>(args.Used, out var ammoProvider)
             && ammoTarget.Comp.WeaponType == weaponSource.WeaponType
-            && ammoProvider.Capacity != ammoProvider.Count)
+            && weaponSource.AmmoCapacity != weaponSource.AmmoCount)
         {
             if (ammoTarget.Comp.UsesDoAfter)
             {
                 args.Handled = TryAmmoDoAfter(args.User, args.Used, ammoTarget);
                 return;
             }
-            args.Handled = TryTransferAmmo(args.User, ammoTarget, (args.Used, ammoProvider));
+            args.Handled = TryTransferAmmo(args.User, ammoTarget, (args.Used, weaponSource));
             return;
         }
 
@@ -171,51 +168,52 @@ public sealed class SharedStellarGunTypesSystem : EntitySystem
         return false;
     }
 
-    private bool TryTransferAmmo(EntityUid user, int amount, Entity<StellarGunTypesAmmoComponent> ammoSource, Entity<BasicEntityAmmoProviderComponent> ammoTarget)
+    private bool TryTransferAmmo(EntityUid user, int amount, Entity<StellarGunTypesAmmoComponent> ammoSource, Entity<StellarGunTypesReloadableComponent> ammoTarget)
     {
-        if (ammoTarget.Comp.Capacity is null
-            || ammoTarget.Comp.Count is null
-            || ammoTarget.Comp.Count == ammoTarget.Comp.Capacity
+        if (ammoTarget.Comp.AmmoCapacity is null
+            || ammoTarget.Comp.AmmoCount is null
+            || ammoTarget.Comp.AmmoCount == ammoTarget.Comp.AmmoCapacity
             || ammoSource.Comp.CurrentAmmo is null)
             return false;
 
-        var weaponAmmoDiff = ammoTarget.Comp.Capacity.Value - ammoTarget.Comp.Count.Value;
+        var weaponAmmoDiff = ammoTarget.Comp.AmmoCapacity.Value - ammoTarget.Comp.AmmoCount.Value;
         var weaponAmmoToTransfer = Math.Clamp(weaponAmmoDiff, 0, amount);
 
-        if (!_gun.ChangeBasicEntityAmmoCount(ammoTarget.Owner, weaponAmmoToTransfer))
+        if (!ModifyAmmoCount(ammoTarget.Owner, weaponAmmoToTransfer))
             return false;
 
         if (!ammoSource.Comp.InfiniteAmmo)
             ammoSource.Comp.CurrentAmmo -= weaponAmmoToTransfer;
 
         Dirty(ammoSource);
-        _audio.PlayPredicted(ammoSource.Comp.AmmoSound, ammoSource, user);
+        _audio.PlayPredicted(ammoSource.Comp.AmmoSound, user, user);
         if (ammoSource.Comp.CurrentAmmo <= 0)
-            QueueDel(ammoSource);
+            PredictedQueueDel(ammoSource);
         return true;
     }
 
-    private bool TryTransferAmmo(EntityUid user, Entity<StellarGunTypesAmmoComponent> ammoSource, Entity<BasicEntityAmmoProviderComponent> ammoTarget)
+    private bool TryTransferAmmo(EntityUid user, Entity<StellarGunTypesAmmoComponent> ammoSource, Entity<StellarGunTypesReloadableComponent> ammoTarget)
     {
-        if (ammoTarget.Comp.Capacity is null
-            || ammoTarget.Comp.Count is null
-            || ammoTarget.Comp.Count == ammoTarget.Comp.Capacity
+        if (ammoTarget.Comp.AmmoCapacity is null
+            || ammoTarget.Comp.AmmoCount is null
+            || ammoTarget.Comp.AmmoCount == ammoTarget.Comp.AmmoCapacity
             || ammoSource.Comp.CurrentAmmo is null)
             return false;
 
-        var weaponAmmoDiff = ammoTarget.Comp.Capacity.Value - ammoTarget.Comp.Count.Value;
+        var weaponAmmoDiff = ammoTarget.Comp.AmmoCapacity.Value - ammoTarget.Comp.AmmoCount.Value;
         var weaponAmmoToTransfer = Math.Clamp(weaponAmmoDiff, 0, ammoSource.Comp.CurrentAmmo.Value);
 
-        if (!_gun.ChangeBasicEntityAmmoCount(ammoTarget.Owner, weaponAmmoToTransfer))
+        if (!ModifyAmmoCount(ammoTarget.Owner, weaponAmmoToTransfer))
             return false;
 
         if (!ammoSource.Comp.InfiniteAmmo)
             ammoSource.Comp.CurrentAmmo -= weaponAmmoToTransfer;
 
         Dirty(ammoSource);
-        _audio.PlayPredicted(ammoSource.Comp.AmmoSound, ammoSource, user);
+        _audio.PlayPredicted(ammoSource.Comp.AmmoSound, user, user);
         if (ammoSource.Comp.CurrentAmmo <= 0)
-            QueueDel(ammoSource);
+            PredictedQueueDel(ammoSource);
+
         return true;
     }
 
@@ -241,7 +239,7 @@ public sealed class SharedStellarGunTypesSystem : EntitySystem
                 Dirty(ammoSource);
                 _audio.PlayPredicted(ammoSource.Comp.AmmoSound, user, user);
                 if (ammoSource.Comp.CurrentAmmo <= 0)
-                    QueueDel(ammoSource);
+                    PredictedQueueDel(ammoSource);
                 return true;
 
             case StellarAmmoBehaviour.Reloader:
@@ -263,15 +261,40 @@ public sealed class SharedStellarGunTypesSystem : EntitySystem
         return false;
     }
 
+    private void OnReloadableAmmoCount(Entity<StellarGunTypesReloadableComponent> ent, ref GetAmmoCountEvent args)
+    {
+        args.Capacity = ent.Comp.AmmoCapacity ?? int.MaxValue;
+        args.Count = ent.Comp.AmmoCount ?? int.MaxValue;
+    }
+
+    private bool ModifyAmmoCount(Entity<StellarGunTypesReloadableComponent?> ent, int delta)
+    {
+        if (!Resolve(ent, ref ent.Comp, false) || ent.Comp.AmmoCount == null)
+            return false;
+
+        return UpdateReloadableCount((ent.Owner, ent.Comp), ent.Comp.AmmoCount.Value + delta);
+    }
+
+    private bool UpdateReloadableCount(Entity<StellarGunTypesReloadableComponent?> ent, int count)
+    {
+        if (!Resolve(ent, ref ent.Comp, false) || count > ent.Comp.AmmoCapacity)
+            return false;
+
+        ent.Comp.AmmoCount = count;
+        UpdateReloadableAppearance((ent.Owner, ent.Comp));
+        Dirty(ent);
+        return true;
+    }
+
     private void OnReloadableExamined(Entity<StellarGunTypesReloadableComponent> ent, ref ExaminedEvent args)
     {
-        if (!ent.Comp.ShowExamineText || ent.Comp.AmmoName is null || ent.Comp.AmmoSuffix is null || !TryComp<BasicEntityAmmoProviderComponent>(ent, out var ammoProvider) || ammoProvider.Count is null)
+        if (!ent.Comp.ShowExamineText || ent.Comp.AmmoName is null || ent.Comp.AmmoSuffix is null || ent.Comp.AmmoCount is null)
             return;
 
         if (ent.Comp.ShowWeaponType)
             args.PushMarkup(Loc.GetString("stellar-weapon-type-examine", ("ammo", Loc.GetString(ent.Comp.AmmoName)), ("suffix", Loc.GetString(ent.Comp.AmmoSuffix))));
 
-        args.PushMarkup(Loc.GetString("stellar-reloadable-ammo-examine", ("count", ammoProvider.Count.Value)));
+        args.PushMarkup(Loc.GetString("stellar-reloadable-ammo-examine", ("count", ent.Comp.AmmoCount.Value)));
     }
 
     private void OnAmmoExamined(Entity<StellarGunTypesAmmoComponent> ent, ref ExaminedEvent args)
@@ -286,6 +309,16 @@ public sealed class SharedStellarGunTypesSystem : EntitySystem
             return;
 
         args.PushMarkup(Loc.GetString("stellar-ammo-remaining-examine", ("count", ent.Comp.CurrentAmmo.Value), ("suffix", Loc.GetString(ent.Comp.AmmoSuffix, ("count", ent.Comp.CurrentAmmo.Value))))); // New bracket world record
+    }
+
+    public void UpdateReloadableAppearance(Entity<StellarGunTypesReloadableComponent> ent)
+    {
+        if (!_timing.IsFirstTimePredicted || !TryComp<AppearanceComponent>(ent, out var appearance))
+            return;
+
+        _appearance.SetData(ent, AmmoVisuals.HasAmmo, ent.Comp.AmmoCount != 0, appearance);
+        _appearance.SetData(ent, AmmoVisuals.AmmoCount, ent.Comp.AmmoCount ?? int.MaxValue, appearance);
+        _appearance.SetData(ent, AmmoVisuals.AmmoMax, ent.Comp.AmmoCapacity ?? int.MaxValue, appearance);
     }
 }
 

@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  id: StellarProjectileDebug
+  name: Astral Nova
+  description: Uh oh.
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    deleteOnCollide: true
+    damage:
+      types:
+        Blunt: 4
+  - type: TimedDespawn
+    lifetime: 0.75
+  - type: StellarGunProjectile
+    projectileSpeed: 45

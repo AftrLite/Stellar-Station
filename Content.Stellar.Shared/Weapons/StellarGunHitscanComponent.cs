@@ -14,7 +14,7 @@ namespace Content.Stellar.Shared.Weapons;
 /// This component lives on the hitscans
 /// </summary>
 [RegisterComponent, NetworkedComponent]
-public sealed partial class StellarGunHitscanComponent : Component, IShootable
+public sealed partial class StellarGunHitscanComponent : Component
 {
     [DataField] public Color? HitColor = Color.Red;
 
@@ -32,7 +32,5 @@ public sealed partial class StellarGunHitscanComponent : Component, IShootable
     [DataField]
     [AlwaysPushInheritance]
     public SpriteSpecifier.Rsi Ray;
-
-    [DataField] public EntProtoId? MuzzleFlash;
 }
 

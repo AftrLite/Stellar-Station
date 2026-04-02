@@ -37,7 +37,6 @@
     collisionMask: BulletImpassable
     lightColor: "#db812a"
     unshaded: false
-    muzzleFlash: StellarMuzzleFlashKinetic
 
 - type: entity
   parent: StellarHitscanKinetic
@@ -54,4 +53,3 @@
     collisionMask: BulletImpassable
     lightColor: "#db812a"
     unshaded: false
-    muzzleFlash: StellarMuzzleFlashKinetic

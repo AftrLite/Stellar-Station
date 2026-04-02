@@ -3,52 +3,6 @@
 # SPDX-License-Identifier: LicenseRef-Wallening
 
 - type: entity
-  abstract: true
-  parent: BaseItem
-  id: StellarWeaponGorlexBase
-  categories: [ ForkFiltered ]
-  components:
-  - type: Sprite
-    sprite: _ST/Items/Weapons/Guns/echion-echidna.rsi
-    layers:
-    - state: base
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-unshaded-4
-      map: ["enum.GunVisualLayers.MagUnshaded"]
-      shader: unshaded
-  - type: Appearance
-  - type: AmmoCounter
-  - type: MagazineVisuals
-    magState: mag
-    steps: 5
-    zeroVisible: true
-  - type: Item
-    sprite: _ST/Items/Weapons/Guns/echion-echidna.rsi
-    size: Small
-    shape:
-    - 0,0,1,1
-  - type: Gun
-    clumsyProof: false
-    showExamineText: false
-    availableModes:
-    - Burst
-    - SemiAuto
-    soundGunshot:
-      path: /Audio/_ST/Weapons/Guns/echion.ogg
-      params:
-        variation: 0.1
-    soundEmpty:
-      path: /Audio/_ST/Weapons/Guns/echion-no-ammo.ogg
-      params:
-        variation: 0.05
-  - type: BasicEntityAmmoProvider
-    proto: StellarHitscanEchionBase
-    capacity: 1
-  - type: StellarGunTypesReloadable
-    weaponType: StellarGunTypeEchion
-
-
-- type: entity
   parent: StellarWeaponGorlexBase
   id: StellarWeaponGorlexCerberus
   name: Cerberus IV
@@ -56,7 +10,6 @@
   - type: Sprite
     sprite: _ST/Items/Weapons/Guns/echion-cerberus.rsi
   - type: Appearance
-  - type: AmmoCounter
   - type: MagazineVisuals
   - type: Item
     sprite: _ST/Items/Weapons/Guns/echion-cerberus.rsi
@@ -77,13 +30,14 @@
       path: /Audio/_ST/Weapons/Guns/echion-cerberus.ogg
       params:
         variation: 0.1
-  - type: BasicEntityAmmoProvider
-    proto: StellarHitscanEchionCerberus
-    capacity: 23
   - type: StellarGunCrosshair
     rsi:
       sprite: _ST/Interface/Crosshair/echion-cursor.rsi
       state: cerberus
+  - type: StellarGunTypesReloadable
+    shootable: StellarHitscanEchionCerberus
+    muzzleFlash: StellarMuzzleFlashEchionHeavy
+    ammoCapacity: 23
 
 - type: entity
   parent: StellarWeaponGorlexBase
@@ -93,7 +47,6 @@
   - type: Sprite
     sprite: _ST/Items/Weapons/Guns/echion-chimera.rsi
   - type: Appearance
-  - type: AmmoCounter
   - type: MagazineVisuals
   - type: Item
     sprite: _ST/Items/Weapons/Guns/echion-chimera.rsi
@@ -118,13 +71,14 @@
         volume: -2
   - type: Wieldable
   - type: GunRequiresWield
-  - type: BasicEntityAmmoProvider
-    proto: StellarHitscanEchionChimera
-    capacity: 155
   - type: StellarGunCrosshair
     rsi:
       sprite: _ST/Interface/Crosshair/echion-cursor.rsi
       state: chimera
+  - type: StellarGunTypesReloadable
+    shootable: StellarHitscanEchionChimera
+    muzzleFlash: StellarMuzzleFlashEchionMedium
+    ammoCapacity: 155
 
 - type: entity
   parent: StellarWeaponGorlexBase
@@ -134,7 +88,6 @@
   - type: Sprite
     sprite: _ST/Items/Weapons/Guns/echion-echidna.rsi
   - type: Appearance
-  - type: AmmoCounter
   - type: MagazineVisuals
   - type: Item
     sprite: _ST/Items/Weapons/Guns/echion-echidna.rsi
@@ -157,13 +110,14 @@
       params:
         variation: 0.1
         volume: -2
-  - type: BasicEntityAmmoProvider
-    proto: StellarHitscanEchionEchidna
-    capacity: 85
   - type: StellarGunCrosshair
     rsi:
       sprite: _ST/Interface/Crosshair/echion-cursor.rsi
       state: echidna
+  - type: StellarGunTypesReloadable
+    shootable: StellarHitscanEchionEchidna
+    muzzleFlash: StellarMuzzleFlashEchionLight
+    ammoCapacity: 85
 
 - type: entity
   parent: StellarWeaponGorlexBase
@@ -173,7 +127,6 @@
   - type: Sprite
     sprite: _ST/Items/Weapons/Guns/echion-gorgon.rsi
   - type: Appearance
-  - type: AmmoCounter
   - type: MagazineVisuals
   - type: Item
     sprite: _ST/Items/Weapons/Guns/echion-gorgon.rsi
@@ -201,13 +154,14 @@
     pvsIncrease: 0.3
   - type: Wieldable
   - type: GunRequiresWield
-  - type: BasicEntityAmmoProvider
-    proto: StellarHitscanEchionGorgon
-    capacity: 30
   - type: StellarGunCrosshair
     rsi:
       sprite: _ST/Interface/Crosshair/echion-cursor-large.rsi
       state: gorgon
+  - type: StellarGunTypesReloadable
+    shootable: StellarHitscanEchionGorgon
+    muzzleFlash: StellarMuzzleFlashEchionMedium
+    ammoCapacity: 30
 
 - type: entity
   parent: StellarWeaponGorlexBase
@@ -217,18 +171,12 @@
   - type: Sprite
     sprite: _ST/Items/Weapons/Guns/echion-hydra.rsi
   - type: Appearance
-  - type: AmmoCounter
   - type: MagazineVisuals
   - type: Item
     sprite: _ST/Items/Weapons/Guns/echion-hydra.rsi
     size: Small
     shape:
     - 0,0,1,1
-  - type: StellarGunTypesReloadable
-    multiShotSpread: 45
-    multiShotWiggleMin: -10
-    multiShotWiggleMax: 10
-    multiShotAmount: 6
   - type: Gun
     cameraRecoilScalar: 2.8
     minAngle: 6
@@ -246,13 +194,18 @@
         variation: 0.1
   - type: Wieldable
   - type: GunRequiresWield
-  - type: BasicEntityAmmoProvider
-    proto: StellarHitscanEchionHydra
-    capacity: 52
   - type: StellarGunCrosshair
     rsi:
       sprite: _ST/Interface/Crosshair/echion-cursor.rsi
       state: hydra
+  - type: StellarGunTypesReloadable
+    shootable: StellarHitscanEchionHydra
+    muzzleFlash: StellarMuzzleFlashEchionHeavy
+    ammoCapacity: 52
+    multiShotSpread: 45
+    multiShotWiggleMin: -10
+    multiShotWiggleMax: 10
+    multiShotAmount: 6
 
 - type: entity
   parent: StellarWeaponGorlexBase
@@ -262,7 +215,6 @@
   - type: Sprite
     sprite: _ST/Items/Weapons/Guns/echion-minotaur.rsi
   - type: Appearance
-  - type: AmmoCounter
   - type: MagazineVisuals
   - type: Item
     sprite: _ST/Items/Weapons/Guns/echion-minotaur.rsi
@@ -286,10 +238,11 @@
         volume: -2
   - type: Wieldable
   - type: GunRequiresWield
-  - type: BasicEntityAmmoProvider
-    proto: StellarHitscanEchionMinotaur
-    capacity: 200
   - type: StellarGunCrosshair
     rsi:
       sprite: _ST/Interface/Crosshair/echion-cursor.rsi
       state: minotaur
+  - type: StellarGunTypesReloadable
+    shootable: StellarHitscanEchionMinotaur
+    muzzleFlash: StellarMuzzleFlashEchionLight
+    ammoCapacity: 200

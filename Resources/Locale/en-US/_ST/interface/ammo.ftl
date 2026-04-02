@@ -2,6 +2,9 @@
 #
 # SPDX-License-Identifier: LicenseRef-Wallening
 
+## UI
+stellar-ammo-ui-display = [font size=14][bold]{$count}[/bold][/font][font size=9]/{$total}[/font]
+
 ## Ammo Suffixes
 stellar-ammo-suffix-ammo = Ammo
 stellar-ammo-suffix-cells = {$count ->

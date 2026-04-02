@@ -4,8 +4,8 @@
 
 using System.Numerics;
 using Content.Client.Animations;
+using Content.Client.Items;
 using Content.Shared.Damage.Components;
-using Content.Shared.Physics;
 using Content.Stellar.Shared.Weapons;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
@@ -23,7 +23,7 @@ using DrawDepth = Content.Shared.DrawDepth.DrawDepth;
 
 namespace Content.Stellar.Client.Weapons;
 
-public sealed partial class StellarGunSystem : SharedStellarGunSystem // What's this? Interpolating, predicted clientside hitscans? Yes. Yes it is.
+public sealed partial class StellarGunSystem : SharedStellarGunSystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
 
@@ -42,6 +42,8 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem // What's 
 
         SubscribeAllEvent<StellarHitscanEvent>(OnHitscan);
         SubscribeAllEvent<StellarMuzzleFlashEvent>(OnMuzzleFlash);
+
+        Subs.ItemStatus<StellarGunTypesReloadableComponent>(ent => new StellarAmmoControl(ent));
     }
 
     private void OnMuzzleFlash(StellarMuzzleFlashEvent args)

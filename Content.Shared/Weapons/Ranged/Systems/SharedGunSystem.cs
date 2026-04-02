@@ -362,31 +362,33 @@ public abstract partial class SharedGunSystem : EntitySystem
         gun.Comp.ShotCounter += shots;
         DirtyField(gun.AsNullable(), nameof(GunComponent.ShotCounter));
 
-        if (ev.Ammo.Count <= 0)
-        {
-            // triggers effects on the gun if it's empty
-            var emptyGunShotEvent = new OnEmptyGunShotEvent(user);
-            RaiseLocalEvent(gun, ref emptyGunShotEvent);
-
-            gun.Comp.BurstActivated = false;
-            gun.Comp.BurstShotsCount = 0;
-            gun.Comp.NextFire += TimeSpan.FromSeconds(gun.Comp.BurstCooldown);
-
-            // Play empty gun sounds if relevant
-            // If they're firing an existing clip then don't play anything.
-            if (shots > 0)
-            {
-                PopupSystem.PopupCursor(ev.Reason ?? Loc.GetString("gun-magazine-fired-empty"));
-
-                // Don't spam safety sounds at gun fire rate, play it at a reduced rate.
-                // May cause prediction issues? Needs more tweaking
-                gun.Comp.NextFire = TimeSpan.FromSeconds(Math.Max(lastFire.TotalSeconds + SafetyNextFire, gun.Comp.NextFire.TotalSeconds));
-                Audio.PlayPredicted(gun.Comp.SoundEmpty, gun, user);
-                return false;
-            }
-
-            return false;
-        }
+        // Begin Stellar - Old ammo begone
+        // if (ev.Ammo.Count <= 0)
+        // {
+        //     // triggers effects on the gun if it's empty
+        //     var emptyGunShotEvent = new OnEmptyGunShotEvent(user);
+        //     RaiseLocalEvent(gun, ref emptyGunShotEvent);
+        //
+        //     gun.Comp.BurstActivated = false;
+        //     gun.Comp.BurstShotsCount = 0;
+        //     gun.Comp.NextFire += TimeSpan.FromSeconds(gun.Comp.BurstCooldown);
+        //
+        //     // Play empty gun sounds if relevant
+        //     // If they're firing an existing clip then don't play anything.
+        //     if (shots > 0)
+        //     {
+        //         PopupSystem.PopupCursor(ev.Reason ?? Loc.GetString("gun-magazine-fired-empty"));
+        //
+        //         // Don't spam safety sounds at gun fire rate, play it at a reduced rate.
+        //         // May cause prediction issues? Needs more tweaking
+        //         gun.Comp.NextFire = TimeSpan.FromSeconds(Math.Max(lastFire.TotalSeconds + SafetyNextFire, gun.Comp.NextFire.TotalSeconds));
+        //         Audio.PlayPredicted(gun.Comp.SoundEmpty, gun, user);
+        //         return false;
+        //     }
+        //
+        //     return false;
+        // }
+        // End Stellar - Old ammo begone
 
         // Handle burstfire
         if (gun.Comp.SelectedMode == SelectiveFire.Burst)
@@ -406,7 +408,7 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         // Shoot confirmed - sounds also played here in case it's invalid (e.g. cartridge already spent).
         // End Stellar - TO HELL WITH THIS, WE RUN OUR OWN EVENT INSTEAD.
-        var stellarShotEv = new StellarGunShotEvent(user, ev.Ammo.First(), gun, gun.Comp, GetNetCoordinates(toCoordinates), GetNetCoordinates(fromCoordinates));
+        var stellarShotEv = new StellarGunShotEvent(user, gun, gun.Comp, GetNetCoordinates(toCoordinates), GetNetCoordinates(fromCoordinates));
         RaiseLocalEvent(gun, ref stellarShotEv);
 
         // Shoot(gun, ev.Ammo, fromCoordinates, toCoordinates.Value, out var userImpulse, user, throwItems: attemptEv.ThrowItems);
@@ -702,7 +704,7 @@ public record struct GunShotEvent(EntityUid User, List<(EntityUid? Uid, IShootab
 
 // BEGIN Stellar - To hell with this
 [ByRefEvent]
-public record struct StellarGunShotEvent(EntityUid UserUid, (EntityUid? Uid, IShootable Shootable) Ammo, EntityUid GunUid, GunComponent? Gun, NetCoordinates? To, NetCoordinates From);
+public record struct StellarGunShotEvent(EntityUid UserUid, EntityUid GunUid, GunComponent? Gun, NetCoordinates? To, NetCoordinates From);
 // END Stellar - To hell with this
 
 /// <summary>

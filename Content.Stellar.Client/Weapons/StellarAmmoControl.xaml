@@ -1,0 +1,19 @@
+<!--
+SPDX-FileCopyrightText: 2026 AftrLite
+
+SPDX-License-Identifier: LicenseRef-Wallening
+-->
+
+<PanelContainer
+    xmlns="https://spacestation14.io"
+    HorizontalExpand="True"
+    StyleClasses="ItemStatus">
+    <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" HorizontalExpand="True" Margin="8 0 0 0">
+        <BoxContainer Orientation="Vertical" VerticalAlignment="Bottom" Margin="0 0 2 1">
+            <RichTextLabel Name="Title"/>
+        </BoxContainer>
+        <BoxContainer Orientation="Vertical" VerticalAlignment="Bottom" Margin="0 2 0 0">
+            <TextureRect Name="Icon" TextureScale="2 2"/>
+        </BoxContainer>
+    </BoxContainer>
+</PanelContainer>
