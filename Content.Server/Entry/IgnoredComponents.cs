@@ -29,7 +29,8 @@ namespace Content.Server.Entry
             "ESGenericAmbienceVisualizer",
             // ES END
             // Stellar Start
-            "StellarWallSmooth"
+            "StellarWallSmooth",
+            "StellarInteractionRecoilTarget"
             // Stellar End
         };
     }

@@ -180,7 +180,7 @@ public abstract partial class SharedStellarGunSystem : EntitySystem
         if (Deleted(args.Target))
             return;
 
-        if (ent.Comp.HitColor != null && args.DamageDealt.GetTotal() != 0)
+        if (ent.Comp.HitColor != null && args.DamageDealt.GetTotal() != 0 && _netManager.IsServer)
         {
             _color.RaiseEffect(ent.Comp.HitColor.Value,
                 new List<EntityUid> { args.Target },

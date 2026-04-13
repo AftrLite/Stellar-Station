@@ -146,6 +146,7 @@
   - type: LightningTarget
     priority: 2
     lightningExplode: false
+  - type: StellarInteractionRecoilTarget # Stellar - interaction twitch targets
 
 # Used for mobs that can enter combat mode and can attack.
 - type: entity
