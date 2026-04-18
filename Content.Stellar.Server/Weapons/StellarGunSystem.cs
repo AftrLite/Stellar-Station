@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: LicenseRef-Wallening
 
+using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Stellar.Shared.Weapons;
 using Robust.Shared.Physics.Components;
@@ -18,10 +19,46 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<StellarGunTypesReloadableComponent, StellarProjectileEvent>(OnProjectile);
+        SubscribeLocalEvent<StellarGunReloadableComponent, StellarProjectileEvent>(OnProjectile);
     }
 
-    private void OnProjectile(Entity<StellarGunTypesReloadableComponent> ent, ref StellarProjectileEvent args)
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var regenQuery = EntityQueryEnumerator<StellarAmmoRegenComponent>();
+        while (regenQuery.MoveNext(out var uid, out var comp))
+        {
+            if (Timing.CurTime >= comp.RegenTime)
+            {
+                var done = false;
+                if (TryComp<StellarGunReloadableComponent>(uid, out var gunComp) && gunComp.AmmoReserves < gunComp.AmmoMaxReserves)
+                {
+                    done = true;
+                    gunComp.AmmoReserves = Math.Clamp(gunComp.AmmoReserves.Value + comp.AmmoRegenerated, 0, gunComp.AmmoMaxReserves.Value);
+                    Dirty(uid, gunComp);
+                }
+
+                if (TryComp<StellarAmmoComponent>(uid, out var entComp) && entComp.CurrentAmmo < entComp.MaxAmmo)
+                {
+                    done = true;
+                    entComp.CurrentAmmo = Math.Clamp(entComp.CurrentAmmo.Value + comp.AmmoRegenerated, 0, entComp.MaxAmmo.Value);
+                    Dirty(uid, entComp);
+                }
+
+                if (done)
+                {
+                    PopUp.PopupEntity(Loc.GetString("stellar-ammo-regen", ("count", comp.AmmoRegenerated)), uid);
+                    Audio.PlayPredicted(comp.SoundOnRegen, uid, uid);
+                }
+
+                comp.RegenTime = Timing.CurTime + comp.RegenInterval;
+                Dirty(uid, comp);
+            }
+        }
+    }
+
+    private void OnProjectile(Entity<StellarGunReloadableComponent> ent, ref StellarProjectileEvent args)
     {
         var shootable = Spawn(ent.Comp.Shootable, TransformSystem.GetMapCoordinates(ent));
         var physics = EnsureComp<PhysicsComponent>(shootable);

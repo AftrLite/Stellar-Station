@@ -98,6 +98,18 @@
     lifetime: 0.5
 
 - type: entity
+  parent: StellarExplosionFlash
+  id: StellarExplosionFlashCybersun
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PointLight
+    color: "#ba8df8"
+    enabled: true
+    radius: 5
+    energy: 8
+    netsync: false
+
+- type: entity
   id: StellarExplosionFirestorm
   categories: [ HideSpawnMenu ]
   components:
@@ -179,10 +191,31 @@
   - type: Appearance
   - type: AnimationPlayer
   - type: PointLight
-    radius: 7
-    energy: 10
+    radius: 8
+    energy: 11
     falloff: 2
     color: "#108e44"
     netsync: false
   - type: LightFade
-    duration: 1.1
+    duration: 1
+
+- type: entity
+  id: StellarExplosionCybersunEmp
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarShockwave
+    duration: 1
+    visualRange: 4
+    visualForce: 0.025
+    visualWidth: 0.1
+    visualAberration: 1
+  - type: PointLight
+    color: "#ba8df8"
+    enabled: true
+    radius: 10
+    energy: 8
+    netsync: false
+  - type: LightFade
+    duration: 1
+  - type: TimedDespawn
+    lifetime: 1

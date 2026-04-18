@@ -1,0 +1,43 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: StellarGrenadeBase
+  id: StellarGrenadeCybersunEmp
+  name: techline disruptor
+  description: Guaranteed to light up the mood.
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarExplosive
+    explosion: StellarExplosionCybersunEmp
+    range: 8
+  - type: EmpOnTrigger
+    keysIn:
+    - timer
+    range: 8
+    energyConsumption: 50000
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Grenades/cybersun-emp.rsi
+
+- type: entity
+  parent: StellarGrenadeBase
+  id: StellarGrenadeCybersunFlash
+  name: techline flashbang
+  description: Guaranteed to light up the mood.
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarExplosive
+    sound:
+        path: "/Audio/Effects/flash_bang.ogg"
+        params:
+          variation: 0.2
+          volume: -4
+    explosion: StellarExplosionFlashCybersun
+    range: 7
+  - type: FlashOnTrigger
+    keysIn:
+    - timer
+    range: 7
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Grenades/cybersun-flashnade.rsi

@@ -1,9 +1,14 @@
 ﻿version: 1 # Not used right now, whatever.
 binds:
+# Begin Stellar
+- function: StellarReloadGun
+  type: State
+  key: R
+# End Stellar
 # ES START
 - function: ESToggleInternals
   type: State
-  key: R
+  key: G
 - function: ESToggleFlashlight
   type: State
   key: F
@@ -243,9 +248,12 @@ binds:
 - function: ReleasePulledObject
   type: State
   key: H
+  # Begin Stellar
 - function: OpenCraftingMenu
   type: State
   key: G
+  priority: -1
+  # End Stellar
 - function: OpenGuidebook
   type: State
   key: NumpadNum0

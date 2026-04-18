@@ -13,7 +13,7 @@
     lightColor: "#FFFFFF"
     unshaded: false
     ray:
-      sprite: _ST/Projectiles/Guns/base.rsi
+      sprite: _ST/Projectiles/Guns/kinetic-light.rsi
       state: bullet
 
 - type: entity
@@ -24,7 +24,7 @@
   - type: TimedDespawn
     lifetime: 0.4
   - type: Sprite
-    sprite: _ST/Projectiles/Guns/base.rsi
+    sprite: _ST/Projectiles/Guns/kinetic-light.rsi
     loop: false
     drawdepth: Mobs
     layers:

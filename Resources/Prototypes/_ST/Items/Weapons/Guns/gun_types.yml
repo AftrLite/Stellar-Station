@@ -36,32 +36,32 @@
 ### ENERGY
 - type: stellarGunType
   id: StellarGunTypeEnergyPistol
-  ammo: stellar-ammo-pistol
+  ammo: stellar-ammo-energy-pistol
   suffix: stellar-ammo-suffix-cells
 
 - type: stellarGunType
   id: StellarGunTypeEnergyShotgun
-  ammo: stellar-ammo-shotgun
+  ammo: stellar-ammo-energy-shotgun
   suffix: stellar-ammo-suffix-cells
 
 - type: stellarGunType
   id: StellarGunTypeEnergySniper
-  ammo: stellar-ammo-sniper
+  ammo: stellar-ammo-energy-sniper
   suffix: stellar-ammo-suffix-cells
 
 - type: stellarGunType
   id: StellarGunTypeEnergySubmachine
-  ammo: stellar-ammo-submachine
+  ammo: stellar-ammo-energy-submachine
   suffix: stellar-ammo-suffix-cells
 
 - type: stellarGunType
   id: StellarGunTypeEnergyRevolver
-  ammo: stellar-ammo-revolver
+  ammo: stellar-ammo-energy-revolver
   suffix: stellar-ammo-suffix-cells
 
 - type: stellarGunType
   id: StellarGunTypeEnergyRifle
-  ammo: stellar-ammo-rifle
+  ammo: stellar-ammo-energy-rifle
   suffix: stellar-ammo-suffix-cells
 
 ### UNIQUE / EXOTIC
@@ -69,3 +69,28 @@
   id: StellarGunTypeEchion # Yummy!
   ammo: stellar-ammo-echion
   suffix: stellar-ammo-suffix-injection
+
+- type: stellarGunType
+  id: StellarGunTypeTachyonPistol
+  ammo: stellar-ammo-tachyon
+  suffix: stellar-ammo-suffix-cells
+
+- type: stellarGunType
+  id: StellarGunTypeTachyonSniper
+  ammo: stellar-ammo-tachyon
+  suffix: stellar-ammo-suffix-capsules
+
+- type: stellarGunType
+  id: StellarGunTypeDisposablePistol
+  ammo: stellar-ammo-pistol
+  suffix: stellar-ammo-suffix-ammo
+
+- type: stellarGunType
+  id: StellarGunTypeChemicalPistol
+  ammo: stellar-ammo-chemical
+  suffix: stellar-ammo-suffix-ammo
+
+- type: stellarGunType
+  id: StellarGunTypeChemicalLauncher
+  ammo: stellar-ammo-chemical
+  suffix: stellar-ammo-suffix-grenades

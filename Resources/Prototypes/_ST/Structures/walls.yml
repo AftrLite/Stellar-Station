@@ -163,3 +163,38 @@
   - type: StellarCutaway
   - type: CosmicCultExamine
     cultistText: cosmic-examine-text-forthecult
+
+- type: entity
+  parent:
+  - StellarStructureBaseWall
+  id: StellarWallApocryphal
+  name: apocryphal wall
+  description: A strange wall, adorned with illegible scrawling...
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Walls/apocryphal.rsi
+  - type: Icon
+    sprite: _ST/Tileset/Walls/apocryphal.rsi
+  - type: StellarWallSmooth
+    key: WallSolid
+    fullState: wall
+
+- type: entity
+  parent:
+  - StellarStructureBaseWall
+  id: StellarWallApocryphalNoOcclusion
+  name: apocryphal wall
+  description: A strange wall, adorned with illegible scrawling...
+  suffix: No Occlusion
+  categories: [ ForkFiltered ]
+  components:
+  - type: Occluder
+    enabled: false
+  - type: Sprite
+    sprite: _ST/Tileset/Walls/apocryphal.rsi
+  - type: Icon
+    sprite: _ST/Tileset/Walls/apocryphal.rsi
+  - type: StellarWallSmooth
+    key: WallSolid
+    fullState: wall

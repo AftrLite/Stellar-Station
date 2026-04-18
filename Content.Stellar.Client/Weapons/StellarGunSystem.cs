@@ -6,11 +6,16 @@ using System.Numerics;
 using Content.Client.Animations;
 using Content.Client.Items;
 using Content.Shared.Damage.Components;
+using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Input;
 using Content.Stellar.Shared.Weapons;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
+using Robust.Client.Player;
 using Robust.Shared.Animations;
 using Robust.Shared.Containers;
+using Robust.Shared.Input.Binding;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
@@ -28,8 +33,10 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
     [Dependency] private readonly IRobustRandom _random = default!;
 
     [Dependency] private readonly AnimationPlayerSystem _animPlayer = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedMapSystem _maps = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
@@ -43,7 +50,28 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
         SubscribeAllEvent<StellarHitscanEvent>(OnHitscan);
         SubscribeAllEvent<StellarMuzzleFlashEvent>(OnMuzzleFlash);
 
-        Subs.ItemStatus<StellarGunTypesReloadableComponent>(ent => new StellarAmmoControl(ent));
+        Subs.ItemStatus<StellarGunReloadableComponent>(ent => new StellarAmmoControl(ent));
+        CommandBinds.Builder
+            .Bind(ContentKeyFunctions.StellarReloadGun, new PointerInputCmdHandler(OnReloadBindPressed, outsidePrediction: true))
+            .Register<SharedStellarGunSystem>();
+    }
+
+    private bool OnReloadBindPressed(in PointerInputCmdHandler.PointerInputCmdArgs args)
+    {
+        if (_player.LocalEntity is not { } player)
+            return false;
+
+        var gunEnt = _hands.GetActiveItem(player);
+        if (gunEnt is null || !EntityManager.TryGetComponent<StellarGunReloadableComponent>(gunEnt.Value, out var gunComp))
+            return false;
+
+        if (!DoAfter.IsRunning(gunComp.ReloadDoAfter) && gunComp.AmmoReserves > 0 && gunComp.AmmoCount < gunComp.AmmoMagCapacity)
+        {
+            SendReloadMessage(gunEnt.Value, player);
+            return true;
+        }
+
+        return false;
     }
 
     private void OnMuzzleFlash(StellarMuzzleFlashEvent args)
@@ -200,16 +228,22 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
         _transform.SetWorldRotationNoLerp(effectEnt, shotAngle);
         _sprite.LayerSetSprite((effectEnt, effectSprite), StellarHitscanLayers.Unshaded, rsi);
         _sprite.LayerSetRsiState((effectEnt, effectSprite), StellarHitscanLayers.Unshaded, rsi.RsiState);
-        _sprite.SetScale((effectEnt, effectSprite), new Vector2(1, 1f));
+        _sprite.SetScale((effectEnt, effectSprite), new Vector2(1f, 1f));
         _sprite.SetDrawDepth((effectEnt, effectSprite), (int)DrawDepth.OverMobs);
-        effectSprite[StellarHitscanLayers.Unshaded].Visible = true;
-        effectSprite[StellarHitscanLayers.Unshaded].AutoAnimated = true;
 
         var muzzleAnim = new Animation()
         {
             Length = TimeSpan.FromSeconds(time),
             AnimationTracks =
             {
+                new AnimationTrackSpriteFlick()
+                {
+                    LayerKey = StellarHitscanLayers.Unshaded,
+                    KeyFrames =
+                    {
+                        new AnimationTrackSpriteFlick.KeyFrame(rsi.RsiState, (time - mod) / 500),
+                    },
+                },
                 new AnimationTrackComponentProperty()
                 {
                     ComponentType = typeof(SpriteComponent),
@@ -276,8 +310,6 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
         _sprite.LayerSetRsiState((effectEnt, effectSprite), StellarHitscanLayers.Shaded, rsi.RsiState);
         _sprite.SetScale((effectEnt, effectSprite), new Vector2(1f, 1f));
         _sprite.SetOffset((effectEnt, effectSprite), new Vector2(0.5f, 0f));
-        effectSprite[StellarHitscanLayers.Shaded].Visible = true;
-        effectSprite[StellarHitscanLayers.Shaded].AutoAnimated = true;
         if (setUnshaded)
             effectSprite.LayerSetShader(StellarHitscanLayers.Shaded, "unshaded");
 
@@ -347,8 +379,6 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
         _sprite.LayerSetSprite((effectEnt, effectSprite), StellarHitscanLayers.Shaded, rsi);
         _sprite.LayerSetRsiState((effectEnt, effectSprite), StellarHitscanLayers.Shaded, rsi.RsiState);
         _sprite.SetScale((effectEnt, effectSprite), new Vector2(1f, 1f));
-        effectSprite[StellarHitscanLayers.Shaded].Visible = true;
-        effectSprite[StellarHitscanLayers.Shaded].AutoAnimated = true;
         if (setUnshaded)
             effectSprite.LayerSetShader(StellarHitscanLayers.Shaded, "unshaded");
 
@@ -429,8 +459,6 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
         _sprite.LayerSetSprite((effectEnt, effectSprite), StellarHitscanLayers.Shaded, rsi);
         _sprite.LayerSetRsiState((effectEnt, effectSprite), StellarHitscanLayers.Shaded, rsi.RsiState);
         _sprite.SetScale((effectEnt, effectSprite), new Vector2(1f, 1f));
-        effectSprite[StellarHitscanLayers.Shaded].Visible = true;
-        effectSprite[StellarHitscanLayers.Shaded].AutoAnimated = true;
         if (setUnshaded)
             effectSprite.LayerSetShader(StellarHitscanLayers.Shaded, "unshaded");
 
@@ -488,4 +516,13 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
         _animPlayer.Play(effectEnt, spriteAnim, "impact-effect");
     }
     #endregion
+
+    private void SendReloadMessage(EntityUid gun, EntityUid player)
+    {
+        var gunEnt = EntityManager.GetNetEntity(gun);
+        var playerEnt = EntityManager.GetNetEntity(player);
+        EntityManager.RaisePredictiveEvent(new StellarManualReloadEvent(gunEnt, playerEnt));
+    }
 }
+
+

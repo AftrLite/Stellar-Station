@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "by AftrLite(GitHub)",
+    "size": {
+        "x": 31,
+        "y": 31
+    },
+    "states": [
+        {
+            "name": "aegis"
+        },
+        {
+            "name": "bastion"
+        },
+        {
+            "name": "bulwark"
+        },
+        {
+            "name": "guardian"
+        },
+        {
+            "name": "targe"
+        }
+    ]
+}

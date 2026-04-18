@@ -153,6 +153,11 @@ namespace Content.Client.Options.UI.Tabs
             AddHeader("ui-options-header-general");
             AddCheckBox("ui-options-hotkey-keymap", _cfg.GetCVar(CVars.DisplayUSQWERTYHotkeys), HandleToggleUSQWERTYCheckbox);
 
+            // Begin Stellar
+            AddHeader("ui-options-header-stellar");
+            AddButton(ContentKeyFunctions.StellarReloadGun);
+            // End Stellar
+
             // ES START
             AddHeader("ui-options-header-es");
             AddButton(ContentKeyFunctions.ESToggleInternals);

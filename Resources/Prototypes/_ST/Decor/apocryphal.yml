@@ -1,0 +1,89 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: StellarStructureBase
+  id: StellarDecorApocryphalPillar
+  name: profane pillar
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Decor/Misc/apocryphal.rsi
+    offset: 0, 0.25
+    layers:
+    - state: pillar
+    drawdepth: Mobs
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        mask:
+        - LargeMobMask
+        layer:
+        - WallLayer
+
+- type: entity
+  parent: StellarStructureBase
+  id: StellarDecorApocryphalPedestal
+  name: profane pedestal
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Decor/Misc/apocryphal.rsi
+    offset: 0, 0.25
+    layers:
+    - state: pedestal
+    drawdepth: Mobs
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.25
+        mask:
+        - LargeMobMask
+        layer:
+        - WallLayer
+
+#### TABLE
+- type: entity
+  id: StellarTableApocryphal
+  parent: TableBase
+  name: profane table
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Decor/Tables/table-apocryphal.rsi
+  - type: Icon
+    sprite: _ST/Tileset/Decor/Tables/table-apocryphal.rsi
+  - type: IconSmooth
+    key: table
+    base: table
+
+#### CHAIR
+- type: entity
+  parent: StellarStructureBase
+  id: StellarDecorApocryphalChair
+  name: profane chair
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Decor/Seating/apocryphal_chair.rsi
+    state: chair
+    drawdepth: Mobs
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.25
+        mask:
+        - LargeMobMask
+        layer:
+        - WallLayer

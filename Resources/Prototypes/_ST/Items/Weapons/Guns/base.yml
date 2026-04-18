@@ -32,18 +32,160 @@
     availableModes:
     - Burst
     - SemiAuto
-    soundGunshot:
-      path: /Audio/_ST/Weapons/Guns/echion.ogg
-      params:
-        variation: 0.1
-    soundEmpty:
+  - type: StellarGunReloadable
+    weaponType: StellarGunTypeEchion
+    shootable: StellarHitscanEchionBase
+    reloadTime: 0.1
+    ammoCapacity: 1
+    ammoIcon:
+      sprite: _ST/Interface/Ammo/ammo-echion.rsi
+      state: icon
+    SoundLast:
       path: /Audio/_ST/Weapons/Guns/echion-no-ammo.ogg
       params:
         variation: 0.05
-  - type: StellarGunTypesReloadable
+    soundEmpty:
+      path: /Audio/_ST/Weapons/Guns/gun-empty.ogg
+      params:
+        variation: 0.05
+
+
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: StellarWeaponCybersunBase
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Guns/echion-echidna.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Appearance
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: true
+  - type: Item
+    sprite: _ST/Items/Weapons/Guns/echion-echidna.rsi
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: Gun
+    clumsyProof: false
+    showExamineText: false
+    availableModes:
+    - Burst
+    - SemiAuto
+  - type: StellarGunReloadable
     weaponType: StellarGunTypeEchion
     shootable: StellarHitscanEchionBase
     ammoCapacity: 1
-    icon:
-      sprite: _ST/Interface/Ammo/ammo-echion.rsi
+    ammoIcon:
+      sprite: _ST/Interface/Ammo/ammo-tachyon.rsi
       state: icon
+    soundLast:
+      path: /Audio/_ST/Weapons/Guns/lastbullet-nanotrasen.ogg
+      params:
+        variation: 0.05
+        volume: -2
+    soundEmpty:
+      path: /Audio/_ST/Weapons/Guns/gun-empty.ogg
+      params:
+        variation: 0.05
+
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: StellarWeaponInterdyneBase
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Guns/echion-echidna.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Appearance
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: true
+  - type: Item
+    sprite: _ST/Items/Weapons/Guns/echion-echidna.rsi
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: Gun
+    clumsyProof: false
+    showExamineText: false
+    availableModes:
+    - Burst
+    - SemiAuto
+  - type: StellarGunReloadable
+    weaponType: StellarGunTypeEchion
+    shootable: StellarHitscanEchionBase
+    ammoCapacity: 1
+    ammoIcon:
+      sprite: _ST/Interface/Ammo/ammo-kinetic.rsi
+      state: icon
+    soundLast:
+      path: /Audio/_ST/Weapons/Guns/echion-no-ammo.ogg
+      params:
+        variation: 0.05
+    soundEmpty:
+      path: /Audio/_ST/Weapons/Guns/gun-empty.ogg
+      params:
+        variation: 0.05
+
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: StellarWeaponNanoTrasenBase
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Guns/echion-echidna.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Appearance
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: true
+  - type: Item
+    sprite: _ST/Items/Weapons/Guns/echion-echidna.rsi
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: Gun
+    clumsyProof: false
+    showExamineText: false
+    availableModes:
+    - Burst
+    - SemiAuto
+  - type: StellarGunReloadable
+    weaponType: StellarGunTypeEchion
+    shootable: StellarHitscanEchionBase
+    ammoCapacity: 1
+    ammoIcon:
+      sprite: _ST/Interface/Ammo/ammo-nanotrasen.rsi
+      state: icon
+    soundLast:
+      path: /Audio/_ST/Weapons/Guns/lastbullet-nanotrasen.ogg
+      params:
+        variation: 0.05
+        volume: -2
+    soundEmpty:
+      path: /Audio/_ST/Weapons/Guns/gun-empty.ogg
+      params:
+        variation: 0.05

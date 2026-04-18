@@ -16,3 +16,18 @@
       state: humanoid
   - type: SpawnPoint
     spawn_type: LobbyCharacter
+
+- type: entity
+  name: acolyte library arrival marker
+  id: StellarMarkerAcolyteLibrary
+  parent: MarkerBase
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: Markers/cross.rsi
+    layers:
+    - state: pink
+    - sprite: _ST/Items/Hardsuit/apocryphal-robes-empowered.rsi
+      state: equipped-OUTERCLOTHING
+    - sprite: _ST/Items/Hardsuit/apocryphal-robes-empowered.rsi
+      state: equipped-HELMET

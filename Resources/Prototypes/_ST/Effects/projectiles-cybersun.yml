@@ -1,0 +1,92 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  abstract: true
+  parent: StellarMuzzleFlashBase
+  id: StellarMuzzleFlashCybersunBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PointLight
+    color: "#9a5cf1"
+    radius: 10
+    energy: 0.9
+    mask: /Textures/_ST/LightMasks/cone-rotated.png
+    enabled: true
+    autoRot: true
+    castShadows: false
+    netsync: false
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  parent: StellarMuzzleFlashCybersunBase
+  id: StellarMuzzleFlashCybersunLight
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ST/Projectiles/Guns/tachyon-light.rsi
+  - type: PointLight
+    radius: 8
+    energy: 0.6
+
+- type: entity
+  parent: StellarMuzzleFlashCybersunBase
+  id: StellarMuzzleFlashCybersunHeavy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ST/Projectiles/Guns/tachyon-heavy.rsi
+    offset: 0.25, 0
+  - type: PointLight
+    radius: 20
+    energy: 2
+
+- type: entity
+  abstract: true
+  parent: StellarHitscanVisualsBase
+  id: StellarHitscanCybersunBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicRaycast
+  - type: HitscanReflect
+  - type: StellarGunHitscan
+    lightColor: "#83db2b"
+    hitColor: "#83db2b"
+    unshaded: true
+    ray:
+      sprite: _ST/Projectiles/Guns/tachyon-light.rsi
+
+- type: entity
+  parent: StellarHitscanCybersunBase
+  id: StellarHitscanCybersunTsugaru
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicRaycast
+    maxDistance: 12.5
+  - type: StellarGunHitscan
+    maxDistance: 12.5
+    damage:
+      types:
+        Heat: 6
+        Caustic: 10
+    ray:
+      sprite: _ST/Projectiles/Guns/tachyon-light.rsi
+
+- type: entity
+  parent: StellarHitscanCybersunBase
+  id: StellarHitscanCybersunSadamune
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicRaycast
+    maxDistance: 25
+  - type: StellarGunHitscan
+    maxDistance: 25
+    damage:
+      types:
+        Heat: 62.5
+        Caustic: 62.5
+    ray:
+      sprite: _ST/Projectiles/Guns/tachyon-heavy.rsi

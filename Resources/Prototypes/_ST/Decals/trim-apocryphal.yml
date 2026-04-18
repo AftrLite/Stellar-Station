@@ -1,0 +1,130 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: decal
+  abstract: true
+  parent: StellarDecal
+  id: StellarDecalApocryphal
+  tags: [ "apocryphal" ]
+
+## ACTUAL DECALS
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalApocryphal ]
+  id: StellarDecalTrimApocryphalBox
+  sprite:
+    sprite: _ST/Decals/trim-apocryphal.rsi
+    state: box
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalApocryphal ]
+  id: StellarDecalTrimApocryphalCornerNe
+  sprite:
+    sprite: _ST/Decals/trim-apocryphal.rsi
+    state: corner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalApocryphal ]
+  id: StellarDecalTrimApocryphalCornerSe
+  sprite:
+    sprite: _ST/Decals/trim-apocryphal.rsi
+    state: corner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalApocryphal ]
+  id: StellarDecalTrimApocryphalCornerNw
+  sprite:
+    sprite: _ST/Decals/trim-apocryphal.rsi
+    state: corner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalApocryphal ]
+  id: StellarDecalTrimApocryphalCornerSw
+  sprite:
+    sprite: _ST/Decals/trim-apocryphal.rsi
+    state: corner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalApocryphal ]
+  id: StellarDecalTrimApocryphalInnerNe
+  sprite:
+    sprite: _ST/Decals/trim-apocryphal.rsi
+    state: inner_ne
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalApocryphal ]
+  id: StellarDecalTrimApocryphalInnerSe
+  sprite:
+    sprite: _ST/Decals/trim-apocryphal.rsi
+    state: inner_se
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalApocryphal ]
+  id: StellarDecalTrimApocryphalInnerNw
+  sprite:
+    sprite: _ST/Decals/trim-apocryphal.rsi
+    state: inner_nw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalApocryphal ]
+  id: StellarDecalTrimApocryphalInnerSw
+  sprite:
+    sprite: _ST/Decals/trim-apocryphal.rsi
+    state: inner_sw
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalApocryphal ]
+  id: StellarDecalTrimApocryphalEndN
+  sprite:
+    sprite: _ST/Decals/trim-apocryphal.rsi
+    state: end_n
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalApocryphal ]
+  id: StellarDecalTrimApocryphalEndE
+  sprite:
+    sprite: _ST/Decals/trim-apocryphal.rsi
+    state: end_e
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalApocryphal ]
+  id: StellarDecalTrimApocryphalEndS
+  sprite:
+    sprite: _ST/Decals/trim-apocryphal.rsi
+    state: end_s
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalApocryphal ]
+  id: StellarDecalTrimApocryphalEndW
+  sprite:
+    sprite: _ST/Decals/trim-apocryphal.rsi
+    state: end_w
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalApocryphal ]
+  id: StellarDecalTrimApocryphalLineN
+  sprite:
+    sprite: _ST/Decals/trim-apocryphal.rsi
+    state: line_n
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalApocryphal ]
+  id: StellarDecalTrimApocryphalLineE
+  sprite:
+    sprite: _ST/Decals/trim-apocryphal.rsi
+    state: line_e
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalApocryphal ]
+  id: StellarDecalTrimApocryphalLineS
+  sprite:
+    sprite: _ST/Decals/trim-apocryphal.rsi
+    state: line_s
+
+- type: decal
+  parent: [ StellarDecalTrim, StellarDecalApocryphal ]
+  id: StellarDecalTrimApocryphalLineW
+  sprite:
+    sprite: _ST/Decals/trim-apocryphal.rsi
+    state: line_w

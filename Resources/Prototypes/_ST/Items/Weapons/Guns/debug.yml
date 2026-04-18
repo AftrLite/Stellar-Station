@@ -39,7 +39,7 @@
 #      path: /Audio/_ST/Weapons/Guns/echion-no-ammo.ogg
 #      params:
 #        variation: 0.05
-#  - type: StellarGunTypesReloadable
+#  - type: StellarGunReloadable
 #    shootable: StellarProjectileDebug
 #    muzzleFlash: StellarMuzzleFlashKinetic
 #    shootingMethod: Projectile

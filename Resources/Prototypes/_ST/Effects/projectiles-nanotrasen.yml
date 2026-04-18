@@ -1,0 +1,113 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: StellarMuzzleFlashBase
+  id: StellarMuzzleFlashNanotrasen
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ST/Projectiles/Guns/nanotrasen-light.rsi
+  - type: PointLight
+    color: "#f35851"
+    radius: 3
+    energy: 3.4
+    mask: /Textures/_ST/LightMasks/cone-rotated.png
+    enabled: true
+    autoRot: true
+    castShadows: false
+    netsync: false
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  abstract: true
+  parent: StellarHitscanVisualsBase
+  id: StellarHitscanNanotrasenBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanReflect
+  - type: HitscanBasicRaycast
+    collisionMask: BulletImpassable
+  - type: StellarGunHitscan
+    collisionMask: BulletImpassable
+    lightColor: "#f35851"
+    unshaded: false
+    ray:
+      sprite: _ST/Projectiles/Guns/nanotrasen-light.rsi
+
+- type: entity
+  parent: StellarHitscanNanotrasenBase
+  id: StellarHitscanNanotrasenAegis
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicRaycast
+    maxDistance: 30
+  - type: StellarGunHitscan
+    maxDistance: 30
+    damage:
+      types:
+        Heat: 6.5
+        Blunt: 6.5
+    ray:
+      sprite: _ST/Projectiles/Guns/nanotrasen-light.rsi
+
+- type: entity
+  parent: StellarHitscanNanotrasenBase
+  id: StellarHitscanNanotrasenBastion
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicRaycast
+    maxDistance: 9
+  - type: StellarGunHitscan
+    maxDistance: 9
+    damage:
+      types:
+        Heat: 5
+        Blunt: 5
+    ray:
+      sprite: _ST/Projectiles/Guns/nanotrasen-light.rsi
+
+- type: entity
+  parent: StellarHitscanNanotrasenBase
+  id: StellarHitscanNanotrasenBulwark
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicRaycast
+    maxDistance: 9
+  - type: StellarGunHitscan
+    maxDistance: 9
+    damage:
+      types:
+        Heat: 4
+        Blunt: 4
+    ray:
+      sprite: _ST/Projectiles/Guns/nanotrasen-light.rsi
+
+- type: entity
+  parent: StellarHitscanNanotrasenBase
+  id: StellarHitscanNanotrasenGuardian
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarGunHitscan
+    damage:
+      types:
+        Heat: 2
+        Blunt: 3
+    ray:
+      sprite: _ST/Projectiles/Guns/nanotrasen-light.rsi
+
+- type: entity
+  parent: StellarHitscanNanotrasenBase
+  id: StellarHitscanNanotrasenTarge
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarGunHitscan
+    damage:
+      types:
+        Heat: 5
+        Blunt: 5
+    ray:
+      sprite: _ST/Projectiles/Guns/nanotrasen-light.rsi

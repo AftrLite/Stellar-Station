@@ -15,17 +15,31 @@
     sprite: Objects/Weapons/Guns/Ammunition/Boxes/pistol.rsi
     layers:
     - state: base
-  - type: StellarGunTypesAmmo
+  - type: StellarAmmo
     weaponType: StellarGunTypeEchion
     behaviour: Ammo
     maxAmmo: 20
 
 - type: entity
   parent: StellarAmmoConsumable
+  id: StellarAmmoConsumableDoAfterTachyon
+  name: Tachyon Ammo Consumable
+  suffix: DoAfter, DEBUG
+  components:
+  - type: StellarAmmo
+    usesDoAfter: true
+    weaponType: StellarGunTypeTachyonSniper
+    behaviour: Ammo
+    maxAmmo: 4
+    ammoPerDoAfter: 1
+    doAfterTime: 6
+
+- type: entity
+  parent: StellarAmmoConsumable
   id: StellarAmmoConsumableDoAfter
   suffix: DoAfter, DEBUG
   components:
-  - type: StellarGunTypesAmmo
+  - type: StellarAmmo
     usesDoAfter: true
 
 - type: entity
@@ -59,7 +73,7 @@
     sprite: Structures/Storage/tanks.rsi
     layers:
     - state: watercooler-2
-  - type: StellarGunTypesAmmo
+  - type: StellarAmmo
     weaponType: StellarGunTypeEchion
     behaviour: Reloader
     maxAmmo: 999
@@ -70,5 +84,5 @@
   id: StellarAmmoReloaderDoAfter
   suffix: DoAfter, DEBUG
   components:
-  - type: StellarGunTypesAmmo
+  - type: StellarAmmo
     usesDoAfter: true
