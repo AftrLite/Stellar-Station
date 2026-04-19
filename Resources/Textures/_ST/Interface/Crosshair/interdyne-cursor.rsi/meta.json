@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "by AftrLite(GitHub)",
+    "size": {
+        "x": 31,
+        "y": 31
+    },
+    "states": [
+        {
+            "name": "antibody"
+        },
+        {
+            "name": "disp-needle"
+        },
+        {
+            "name": "dual-smgs"
+        },
+        {
+            "name": "iv-dyne"
+        },
+        {
+            "name": "smg1"
+        }
+    ]
+}

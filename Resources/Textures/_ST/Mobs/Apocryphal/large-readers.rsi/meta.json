@@ -1,0 +1,38 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 48
+    },
+    "license": "LicenseRef-Wallening",
+    "copyright": "By Frogoo for Stellar Station",
+    "states": [
+        {
+            "name": "book-1"
+        },
+        {
+            "name": "book-2"
+        },
+        {
+            "name": "book-3"
+        },
+        {
+            "name": "unshaded-1"
+        },
+        {
+            "name": "unshaded-2"
+        },
+        {
+            "name": "unshaded-2-alt"
+        },
+        {
+            "name": "unshaded-3"
+        },
+        {
+            "name": "unshaded-4"
+        },
+        {
+            "name": "unshaded-5"
+        }
+    ]
+}

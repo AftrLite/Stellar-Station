@@ -16,9 +16,9 @@ public sealed partial class StellarAmmoControl : PanelContainer
 {
     [Dependency] private readonly IEntityManager _entity = default!;
     private readonly SpriteSystem _sprite;
-    private readonly Entity<StellarGunTypesReloadableComponent> _ent;
+    private readonly Entity<StellarGunReloadableComponent> _ent;
 
-    public StellarAmmoControl(Entity<StellarGunTypesReloadableComponent> ent)
+    public StellarAmmoControl(Entity<StellarGunReloadableComponent> ent)
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
@@ -28,10 +28,10 @@ public sealed partial class StellarAmmoControl : PanelContainer
 
     protected override void FrameUpdate(FrameEventArgs args)
     {
-        if (_ent.Comp.Icon is { } icon)
+        if (_ent.Comp.AmmoIcon is { } icon)
             Icon.Texture = _sprite.Frame0(icon);
 
-        if (_ent.Comp.AmmoCount is { } ammoCount && _ent.Comp.AmmoCapacity is { } ammoCapacity)
+        if (_ent.Comp.AmmoCount is { } ammoCount && _ent.Comp.AmmoReserves is { } ammoCapacity)
             Title.Text = Loc.GetString("stellar-ammo-ui-display", ("count", ammoCount), ("total", ammoCapacity));
     }
 }

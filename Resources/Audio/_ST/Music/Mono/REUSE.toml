@@ -4,3 +4,8 @@ version = 1
 path = ["jungle_juice.ogg", "apocalypse.ogg", "somewhere_in_space.ogg", "new_save.ogg", "gruntwork.ogg", "valley.ogg", "8oclock_ghosts.ogg"]
 SPDX-FileCopyrightText = "Custom songs composed for Stellar Station by Darklyac."
 SPDX-License-Identifier = "LicenseRef-Wallening"
+
+[[annotations]]
+path = ["curious_gods.ogg"]
+SPDX-FileCopyrightText = "Custom songs composed for Stellar Station by Pigeonbeans."
+SPDX-License-Identifier = "LicenseRef-Wallening"

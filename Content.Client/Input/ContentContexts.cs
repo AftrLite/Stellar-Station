@@ -51,6 +51,10 @@ namespace Content.Client.Input
             // Not in engine so that the RCD can rotate objects
             common.AddFunction(EngineKeyFunctions.EditorRotateObject);
 
+            // Begin Stellar
+            common.AddFunction(ContentKeyFunctions.StellarReloadGun);
+            // End Stellar
+
             // ES START
             common.AddFunction(ContentKeyFunctions.ESToggleInternals);
             common.AddFunction(ContentKeyFunctions.ESToggleFlashlight);

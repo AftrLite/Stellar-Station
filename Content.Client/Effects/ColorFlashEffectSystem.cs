@@ -35,7 +35,7 @@ public sealed class ColorFlashEffectSystem : SharedColorFlashEffectSystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        OnColorFlashEffect(new ColorFlashEffectEvent(color, GetNetEntityList(entities)));
+        RaiseLocalEvent(new ColorFlashEffectEvent(color, GetNetEntityList(entities))); // Stellar - we need this to pass through the event bus
     }
 
     private void OnEffectAnimationCompleted(EntityUid uid, ColorFlashEffectComponent component, AnimationCompletedEvent args)

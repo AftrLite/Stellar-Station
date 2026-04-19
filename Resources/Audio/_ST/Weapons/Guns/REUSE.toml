@@ -1,6 +1,13 @@
 version = 1
 
 [[annotations]]
-path = ["echion.ogg", "echion-cerberus.ogg", "echion-chimera.ogg", "echion-echidna.ogg", "echion-gorgon.ogg", "echion-hydra.ogg", "echion-minotaur.ogg", "echion-no-ammo.ogg"]
-SPDX-FileCopyrightText = "Custom gun sounds by AftrLite, Darklyac, and Pigeonbeans."
+path = ["cybersun-sadamune.ogg", "cybersun-tsugaru.ogg", "gun-empty.ogg", "interdyne-antibody.ogg", "interdyne-diagnosis.ogg", "interdyne-ivdyne.ogg", "interdyne-needle.ogg", "interdyne-symptom.ogg", "lastbullet-nanotrasen.ogg", "nanotrasen-aegis.ogg", "nanotrasen-aegis-alt.ogg", "nanotrasen-bastion.ogg", "nanotrasen-bulwark.ogg", "nanotrasen-guardian.ogg", "nanotrasen-targe.ogg"]
+SPDX-FileCopyrightText = "By AftrLite(GitHub). Made using a combination of (Creative Commons 0) samples from freesound.org."
 SPDX-License-Identifier = "LicenseRef-Wallening"
+SPDX-FileAttributionText = "https://freesound.org/"
+
+[[annotations]]
+path = ["echion.ogg", "echion-cerberus.ogg", "echion-chimera.ogg", "echion-echidna.ogg", "echion-gorgon.ogg", "echion-hydra.ogg", "echion-minotaur.ogg", "echion-no-ammo.ogg"]
+SPDX-License-Identifier = "LicenseRef-Wallening"
+SPDX-FileCopyrightText = "Custom gun sounds by AftrLite, Darklyac, and Pigeonbeans."
+

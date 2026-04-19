@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: StellarMuzzleFlashBase
+  id: StellarMuzzleFlashInterdyne
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ST/Projectiles/Guns/kinetic-light.rsi
+  - type: PointLight
+    color: "#db812a"
+    radius: 3
+    energy: 3.4
+    mask: /Textures/_ST/LightMasks/cone-rotated.png
+    enabled: true
+    autoRot: true
+    castShadows: false
+    netsync: false
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  parent: StellarHitscanVisualsBase
+  id: StellarHitscanInterdyneBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicRaycast
+    collisionMask: BulletImpassable
+  - type: StellarGunHitscan
+    collisionMask: BulletImpassable
+    lightColor: "#db812a"
+    unshaded: false
+    damage:
+      types:
+        Heat: 3.3
+        Blunt: 3.3

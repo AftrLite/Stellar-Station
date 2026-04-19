@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: LicenseRef-Wallening
 
+using Content.Shared.Damage;
 using Content.Shared.Physics;
 using Content.Shared.Weapons.Ranged;
 using Robust.Shared.GameStates;
@@ -24,7 +25,23 @@ public sealed partial class StellarGunHitscanComponent : Component
 
     [DataField] public float MaxDistance = 20.0f;
 
+    /// <summary>
+    /// Minimum distance the bullet travels and retains max damage, after which falloff scaling can come into effect.
+    /// </summary>
+    [DataField] public float MinDistance = 2f;
+
+    /// <summary>
+    /// Modifies damage over distance. Lower values = lower damage. 1 means no falloff.
+    /// </summary>
+    [DataField] public float FalloffModifier = 1f;
+
     [DataField] public CollisionGroup CollisionMask = CollisionGroup.Opaque;
+
+    /// <summary>
+    /// How much damage the hitscan weapon will do when hitting a target.
+    /// </summary>
+    [DataField(required: true)]
+    public DamageSpecifier Damage;
 
     /// <summary>
     /// RSI containing the appropriate sprites for the hitscan- expecting "start", "middle", "end", and "bullet" states.

@@ -5,6 +5,9 @@ namespace Content.Shared.Input
     [KeyFunctions]
     public static class ContentKeyFunctions
     {
+        // Begin Stellar
+        public static readonly BoundKeyFunction StellarReloadGun = "StellarReloadGun";
+        // End Stellar
         // ES START
         public static readonly BoundKeyFunction ESToggleInternals = "ESToggleInternals";
         public static readonly BoundKeyFunction ESToggleFlashlight = "ESToggleFlashlight";

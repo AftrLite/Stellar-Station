@@ -1,0 +1,105 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: StellarWeaponCybersunBase
+  id: StellarWeaponCybersunTsugaru
+  name: Twinned Tsugaru SHF
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Guns/cybersun-tsugaru.rsi
+  - type: Appearance
+  - type: MagazineVisuals
+  - type: Item
+    sprite: _ST/Items/Weapons/Guns/cybersun-tsugaru.rsi
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: Gun
+    burstCooldown: 0.825
+    shotsPerBurst: 2
+    cameraRecoilScalar: 1
+    minAngle: 1.5
+    maxAngle: 18
+    burstFireRate: 20
+    angleIncrease: 2
+    angleDecay: 10
+    selectedMode: Burst
+    availableModes:
+    - Burst
+    soundGunshot:
+      path: /Audio/_ST/Weapons/Guns/cybersun-tsugaru.ogg
+      params:
+        variation: 0.05
+        volume: -1
+  - type: Wieldable
+  - type: GunRequiresWield
+  - type: StellarGunCrosshair
+    rsi:
+      sprite: _ST/Interface/Crosshair/cybersun-cursor.rsi
+      state: tsugaru
+  - type: StellarGunReloadable
+    weaponType: StellarGunTypeTachyonPistol
+    shootable: StellarHitscanCybersunTsugaru
+    muzzleFlash: StellarMuzzleFlashCybersunLight
+    reloadTime: 2.334
+    ammoMaxReserves: 24
+    ammoMagCapacity: 12
+    soundReload:
+      path: /Audio/_ST/Weapons/Guns/Reload/cybersun-reload-tsugaru.ogg
+      params:
+        variation: 0.025
+
+- type: entity
+  parent: StellarWeaponCybersunBase
+  id: StellarWeaponCybersunSadamune
+  name: Sadamune EHF
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Guns/cybersun-sadamune.rsi
+  - type: Appearance
+  - type: MagazineVisuals
+  - type: Item
+    sprite: _ST/Items/Weapons/Guns/cybersun-sadamune.rsi
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: Gun
+    cameraRecoilScalar: 2
+    minAngle: 0
+    maxAngle: 24
+    fireRate: 0.8
+    angleIncrease: 12
+    angleDecay: 10
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_ST/Weapons/Guns/cybersun-sadamune.ogg
+      params:
+        variation: 0.0375
+        volume: +8
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 3
+    offsetSpeed: 1
+    pvsIncrease: 0.3
+  - type: Wieldable
+  - type: GunRequiresWield
+  - type: StellarGunCrosshair
+    rsi:
+      sprite: _ST/Interface/Crosshair/cybersun-cursor-large.rsi
+      state: sadamune
+  - type: StellarGunReloadable
+    weaponType: StellarGunTypeTachyonSniper
+    shootable: StellarHitscanCybersunSadamune
+    muzzleFlash: StellarMuzzleFlashCybersunHeavy
+    modulatePitch: false
+    reloadTime: 3.65
+    ammoMaxReserves: 4
+    ammoMagCapacity: 2
+    soundReload:
+      path: /Audio/_ST/Weapons/Guns/Reload/cybersun-reload-sadamune.ogg
+      params:
+        variation: 0.01

@@ -1,6 +1,6 @@
 - type: ssdIcon
   id: SSDIcon
   icon:
-    sprite: /Textures/Effects/ssd.rsi
-    state: default0
+    sprite: /Textures/_ST/Effects/indicator-ssd-afk.rsi # Stellar
+    state: icon
   locationPreference: Left

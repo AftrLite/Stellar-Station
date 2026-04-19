@@ -1,0 +1,84 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+#################### APOCRYPHAL WALL LAMP
+- type: entity
+  id: StellarLightApocryphalWall
+  name: profane lantern
+  suffix: Always Powered, Wall
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Sprite
+    drawdepth: Overdoors
+    sprite: _ST/Tileset/Lighting/light-tube-apocryphal.rsi
+    layers:
+    - state: base
+    - state: unshaded
+      shader: unshaded
+  - type: PointLight
+    radius: 7
+    energy: 0.8
+    softness: 2
+    color: "#D1F5EBFF"
+  - type: LightBehaviour
+    behaviours:
+    - !type:RandomizeBehaviour
+      id: fade_out
+      interpolate: Cubic
+      minDuration: 0.2
+      maxDuration: 0.3
+      startValue: 1
+      endValue: 0.625
+      property: Energy
+      isLooped: true
+      enabled: true
+    - !type:FadeBehaviour
+      id: fade_out
+      maxDuration: 4.0
+      startValue: 6.0
+      endValue: 5.0
+      isLooped: true
+      enabled: true
+      reverseWhenFinished: true
+
+#################### APOCRYPHAL STANDING LAMP
+- type: entity
+  parent: StellarStructureBase
+  id: StellarLightApocryphalStanding
+  name: profane lantern
+  suffix: Always Powered
+  placement:
+    mode: SnapgridCenter
+  categories: [ ForkFiltered ]
+  components:
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.25
+        mask:
+        - LargeMobMask
+        layer:
+        - WallLayer
+  - type: Sprite
+    noRot: true
+    offset: 0, 0.25
+    drawdepth: Mobs
+    sprite: _ST/Tileset/Lighting/light-post-apocryphal.rsi
+    layers:
+    - state: base
+    - state: unshaded
+      shader: unshaded
+  - type: PointLight
+    radius: 7
+    energy: 0.8
+    softness: 2
+    color: "#D1F5EBFF"

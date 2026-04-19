@@ -1,0 +1,230 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: StellarWeaponInterdyneBase
+  id: StellarWeaponInterdyneNeedle
+  name: Disp-needle DT
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Guns/interdyne-needle.rsi
+  - type: Appearance
+  - type: MagazineVisuals
+  - type: Item
+    sprite: _ST/Items/Weapons/Guns/interdyne-needle.rsi
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: Gun
+    cameraRecoilScalar: 0.675
+    minAngle: 2.25
+    maxAngle: 20
+    fireRate: 6.5
+    angleIncrease: 2
+    angleDecay: 10
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_ST/Weapons/Guns/interdyne-needle.ogg
+      params:
+        variation: 0.1
+        volume: -2
+  - type: StellarGunCrosshair
+    rsi:
+      sprite: _ST/Interface/Crosshair/interdyne-cursor.rsi
+      state: disp-needle
+  - type: StellarGunReloadable
+    showWeaponType: false
+    weaponType: StellarGunTypeDisposablePistol
+    shootable: StellarHitscanInterdyneBase
+    muzzleFlash: StellarMuzzleFlashInterdyne
+    ammoMaxReserves: 0
+    ammoMagCapacity: 24
+
+- type: entity
+  parent: StellarWeaponInterdyneBase
+  id: StellarWeaponInterdyneIV
+  name: IV-Dyne CL
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Guns/interdyne-ivdyne.rsi
+  - type: Appearance
+  - type: MagazineVisuals
+  - type: Item
+    sprite: _ST/Items/Weapons/Guns/interdyne-ivdyne.rsi
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: Gun
+    cameraRecoilScalar: 0.5
+    minAngle: 1.5
+    maxAngle: 18
+    fireRate: 3
+    angleIncrease: 2
+    angleDecay: 10
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_ST/Weapons/Guns/interdyne-ivdyne.ogg
+      params:
+        variation: 0.1
+  - type: StellarGunCrosshair
+    rsi:
+      sprite: _ST/Interface/Crosshair/interdyne-cursor.rsi
+      state: iv-dyne
+  - type: StellarGunReloadable
+    weaponType: StellarGunTypeChemicalPistol
+    shootable: StellarHitscanInterdyneBase
+    muzzleFlash: StellarMuzzleFlashInterdyne
+    reloadTime: 3
+    ammoMaxReserves: 16
+    ammoMagCapacity: 8
+    soundReload:
+      path: /Audio/_ST/Weapons/Guns/Reload/interdyne-reload-ivdyne.ogg
+      params:
+        variation: 0.025
+
+- type: entity
+  parent: StellarWeaponInterdyneBase
+  id: StellarWeaponInterdyneSymptom
+  name: Symptom ID-X
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Guns/interdyne-symptom.rsi
+  - type: Appearance
+  - type: MagazineVisuals
+  - type: Item
+    sprite: _ST/Items/Weapons/Guns/interdyne-symptom.rsi
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: Gun
+    cameraRecoilScalar: 0.5
+    minAngle: 1.25
+    maxAngle: 18
+    fireRate: 6.25
+    angleIncrease: 1
+    angleDecay: 20
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_ST/Weapons/Guns/interdyne-symptom.ogg
+      params:
+        variation: 0.1
+  - type: StellarGunCrosshair
+    rsi:
+      sprite: _ST/Interface/Crosshair/interdyne-cursor.rsi
+      state: smg1
+  - type: StellarGunReloadable
+    weaponType: StellarGunTypeSubmachine
+    shootable: StellarHitscanInterdyneBase
+    muzzleFlash: StellarMuzzleFlashInterdyne
+    reloadTime: 2
+    ammoMaxReserves: 66
+    ammoMagCapacity: 33
+    soundReload:
+      path: /Audio/_ST/Weapons/Guns/Reload/interdyne-reload-symptom.ogg
+      params:
+        variation: 0.025
+
+- type: entity
+  parent: StellarWeaponInterdyneBase
+  id: StellarWeaponInterdyneDiagnosis
+  name: Dual Diagnosis ID3
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Guns/interdyne-diagnosis.rsi
+  - type: Appearance
+  - type: MagazineVisuals
+  - type: Item
+    sprite: _ST/Items/Weapons/Guns/interdyne-diagnosis.rsi
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: Gun
+    cameraRecoilScalar: 0.6
+    minAngle: 1.25
+    maxAngle: 18
+    fireRate: 9.1
+    angleIncrease: 1
+    angleDecay: 20
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_ST/Weapons/Guns/interdyne-diagnosis.ogg
+      params:
+        variation: 0.2
+  - type: Wieldable
+  - type: GunRequiresWield
+  - type: StellarGunCrosshair
+    rsi:
+      sprite: _ST/Interface/Crosshair/interdyne-cursor.rsi
+      state: dual-smgs
+  - type: StellarGunReloadable
+    weaponType: StellarGunTypeSubmachine
+    shootable: StellarHitscanInterdyneBase
+    muzzleFlash: StellarMuzzleFlashInterdyne
+    reloadTime: 2.5
+    ammoMaxReserves: 66
+    ammoMagCapacity: 33
+    multiShotSpread: 5
+    multiShotWiggleMin: -10
+    multiShotWiggleMax: 10
+    multiShotAmount: 2
+    soundReload:
+      path: /Audio/_ST/Weapons/Guns/Reload/interdyne-reload-diagnosis.ogg
+      params:
+        variation: 0.025
+
+- type: entity
+  parent: StellarWeaponInterdyneBase
+  id: StellarWeaponInterdyneAntibody
+  name: Antibody GL2
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Guns/interdyne-antibody.rsi
+  - type: Appearance
+  - type: MagazineVisuals
+  - type: Item
+    sprite: _ST/Items/Weapons/Guns/interdyne-antibody.rsi
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: Gun
+    cameraRecoilScalar: 2.8
+    minAngle: 6
+    maxAngle: 30
+    fireRate: 0.5
+    angleIncrease: 8
+    angleDecay: 3
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_ST/Weapons/Guns/interdyne-antibody.ogg
+      params:
+        variation: 0.1
+  - type: Wieldable
+  - type: GunRequiresWield
+  - type: StellarGunCrosshair
+    rsi:
+      sprite: _ST/Interface/Crosshair/interdyne-cursor.rsi
+      state: antibody
+  - type: StellarGunReloadable
+    weaponType: StellarGunTypeChemicalLauncher
+    shootable: BulletGrenadeFrag
+    shootingMethod: Projectile
+    muzzleFlash: StellarMuzzleFlashInterdyne
+    reloadTime: 1.334
+    ammoPerReload: 1
+    ammoMaxReserves: 6
+    ammoMagCapacity: 4
+    soundReload:
+      path: /Audio/_ST/Weapons/Guns/Reload/interdyne-reload-antibody.ogg
+      params:
+        variation: 0.025

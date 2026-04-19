@@ -162,6 +162,11 @@ namespace Content.Client.Options.UI.Tabs
             AddToggleCvarCheckBox("ui-options-hold-to-attack-melee", CCVars.ControlHoldToAttackMelee);
             AddToggleCvarCheckBox("ui-options-hold-to-attack-ranged", CCVars.ControlHoldToAttackRanged);
 
+            // Begin Stellar
+            AddHeader("ui-options-header-stellar");
+            AddButton(ContentKeyFunctions.StellarReloadGun);
+            // End Stellar
+
             // ES START
             AddHeader("ui-options-header-es");
             AddButton(ContentKeyFunctions.ESToggleInternals);

@@ -1,0 +1,50 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: StellarGrenadeBase
+  components:
+  - type: StellarExplosive
+    whitelist:
+      components:
+      - MobState
+    triggerKey: timer
+  - type: Catchable
+    requireCombatMode: true
+    catchChance: 0.4
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Grenades/gorlex-hcsnade.rsi
+    layers:
+    - state: icon
+      map: ["base"]
+    - state: icon-primed-unshaded
+      shader: unshaded
+      visible: false
+      map: ["unshaded"]
+  - type: TriggerOnUse
+  - type: DeleteOnTrigger
+    keysIn:
+    - timer
+  - type: TimerTrigger
+    beepSound:
+      path: "/Audio/Effects/beep1.ogg"
+      params:
+        volume: 5
+        variation: 0.025
+    initialBeepDelay: 0
+    beepInterval: 0.5
+    delay: 3
+  - type: Appearance
+  - type: AnimationPlayer
+  - type: GenericVisualizer
+    visuals:
+      enum.Trigger.TriggerVisuals.VisualState:
+        base:
+          Unprimed: { state: icon }
+          Primed: { state: icon-primed }
+        unshaded:
+          Unprimed: { visible: false }
+          Primed: { visible: true }

@@ -20,7 +20,7 @@
     cameraRecoilScalar: 2.375
     minAngle: 0
     maxAngle: 8
-    fireRate: 1.4
+    fireRate: 1.41
     angleIncrease: 2
     angleDecay: 8
     selectedMode: SemiAuto
@@ -34,10 +34,11 @@
     rsi:
       sprite: _ST/Interface/Crosshair/echion-cursor.rsi
       state: cerberus
-  - type: StellarGunTypesReloadable
+  - type: StellarGunReloadable
     shootable: StellarHitscanEchionCerberus
     muzzleFlash: StellarMuzzleFlashEchionHeavy
-    ammoCapacity: 23
+    ammoMaxReserves: 10
+    ammoMagCapacity: 10
 
 - type: entity
   parent: StellarWeaponGorlexBase
@@ -54,7 +55,7 @@
     shape:
     - 0,0,1,1
   - type: Gun
-    cameraRecoilScalar: 0.7
+    cameraRecoilScalar: 0.75
     minAngle: 1.5
     maxAngle: 18
     fireRate: 5
@@ -75,10 +76,13 @@
     rsi:
       sprite: _ST/Interface/Crosshair/echion-cursor.rsi
       state: chimera
-  - type: StellarGunTypesReloadable
+  - type: StellarGunReloadable
     shootable: StellarHitscanEchionChimera
     muzzleFlash: StellarMuzzleFlashEchionMedium
-    ammoCapacity: 155
+    ammoMaxReserves: 77
+    ammoMagCapacity: 77
+    rampingFireRate: 6
+    rampingBulletsNeeded: 19
 
 - type: entity
   parent: StellarWeaponGorlexBase
@@ -114,10 +118,11 @@
     rsi:
       sprite: _ST/Interface/Crosshair/echion-cursor.rsi
       state: echidna
-  - type: StellarGunTypesReloadable
+  - type: StellarGunReloadable
     shootable: StellarHitscanEchionEchidna
     muzzleFlash: StellarMuzzleFlashEchionLight
-    ammoCapacity: 85
+    ammoMaxReserves: 42
+    ammoMagCapacity: 42
 
 - type: entity
   parent: StellarWeaponGorlexBase
@@ -137,7 +142,7 @@
     cameraRecoilScalar: 2.35
     minAngle: 0
     maxAngle: 6
-    fireRate: 1.33
+    fireRate: 2
     angleIncrease: 1.33
     angleDecay: 16
     selectedMode: SemiAuto
@@ -158,10 +163,11 @@
     rsi:
       sprite: _ST/Interface/Crosshair/echion-cursor-large.rsi
       state: gorgon
-  - type: StellarGunTypesReloadable
+  - type: StellarGunReloadable
     shootable: StellarHitscanEchionGorgon
     muzzleFlash: StellarMuzzleFlashEchionMedium
-    ammoCapacity: 30
+    ammoMaxReserves: 15
+    ammoMagCapacity: 15
 
 - type: entity
   parent: StellarWeaponGorlexBase
@@ -198,13 +204,14 @@
     rsi:
       sprite: _ST/Interface/Crosshair/echion-cursor.rsi
       state: hydra
-  - type: StellarGunTypesReloadable
+  - type: StellarGunReloadable
     shootable: StellarHitscanEchionHydra
     muzzleFlash: StellarMuzzleFlashEchionHeavy
-    ammoCapacity: 52
+    ammoMaxReserves: 26
+    ammoMagCapacity: 26
     multiShotSpread: 45
-    multiShotWiggleMin: -10
-    multiShotWiggleMax: 10
+    multiShotWiggleMin: -5
+    multiShotWiggleMax: 5
     multiShotAmount: 6
 
 - type: entity
@@ -222,10 +229,10 @@
     shape:
     - 0,0,1,1
   - type: Gun
-    cameraRecoilScalar: 0.7
+    cameraRecoilScalar: 0.6
     minAngle: 1.25
     maxAngle: 18
-    fireRate: 7.5
+    fireRate: 7.3
     angleIncrease: 1
     angleDecay: 20
     selectedMode: FullAuto
@@ -242,7 +249,8 @@
     rsi:
       sprite: _ST/Interface/Crosshair/echion-cursor.rsi
       state: minotaur
-  - type: StellarGunTypesReloadable
+  - type: StellarGunReloadable
     shootable: StellarHitscanEchionMinotaur
     muzzleFlash: StellarMuzzleFlashEchionLight
-    ammoCapacity: 200
+    ammoMaxReserves: 100
+    ammoMagCapacity: 100

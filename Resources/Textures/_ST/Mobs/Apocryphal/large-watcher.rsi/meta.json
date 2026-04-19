@@ -1,0 +1,19 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 48
+    },
+    "license": "LicenseRef-Wallening",
+    "copyright": "By Frogoo for Stellar Station",
+    "states": [
+        {
+            "name": "base",
+            "directions": 4
+        },
+        {
+            "name": "unshaded",
+            "directions": 4
+        }
+    ]
+}

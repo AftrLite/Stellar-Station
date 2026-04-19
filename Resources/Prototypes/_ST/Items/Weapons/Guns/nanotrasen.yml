@@ -1,0 +1,271 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: soundCollection
+  id: StellarSoundCollectionWeaponAegis
+  files:
+  - /Audio/_ST/Weapons/Guns/nanotrasen-aegis.ogg
+  - /Audio/_ST/Weapons/Guns/nanotrasen-aegis-alt.ogg
+
+- type: entity
+  parent: StellarWeaponNanoTrasenBase
+  id: StellarWeaponNanoTrasenAegis
+  name: Aegis NT9
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Guns/nanotrasen-aegis.rsi
+  - type: Appearance
+  - type: MagazineVisuals
+  - type: Item
+    sprite: _ST/Items/Weapons/Guns/nanotrasen-aegis.rsi
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: Gun
+    burstCooldown: 0.7667
+    cameraRecoilScalar: 0.75
+    minAngle: 1.5
+    maxAngle: 12
+    fireRate: 5
+    burstFireRate: 15
+    angleIncrease: 2
+    angleDecay: 12
+    selectedMode: Burst
+    availableModes:
+    - Burst
+    - FullAuto
+    soundGunshot:
+      collection: StellarSoundCollectionWeaponAegis
+      params:
+        variation: 0.1
+        volume: -2
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 1
+    offsetSpeed: 1
+    pvsIncrease: 0.1
+  - type: Wieldable
+  - type: GunRequiresWield
+  - type: StellarGunCrosshair
+    rsi:
+      sprite: _ST/Interface/Crosshair/nanotrasen-cursor.rsi
+      state: aegis
+  - type: StellarAmmoRegen
+    regenInterval: 7.5
+  - type: StellarGunReloadable
+    weaponType: StellarGunTypeEnergyRifle
+    shootable: StellarHitscanNanotrasenAegis
+    muzzleFlash: StellarMuzzleFlashNanotrasen
+    reloadTime: 2.5
+    ammoMaxReserves: 44
+    ammoMagCapacity: 24
+    rampingFireRate: 4
+    rampingBulletsNeeded: 6
+    soundReload:
+      path: /Audio/_ST/Weapons/Guns/Reload/nanotrasen-reload-aegis.ogg
+      params:
+        variation: 0.05
+
+- type: entity
+  parent: StellarWeaponNanoTrasenBase
+  id: StellarWeaponNanoTrasenBastion
+  name: Bastion NTX
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Guns/nanotrasen-bastion.rsi
+  - type: Appearance
+  - type: MagazineVisuals
+  - type: Item
+    sprite: _ST/Items/Weapons/Guns/nanotrasen-bastion.rsi
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: Gun
+    cameraRecoilScalar: 2.75
+    minAngle: 1.25
+    maxAngle: 18
+    fireRate: 0.9
+    angleIncrease: 8
+    angleDecay: 20
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_ST/Weapons/Guns/nanotrasen-bastion.ogg
+      params:
+        variation: 0.1
+  - type: Wieldable
+  - type: GunRequiresWield
+  - type: StellarGunCrosshair
+    rsi:
+      sprite: _ST/Interface/Crosshair/nanotrasen-cursor.rsi
+      state: bastion
+  - type: StellarAmmoRegen
+    regenInterval: 10
+  - type: StellarGunReloadable
+    weaponType: StellarGunTypeEnergyShotgun
+    shootable: StellarHitscanNanotrasenBastion
+    muzzleFlash: StellarMuzzleFlashNanotrasen
+    reloadTime: 0.467
+    ammoPerReload: 1
+    ammoMaxReserves: 12
+    ammoMagCapacity: 6
+    multiShotSpread: 15
+    multiShotWiggleMin: -1
+    multiShotWiggleMax: 1
+    multiShotAmount: 5
+    soundReload:
+      path: /Audio/_ST/Weapons/Guns/Reload/nanotrasen-reload-bastion.ogg
+      params:
+        variation: 0.1
+
+- type: entity
+  parent: StellarWeaponNanoTrasenBase
+  id: StellarWeaponNanoTrasenBulwark
+  name: Bulwark N-11
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Guns/nanotrasen-bulwark.rsi
+  - type: Appearance
+  - type: MagazineVisuals
+  - type: Item
+    sprite: _ST/Items/Weapons/Guns/nanotrasen-bulwark.rsi
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: Gun
+    burstCooldown: 0.667
+    shotsPerBurst: 2
+    cameraRecoilScalar: 1.5
+    minAngle: 1.5
+    maxAngle: 18
+    burstFireRate: 8
+    angleIncrease: 2
+    angleDecay: 10
+    selectedMode: Burst
+    availableModes:
+    - Burst
+    soundGunshot:
+      path: /Audio/_ST/Weapons/Guns/nanotrasen-bulwark.ogg
+      params:
+        variation: 0.1
+  - type: Wieldable
+  - type: GunRequiresWield
+  - type: StellarGunCrosshair
+    rsi:
+      sprite: _ST/Interface/Crosshair/nanotrasen-cursor.rsi
+      state: bulwark
+  - type: StellarAmmoRegen
+    regenInterval: 10
+  - type: StellarGunReloadable
+    weaponType: StellarGunTypeEnergyShotgun
+    shootable: StellarHitscanNanotrasenBulwark
+    muzzleFlash: StellarMuzzleFlashNanotrasen
+    reloadTime: 0.667
+    ammoPerReload: 1
+    ammoMaxReserves: 22
+    ammoMagCapacity: 8
+    multiShotSpread: 10
+    multiShotWiggleMin: -5
+    multiShotWiggleMax: 5
+    multiShotAmount: 3
+    soundReload:
+      path: /Audio/_ST/Weapons/Guns/Reload/nanotrasen-reload-bulwark.ogg
+      params:
+        variation: 0.1
+        volume: -2
+
+- type: entity
+  parent: StellarWeaponNanoTrasenBase
+  id: StellarWeaponNanoTrasenGuardian
+  name: Guardian NT-HAZ
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Guns/nanotrasen-guardian.rsi
+  - type: Appearance
+  - type: MagazineVisuals
+  - type: Item
+    sprite: _ST/Items/Weapons/Guns/nanotrasen-guardian.rsi
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: Gun
+    cameraRecoilScalar: 0.75
+    minAngle: 1.25
+    maxAngle: 18
+    fireRate: 5
+    angleIncrease: 4
+    angleDecay: 12
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_ST/Weapons/Guns/nanotrasen-guardian.ogg
+      params:
+        variation: 0.1
+        volume: -2
+  - type: StellarGunCrosshair
+    rsi:
+      sprite: _ST/Interface/Crosshair/nanotrasen-cursor.rsi
+      state: guardian
+  - type: StellarAmmoRegen
+    regenInterval: 3
+  - type: StellarGunReloadable
+    weaponType: StellarGunTypeEnergyPistol
+    shootable: StellarHitscanNanotrasenGuardian
+    muzzleFlash: StellarMuzzleFlashNanotrasen
+    reloadTime: 1
+    ammoMaxReserves: 42
+    ammoMagCapacity: 21
+    soundReload:
+      path: /Audio/_ST/Weapons/Guns/Reload/nanotrasen-reload-guardian.ogg
+      params:
+        variation: 0.05
+
+- type: entity
+  parent: StellarWeaponNanoTrasenBase
+  id: StellarWeaponNanoTrasenTarge
+  name: Targe TRS4
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Weapons/Guns/nanotrasen-targe.rsi
+  - type: Appearance
+  - type: MagazineVisuals
+  - type: Item
+    sprite: _ST/Items/Weapons/Guns/nanotrasen-targe.rsi
+    size: Small
+    shape:
+    - 0,0,1,1
+  - type: Gun
+    cameraRecoilScalar: 0.6
+    minAngle: 1.25
+    maxAngle: 28
+    fireRate: 9
+    angleIncrease: 5
+    angleDecay: 20
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_ST/Weapons/Guns/nanotrasen-targe.ogg
+      params:
+        variation: 0.1
+        volume: -2
+  - type: StellarGunCrosshair
+    rsi:
+      sprite: _ST/Interface/Crosshair/nanotrasen-cursor.rsi
+      state: targe
+  - type: StellarAmmoRegen
+    regenInterval: 5
+  - type: StellarGunReloadable
+    weaponType: StellarGunTypeEnergySubmachine
+    shootable: StellarHitscanNanotrasenTarge
+    muzzleFlash: StellarMuzzleFlashNanotrasen
+    reloadTime: 1.75
+    ammoMaxReserves: 62
+    ammoMagCapacity: 20
+    soundReload:
+      path: /Audio/_ST/Weapons/Guns/Reload/nanotrasen-reload-targe.ogg
+      params:
+        variation: 0.05

@@ -2,6 +2,70 @@
 #
 # SPDX-License-Identifier: LicenseRef-Wallening
 
+#### APOCRYPHAL
+- type: tile
+  id: StellarFloorApocryphal
+  editorHidden: false
+  name: tiles-cosmiccult-floor-malign
+  sprite: /Textures/_ST/Tileset/Floor/Apocryphal/tile-apocryphal.png
+  baseTurf: Plating
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepTile
+  itemDrop: FloorTileItemSteel
+  heatCapacity: 10000
+  flammability: 0
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+
+- type: entity
+  id: StellarFloorApocrphyalHole
+  name: apocryphal pit
+  parent: StellarLobbyDecay
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: /Textures/_ST/Tileset/Floor/apocryphal-hole.rsi
+  - type: Icon
+    sprite: /Textures/_ST/Tileset/Floor/apocryphal-hole.rsi
+    state: full
+
+- type: entity
+  id: StellarCarpetApocrphyal
+  parent: BaseStructure
+  name: apocryphal carpet
+  description: "LOREM IPSUM"
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    drawdepth: FloorTiles
+    sprite: _ST/Tileset/Floor/Carpet/apocryphal.rsi
+  - type: Icon
+    state: full
+    sprite: _ST/Tileset/Floor/Carpet/apocryphal.rsi
+  - type: IconSmooth
+    key: full
+    base: carpet_
+  - type: Tag
+    tags:
+    - Carpet
+    - ForceFixRotations
+  - type: Physics
+    canCollide: false
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 5
+        layer:
+        - DoorPassable
+
 #### ENGINE TILE.
 - type: tile
   id: StellarFloorFireproof
@@ -261,7 +325,6 @@
 
 - type: entity
   id: StellarLobbyDecay
-  suffix: DO NOT MAP
   name: tile decay
   placement:
     mode: SnapgridCenter
@@ -269,7 +332,6 @@
     - Wall
   categories: [ ForkFiltered ]
   components:
-  - type: FloorOccluder
   - type: Physics
     bodyType: Static
   - type: Transform
@@ -279,7 +341,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "0.45,0.45,-0.45,-0.45"
+          bounds: "-0.5,-0.175,0.5,0.7"
         density: 999
         mask:
         - MachineMask
