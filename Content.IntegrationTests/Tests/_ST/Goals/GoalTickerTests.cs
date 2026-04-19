@@ -4,7 +4,7 @@
 
 using Content.IntegrationTests.Fixtures;
 using Content.IntegrationTests.Fixtures.Attributes;
-using Content.IntegrationTests.Tests._Citadel;
+using Content.IntegrationTests.NUnit.Constraints;
 using Content.Server.GameTicking;
 using Content.Shared.Players;
 using Content.Stellar.Shared.Goals;
@@ -32,8 +32,8 @@ public sealed class GoalTickerTests : GameTest
 
     private const string GoalTickerTestsBlankGoal = "GoalTickerTestsBlankGoal";
 
-    [System(Side.Server)] private readonly StellarGoalsSystem _sGoals = default!;
-    [System(Side.Server)] private readonly GameTicker _sTicker = default!;
+    [SidedDependency(Side.Server)] private readonly StellarGoalsSystem _sGoals = default!;
+    [SidedDependency(Side.Server)] private readonly GameTicker _sTicker = default!;
 
     [Test]
     public async Task Cleanup()

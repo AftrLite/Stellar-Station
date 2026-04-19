@@ -5,7 +5,7 @@
 using System.Diagnostics;
 using Content.IntegrationTests.Fixtures;
 using Content.IntegrationTests.Fixtures.Attributes;
-using Content.IntegrationTests.Tests._Citadel;
+using Content.IntegrationTests.NUnit.Constraints;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Players;
@@ -37,8 +37,8 @@ public sealed class TargetGoalTests : GameTest
     private const string TargetGoalTestsSurviveGoal = "TargetGoalTestsSurviveGoal";
     private const string TargetGoalTestsMobStateMob = "TargetGoalTestsMobStateMob";
 
-    [System(Side.Server)] private readonly StellarGoalsSystem _goals = default!;
-    [System(Side.Server)] private readonly MobStateSystem _mobState = default!;
+    [SidedDependency(Side.Server)] private readonly StellarGoalsSystem _goals = default!;
+    [SidedDependency(Side.Server)] private readonly MobStateSystem _mobState = default!;
 
     [Test]
     public async Task SurviveGoal()

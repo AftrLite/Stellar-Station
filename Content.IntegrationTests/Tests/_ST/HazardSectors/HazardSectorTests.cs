@@ -1,7 +1,7 @@
 using System.Linq;
 using Content.IntegrationTests.Fixtures;
 using Content.IntegrationTests.Fixtures.Attributes;
-using Content.IntegrationTests.Tests._Citadel;
+using Content.IntegrationTests.NUnit.Constraints;
 using Content.Server.GameTicking;
 using Content.Shared.GameTicking;
 using Content.Shared.Shuttles.Components;
@@ -33,8 +33,8 @@ public sealed class HazardSectorTests : GameTest
         "HazardSectorSupernovaRule",
     ];
 
-    [System(Side.Server)] private readonly StellarRandomHazardSectorRuleSystem _randomHazardSectorRule = default!;
-    [System(Side.Server)] private readonly GameTicker _ticker = default!;
+    [SidedDependency(Side.Server)] private readonly StellarRandomHazardSectorRuleSystem _randomHazardSectorRule = default!;
+    [SidedDependency(Side.Server)] private readonly GameTicker _ticker = default!;
 
     [Test]
     public async Task TestSectorStart(
