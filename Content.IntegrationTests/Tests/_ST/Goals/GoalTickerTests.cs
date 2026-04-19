@@ -2,6 +2,8 @@
 //
 // SPDX-License-Identifier: MIT
 
+using Content.IntegrationTests.Fixtures;
+using Content.IntegrationTests.Fixtures.Attributes;
 using Content.IntegrationTests.Tests._Citadel;
 using Content.Server.GameTicking;
 using Content.Shared.Players;
@@ -38,8 +40,8 @@ public sealed class GoalTickerTests : GameTest
     {
         await Pair.CreateTestMap();
 
-        _ = await AssignPlayerBody(Player!);
-        var sMind = Player!.ContentData()!.Mind!.Value;
+        _ = await AssignPlayerBody(ServerSession!);
+        var sMind = ServerSession!.ContentData()!.Mind!.Value;
 
         await Server.WaitAssertion(() =>
         {

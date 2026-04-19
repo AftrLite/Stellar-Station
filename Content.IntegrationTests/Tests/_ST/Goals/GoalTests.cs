@@ -2,6 +2,8 @@
 //
 // SPDX-License-Identifier: MIT
 
+using Content.IntegrationTests.Fixtures;
+using Content.IntegrationTests.Fixtures.Attributes;
 using Content.IntegrationTests.Tests._Citadel;
 using Content.IntegrationTests.Tests._Citadel.Constraints;
 using Content.Shared.Players;
@@ -38,8 +40,8 @@ public sealed class GoalTests : GameTest
     {
         await Pair.CreateTestMap();
 
-        _ = await AssignPlayerBody(Player!);
-        var sMind = Player!.ContentData()!.Mind!.Value;
+        _ = await AssignPlayerBody(ServerSession!);
+        var sMind = ServerSession!.ContentData()!.Mind!.Value;
         var cMind = ToClientUid(sMind);
         Entity<StellarGoalComponent>? sGoal = null;
 

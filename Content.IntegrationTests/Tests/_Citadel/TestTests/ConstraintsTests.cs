@@ -1,4 +1,6 @@
 #nullable enable
+using Content.IntegrationTests.Fixtures;
+using Content.IntegrationTests.Fixtures.Attributes;
 using Content.IntegrationTests.Tests._Citadel.Constraints;
 using Content.IntegrationTests.Tests._Citadel.Operators;
 using Robust.Shared.GameObjects;

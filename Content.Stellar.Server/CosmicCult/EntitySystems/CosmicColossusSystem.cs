@@ -70,9 +70,7 @@ public sealed class CosmicColossusSystem : EntitySystem
                 _audio.PlayPvs(comp.ReawakenSfx, ent);
                 comp.Hibernating = false;
                 Spawn(comp.CultBigVfx, Transform(ent).Coordinates);
-                if (!TryComp<DamageableComponent>(ent, out var damageable))
-                    continue;
-                _damage.TryChangeDamage(ent, damageable.Damage / 2 * -1, true);
+                _damage.TryChangeDamage(ent, _damage.GetAllDamage(ent) / 2 * -1, true);
             }
             if (comp.Timed && _timing.CurTime >= comp.DeathTimer)
             {

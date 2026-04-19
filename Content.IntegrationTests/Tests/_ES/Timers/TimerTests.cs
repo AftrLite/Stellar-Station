@@ -5,6 +5,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Content.IntegrationTests.Fixtures;
+using Content.IntegrationTests.Fixtures.Attributes;
 using Content.IntegrationTests.Tests._Citadel;
 using Content.IntegrationTests.Tests._Citadel.Constraints;
 using Content.Stellar.Shared._ES.Core.Timer;
