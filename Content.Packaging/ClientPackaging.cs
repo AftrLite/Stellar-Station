@@ -25,7 +25,7 @@ public static class ClientPackaging
                 ArgumentList =
                 {
                     "build",
-                    Path.Combine("Content.Client", "Content.Client.csproj"),
+                    // Path.Combine("Content.Client", "Content.Client.csproj"), // Stellar - package our own target instead
                     Path.Combine("Content.Stellar.Client", "Content.Stellar.Client.csproj"),
                     "-c", configuration,
                     "--nologo",
