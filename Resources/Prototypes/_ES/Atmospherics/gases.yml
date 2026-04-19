@@ -6,10 +6,10 @@
   id: Smoke
   name: gases-smoke
   abbreviation: gas-smoke-abbreviation
-  specificHeat: 25
+  molarHeatCapacity: 25
   heatCapacityRatio: 1.4
   molarMass: 40
-  gasOverlay:
+  gasOverlaySprite:
     sprite: /Textures/_ST/Effects/atmospherics.rsi # Stellar
     state: water_vapor
   color: '#2e2e2e'
