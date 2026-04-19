@@ -46,7 +46,7 @@ public sealed class SmallRandomTests
 
 public sealed class SmallRandomGameTests : GameTest
 {
-    [SidedDependency(Side.Server)] private ISerializationManager _ser;
+    [SidedDependency(Side.Server)] private ISerializationManager _ser = default!;
 
     [Test]
     [RunOnSide(Side.Server)]
