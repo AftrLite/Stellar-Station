@@ -25,7 +25,7 @@ public sealed class StellarEntityFilteringTest
         {
             Assert.Multiple(() =>
             {
-                indexedFilter = protoManager.Index(ForkFiltered);
+                var indexedFilter = protoManager.Index(ForkFiltered);
 
                 foreach (var proto in protoManager.EnumeratePrototypes<EntityPrototype>())
                 {

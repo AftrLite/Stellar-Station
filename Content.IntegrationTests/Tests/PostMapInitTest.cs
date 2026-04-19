@@ -41,6 +41,7 @@ namespace Content.IntegrationTests.Tests
         private const bool SkipTestMaps = true;
         private const string TestMapsPath = "/Maps/Test/";
         private const string StellarTestMapsPath = "/Maps/_ST/Test/"; // Stellar - Unique Devmap
+        public static readonly ProtoId<EntityCategoryPrototype> ForkFiltered = "ForkFiltered"; // Stellar
 
         private static readonly string[] NoSpawnMaps =
         {
@@ -300,7 +301,7 @@ namespace Content.IntegrationTests.Tests
                 return;
 
             var yamlEntities = node["entities"];
-            if (!protoManager.TryIndex<EntityCategoryPrototype>("ForkFiltered", out var filterCategory))
+            if (!protoManager.TryIndex<EntityCategoryPrototype>(ForkFiltered, out var filterCategory))
                 return;
 
             Assert.Multiple(() =>
