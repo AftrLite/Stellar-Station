@@ -8,7 +8,6 @@ using Content.Shared.Effects;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
-using Robust.Shared.Random;
 
 namespace Content.Stellar.Client.Interaction;
 
@@ -27,11 +26,11 @@ public sealed class StellarInteractionRecoilSystem : EntitySystem
 
     private Animation GetAnimation(Angle facing, Vector2 offset)
     {
-        const float offsetDistance = 3f / EyeManager.PixelsPerMeter;
+        const float offsetDistance = 4f / EyeManager.PixelsPerMeter;
 
         var offsetFromCurrent = facing.Opposite().ToWorldVec() * offsetDistance;
-        var offsetLength = TimeSpan.FromMilliseconds(200f);
-        var returnLength = TimeSpan.FromMilliseconds(100f);
+        var offsetLength = TimeSpan.FromMilliseconds(175);
+        var returnLength = TimeSpan.FromMilliseconds(87.5);
 
         return new Animation()
         {
@@ -46,8 +45,8 @@ public sealed class StellarInteractionRecoilSystem : EntitySystem
                     KeyFrames =
                     {
                         new AnimationTrackProperty.KeyFrame(offset, 0f),
-                        new AnimationTrackProperty.KeyFrame(offset + offsetFromCurrent, (float) offsetLength.TotalSeconds, Easings.OutCirc),
-                        new AnimationTrackProperty.KeyFrame(offset, (float)(offsetLength + returnLength).TotalSeconds, Easings.OutCirc),
+                        new AnimationTrackProperty.KeyFrame(offset + offsetFromCurrent, (float)offsetLength.TotalSeconds, Easings.OutExpo),
+                        new AnimationTrackProperty.KeyFrame(offset, (float)returnLength.TotalSeconds, Easings.OutCirc),
                     },
                 },
             },

@@ -4,9 +4,7 @@
 
 using Content.Shared.Damage;
 using Content.Shared.Physics;
-using Content.Shared.Weapons.Ranged;
 using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Stellar.Shared.Weapons;

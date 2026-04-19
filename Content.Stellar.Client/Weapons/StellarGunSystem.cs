@@ -11,7 +11,6 @@ using Content.Shared.Input;
 using Content.Stellar.Shared.Weapons;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
-using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Animations;
 using Robust.Shared.Containers;

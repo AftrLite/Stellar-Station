@@ -2,7 +2,6 @@
 //
 // SPDX-License-Identifier: LicenseRef-Wallening
 
-using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Stellar.Shared.Weapons;
 using Robust.Shared.Physics.Components;
@@ -12,7 +11,6 @@ namespace Content.Stellar.Server.Weapons;
 
 public sealed partial class StellarGunSystem : SharedStellarGunSystem
 {
-    // [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedProjectileSystem _projectile = default!;
 
     public override void Initialize()
