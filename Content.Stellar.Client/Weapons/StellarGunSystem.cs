@@ -61,7 +61,7 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
             return false;
 
         var gunEnt = _hands.GetActiveItem(player);
-        if (gunEnt is null || !EntityManager.TryGetComponent<StellarGunReloadableComponent>(gunEnt.Value, out var gunComp))
+        if (gunEnt is null || !TryComp<StellarGunReloadableComponent>(gunEnt.Value, out var gunComp))
             return false;
 
         if (!DoAfter.IsRunning(gunComp.ReloadDoAfter) && gunComp.AmmoReserves > 0 && gunComp.AmmoCount < gunComp.AmmoMagCapacity)
@@ -518,9 +518,9 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
 
     private void SendReloadMessage(EntityUid gun, EntityUid player)
     {
-        var gunEnt = EntityManager.GetNetEntity(gun);
-        var playerEnt = EntityManager.GetNetEntity(player);
-        EntityManager.RaisePredictiveEvent(new StellarManualReloadEvent(gunEnt, playerEnt));
+        var gunEnt = GetNetEntity(gun);
+        var playerEnt = GetNetEntity(player);
+        RaisePredictiveEvent(new StellarManualReloadEvent(gunEnt, playerEnt));
     }
 }
 

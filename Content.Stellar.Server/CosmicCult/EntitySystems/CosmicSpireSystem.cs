@@ -10,6 +10,7 @@ using Content.Server.Audio;
 using Content.Server.Popups;
 using Content.Stellar.Shared.CosmicCult.Components;
 using Content.Shared.Atmos;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.Piping.Unary.Components;
 using Robust.Server.GameObjects;
 
