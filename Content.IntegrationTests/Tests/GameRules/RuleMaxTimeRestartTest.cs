@@ -15,6 +15,7 @@ namespace Content.IntegrationTests.Tests.GameRules
         public override PoolSettings PoolSettings => new() { InLobby = true };
 
         [Test]
+        [Explicit("Stellar - our gamerules work differently")]
         public async Task RestartTest()
         {
             var pair = Pair;

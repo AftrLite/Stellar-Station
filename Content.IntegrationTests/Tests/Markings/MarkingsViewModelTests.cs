@@ -117,20 +117,20 @@ public sealed class MarkingsViewModelTests
     [MarkingTest]
     public void MarkingColors()
     {
-        Model.TrySetMarkingColor(Head, HumanoidVisualLayers.HeadTop, MothAntennasDefault, 0, Color.AliceBlue);
-        Assert.That(Model.SelectedMarkings(Head, HumanoidVisualLayers.HeadTop)![0].MarkingColors[0], Is.EqualTo(Color.AliceBlue));
+        Model.TrySetMarkingColor(Head, HumanoidVisualLayers.HeadTop, MothAntennasDefault, 0, Color.Beige); // Stellar - this is more permissible
+        Assert.That(Model.SelectedMarkings(Head, HumanoidVisualLayers.HeadTop)![0].MarkingColors[0], Is.EqualTo(Color.Beige)); // Stellar - this is more permissible
     }
 
     [MarkingTest]
     public void MarkingColorRestoration()
     {
         Model.EnforceLimits = false;
-        Model.TrySetMarkingColor(Head, HumanoidVisualLayers.HeadTop, MothAntennasDefault, 0, Color.AliceBlue);
-        Assert.That(Model.SelectedMarkings(Head, HumanoidVisualLayers.HeadTop)![0].MarkingColors[0], Is.EqualTo(Color.AliceBlue));
+        Model.TrySetMarkingColor(Head, HumanoidVisualLayers.HeadTop, MothAntennasDefault, 0, Color.Beige); // Stellar - this is more permissible
+        Assert.That(Model.SelectedMarkings(Head, HumanoidVisualLayers.HeadTop)![0].MarkingColors[0], Is.EqualTo(Color.Beige)); // Stellar - this is more permissible
 
         Assert.That(Model.TryDeselectMarking(Head, HumanoidVisualLayers.HeadTop, MothAntennasDefault), Is.True);
         Assert.That(Model.TrySelectMarking(Head, HumanoidVisualLayers.HeadTop, MothAntennasDefault), Is.True);
 
-        Assert.That(Model.SelectedMarkings(Head, HumanoidVisualLayers.HeadTop)![0].MarkingColors[0], Is.EqualTo(Color.AliceBlue));
+        Assert.That(Model.SelectedMarkings(Head, HumanoidVisualLayers.HeadTop)![0].MarkingColors[0], Is.EqualTo(Color.Beige)); // Stellar - this is more permissible
     }
 }
