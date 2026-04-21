@@ -28,7 +28,6 @@ namespace Content.Stellar.Server.CosmicCult.EntitySystems;
 
 public sealed class CosmicColossusSystem : EntitySystem
 {
-    [Dependency] private readonly ActionsSystem _actions = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly MobThresholdSystem _threshold = default!;
@@ -91,8 +90,6 @@ public sealed class CosmicColossusSystem : EntitySystem
         {
             _throw.TryThrow(ent, Transform(grid).Coordinates, baseThrowSpeed: 30, null, 0, 0, false, false, false, false, false);
         }
-        if (ent.Comp.Timed)
-            _actions.AddAction(ent, ref ent.Comp.EffigyPlaceActionEntity, ent.Comp.EffigyPlaceAction, ent);
     }
 
     private void OnMobStateChanged(Entity<CosmicColossusComponent> ent, ref MobStateChangedEvent args)

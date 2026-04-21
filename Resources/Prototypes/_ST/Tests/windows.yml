@@ -51,6 +51,8 @@
           collection: WindowShatter
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: CosmicCorruptible
+    convertTo: StellarWindowMalign
 
 - type: entity
   id: StellarBaseWindowFrame
@@ -375,3 +377,27 @@
   - type: Construction
     graph: StellarWindowShuttle
     node: StellarWindowShuttle
+
+############## WINDOW MALIGN
+- type: entity
+  id: StellarWindowMalign
+  parent:
+  - StellarWindowBase
+  name: malign pane
+  description: An odd-looking window. Something about it unnerves you.
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Windows/window_malign.rsi
+  - type: Icon
+    sprite: _ST/Tileset/Windows/window_malign.rsi
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WindowShatter
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
