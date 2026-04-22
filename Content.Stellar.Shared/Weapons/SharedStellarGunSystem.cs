@@ -207,7 +207,7 @@ public abstract partial class SharedStellarGunSystem : EntitySystem
         if (ent.Comp.MuzzleFlash != null && Timing.IsFirstTimePredicted)
         {
             var ev = new StellarMuzzleFlashEvent(GetNetEntity(ent), ent.Comp.MuzzleFlash, mapDirection.ToAngle());
-            StellarMuzzleFlash(args.GunUid, ev, ent);
+            StellarMuzzleFlash(args.GunUid, ev, args.UserUid);
         }
         Dirty(args.GunUid, args.Gun);
     }
@@ -343,13 +343,13 @@ public enum StellarHitscanLayers : byte
 [Serializable, NetSerializable]
 public sealed class StellarMuzzleFlashEvent : EntityEventArgs
 {
-    public NetEntity Uid;
+    public NetEntity Gun;
     public string Prototype;
     public Angle Angle;
 
-    public StellarMuzzleFlashEvent(NetEntity uid, string prototype, Angle angle)
+    public StellarMuzzleFlashEvent(NetEntity gun, string prototype, Angle angle)
     {
-        Uid = uid;
+        Gun = gun;
         Prototype = prototype;
         Angle = angle;
     }

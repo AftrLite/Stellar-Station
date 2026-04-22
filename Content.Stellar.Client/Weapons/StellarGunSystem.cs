@@ -41,6 +41,7 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
     [Dependency] private readonly SharedPointLightSystem _light = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
+    private static readonly EntProtoId BulletProto = "StellarBulletBase";
     private static readonly EntProtoId HitscanProto = "StellarHitscanBase";
 
     public override void Initialize()
@@ -76,7 +77,8 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
 
     private void OnMuzzleFlash(StellarMuzzleFlashEvent args)
     {
-        // RenderMuzzleFlash(GetEntity(args.Uid), args.Angle, args.Prototype); // Why is this here? Idk.
+        var userUid = GetEntity(args.Gun);
+        RenderMuzzleFlash(userUid, args.Angle, args.Prototype); // TODO: fix muzzle flash prediction
     }
 
     protected override void StellarMuzzleFlash(EntityUid gunUid, StellarMuzzleFlashEvent args, EntityUid? user = null)
@@ -88,7 +90,6 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
     private void OnHitscan(StellarHitscanEvent args)
     {
         var gunUid = GetEntity(args.Gun);
-
         CalculateHitscan(gunUid, args);
     }
 
@@ -223,26 +224,14 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
         else
             return;
 
-        var effectEnt = Spawn(HitscanProto, coordinates);
+        var effectEnt = Spawn(BulletProto, coordinates);
         var effectSprite = Comp<SpriteComponent>(effectEnt);
+        _light.SetColor(effectEnt, lightColor);
         _transform.SetWorldRotationNoLerp(effectEnt, shotAngle);
         _sprite.LayerSetSprite((effectEnt, effectSprite), StellarHitscanLayers.Unshaded, rsi);
         _sprite.LayerSetRsiState((effectEnt, effectSprite), StellarHitscanLayers.Unshaded, rsi.RsiState);
         _sprite.SetScale((effectEnt, effectSprite), new Vector2(1f, 1f));
         _sprite.SetDrawDepth((effectEnt, effectSprite), (int)DrawDepth.OverMobs);
-
-        if (!TryComp(effectEnt, out PointLightComponent? light))
-        {
-            light = Factory.GetComponent<PointLightComponent>();
-            light.NetSyncEnabled = false;
-            AddComp(effectEnt, light);
-        }
-
-        _light.SetCastShadows(effectEnt, false, light);
-        _light.SetEnabled(effectEnt, true, light);
-        _light.SetRadius(effectEnt, 1.75f, light);
-        _light.SetColor(effectEnt, lightColor, light);
-        _light.SetEnergy(effectEnt, 1f, light);
 
         var muzzleAnim = new Animation()
         {
