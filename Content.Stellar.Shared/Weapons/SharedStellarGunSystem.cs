@@ -195,7 +195,6 @@ public abstract partial class SharedStellarGunSystem : EntitySystem
         {
             var lerp = Math.Clamp(args.Gun.ShotCounter / ent.Comp.RampingBulletsNeeded, 0, 1);
             args.Gun.FireRateModified = MathHelper.Lerp(args.Gun.FireRate, ent.Comp.RampingFireRate.Value, lerp);
-            Log.Info($"firerate lerp is at {lerp}");
         }
 
         if (ent.Comp.ShootingMethod == StellarGunMethod.Hitscan && Timing.IsFirstTimePredicted)
@@ -282,7 +281,7 @@ public abstract partial class SharedStellarGunSystem : EntitySystem
 
         var originPos = TransformSystem.ToMapCoordinates(Transform(args.Data.Gun).Coordinates).Position;
         var targetPos = TransformSystem.ToMapCoordinates(Transform(args.Data.HitEntity.Value).Coordinates).Position;
-        var distance = (targetPos - originPos).LengthSquared();
+        var distance = Math.Clamp((targetPos - originPos).Length(), ent.Comp.MinDistance, ent.Comp.MaxDistance);
         var dmg = (distance > ent.Comp.MinDistance) ? ent.Comp.Damage * Math.Pow(ent.Comp.FalloffModifier, distance / ent.Comp.MaxDistance) : ent.Comp.Damage;
 
         if(!_damage.TryChangeDamage(args.Data.HitEntity.Value, dmg, out var damageDealt, origin: args.Data.Shooter))
