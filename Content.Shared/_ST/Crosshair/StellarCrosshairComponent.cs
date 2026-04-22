@@ -8,8 +8,10 @@ using Robust.Shared.Utility;
 namespace Content.Shared._ST.Crosshair;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-public sealed partial class StellarGunCrosshairComponent : Component
+public sealed partial class StellarCrosshairComponent : Component
 {
     [DataField(required: true), AutoNetworkedField]
     public SpriteSpecifier.Rsi? Rsi;
+
+    [DataField, AutoNetworkedField] public bool MustWield = true;
 }
