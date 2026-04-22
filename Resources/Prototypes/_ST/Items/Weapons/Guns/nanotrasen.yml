@@ -240,9 +240,9 @@
   - type: Gun
     cameraRecoilScalar: 0.6
     minAngle: 1.25
-    maxAngle: 28
+    maxAngle: 20
     fireRate: 9
-    angleIncrease: 5
+    angleIncrease: 3
     angleDecay: 20
     selectedMode: FullAuto
     availableModes:

@@ -15,10 +15,10 @@
     sprite: _ST/Items/Weapons/Guns/interdyne-needle.rsi
   - type: Gun
     cameraRecoilScalar: 0.675
-    minAngle: 2.25
-    maxAngle: 20
+    minAngle: 3
+    maxAngle: 15
     fireRate: 6.5
-    angleIncrease: 2
+    angleIncrease: 3
     angleDecay: 10
     selectedMode: SemiAuto
     availableModes:
@@ -94,11 +94,11 @@
     sprite: _ST/Items/Weapons/Guns/interdyne-symptom.rsi
   - type: Gun
     cameraRecoilScalar: 0.5
-    minAngle: 1.25
-    maxAngle: 18
+    minAngle: 1.5
+    maxAngle: 24
     fireRate: 6.25
-    angleIncrease: 1
-    angleDecay: 20
+    angleIncrease: 1.5
+    angleDecay: 16
     selectedMode: FullAuto
     availableModes:
     - FullAuto
@@ -135,11 +135,11 @@
     sprite: _ST/Items/Weapons/Guns/interdyne-diagnosis.rsi
   - type: Gun
     cameraRecoilScalar: 0.6
-    minAngle: 1.25
-    maxAngle: 18
+    minAngle: 4
+    maxAngle: 16
     fireRate: 9.1
-    angleIncrease: 1
-    angleDecay: 20
+    angleIncrease: 4
+    angleDecay: 32
     selectedMode: FullAuto
     availableModes:
     - FullAuto
@@ -161,8 +161,8 @@
     ammoMaxReserves: 66
     ammoMagCapacity: 33
     multiShotSpread: 5
-    multiShotWiggleMin: -10
-    multiShotWiggleMax: 10
+    multiShotWiggleMin: -5
+    multiShotWiggleMax: 5
     multiShotAmount: 2
     soundReload:
       path: /Audio/_ST/Weapons/Guns/Reload/interdyne-reload-diagnosis.ogg

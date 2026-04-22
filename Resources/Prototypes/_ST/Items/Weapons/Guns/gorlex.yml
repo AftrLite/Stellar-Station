@@ -16,10 +16,10 @@
   - type: Gun
     cameraRecoilScalar: 2.375
     minAngle: 0
-    maxAngle: 8
+    maxAngle: 24
     fireRate: 1.41
-    angleIncrease: 2
-    angleDecay: 8
+    angleIncrease: 8
+    angleDecay: 60
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -51,10 +51,10 @@
   - type: Gun
     cameraRecoilScalar: 0.75
     minAngle: 1.5
-    maxAngle: 18
+    maxAngle: 15
     fireRate: 5
-    angleIncrease: 1.33
-    angleDecay: 16
+    angleIncrease: 2.25
+    angleDecay: 15
     selectedMode: FullAuto
     availableModes:
     - FullAuto
@@ -95,8 +95,8 @@
     minAngle: 1.5
     maxAngle: 18
     burstFireRate: 14
-    angleIncrease: 2
-    angleDecay: 10
+    angleIncrease: 1
+    angleDecay: 6
     selectedMode: Burst
     availableModes:
     - Burst
@@ -128,11 +128,11 @@
     sprite: _ST/Items/Weapons/Guns/echion-gorgon.rsi
   - type: Gun
     cameraRecoilScalar: 2.35
-    minAngle: 0
-    maxAngle: 6
+    minAngle: 0.5
+    maxAngle: 8
     fireRate: 2
-    angleIncrease: 1.33
-    angleDecay: 16
+    angleIncrease: 2
+    angleDecay: 4
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -212,10 +212,10 @@
     sprite: _ST/Items/Weapons/Guns/echion-minotaur.rsi
   - type: Gun
     cameraRecoilScalar: 0.6
-    minAngle: 1.25
-    maxAngle: 18
-    fireRate: 7.3
-    angleIncrease: 1
+    minAngle: 1.5
+    maxAngle: 22
+    fireRate: 6
+    angleIncrease: 1.5
     angleDecay: 20
     selectedMode: FullAuto
     availableModes:
@@ -236,3 +236,5 @@
     muzzleFlash: StellarMuzzleFlashEchionLight
     ammoMaxReserves: 100
     ammoMagCapacity: 100
+    rampingFireRate: 7.3
+    rampingBulletsNeeded: 20

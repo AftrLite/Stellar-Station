@@ -17,11 +17,11 @@
     burstCooldown: 0.825
     shotsPerBurst: 2
     cameraRecoilScalar: 1
-    minAngle: 1.5
-    maxAngle: 18
+    minAngle: 2
+    maxAngle: 16
     burstFireRate: 20
     angleIncrease: 2
-    angleDecay: 10
+    angleDecay: 12
     selectedMode: Burst
     availableModes:
     - Burst
