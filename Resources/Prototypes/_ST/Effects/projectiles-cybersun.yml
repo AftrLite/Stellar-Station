@@ -53,8 +53,7 @@
   - type: HitscanBasicRaycast
   - type: HitscanReflect
   - type: StellarGunHitscan
-    lightColor: "#83db2b"
-    hitColor: "#83db2b"
+    lightColor: "#fcbf41"
     unshaded: true
     ray:
       sprite: _ST/Projectiles/Guns/tachyon-light.rsi

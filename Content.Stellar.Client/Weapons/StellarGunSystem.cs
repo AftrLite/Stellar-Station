@@ -38,6 +38,7 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedMapSystem _maps = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly SharedPointLightSystem _light = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     private static readonly EntProtoId HitscanProto = "StellarHitscanBase";
@@ -125,7 +126,7 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
             RenderMiddle(shooter, shotAngle, middle, distance, speed, mod, unshaded);
             RenderStart(shooter, shotAngle, start, speed, mod, unshaded);
             RenderEnd(shooter, shotAngle, end, distance, speed, mod, unshaded);
-            RenderBullet(shooter, shotAngle, bullet, distance, speed, mod);
+            RenderBullet(shooter, shotAngle, bullet, lightColor, distance, speed, mod);
         }
     }
 #region Rendering
@@ -205,7 +206,7 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
         _animPlayer.Play(effectEnt, muzzleAnim, "muzzle-effect");
     }
 
-    private void RenderBullet(EntityUid shooter, Angle shotAngle, SpriteSpecifier.Rsi sprite, float distance, float speed, float mod)
+    private void RenderBullet(EntityUid shooter, Angle shotAngle, SpriteSpecifier.Rsi sprite, Color lightColor, float distance, float speed, float mod)
     {
         if (sprite is not { } rsi || shooter == EntityUid.Invalid)
             return;
@@ -230,6 +231,19 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
         _sprite.SetScale((effectEnt, effectSprite), new Vector2(1f, 1f));
         _sprite.SetDrawDepth((effectEnt, effectSprite), (int)DrawDepth.OverMobs);
 
+        if (!TryComp(effectEnt, out PointLightComponent? light))
+        {
+            light = Factory.GetComponent<PointLightComponent>();
+            light.NetSyncEnabled = false;
+            AddComp(effectEnt, light);
+        }
+
+        _light.SetCastShadows(effectEnt, false, light);
+        _light.SetEnabled(effectEnt, true, light);
+        _light.SetRadius(effectEnt, 1.75f, light);
+        _light.SetColor(effectEnt, lightColor, light);
+        _light.SetEnergy(effectEnt, 1f, light);
+
         var muzzleAnim = new Animation()
         {
             Length = TimeSpan.FromSeconds(time),
@@ -241,6 +255,30 @@ public sealed partial class StellarGunSystem : SharedStellarGunSystem
                     KeyFrames =
                     {
                         new AnimationTrackSpriteFlick.KeyFrame(rsi.RsiState, (time - mod) / 500),
+                    },
+                },
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(PointLightComponent),
+                    Property = nameof(PointLightComponent.Offset),
+                    InterpolationMode = AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(new Vector2(0, 0f), 0),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(0.5f, 0f), time / 1000),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(distance - 0.25f, 0f), time / 750),
+                    },
+                },
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(PointLightComponent),
+                    Property = nameof(PointLightComponent.Energy),
+                    InterpolationMode = AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(1f, 0f),
+                        new AnimationTrackProperty.KeyFrame(5f, time / 500),
+                        new AnimationTrackProperty.KeyFrame(0f, time / 300),
                     },
                 },
                 new AnimationTrackComponentProperty()
