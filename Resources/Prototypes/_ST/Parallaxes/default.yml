@@ -1,0 +1,64 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: parallax
+  id: StellarMenuDefault
+  layers:
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/Branding/BG.png"
+      slowness: 0
+
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/Branding/WISPS_Darkblue_3.png"
+      slowness: 0.99
+      scrolling: "0, 0.04"
+
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/Branding/WISPS_Darkblue_2.png"
+      slowness: 0.8
+      scrolling: "0, 0.08"
+
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/Branding/STAR.png"
+      slowness: 0
+      worldHomePosition: "7, 5"
+      scale: "1, 1"
+      tiled: false
+
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/Branding/PLANET.png"
+      slowness: 0
+      worldHomePosition: "-1, -3"
+      scale: "1, 1"
+      tiled: false
+
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/Branding/WISPS.png"
+      slowness: 0.6
+      worldHomePosition: "10, 10"
+      scrolling: "0, 0.16"
+
+
+
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/Branding/LOGO.png"
+      slowness: 0
+      controlHomePosition: "0, 0"
+      worldHomePosition: "0, 3"
+      scale: "1, 1"
+      tiled: false
+
+  layersLQ:
+    - texture:
+        !type:GeneratedParallaxTextureSource
+        id: ""
+        configPath: "/Prototypes/Parallaxes/parallax_config.toml"
+  layersLQUseHQ: false
