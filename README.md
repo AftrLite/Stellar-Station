@@ -1,68 +1,64 @@
-<div class="header" align="center">  
-<img alt="Space Station 14" width="880" height="300" src="https://raw.githubusercontent.com/space-wizards/asset-dump/de329a7898bb716b9d5ba9a0cd07f38e61f1ed05/github-logo.svg">  
+<p align="center">
+  <img alt="Space Station 14" width="600" src="Resources/Textures/_ST/Parallaxes/Branding/LOGO-Bigger.png" />
+</p>
+
+<div class="header" align="center">
+
+[//]: # ([![Discord]&#40;https://img.shields.io/discord/1272545509562777621?label=Discord&logo=discord&logoColor=white&#41;]&#40;https://discord.gg/ssJTANEa&#41;)
+[![Steam](https://img.shields.io/badge/Steam-SS14%20-blue)](https://store.steampowered.com/app/1255460/Space_Station_14/)
+[![Client](https://img.shields.io/badge/Client-Download-blue)](https://spacestation14.io/about/nightlies/)
+![GitHub Issues](https://img.shields.io/github/issues/Stellar-Station/Stellar-Station)
+![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Stellar-Station/Stellar-Station)
+
+[//]: # ([![GitHub]&#40;https://img.shields.io/github/stars/ss14Starlight/space-station-14?style=social&#41;]&#40;[https://github.com/ss14Starlight/space-station-14]&#41;)
+
+---
 </div>
 
-Stellar Station 14 is a fork of Space Station 14.
+## Licenses
 
-This is the primary repo for Space Station 14. To prevent people forking RobustToolbox, a "content" pack is loaded by the client and server. This content pack contains everything needed to play the game on one specific server.
+> [!WARNING]
+> The Stellar Station codebase contains files that are **All Rights Reserved**.
+>
+> Unless files or the folders containing them are explicitly labeled otherwise, you should treat files as **All Rights Reserved**.
+>> Inquiry regarding the license status of specific files in this repository may be made in the Stellar Station Discord.
+> Please be aware that files may be re-licensed to more permissive licenses in the future by their license holders.
+> and that the usage of All Rights Reserved in this codebase is not expected to be perpetual.
 
-If you want to host or create content for SS14, this is the repo you need. It contains both RobustToolbox and the content pack for development of new content packs.
+<details>
+<summary><a href="#"><img src="https://img.shields.io/badge/licence-All RIGHTS RESERVED-red?style=for-the-badge" alt="All Rights Reserved"></a></summary>
 
-## Links
+>Many files are considered [All Rights Reserved](https://en.wikipedia.org/wiki/All_rights_reserved).
+</details>
 
-<div class="header" align="center">  
+<details>
+<summary><a href="#"><img src="https://img.shields.io/badge/licence-MIT-green?style=for-the-badge" alt="MIT license"></a></summary>
 
-[Website](https://spacestation14.com/) | [Discord](https://discord.ss14.io/) | [Forum](https://forum.spacestation14.com/) | [Mastodon](https://mastodon.gamedev.place/@spacestation14) | [Patreon](https://www.patreon.com/spacestation14) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Standalone Download](https://spacestation14.com/about/nightlies/)  
+>Many files are licensed under [MIT license](https://opensource.org/license/MIT).
+</details>
 
-</div>
+<details>
+<summary><a href="#"><img src="https://img.shields.io/badge/licence-CC_3.0_BY--SA-lightblue?style=for-the-badge" alt="Creative Commons 3.0 BY-SA"></a></summary>
 
-## Documentation/Wiki
+>Many files are licensed under [Creative Commons 3.0 BY-SA](https://creativecommons.org/licenses/by-sa/3.0/).
+</details>
 
-Our [docs site](https://docs.spacestation14.com/) has documentation on SS14's content, engine, game design, and more.  
-Additionally, see these resources for license and attribution information:  
-- [Robust Generic Attribution](https://docs.spacestation14.com/en/specifications/robust-generic-attribution.html)  
-- [Robust Station Image](https://docs.spacestation14.com/en/specifications/robust-station-image.html)
+<details>
+<summary><a href="#"><img src="https://img.shields.io/badge/licence-CC_3.0_BY--NC--SA-lightblue?style=for-the-badge" alt="Creative Commons 3.0 BY-SA"></a></summary>
 
-We also have lots of resources for new contributors to the project.
+>Some files are licensed under [Creative Commons 3.0 BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/3.0/).
+</details>
 
-## Contributing
+## Contribution
 
-We are happy to accept contributions from anybody. Get in Discord if you want to help. We've got a [list of issues](https://github.com/space-wizards/space-station-14-content/issues) that need to be done and anybody can pick them up. Don't be afraid to ask for help either!  
-Just make sure your changes and pull requests are in accordance with the [contribution guidelines](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html).
+Stellar Station is currently under closed development. Contributions may be made by approved contributors.
 
-We are not currently accepting translations of the game on our main repository. If you would like to translate the game into another language, consider creating a fork or contributing to a fork.
-
+---
 ## AI-generated contributions disclaimer
-This project does not accept low-effort or wholesale AI-generated contributions. Examples include, but are not limited to:
+This project does not accept AI-generated contributions. Examples include, but are not limited to:
 
 - Any code (including yaml) generated by tools like GitHub Copilot, ChatGPT, or similar.
-- AI-created artwork, sound files, or other assets.
 - Auto-generated documentation, issue reports or pull request descriptions.
+- AI-created artwork, sound files, or other assets.
 
 Exceptions to this are simple tools like Rider's single-line completion feature.
-
-## Building
-
-1. Clone this repo:
-```shell
-git clone https://github.com/space-wizards/space-station-14.git
-```
-2. Go to the project folder and run `RUN_THIS.py` to initialize the submodules and load the engine:
-```shell
-cd space-station-14
-python RUN_THIS.py
-```
-3. Compile the solution:  
-
-Build the server using `dotnet build`.
-
-[More detailed instructions on building the project.](https://docs.spacestation14.com/en/general-development/setup.html)
-
-## License
-
-All code for the content repository is licensed under the [MIT license](https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT).  
-
-Most assets are licensed under [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) unless stated otherwise. Assets have their license and copyright specified in the metadata file. For example, see the [metadata for a crowbar](https://github.com/space-wizards/space-station-14/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).  
-
-> [!NOTE]
-> Some assets are licensed under the non-commercial [CC-BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) or similar non-commercial licenses and will need to be removed if you wish to use this project commercially.
