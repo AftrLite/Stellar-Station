@@ -214,6 +214,7 @@
   parent:
   - StellarStructureBaseWall
   id: StellarWallIndestructible
+  name: Indestructible wall
   suffix: Indestructible, MAPPING ONLY
   categories: [ ForkFiltered ]
   components:
@@ -224,6 +225,22 @@
   - type: StellarWallSmooth
     key: WallSolid
     fullState: wall
+
+- type: entity
+  parent:
+  - StellarWallIndestructible
+  id: StellarWallIndestructibleInvisible
+  name: Invisible wall
+  suffix: Invisible, Indestructible, MAPPING ONLY
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _ST/Tileset/Walls/indestructible.rsi
+    visible: false
+  - type: Icon
+    sprite: _ST/Tileset/Walls/indestructible.rsi
+  - type: Occluder
+    enabled: false
 
 - type: entity
   parent:

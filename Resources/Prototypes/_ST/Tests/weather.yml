@@ -2,22 +2,33 @@
 #
 # SPDX-License-Identifier: LicenseRef-Wallening
 
+#- type: entity
+#  parent: WeatherBase
+#  id: StellarWeatherDetailFog
+#  components:
+#  - type: WeatherStatusEffect
+#    scrolling: -0.04, 0.05
+#    color: "#7987a7"
+#    override: true
+#    sprite:
+#      sprite: /Textures/_ST/Effects/weather.rsi
+#      state: fog
+#    sound:
+#      collection: Rain
+#      params:
+#        loop: true
+#        volume: -6
+
 - type: entity
   parent: WeatherBase
   id: StellarWeatherDetailFog
   components:
   - type: WeatherStatusEffect
-    scrolling: -0.04, 0.05
-    color: "#7987a7"
+    scrolling: 0, 13
     override: true
     sprite:
-      sprite: /Textures/_ST/Effects/weather.rsi
-      state: fog
-    sound:
-      collection: Rain
-      params:
-        loop: true
-        volume: -6
+      sprite: /Textures/_ST/Effects/recycle-chute.rsi
+      state: vfx
 
 - type: entity
   parent: WeatherBase

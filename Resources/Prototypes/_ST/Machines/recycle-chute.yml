@@ -1,0 +1,60 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: StellarStructureBase
+  id: StellarRecyclerChute
+  name: recycler chute
+  description: A quick, one-way trip to the recyling depot.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _ST/Tileset/Machines/recycler-chute.rsi
+    offset: 0, 0.25
+    layers:
+    - state: base
+    - state: charging
+      visible: false
+      map: ["charging"]
+    - state: indicator-green
+      shader: unshaded
+      map: ["indicator"]
+    drawdepth: Mobs
+    noRot: true
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.275,0.25,0.25,0.5"
+        density: 55
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: RangedDamageSound
+    soundGroups:
+      Brute:
+        collection:
+          MetalBulletImpact
+    soundTypes:
+      Heat:
+        collection:
+          MetalLaserImpact
+  - type: Damageable
+    damageContainer: StructuralInorganic
+  - type: RequireProjectileTarget
+  - type: ContainerContainer
+    containers:
+      chute: !type:Container
+  - type: Climbable
+    vaultable: false
+  - type: ThrowInsertContainer
+    containerId: chute
+    probability: 0.67
+  - type: Appearance

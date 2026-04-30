@@ -8,6 +8,11 @@
     snap:
     - Disposal
   components:
+  - type: ApcPowerReceiver
+    powerLoad: 1000
+  - type: ExtensionCableReceiver
+  - type: LightningTarget
+    priority: 1
   - type: Climbable
     vaultable: false
   - type: Sprite

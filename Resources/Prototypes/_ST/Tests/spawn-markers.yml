@@ -31,3 +31,16 @@
       state: equipped-OUTERCLOTHING
     - sprite: _ST/Items/Hardsuit/apocryphal-robes-empowered.rsi
       state: equipped-HELMET
+
+- type: entity
+  name: chute travel spawn point
+  id: StellarMarkerRecyclerChuteDimension
+  parent: MarkerBase
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: Markers/cross.rsi
+    layers:
+    - state: pink
+    - sprite: _ST/Mobs/Playable/human.rsi
+      state: full
