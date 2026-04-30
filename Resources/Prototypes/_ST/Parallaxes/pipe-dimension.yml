@@ -1,0 +1,49 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: parallax
+  id: StellarRecyclerChuteDimension
+  layers:
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/Recycler-Dimension/BG_Darkblue.png"
+      slowness: 1
+
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/Recycler-Dimension/WISPS_Darkblue_3.png"
+      slowness: 0
+      scrolling: "0, 4"
+
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/Recycler-Dimension/WISPS_Darkblue_2.png"
+      slowness: 0
+      scrolling: "0, 3"
+
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/Recycler-Dimension/THIN_WISPS_Blue_1.png"
+      slowness: 0.5
+      scrolling: "0, 5"
+
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/Recycler-Dimension/RECYCLER-Tube.png"
+      slowness: 0
+      scrolling: "0, 6"
+      shader: shaded
+
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ST/Parallaxes/Recycler-Dimension/RECYCLER-Tube-Shading.png"
+      slowness: 0
+
+
+  layersLQ:
+    - texture:
+        !type:GeneratedParallaxTextureSource
+        id: ""
+        configPath: "/Prototypes/Parallaxes/parallax_config.toml"
+  layersLQUseHQ: false

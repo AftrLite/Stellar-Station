@@ -1,0 +1,77 @@
+{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "By AftrLite",
+    "size": {
+        "x": 32,
+        "y": 48
+    },
+    "states": [
+        {
+            "name": "base"
+        },
+        {
+            "name": "indicator-red"
+        },
+        {
+            "name": "indicator-green",
+            "delays":
+            [
+                [
+                    1.25,
+                    0.125,
+                    0.125,
+                    1.25,
+                    0.125,
+                    0.125
+                ]
+            ]
+        },
+        {
+            "name": "indicator-yellow",
+            "delays":
+            [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "charging",
+            "delays":
+            [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        }
+    ]
+}

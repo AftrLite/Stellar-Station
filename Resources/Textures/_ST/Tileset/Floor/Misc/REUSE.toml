@@ -4,3 +4,8 @@ version = 1
 path = ["*.png"]
 SPDX-FileCopyrightText = "AftrLite"
 SPDX-License-Identifier = "LicenseRef-Wallening"
+
+[[annotations]]
+path = ["stone.png"]
+SPDX-FileCopyrightText = "TheShuEd, edited by AftrLite"
+SPDX-License-Identifier = "CC-BY-SA-3.0"

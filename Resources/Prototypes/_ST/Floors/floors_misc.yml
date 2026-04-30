@@ -15,6 +15,7 @@
   itemDrop: FloorTileItemSteel
   heatCapacity: 10000
   flammability: 0
+  indestructible: true
   variants: 4
   placementVariants:
   - 1.0
@@ -79,6 +80,7 @@
   itemDrop: FloorTileItemSteel
   heatCapacity: 10000
   flammability: 0
+  indestructible: true
 
 #### CHECKERBOARD
 - type: tile
@@ -312,8 +314,48 @@
   footstepSounds:
     collection: FootstepGrass
 
-## LOBBY
+- type: tile
+  id: StellarFloorGrassBorderless
+  parent: FloorAsteroidSandDugBorderless
+  name: grass (borderless)
+  sprite: /Textures/_ST/Tileset/Floor/Grass/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  footstepSounds:
+    collection: FootstepGrass
 
+- type: tile
+  id: StellarFloorStone
+  parent: FloorAsteroidSandDugBorderless
+  name: stone
+  sprite: /Textures/_ST/Tileset/Floor/Misc/stone.png
+  variants: 14
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  footstepSounds:
+    collection: FootstepAsteroid
+
+
+## LOBBY
 - type: tile
   id: StellarFloorNothing
   editorHidden: false
