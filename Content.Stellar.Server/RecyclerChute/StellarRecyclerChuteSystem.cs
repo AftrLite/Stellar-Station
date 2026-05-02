@@ -19,7 +19,7 @@ public sealed class StellarRecyclerChuteSystem : SharedStellarRecyclerChuteSyste
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly MapLoaderSystem _mapLoader = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly SharedWeatherSystem _weather = default!;
+    // [Dependency] private readonly SharedWeatherSystem _weather = default!;
 
     private readonly ResPath _mapPath = new("Maps/_ST/Other/chute.yml"); // This map relies on Stellar-exclusive features that exist outside the Cosmic Cult license. You must make a new map when porting Cosmic Cult.
     private static readonly EntProtoId<WeatherStatusEffectComponent> ChuteWeather = "StellarWeatherMotionBlur";
@@ -94,7 +94,7 @@ public sealed class StellarRecyclerChuteSystem : SharedStellarRecyclerChuteSyste
             return;
 
         _map.SetPaused(map.Value.Comp.MapId, false);
-        _weather.TrySetWeather(map.Value.Comp.MapId, ChuteWeather, out _);
+        // _weather.TrySetWeather(map.Value.Comp.MapId, ChuteWeather, out _);
         _lookup.GetEntitiesOnMap(map.Value.Comp.MapId, TravelSet);
     }
 
