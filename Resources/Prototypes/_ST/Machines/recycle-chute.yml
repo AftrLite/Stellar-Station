@@ -9,6 +9,8 @@
   description: A quick, one-way trip to the recyling depot.
   categories: [ ForkFiltered ]
   components:
+  - type: StellarRecyclerChute
+  - type: DoAfter
   - type: Clickable
   - type: InteractionOutline
   - type: Sprite
@@ -16,6 +18,7 @@
     offset: 0, 0.25
     layers:
     - state: base
+      map: ["base"]
     - state: charging
       visible: false
       map: ["charging"]
@@ -24,6 +27,23 @@
       map: ["indicator"]
     drawdepth: Mobs
     noRot: true
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ChuteVisuals.Base:
+        base:
+          Idle: {state: base}
+          Charging: {state: base}
+          Flushing: {state: base-closed}
+          Cooldown: {state: base-closed}
+        charging:
+          Idle: {visible: false}
+          Charging: {visible: true}
+          Cooldown: {visible: false}
+        indicator:
+          Idle: {state: indicator-green}
+          Charging: {state: indicator-yellow}
+          Cooldown: {state: indicator-red}
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -31,12 +51,12 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.275,0.25,0.25,0.5"
+          bounds: "-0.35,0.25,0.325,0.5"
         density: 55
         mask:
         - MachineMask
         layer:
-        - MachineLayer
+        - WallLayer
   - type: RangedDamageSound
     soundGroups:
       Brute:
@@ -51,10 +71,18 @@
   - type: RequireProjectileTarget
   - type: ContainerContainer
     containers:
-      chute: !type:Container
+      entity_storage: !type:Container # If changing this container's name, also change the container ID inside the StellarRecyclerChute component.
+        showEnts: False
+        occludes: True
   - type: Climbable
     vaultable: false
   - type: ThrowInsertContainer
-    containerId: chute
+    containerId: entity_storage
     probability: 0.67
-  - type: Appearance
+  - type: Tag
+    tags:
+    - Structure
+  - type: UserInterface
+    interfaces:
+      enum.StellarChuteRadialKey.Key:
+        type: StellarRecyclerChuteBoundUserInterface

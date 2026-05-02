@@ -6,3 +6,8 @@
   id: StellarShockwave
   kind: source
   path: "/Textures/_ST/Shaders/shock_wave.swsl"
+
+- type: shader
+  id: StellarSpriteCutAnimated
+  kind: source
+  path: "/Textures/_ST/Shaders/halfcut_animated.swsl"

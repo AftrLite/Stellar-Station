@@ -38,6 +38,7 @@
   parent: MarkerBase
   categories: [ ForkFiltered ]
   components:
+  - type: StellarChuteTravelMarker
   - type: Sprite
     sprite: Markers/cross.rsi
     layers:

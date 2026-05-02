@@ -9,3 +9,9 @@
   - type: StellarOverchargeable
     requiredOvercharge: StellarOverchargeDefensive
   - type: StellarDefensiveOvercharge
+
+- type: entity
+  id: StellarBaseStationRecyclerChutes
+  abstract: true
+  components:
+  - type: StellarRecyclerChuteStation

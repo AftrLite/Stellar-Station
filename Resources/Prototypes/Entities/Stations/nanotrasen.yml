@@ -28,6 +28,7 @@
     - BaseStationNanotrasen
     - BaseStationDeliveries
     - StellarBaseStationDefensiveOvercharge # Stellar - overcharges
+    - StellarBaseStationRecyclerChutes # Stellar - recycler chutes
   categories: [ HideSpawnMenu ]
   components:
     - type: Transform
