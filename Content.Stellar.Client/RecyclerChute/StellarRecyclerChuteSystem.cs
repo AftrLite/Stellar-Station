@@ -3,10 +3,13 @@
 // SPDX-License-Identifier: LicenseRef-Wallening
 
 using System.Numerics;
+using Content.Shared.DoAfter;
+using Content.Stellar.Client.Transition;
 using Content.Stellar.Shared.RecyclerChute;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
+using Robust.Client.UserInterface;
 using Robust.Shared.Animations;
 
 namespace Content.Stellar.Client.RecyclerChute;
@@ -14,7 +17,6 @@ namespace Content.Stellar.Client.RecyclerChute;
 public sealed class StellarRecyclerChuteSystem : SharedStellarRecyclerChuteSystem
 {
     [Dependency] private readonly AnimationPlayerSystem _animPlayer = default!;
-    [Dependency] private readonly IPlayerManager _playerMan = default!;
 
     public override void Initialize()
     {
@@ -26,7 +28,7 @@ public sealed class StellarRecyclerChuteSystem : SharedStellarRecyclerChuteSyste
     private void OnAnim(StellarChuteAnimEvent args)
     {
         var ent = GetEntity(args.Target);
-        var player = _playerMan.LocalEntity;
+        var player = Player.LocalEntity;
 
         if (player == null)
             return;

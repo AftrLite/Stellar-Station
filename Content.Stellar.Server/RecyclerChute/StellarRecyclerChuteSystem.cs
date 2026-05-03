@@ -43,11 +43,12 @@ public sealed class StellarRecyclerChuteSystem : SharedStellarRecyclerChuteSyste
             if (comp.AutoActivateTimer is { } timer && Timing.CurTime >= timer && comp.State == ChuteState.Idle)
             {
                 comp.AutoActivateTimer = null;
-                if (Container.GetContainer(uid, comp.ContainerId).ContainedEntities.Count == 0)
+                var container = Container.GetContainer(uid, comp.ContainerId);
+                if (container.ContainedEntities.Count == 0)
                     continue;
 
                 comp.State = ChuteState.Charging;
-                var doArgs = new DoAfterArgs(EntityManager, uid, comp.ChargeTime, new ChargeChuteDoAfterEvent(), uid, uid, uid)
+                var doArgs = new DoAfterArgs(EntityManager, uid, comp.ChargeTime, new StellarChargeChuteDoAfterEvent(), uid, uid, uid)
                 {
                     BreakOnDamage = true,
                     NeedHand = false,
