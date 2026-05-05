@@ -6,7 +6,7 @@
   parent: StellarStructureBase
   id: StellarRecyclerTelepad
   name: chute output pad
-  description: An pad for marking where the station's recycler chutes dump their contents.
+  description: A pad for marking where the station's recycler chutes dump their contents.
   categories: [ ForkFiltered ]
   components:
   - type: StellarChuteDestination
