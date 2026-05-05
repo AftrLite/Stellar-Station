@@ -6,6 +6,7 @@
 - type: marking
   id: StellarDionaVinesDefault
   bodyPart: Overlay
+  forcedColoring: true
   groupWhitelist: [StellarDiona]
   sprites:
   - sprite: _ST/Mobs/Playable/diona.rsi

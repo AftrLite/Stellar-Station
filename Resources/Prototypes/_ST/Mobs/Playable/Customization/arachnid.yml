@@ -5,18 +5,64 @@
 # Chelicerae
 - type: marking
   id: StellarSpiderMouthDefault
-  bodyPart: HeadSide
+  bodyPart: SnoutCover
+  forcedColoring: true
   groupWhitelist: [StellarArachnid]
   sprites:
-  - sprite: _ST/Mobs/Playable/arachnid.rsi # Stellar
+  - sprite: _ST/Mobs/Playable/arachnid.rsi
     state: mouth
 
-# Appendages
+- type: marking
+  id: StellarSpiderMouthLarge
+  bodyPart: SnoutCover
+  forcedColoring: true
+  groupWhitelist: [StellarArachnid]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Arachnid/mouth.rsi
+    state: mouth-long
+
+# Limbs
 - type: marking
   id: StellarSpiderArmsDefault
   bodyPart: Tail
+  forcedColoring: true
   groupWhitelist: [StellarArachnid]
   sprites:
-  - sprite: _ST/Mobs/Playable/arachnid.rsi # Stellar
+  - sprite: _ST/Mobs/Playable/arachnid.rsi
     state: limbs
 
+- type: marking
+  id: StellarSpiderArmsSpiny
+  bodyPart: Tail
+  forcedColoring: true
+  groupWhitelist: [StellarArachnid]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Arachnid/limbs.rsi
+    state: spiny
+
+- type: marking
+  id: StellarSpiderArmsThick
+  bodyPart: Tail
+  forcedColoring: true
+  groupWhitelist: [StellarArachnid]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Arachnid/limbs.rsi
+    state: thick
+
+- type: marking
+  id: StellarSpiderArmsDockedUpper
+  bodyPart: Tail
+  forcedColoring: true
+  groupWhitelist: [StellarArachnid]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Arachnid/limbs.rsi
+    state: docked-upper
+
+- type: marking
+  id: StellarSpiderArmsDockedLower
+  bodyPart: Tail
+  forcedColoring: true
+  groupWhitelist: [StellarArachnid]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Arachnid/limbs.rsi
+    state: docked-lower

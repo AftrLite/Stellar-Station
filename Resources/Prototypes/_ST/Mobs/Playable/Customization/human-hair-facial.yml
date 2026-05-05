@@ -1,0 +1,43 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: marking
+  id: StellarMarkingHumanFacialHairDefault
+  bodyPart: FacialHair
+  groupWhitelist: [StellarHuman]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-facial.rsi
+    state: hair-0
+
+- type: marking
+  id: StellarMarkingHumanFacialHairBeard
+  bodyPart: FacialHair
+  groupWhitelist: [StellarHuman]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-facial.rsi
+    state: hair-1
+
+- type: marking
+  id: StellarMarkingHumanFacialHairGoateeLong
+  bodyPart: FacialHair
+  groupWhitelist: [StellarHuman]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-facial.rsi
+    state: hair-2
+
+- type: marking
+  id: StellarMarkingHumanFacialHairGoateeShort
+  bodyPart: FacialHair
+  groupWhitelist: [StellarHuman]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-facial.rsi
+    state: hair-3
+
+- type: marking
+  id: StellarMarkingHumanFacialHairHandlebar
+  bodyPart: FacialHair
+  groupWhitelist: [StellarHuman]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-facial.rsi
+    state: hair-4

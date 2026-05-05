@@ -1,0 +1,107 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: marking
+  id: StellarMarkingHumanHairDefault
+  bodyPart: Hair
+  groupWhitelist: [ StellarHuman ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-head.rsi
+    state: hair-0
+
+- type: marking
+  id: StellarMarkingHumanHairAfro
+  bodyPart: Hair
+  groupWhitelist: [ StellarHuman ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-head.rsi
+    state: hair-1
+
+- type: marking
+  id: StellarMarkingHumanHairBedhead
+  bodyPart: Hair
+  groupWhitelist: [ StellarHuman ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-head.rsi
+    state: hair-2
+
+- type: marking
+  id: StellarMarkingHumanHairBraid
+  bodyPart: Hair
+  groupWhitelist: [ StellarHuman ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-head.rsi
+    state: hair-3
+
+- type: marking
+  id: StellarMarkingHumanHairLongScraggly
+  bodyPart: Hair
+  groupWhitelist: [ StellarHuman ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-head.rsi
+    state: hair-4
+
+- type: marking
+  id: StellarMarkingHumanHairLongStyled
+  bodyPart: Hair
+  groupWhitelist: [ StellarHuman ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-head.rsi
+    state: hair-5
+
+- type: marking
+  id: StellarMarkingHumanHairMediumScraggly
+  bodyPart: Hair
+  groupWhitelist: [ StellarHuman ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-head.rsi
+    state: hair-6
+
+- type: marking
+  id: StellarMarkingHumanHairMediumStyled
+  bodyPart: Hair
+  groupWhitelist: [ StellarHuman ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-head.rsi
+    state: hair-7
+
+- type: marking
+  id: StellarMarkingHumanHairMohawk
+  bodyPart: Hair
+  groupWhitelist: [ StellarHuman ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-head.rsi
+    state: hair-8
+
+- type: marking
+  id: StellarMarkingHumanHairPonytail
+  bodyPart: Hair
+  groupWhitelist: [ StellarHuman ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-head.rsi
+    state: hair-9
+
+- type: marking
+  id: StellarMarkingHumanHairShort1
+  bodyPart: Hair
+  groupWhitelist: [ StellarHuman ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-head.rsi
+    state: hair-10
+
+- type: marking
+  id: StellarMarkingHumanHairShort2
+  bodyPart: Hair
+  groupWhitelist: [ StellarHuman ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-head.rsi
+    state: hair-11
+
+- type: marking
+  id: StellarMarkingHumanHairShort3
+  bodyPart: Hair
+  groupWhitelist: [ StellarHuman ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Human/hair-head.rsi
+    state: hair-12
