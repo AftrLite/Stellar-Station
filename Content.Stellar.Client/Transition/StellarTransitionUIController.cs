@@ -1,4 +1,7 @@
-using System.Numerics;
+// SPDX-FileCopyrightText: 2026 AftrLite
+//
+// SPDX-License-Identifier: LicenseRef-Wallening
+
 using Content.Client.Resources;
 using JetBrains.Annotations;
 using Robust.Client.ResourceManagement;

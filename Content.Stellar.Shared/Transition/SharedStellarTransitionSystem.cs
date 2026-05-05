@@ -2,7 +2,6 @@
 //
 // SPDX-License-Identifier: LicenseRef-Wallening
 
-using Content.Shared.Humanoid;
 using Content.Stellar.Shared._ES.Core.Timer;
 using Content.Stellar.Shared._ES.Core.Timer.Components;
 using Robust.Shared.Player;
