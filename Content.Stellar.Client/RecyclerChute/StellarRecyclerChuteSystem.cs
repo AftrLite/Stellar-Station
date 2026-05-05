@@ -3,13 +3,9 @@
 // SPDX-License-Identifier: LicenseRef-Wallening
 
 using System.Numerics;
-using Content.Shared.DoAfter;
-using Content.Stellar.Client.Transition;
 using Content.Stellar.Shared.RecyclerChute;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
-using Robust.Client.Player;
-using Robust.Client.UserInterface;
 using Robust.Shared.Animations;
 
 namespace Content.Stellar.Client.RecyclerChute;
@@ -17,6 +13,7 @@ namespace Content.Stellar.Client.RecyclerChute;
 public sealed class StellarRecyclerChuteSystem : SharedStellarRecyclerChuteSystem
 {
     [Dependency] private readonly AnimationPlayerSystem _animPlayer = default!;
+    [Dependency] private readonly SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {
@@ -28,25 +25,20 @@ public sealed class StellarRecyclerChuteSystem : SharedStellarRecyclerChuteSyste
     private void OnAnim(StellarChuteAnimEvent args)
     {
         var ent = GetEntity(args.Target);
-        var player = Player.LocalEntity;
 
-        if (player == null)
-            return;
-
-        if (player != ent)
+        if (args.Remove == true)
         {
-            var yourMap = TransformSystem.GetMap(player.Value);
-            var targetMap = TransformSystem.GetMap(ent);
-            if (yourMap != targetMap)
-                return;
+            _sprite.SetVisible(ent, true);
+            return;
+        }
 
-            var othersAnim = OffsetOthersAnim((float) args.TravelTime.TotalSeconds);
-            _animPlayer.Play(ent, othersAnim, "travel-effect");
+        if (Player.LocalEntity != ent)
+        {
+            _sprite.SetVisible(ent, false);
             return;
         }
 
         var travelAnim = TravelAnim((float) args.TravelTime.TotalSeconds);
-        _animPlayer.Stop(ent, "travel-effect");
         _animPlayer.Play(ent, travelAnim, "travel-effect");
     }
 

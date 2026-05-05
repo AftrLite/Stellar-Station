@@ -4,6 +4,7 @@
 
 using System.Numerics;
 using Content.Shared.DoAfter;
+using Content.Shared.Stunnable;
 using Content.Shared.Weather;
 using Content.Stellar.Shared.RecyclerChute;
 using Robust.Shared.EntitySerialization;
@@ -19,9 +20,10 @@ public sealed class StellarRecyclerChuteSystem : SharedStellarRecyclerChuteSyste
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly MapLoaderSystem _mapLoader = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
-    // [Dependency] private readonly SharedWeatherSystem _weather = default!;
+    [Dependency] private readonly SharedStunSystem _stun = default!;
+    [Dependency] private readonly SharedWeatherSystem _weather = default!;
 
-    private readonly ResPath _mapPath = new("Maps/_ST/Other/chute.yml"); // This map relies on Stellar-exclusive features that exist outside the Cosmic Cult license. You must make a new map when porting Cosmic Cult.
+    private readonly ResPath _mapPath = new("Maps/_ST/Other/chute.yml");
     private static readonly EntProtoId<WeatherStatusEffectComponent> ChuteWeather = "StellarWeatherMotionBlur";
 
     public override void Initialize()
@@ -65,7 +67,10 @@ public sealed class StellarRecyclerChuteSystem : SharedStellarRecyclerChuteSyste
             {
                 comp.State = ChuteState.Idle;
                 comp.CooldownTimer = null;
-                Appearance.SetData(uid, ChuteVisuals.Base, comp.State);
+                PopUp.PopupEntity(Loc.GetString("stellar-chute-popup-cooled"), uid);
+                Appearance.SetData(uid, ChuteVisuals.Base, ChuteState.Opening);
+                Audio.PlayPvs(comp.SoundOpen, uid);
+                Timers.SpawnMethodTimer(TimeSpan.FromSeconds(0.5), () => Appearance.SetData(uid, ChuteVisuals.Base, ChuteState.Idle));
                 Dirty(uid, comp);
             }
         }
@@ -75,11 +80,21 @@ public sealed class StellarRecyclerChuteSystem : SharedStellarRecyclerChuteSyste
         {
             if (comp.ArrivalTime is { } timer && Timing.CurTime >= timer)
             {
-                var destination = TransformSystem.GetMapCoordinates(Random.Pick(DestinationSet));
+                var dest = Random.Pick(DestinationSet);
+                var destCoords = TransformSystem.GetMapCoordinates(dest);
 
-                TransformSystem.SetMapCoordinates(uid, destination);
+                if (Timing.CurTime >= dest.Comp1.CooldownTimer)
+                {
+                    Audio.PlayPvs(dest.Comp1.SoundArrive, uid);
+                    Spawn(dest.Comp1.ArrivalVfx, destCoords);
+                    dest.Comp1.CooldownTimer = Timing.CurTime + dest.Comp1.Cooldown;
+                }
+
+                RaiseNetworkEvent(new StellarChuteAnimEvent(GetNetEntity(uid), TimeSpan.Zero, true));
+                TransformSystem.SetMapCoordinates(uid, destCoords);
                 Physics.ApplyLinearImpulse(uid, new Vector2(Random.NextFloat(-5, +5), Random.NextFloat(-5, +5)) * 30);
                 Physics.ApplyAngularImpulse(uid, Random.NextFloat(-12, +12));
+                _stun.TryKnockdown(uid, TimeSpan.FromSeconds(1));
                 RemComp(uid, comp);
             }
         }
@@ -95,8 +110,8 @@ public sealed class StellarRecyclerChuteSystem : SharedStellarRecyclerChuteSyste
             return;
 
         _map.SetPaused(map.Value.Comp.MapId, false);
-        // _weather.TrySetWeather(map.Value.Comp.MapId, ChuteWeather, out _);
         _lookup.GetEntitiesOnMap(map.Value.Comp.MapId, TravelSet);
+        _weather.TrySetWeather(map.Value.Comp.MapId, ChuteWeather, out _);
     }
 
     private void OnDestinationStartup(Entity<StellarChuteDestinationComponent> ent, ref ComponentStartup args)

@@ -12,6 +12,6 @@ SPDX-FileCopyrightText = "Darklyac"
 SPDX-License-Identifier = "CC-BY-SA-3.0"
 
 [[annotations]]
-path = ["atmos_alarm.ogg"]
+path = ["atmos_alarm.ogg", "chute-open.ogg", "chute-charge.ogg", "chute-flush.ogg"]
 SPDX-FileCopyrightText = "AftrLite"
 SPDX-License-Identifier = "LicenseRef-Wallening"

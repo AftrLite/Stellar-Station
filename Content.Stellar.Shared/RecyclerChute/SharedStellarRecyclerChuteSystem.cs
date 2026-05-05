@@ -8,6 +8,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Climbing.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.DragDrop;
+using Content.Shared.Examine;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
@@ -32,6 +33,7 @@ namespace Content.Stellar.Shared.RecyclerChute;
 
 public abstract class SharedStellarRecyclerChuteSystem : EntitySystem
 {
+    [Dependency] protected readonly ESEntityTimerSystem Timers = default!;
     [Dependency] protected readonly IGameTiming Timing = default!;
     [Dependency] protected readonly ISharedPlayerManager Player = default!;
     [Dependency] protected readonly IRobustRandom Random = default!;
@@ -40,14 +42,13 @@ public abstract class SharedStellarRecyclerChuteSystem : EntitySystem
     [Dependency] protected readonly SharedContainerSystem Container = default!;
     [Dependency] protected readonly SharedDoAfterSystem DoAfter = default!;
     [Dependency] protected readonly SharedPhysicsSystem Physics = default!;
+    [Dependency] protected readonly SharedPopupSystem PopUp = default!;
     [Dependency] protected readonly SharedTransformSystem TransformSystem = default!;
 
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
     [Dependency] private readonly ClimbSystem _climb = default!;
-    [Dependency] private readonly ESEntityTimerSystem _timers = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedStellarTransitionSystem _transition = default!;
     [Dependency] private readonly StatusEffectsSystem _status = default!;
 
@@ -64,18 +65,19 @@ public abstract class SharedStellarRecyclerChuteSystem : EntitySystem
         SubscribeLocalEvent<StellarRecyclerChuteComponent, ActivateInWorldEvent>(OnActivateInWorld);
 
         SubscribeLocalEvent<StellarRecyclerChuteComponent, StellarChuteRadialMessage>(OnRadialMenu);
+        SubscribeLocalEvent<StellarRecyclerChuteComponent, ExaminedEvent>(OnExamine);
 
         SubscribeLocalEvent<StellarRecyclerChuteComponent, AfterInteractUsingEvent>(OnAfterInteractUsing);
         SubscribeLocalEvent<StellarRecyclerChuteComponent, ContainerIsInsertingAttemptEvent>(OnInsertAttempt);
         SubscribeLocalEvent<StellarRecyclerChuteComponent, EntInsertedIntoContainerMessage>(OnEntityInserted);
 
-        SubscribeLocalEvent<StellarRecyclerChuteComponent, DragDropTargetEvent>(OnDragDropOn);
-        SubscribeLocalEvent<StellarRecyclerChuteComponent, CanDropTargetEvent>(OnCanDragDropOn);
-        SubscribeLocalEvent<StellarRecyclerChuteComponent, ContainerRelayMovementEntityEvent>(OnMovement);
-
         SubscribeLocalEvent<StellarRecyclerChuteComponent, StellarInsertChuteDoAfterEvent>(OnInsertDoAfter);
         SubscribeLocalEvent<StellarRecyclerChuteComponent, StellarChargeChuteDoAfterEvent>(OnChargeDoAfter);
         SubscribeLocalEvent<StellarRecyclerChuteComponent, StellarChuteChargedEvent>(OnChargeComplete);
+
+        SubscribeLocalEvent<StellarRecyclerChuteComponent, DragDropTargetEvent>(OnDragDropOn);
+        SubscribeLocalEvent<StellarRecyclerChuteComponent, CanDropTargetEvent>(OnCanDragDropOn);
+        SubscribeLocalEvent<StellarRecyclerChuteComponent, ContainerRelayMovementEntityEvent>(OnMovement);
 
         SubscribeLocalEvent<StellarChuteTravellingComponent, AttemptMobCollideEvent>(OnMobCollide);
     }
@@ -85,7 +87,10 @@ public abstract class SharedStellarRecyclerChuteSystem : EntitySystem
         if (!args.Complex || args.Handled || ent.Comp.State == ChuteState.Cooldown)
             return;
 
-        _ui.OpenUi(ent.Owner, StellarChuteRadialKey.Key, args.User, true);
+        if (Container.ContainsEntity(ent, args.User))
+            return;
+
+        _ui.OpenUi(ent.Owner, StellarChuteRadialKey.Key, args.User);
     }
 
     private void OnInteractHand(Entity<StellarRecyclerChuteComponent> ent, ref InteractHandEvent args)
@@ -93,7 +98,14 @@ public abstract class SharedStellarRecyclerChuteSystem : EntitySystem
         if (args.Handled || ent.Comp.State == ChuteState.Cooldown)
             return;
 
-        _ui.OpenUi(ent.Owner, StellarChuteRadialKey.Key, args.User, true);
+        if (Container.ContainsEntity(ent, args.User))
+        {
+            if (Timing.IsFirstTimePredicted)
+                PopUp.PopupClient(Loc.GetString("stellar-chute-popup-inside"), args.User, args.User);
+            return;
+        }
+
+        _ui.OpenUi(ent.Owner, StellarChuteRadialKey.Key, args.User);
     }
 
     private void OnRadialMenu(Entity<StellarRecyclerChuteComponent> ent, ref StellarChuteRadialMessage args)
@@ -128,6 +140,22 @@ public abstract class SharedStellarRecyclerChuteSystem : EntitySystem
                     Physics.ApplyLinearImpulse(entity, new Vector2(Random.NextFloat(-5, +5), Random.NextFloat(-5, +5)) * 30);
                     Physics.ApplyAngularImpulse(entity, Random.NextFloat(-12, +12));
                 }
+                break;
+        }
+    }
+
+    private void OnExamine(Entity<StellarRecyclerChuteComponent> ent, ref ExaminedEvent args)
+    {
+        switch (ent.Comp.State)
+        {
+            case ChuteState.Idle:
+                args.PushMarkup(Loc.GetString("stellar-chute-state-idle"));
+                break;
+            case ChuteState.Charging:
+                args.PushMarkup(Loc.GetString("stellar-chute-state-charging"));
+                break;
+            case ChuteState.Cooldown:
+                args.PushMarkup(Loc.GetString("stellar-chute-state-cooldown"));
                 break;
         }
     }
@@ -215,15 +243,20 @@ public abstract class SharedStellarRecyclerChuteSystem : EntitySystem
 
         ent.Comp.CooldownTimer = Timing.CurTime + ent.Comp.CooldownTime;
         Appearance.SetData(ent, ChuteVisuals.Base, ent.Comp.State);
-        _timers.SpawnTimer(ent, TimeSpan.FromSeconds(0.5), new StellarChuteChargedEvent());
         DirtyField(ent.Owner, ent.Comp, nameof(StellarRecyclerChuteComponent.State));
 
-        foreach (var entity in Container.GetContainer(ent, ent.Comp.ContainerId).ContainedEntities)
+        if (ent.Comp.State == ChuteState.Cooldown)
         {
-            _transition.DoTransition(entity);
-            _transition.DoTransition(entity, TimeSpan.FromSeconds(0.5));
-            _transition.DoTransition(entity, travelTime - TimeSpan.FromSeconds(0.5));
-            _transition.DoTransition(entity, travelTime + TimeSpan.FromSeconds(0.5));
+            Audio.PlayPredicted(ent.Comp.SoundFlush, ent, ent);
+            Timers.SpawnTimer(ent, TimeSpan.FromSeconds(0.5), new StellarChuteChargedEvent());
+
+            foreach (var entity in Container.GetContainer(ent, ent.Comp.ContainerId).ContainedEntities)
+            {
+                _transition.DoTransition(entity);
+                _transition.DoTransition(entity, TimeSpan.FromSeconds(0.5));
+                _transition.DoTransition(entity, travelTime - TimeSpan.FromSeconds(0.5));
+                _transition.DoTransition(entity, travelTime + TimeSpan.FromSeconds(0.5));
+            }
         }
         args.Handled = true;
     }
@@ -244,7 +277,7 @@ public abstract class SharedStellarRecyclerChuteSystem : EntitySystem
             EnsureComp<StellarChuteTravellingComponent>(entity, out var travelComp);
             Container.Remove(entity, Container.GetContainer(ent, ent.Comp.ContainerId));
             TransformSystem.SetMapCoordinates(entity, travelMarker);
-            _status.TryAddStatusEffectDuration(entity, StunId, travelTime + TimeSpan.FromSeconds(1f));
+            _status.TryAddStatusEffectDuration(entity, StunId, travelTime + TimeSpan.FromSeconds(1f)); // We use StatusEffects for a Stun here rather than the _stunsystem in order to force a stun but not force the player into dropping the item in their hands.
             travelComp.ArrivalTime = Timing.CurTime + travelTime;
 
             RaiseNetworkEvent(new StellarChuteAnimEvent(GetNetEntity(entity), travelTime));
@@ -265,7 +298,7 @@ public abstract class SharedStellarRecyclerChuteSystem : EntitySystem
         var delay = insertingSelf ? ent.Comp.SelfEnterDoAfter : ent.Comp.OtherEnterDoAfter;
 
         if (!insertingSelf)
-            _popup.PopupEntity(Loc.GetString("disposal-unit-being-inserted", ("user", Identity.Entity(victim, EntityManager))), victim, victim, PopupType.Large);
+            PopUp.PopupEntity(Loc.GetString("disposal-unit-being-inserted", ("user", Identity.Entity(victim, EntityManager))), victim, victim, PopupType.Large);
 
         var doArgs = new DoAfterArgs(EntityManager, user, delay, new StellarInsertChuteDoAfterEvent(), ent, target: victim, used: ent)
         {
@@ -278,7 +311,7 @@ public abstract class SharedStellarRecyclerChuteSystem : EntitySystem
         return true;
     }
 
-    protected void Remove(Entity<StellarRecyclerChuteComponent> ent, EntityUid toRemove)
+    private void Remove(Entity<StellarRecyclerChuteComponent> ent, EntityUid toRemove)
     {
         if (!Container.Remove(toRemove, Container.GetContainer(ent, ent.Comp.ContainerId)))
             return;
@@ -312,11 +345,13 @@ public sealed class StellarChuteRadialMessage(NetEntity target, ChuteMenuMethod 
 }
 
 [Serializable, NetSerializable]
-public sealed partial class StellarChuteAnimEvent(NetEntity target, TimeSpan travelTime) : EntityEventArgs
+public sealed partial class StellarChuteAnimEvent(NetEntity target, TimeSpan travelTime, bool? remove = false) : EntityEventArgs
 {
     public NetEntity Target = target;
 
     public TimeSpan TravelTime = travelTime;
+
+    public bool? Remove = remove;
 }
 
 [NetSerializable, Serializable]

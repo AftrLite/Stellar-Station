@@ -15,35 +15,45 @@
   - type: InteractionOutline
   - type: Sprite
     sprite: _ST/Tileset/Machines/recycler-chute.rsi
-    offset: 0, 0.25
+    drawdepth: Mobs
+    noRot: true
+    offset: 0, 0.1875
     layers:
     - state: base
       map: ["base"]
-    - state: charging
-      visible: false
-      map: ["charging"]
     - state: indicator-green
       shader: unshaded
       map: ["indicator"]
-    drawdepth: Mobs
-    noRot: true
+    - state: charging
+      visible: false
+      map: ["vfx"]
+    - state: vfx
+      sprite: _ST/Effects/generic-smoke-pulse.rsi
+      visible: false
+      map: ["overlay"]
   - type: Appearance
   - type: GenericVisualizer
     visuals:
       enum.ChuteVisuals.Base:
         base:
-          Idle: {state: base}
-          Charging: {state: base}
-          Flushing: {state: base-closed}
-          Cooldown: {state: base-closed}
-        charging:
-          Idle: {visible: false}
-          Charging: {visible: true}
-          Cooldown: {visible: false}
+          Opening: { state: base-opening }
+          Idle: { state: base }
+          Charging: { state: base }
+          Cooldown: { state: base-closing }
         indicator:
-          Idle: {state: indicator-green}
-          Charging: {state: indicator-yellow}
-          Cooldown: {state: indicator-red}
+          Idle: { state: indicator-green }
+          Charging: { state: indicator-yellow }
+          Cooldown: { state: indicator-red }
+        vfx:
+          Opening: { visible: false }
+          Idle: { visible: false }
+          Charging: {state: charging, visible: true }
+          Cooldown: {state: cooldown, visible: true }
+        overlay:
+          Opening: { visible: false, state: vfx }
+          Idle: { visible: false, state: vfx }
+          Charging: { visible: false, state: vfx }
+          Cooldown: { visible: true, state: vfx }
   - type: Physics
     bodyType: Static
   - type: Fixtures

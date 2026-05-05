@@ -60,7 +60,7 @@ public sealed partial class StellarRecyclerChuteComponent : Component
     /// <summary>
     /// Time it takes to charge up.
     /// </summary>
-    [DataField] public TimeSpan ChargeTime = TimeSpan.FromSeconds(3.5);
+    [DataField] public TimeSpan ChargeTime = TimeSpan.FromSeconds(3);
 
     /// <summary>
     /// The entity hosting the audio playback for the charge sound. Used for cancelling the charge DoAfter.
@@ -73,9 +73,13 @@ public sealed partial class StellarRecyclerChuteComponent : Component
     [DataField] public SoundSpecifier? SoundInsert = new SoundPathSpecifier("/Audio/Effects/trashbag1.ogg");
 
     /// <summary>
-    /// Sound played when an object is throw into the container.
+    /// Sounds for when the chute charges up, flushes, and reopens.
     /// </summary>
-    [DataField] public SoundSpecifier? SoundCharge = new SoundPathSpecifier("/Audio/_ST/CosmicCult/Abilities/ability-imposition.ogg");
+    [DataField] public SoundSpecifier? SoundCharge = new SoundPathSpecifier("/Audio/_ST/Machines/chute-charge.ogg");
+
+    [DataField] public SoundSpecifier? SoundFlush = new SoundPathSpecifier("/Audio/_ST/Machines/chute-flush.ogg");
+
+    [DataField] public SoundSpecifier? SoundOpen = new SoundPathSpecifier("/Audio/_ST/Machines/chute-open.ogg");
 }
 
 [Serializable, NetSerializable]
@@ -87,6 +91,7 @@ public enum ChuteVisuals : byte
 [Serializable, NetSerializable]
 public enum ChuteState : byte
 {
+    Opening,
     Idle,
     Charging,
     Cooldown,
@@ -103,5 +108,5 @@ public enum ChuteMenuMethod : byte
 [Serializable, NetSerializable]
 public enum StellarChuteRadialKey
 {
-    Key
+    Key,
 }

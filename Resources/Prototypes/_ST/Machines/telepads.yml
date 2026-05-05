@@ -5,8 +5,8 @@
 - type: entity
   parent: StellarStructureBase
   id: StellarRecyclerTelepad
-#  name: recycler chute
-#  description: A quick, one-way trip to the recyling depot.
+  name: chute output pad
+  description: An pad for marking where the station's recycler chutes dump their contents.
   categories: [ ForkFiltered ]
   components:
   - type: StellarChuteDestination
