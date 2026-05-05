@@ -1,0 +1,31 @@
+﻿{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "By Frogoo",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "hair-0",
+            "directions": 4
+        },
+        {
+            "name": "hair-1",
+            "directions": 4
+        },
+        {
+            "name": "hair-2",
+            "directions": 4
+        },
+        {
+            "name": "hair-3",
+            "directions": 4
+        },
+        {
+            "name": "hair-4",
+            "directions": 4
+        }
+    ]
+}

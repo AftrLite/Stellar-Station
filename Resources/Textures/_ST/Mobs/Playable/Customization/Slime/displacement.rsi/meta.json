@@ -1,0 +1,26 @@
+﻿{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "By Frogoo",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "load": {
+        "srgb": false
+    },
+    "states": [
+        {
+            "name": "jumpsuit",
+            "directions": 4
+        },
+        {
+            "name": "gloves",
+            "directions": 4
+        },
+        {
+            "name": "shoes",
+            "directions": 4
+        }
+    ]
+}

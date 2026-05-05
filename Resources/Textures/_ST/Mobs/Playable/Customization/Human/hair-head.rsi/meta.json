@@ -1,0 +1,63 @@
+﻿{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "By Frogoo",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "hair-0",
+            "directions": 4
+        },
+        {
+            "name": "hair-1",
+            "directions": 4
+        },
+        {
+            "name": "hair-2",
+            "directions": 4
+        },
+        {
+            "name": "hair-3",
+            "directions": 4
+        },
+        {
+            "name": "hair-4",
+            "directions": 4
+        },
+        {
+            "name": "hair-5",
+            "directions": 4
+        },
+        {
+            "name": "hair-6",
+            "directions": 4
+        },
+        {
+            "name": "hair-7",
+            "directions": 4
+        },
+        {
+            "name": "hair-8",
+            "directions": 4
+        },
+        {
+            "name": "hair-9",
+            "directions": 4
+        },
+        {
+            "name": "hair-10",
+            "directions": 4
+        },
+        {
+            "name": "hair-11",
+            "directions": 4
+        },
+        {
+            "name": "hair-12",
+            "directions": 4
+        }
+    ]
+}

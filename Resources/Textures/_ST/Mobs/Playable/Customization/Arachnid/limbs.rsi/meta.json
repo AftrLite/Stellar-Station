@@ -1,0 +1,27 @@
+﻿{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "By AftrLite",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "spiny",
+            "directions": 4
+        },
+        {
+            "name": "thick",
+            "directions": 4
+        },
+        {
+            "name": "docked-upper",
+            "directions": 4
+        },
+        {
+            "name": "docked-lower",
+            "directions": 4
+        }
+    ]
+}

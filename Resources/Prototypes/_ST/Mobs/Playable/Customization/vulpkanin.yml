@@ -2,34 +2,100 @@
 #
 # SPDX-License-Identifier: LicenseRef-Wallening
 
+# Snouts
+- type: marking
+  id: StellarVulpSnoutDefault
+  bodyPart: SnoutCover
+  forcedColoring: true
+  groupWhitelist: [ StellarVulpkanin ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/vulpkanin.rsi
+    state: snout
+
 # Tails
 - type: marking
   id: StellarVulpTailDefault
   bodyPart: Tail
+  forcedColoring: true
   groupWhitelist: [ StellarVulpkanin ]
   sprites:
   - sprite: _ST/Mobs/Playable/vulpkanin.rsi
     state: tail
 
+- type: marking
+  id: StellarVulpTailShort
+  bodyPart: Tail
+  forcedColoring: true
+  groupWhitelist: [ StellarVulpkanin ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Vulpkanin/tail-short.rsi
+    state: base
+
 # Ears
 - type: marking
   id: StellarVulpEarsDefault
   bodyPart: HeadTop
+  forcedColoring: true
   groupWhitelist: [ StellarVulpkanin ]
   sprites:
   - sprite: _ST/Mobs/Playable/vulpkanin.rsi
     state: ears
   - sprite: _ST/Mobs/Playable/vulpkanin.rsi
     state: ears_inner
-  coloring:
-    default:
-      type:
-        !type:CategoryColoring
-          category: HeadTop
-      fallbackTypes:
-        - !type:SkinColoring
-    layers:
-      ears_inner:
-        type:
-          !type:SimpleColoring
-            color: "#FFFFFF"
+#  coloring:
+#    layers:
+#      ears_inner:
+#        type:
+#          !type:SimpleColoring
+#            color: "#FFFFFF"
+
+- type: marking
+  id: StellarVulpEarsLopsidedBoth
+  bodyPart: HeadTop
+  forcedColoring: true
+  groupWhitelist: [ StellarVulpkanin ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Vulpkanin/ears-lopsided.rsi
+    state: lopsided-both
+  - sprite: _ST/Mobs/Playable/Customization/Vulpkanin/ears-lopsided.rsi
+    state: lopsided-both-inner
+#  coloring:
+#    layers:
+#      lopsided-both-inner:
+#        type:
+#          !type:SimpleColoring
+#          color: "#FFFFFF"
+
+- type: marking
+  id: StellarVulpEarsLopsidedLeft
+  bodyPart: HeadTop
+  forcedColoring: true
+  groupWhitelist: [ StellarVulpkanin ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Vulpkanin/ears-lopsided.rsi
+    state: lopsided-left
+  - sprite: _ST/Mobs/Playable/Customization/Vulpkanin/ears-lopsided.rsi
+    state: lopsided-left-inner
+#  coloring:
+#    layers:
+#      lopsided-left-inner:
+#        type:
+#          !type:SimpleColoring
+#          color: "#FFFFFF"
+
+- type: marking
+  id: StellarVulpEarsLopsidedRight
+  bodyPart: HeadTop
+  forcedColoring: true
+  groupWhitelist: [ StellarVulpkanin ]
+  sprites:
+  - sprite: _ST/Mobs/Playable/Customization/Vulpkanin/ears-lopsided.rsi
+    state: lopsided-right
+  - sprite: _ST/Mobs/Playable/Customization/Vulpkanin/ears-lopsided.rsi
+    state: lopsided-right-inner
+#  coloring:
+#    layers:
+#      lopsided-right-inner:
+#        type:
+#          !type:SimpleColoring
+#          color: "#FFFFFF"

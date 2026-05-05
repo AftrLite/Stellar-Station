@@ -4,7 +4,8 @@
 
 - type: markingsGroup
   parent: Undergarments
-  id: StellarHuman # Stellar
+  id: StellarHuman # Stellar - don't use upstream markings
+  onlyGroupWhitelisted: true # Stellar - don't use upstream markings
   limits:
     enum.HumanoidVisualLayers.HeadTop:
       limit: 1
