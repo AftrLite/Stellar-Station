@@ -23,7 +23,7 @@ public sealed class StellarRecyclerChuteSystem : SharedStellarRecyclerChuteSyste
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedWeatherSystem _weather = default!;
 
-    private readonly ResPath _mapPath = new("Maps/_ST/Other/chute.yml");
+    private readonly ResPath _mapPath = new("Maps/_ST/Other/chute-dimension.yml");
     private static readonly EntProtoId<WeatherStatusEffectComponent> ChuteWeather = "StellarWeatherMotionBlur";
 
     public override void Initialize()
