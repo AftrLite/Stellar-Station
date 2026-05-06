@@ -110,11 +110,11 @@
   - type: MindContainer
   - type: MindExaminable
   - type: CanEnterCryostorage
-  - type: InteractionPopup
-    successChance: 1
-    interactSuccessString: hugging-success-generic
-    interactSuccessSound: /Audio/Effects/thudswoosh.ogg
-    messagePerceivedByOthers: hugging-success-generic-others
+#  - type: InteractionPopup # Begin Stellar - Interaction tweaks (Hugging everyone's kinda weird, man.)
+#    successChance: 1
+#    interactSuccessString: hugging-success-generic
+#    interactSuccessSound: /Audio/Effects/thudswoosh.ogg
+#    messagePerceivedByOthers: hugging-success-generic-others # End Stellar - Interaction tweaks (Hugging everyone's kinda weird, man.)
   - type: CanHostGuardian
   - type: NpcFactionMember
     factions:
@@ -127,12 +127,14 @@
     parcelPrototype: WrappedParcelHumanoid
     wrapDelay: 5
   - type: Stripping
-  - type: UserInterface
+  - type: UserInterface # Begin Stellar - Interaction tweaks
     interfaces:
-      enum.HumanoidMarkingModifierKey.Key:
-        type: HumanoidMarkingModifierBoundUserInterface
-      enum.StrippingUiKey.Key:
-        type: StrippableBoundUserInterface
+      enum.StellarPoPRadialKey.Key:
+        type: StellarPoPRadialBoundUserInterface
+#      enum.HumanoidMarkingModifierKey.Key:
+#        type: HumanoidMarkingModifierBoundUserInterface
+#      enum.StrippingUiKey.Key:
+#        type: StrippableBoundUserInterface # End Stellar - Interaction tweaks
   - type: Puller
   - type: Speech
     speechSounds: Alto
@@ -191,6 +193,13 @@
     regenerationPerSecond: 3
     regenerationInterval: 2.5
   # End Stellar - Sprinting
+  - type: StellarPoPRadial # Begin Stellar - Player-on-player interaction.
+  - type: StellarSocial
+    coopEmotesAvailable:
+    - StellarCoopEmoteHandshake
+    - StellarCoopEmoteHighFive
+    - StellarCoopEmoteHug
+    - StellarCoopEmoteFistBump # End Stellar - Player-on-player interaction.
   # ES START
   - type: ESInherentLight
   # ES END

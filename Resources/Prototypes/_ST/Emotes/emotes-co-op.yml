@@ -1,0 +1,51 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: stellarCoopEmote
+  id: StellarCoopEmoteHandshake
+  name: stellar-emote-handshake-name
+  popUpRequest: stellar-emote-handshake-request
+  popUpSuccess: stellar-emote-handshake-success
+  vfxEntity: StellarSocialVisualsHandshake
+  icon: { sprite: /Textures/_ST/Icons/interaction-radial-icons.rsi, state: handshake }
+  emoteSound:
+    path: /Audio/_ST/Misc/emote-handshake.ogg
+    params:
+      variation: 0.05
+
+- type: stellarCoopEmote
+  id: StellarCoopEmoteHighFive
+  name: stellar-emote-highfive-name
+  popUpRequest: stellar-emote-highfive-request
+  popUpSuccess: stellar-emote-highfive-success
+  vfxEntity: StellarSocialVisualsHighFive
+  icon: { sprite: /Textures/_ST/Icons/interaction-radial-icons.rsi, state: highfive }
+  emoteSound:
+    path: /Audio/Effects/Emotes/clap-single.ogg
+    params:
+      variation: 0.05
+
+- type: stellarCoopEmote
+  id: StellarCoopEmoteHug
+  name: stellar-emote-hug-name
+  popUpRequest: stellar-emote-hug-request
+  popUpSuccess: stellar-emote-hug-success
+  vfxEntity: StellarSocialVisualsHug
+  icon: { sprite: /Textures/_ST/Icons/interaction-radial-icons.rsi, state: hug }
+  emoteSound:
+    path: /Audio/Effects/thudswoosh.ogg
+    params:
+      variation: 0.05
+
+- type: stellarCoopEmote
+  id: StellarCoopEmoteFistBump
+  name: stellar-emote-fistbump-name
+  popUpRequest: stellar-emote-fistbump-request
+  popUpSuccess: stellar-emote-fistbump-success
+  vfxEntity: StellarSocialVisualsFistbump
+  icon: { sprite: /Textures/_ST/Icons/interaction-radial-icons.rsi, state: fistbump }
+  emoteSound:
+    path: /Audio/Effects/soft_thump.ogg
+    params:
+      variation: 0.05
