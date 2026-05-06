@@ -11,6 +11,9 @@ using Robust.Shared.Utility;
 
 namespace Content.Stellar.Shared.RecyclerChute;
 
+/// <summary>
+/// Component for Stellar Recycler Chutes.
+/// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentPause]
 [AutoGenerateComponentState(fieldDeltas: true)]
 public sealed partial class StellarRecyclerChuteComponent : Component
@@ -19,13 +22,13 @@ public sealed partial class StellarRecyclerChuteComponent : Component
     /// Icons for constructing the options on the Stellar Interaction radial.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public SpriteSpecifier.Rsi? IconActivate;// = new(new ResPath("/Textures/_ST/Icons/chute-radial-icons.rsi"), "activate");
+    public SpriteSpecifier.Rsi? IconActivate = new(new ResPath("/Textures/_ST/Icons/chute-radial-icons.rsi"), "power-button");
 
     [DataField, AutoNetworkedField]
-    public SpriteSpecifier.Rsi? IconEject;// = new(new ResPath("/Textures/_ST/Icons/chute-radial-icons.rsi"), "eject");
+    public SpriteSpecifier.Rsi? IconEject = new(new ResPath("/Textures/_ST/Icons/chute-radial-icons.rsi"), "eject");
 
     [DataField, AutoNetworkedField]
-    public SpriteSpecifier.Rsi? IconInsert;// = new(new ResPath("/Textures/_ST/Icons/chute-radial-icons.rsi"), "insert");
+    public SpriteSpecifier.Rsi? IconInsert = new(new ResPath("/Textures/_ST/Icons/chute-radial-icons.rsi"), "insert-self");
 
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
     public TimeSpan? CooldownTimer;

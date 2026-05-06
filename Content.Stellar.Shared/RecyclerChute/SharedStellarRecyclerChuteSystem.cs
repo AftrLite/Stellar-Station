@@ -31,6 +31,10 @@ using Robust.Shared.Timing;
 
 namespace Content.Stellar.Shared.RecyclerChute;
 
+/// <summary>
+/// Handles the Stellar Recycler Chutes & "Tube World" teleportation.
+/// Enables the StellarRecyclerChuteBoundUserInterface radial menu.
+/// </summary>
 public abstract class SharedStellarRecyclerChuteSystem : EntitySystem
 {
     [Dependency] protected readonly ESEntityTimerSystem Timers = default!;

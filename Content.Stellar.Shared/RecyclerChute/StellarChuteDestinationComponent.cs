@@ -9,6 +9,9 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Stellar.Shared.RecyclerChute;
 
+/// <summary>
+/// Component used on Recycler Telepads, marking them as destinations for objects exiting the "Tube World" transitional space.
+/// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentPause]
 public sealed partial class StellarChuteDestinationComponent : Component
 {

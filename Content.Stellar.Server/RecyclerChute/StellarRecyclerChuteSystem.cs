@@ -15,6 +15,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Stellar.Server.RecyclerChute;
 
+/// <inheritdoc/>
 public sealed class StellarRecyclerChuteSystem : SharedStellarRecyclerChuteSystem
 {
     [Dependency] private readonly EntityLookupSystem _lookup = default!;

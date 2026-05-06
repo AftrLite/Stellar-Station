@@ -10,6 +10,7 @@ using Robust.Shared.Animations;
 
 namespace Content.Stellar.Client.RecyclerChute;
 
+/// <inheritdoc/>
 public sealed class StellarRecyclerChuteSystem : SharedStellarRecyclerChuteSystem
 {
     [Dependency] private readonly AnimationPlayerSystem _animPlayer = default!;

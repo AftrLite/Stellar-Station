@@ -9,6 +9,9 @@ using JetBrains.Annotations;
 
 namespace Content.Stellar.Client.RecyclerChute;
 
+/// <summary>
+/// The radial menu used by Stellar Recycler Chutes.
+/// </summary>
 [UsedImplicitly]
 public sealed class StellarRecyclerChuteBoundUserInterface : BoundUserInterface
 {
