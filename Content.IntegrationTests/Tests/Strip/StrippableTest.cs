@@ -11,7 +11,7 @@ public sealed class StrippableTest : InteractionTest
     /// <summary>
     /// Tests that the stripping UI is opened when drag dropping from another mob onto the player.
     /// </summary>
-    [Test]
+    [Test, Ignore("On Stellar, the Stripping UI isn't accessed through drag-drop.")] // Stellar
     public async Task DragDropOpensStrip()
     {
         await SpawnTarget("MobHuman");

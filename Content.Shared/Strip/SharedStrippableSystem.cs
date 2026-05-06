@@ -40,8 +40,8 @@ public abstract class SharedStrippableSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<StrippableComponent, GetVerbsEvent<Verb>>(AddStripVerb);
-        SubscribeLocalEvent<StrippableComponent, GetVerbsEvent<ExamineVerb>>(AddStripExamineVerb);
+        // SubscribeLocalEvent<StrippableComponent, GetVerbsEvent<Verb>>(AddStripVerb); // Stellar - Interaction tweaks
+        // SubscribeLocalEvent<StrippableComponent, GetVerbsEvent<ExamineVerb>>(AddStripExamineVerb); // Stellar - Interaction tweaks
 
         // BUI
         SubscribeLocalEvent<StrippableComponent, StrippingSlotButtonPressed>(OnStripButtonPressed);
@@ -50,10 +50,10 @@ public abstract class SharedStrippableSystem : EntitySystem
         SubscribeLocalEvent<HandsComponent, DoAfterAttemptEvent<StrippableDoAfterEvent>>(OnStrippableDoAfterRunning);
         SubscribeLocalEvent<HandsComponent, StrippableDoAfterEvent>(OnStrippableDoAfterFinished);
 
-        SubscribeLocalEvent<StrippingComponent, CanDropTargetEvent>(OnCanDropOn);
-        SubscribeLocalEvent<StrippableComponent, CanDropDraggedEvent>(OnCanDrop);
-        SubscribeLocalEvent<StrippableComponent, DragDropDraggedEvent>(OnDragDrop);
-        SubscribeLocalEvent<StrippableComponent, ActivateInWorldEvent>(OnActivateInWorld);
+        // SubscribeLocalEvent<StrippingComponent, CanDropTargetEvent>(OnCanDropOn); // Begin Stellar - Interaction tweaks
+        // SubscribeLocalEvent<StrippableComponent, CanDropDraggedEvent>(OnCanDrop);
+        // SubscribeLocalEvent<StrippableComponent, DragDropDraggedEvent>(OnDragDrop);
+        // SubscribeLocalEvent<StrippableComponent, ActivateInWorldEvent>(OnActivateInWorld); // End Stellar - Interaction tweaks
     }
 
     private void AddStripVerb(EntityUid uid, StrippableComponent component, GetVerbsEvent<Verb> args)

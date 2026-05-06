@@ -1,0 +1,90 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  id: StellarSocialRequestEffect
+  components:
+  - type: TimedDespawn
+    lifetime: 10
+  - type: Transform
+    noRot: true
+    anchored: false
+  - type: Sprite
+    netsync: false
+    drawdepth: Effects
+    sprite: _ST/Icons/interaction-radial-icons.rsi
+    layers:
+    - state: highfive
+      shader: unshaded
+    - state: query
+      shader: unshaded
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  id: StellarSocialVisualsEffect
+  components:
+  - type: TimedDespawn
+    lifetime: 2
+  - type: Transform
+    noRot: true
+    anchored: false
+  - type: Sprite
+    netsync: false
+    drawdepth: Effects
+    noRot: true
+    sprite: _ST/Icons/interaction-radial-icons.rsi
+    layers:
+    - state: hug
+      shader: unshaded
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: StellarSocialVisualsEffect
+  id: StellarSocialVisualsHighFive
+  components:
+  - type: Sprite
+    sprite: _ST/Effects/Emotes/coop-emote-highfive.rsi
+    layers:
+    - state: vfx
+      shader: unshaded
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: StellarSocialVisualsEffect
+  id: StellarSocialVisualsHug
+  components:
+  - type: Sprite
+    sprite: _ST/Effects/Emotes/coop-emote-hug.rsi
+    layers:
+    - state: vfx
+      shader: unshaded
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: StellarSocialVisualsEffect
+  id: StellarSocialVisualsFistbump
+  components:
+  - type: Sprite
+    sprite: _ST/Effects/Emotes/coop-emote-fistbump.rsi
+    layers:
+    - state: vfx
+      shader: unshaded
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: StellarSocialVisualsEffect
+  id: StellarSocialVisualsHandshake
+  components:
+  - type: Sprite
+    sprite: _ST/Effects/Emotes/coop-emote-handshake.rsi
+    layers:
+    - state: vfx
+      shader: unshaded
