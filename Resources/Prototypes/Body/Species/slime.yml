@@ -5,6 +5,7 @@
 - type: markingsGroup
   parent: Undergarments
   id: StellarSlime # Stellar
+  onlyGroupWhitelisted: true
   limits:
     enum.HumanoidVisualLayers.Hair:
       limit: 1
@@ -53,13 +54,13 @@
   categories: [ HideSpawnMenu ]
   name: SlimePerson appearance
   components:
-  - type: Inventory
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Human/displacement.rsi
-            state: jumpsuit-female
+#  - type: Inventory # Begin Stellar
+#    femaleDisplacements:
+#      jumpsuit:
+#        sizeMaps:
+#          32:
+#            sprite: Mobs/Species/Human/displacement.rsi
+#            state: jumpsuit-female # End Stellar
   - type: InitialBody
     organs:
       Torso: OrganSlimePersonTorso
@@ -76,6 +77,24 @@
       Lungs: OrganSlimePersonLungs
   - type: HumanoidProfile
     species: SlimePerson
+  - type: Inventory # Begin Stellar
+    speciesId: slimeperson
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: /Textures/_ST/Mobs/Playable/Customization/Slime/displacement.rsi
+            state: jumpsuit
+      gloves:
+        sizeMaps:
+          32:
+            sprite: /Textures/_ST/Mobs/Playable/Customization/Slime/displacement.rsi
+            state: gloves
+      shoes:
+        sizeMaps:
+          32:
+            sprite: /Textures/_ST/Mobs/Playable/Customization/Slime/displacement.rsi
+            state: shoes # End Stellar
 
 - type: entity
   parent:

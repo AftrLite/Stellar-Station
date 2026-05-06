@@ -13,11 +13,6 @@
     sprite:
       sprite: /Textures/_ST/Effects/weather.rsi
       state: fog
-    sound:
-      collection: Rain
-      params:
-        loop: true
-        volume: -6
 
 - type: entity
   parent: WeatherBase

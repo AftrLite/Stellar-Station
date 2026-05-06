@@ -4,7 +4,8 @@
 
 - type: markingsGroup
   parent: Undergarments
-  id: StellarVulpkanin
+  id: StellarVulpkanin # Stellar - don't use upstream markings
+  onlyGroupWhitelisted: true # Stellar - don't use upstream markings
   limits:
     enum.HumanoidVisualLayers.Hair:
       limit: 1
@@ -27,8 +28,9 @@
     #   default: [ VulpSnout ]
     # End Stellar
     enum.HumanoidVisualLayers.SnoutCover:
-      limit: 3
-      required: false
+      limit: 1
+      required: true
+      default: [ StellarVulpSnoutDefault ] # Stellar
     enum.HumanoidVisualLayers.Tail:
       limit: 1
       required: true

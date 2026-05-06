@@ -1,0 +1,35 @@
+﻿{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "By AftrLite",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "lopsided-both",
+            "directions": 4
+        },
+        {
+            "name": "lopsided-both-inner",
+            "directions": 4
+        },
+        {
+            "name": "lopsided-left",
+            "directions": 4
+        },
+        {
+            "name": "lopsided-left-inner",
+            "directions": 4
+        },
+        {
+            "name": "lopsided-right",
+            "directions": 4
+        },
+        {
+            "name": "lopsided-right-inner",
+            "directions": 4
+        }
+    ]
+}

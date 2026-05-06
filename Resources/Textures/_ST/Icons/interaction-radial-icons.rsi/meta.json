@@ -1,0 +1,44 @@
+{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "by AftrLite(GitHub)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "pull"
+        },
+        {
+            "name": "query"
+        },
+        {
+            "name": "inspect"
+        },
+        {
+            "name": "examine"
+        },
+        {
+            "name": "social"
+        },
+        {
+            "name": "emotes"
+        },
+        {
+            "name": "offer-item"
+        },
+        {
+            "name": "hug"
+        },
+        {
+            "name": "fistbump"
+        },
+        {
+            "name": "highfive"
+        },
+        {
+            "name": "handshake"
+        }
+    ]
+}

@@ -1,0 +1,78 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 64
+    },
+    "license": "LicenseRef-Wallening",
+    "copyright": "By AftrLite",
+    "states": [
+        {
+            "name": "full"
+        },
+        {
+            "name": "wall0",
+            "directions": 4
+        },
+        {
+            "name": "wall1",
+            "directions": 4
+        },
+        {
+            "name": "wall2",
+            "directions": 4
+        },
+        {
+            "name": "wall3",
+            "directions": 4
+        },
+        {
+            "name": "wall4",
+            "directions": 4
+        },
+        {
+            "name": "wall5",
+            "directions": 4
+        },
+        {
+            "name": "wall6",
+            "directions": 4
+        },
+        {
+            "name": "wall7",
+            "directions": 4
+        },
+        {
+            "name": "downwall0",
+            "directions": 4
+        },
+        {
+            "name": "downwall1",
+            "directions": 4
+        },
+        {
+            "name": "downwall2",
+            "directions": 4
+        },
+        {
+            "name": "downwall3",
+            "directions": 4
+        },
+        {
+            "name": "downwall4",
+            "directions": 4
+        },
+        {
+            "name": "downwall5",
+            "directions": 4
+        },
+        {
+            "name": "downwall6",
+            "directions": 4
+        },
+        {
+            "name": "downwall7",
+            "directions": 4
+        }
+    ]
+}

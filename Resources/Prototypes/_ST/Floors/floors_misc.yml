@@ -6,7 +6,7 @@
 - type: tile
   id: StellarFloorApocryphal
   editorHidden: false
-  name: tiles-cosmiccult-floor-malign
+  name: apocryphal tile
   sprite: /Textures/_ST/Tileset/Floor/Apocryphal/tile-apocryphal.png
   baseTurf: Plating
   isSubfloor: false
@@ -311,6 +311,45 @@
     West: /Textures/_ST/Tileset/Floor/Grass/double_edge_W.png
   footstepSounds:
     collection: FootstepGrass
+
+- type: tile
+  id: StellarFloorGrassBorderless
+  parent: FloorAsteroidSandDugBorderless
+  name: grass (borderless)
+  sprite: /Textures/_ST/Tileset/Floor/Grass/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  footstepSounds:
+    collection: FootstepGrass
+
+## STONE
+- type: tile
+  id: StellarFloorStone
+  parent: FloorAsteroidSandDugBorderless
+  name: stone
+  sprite: /Textures/_ST/Tileset/Floor/Stone/stone.png
+  variants: 14
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
 
 ## LOBBY
 

@@ -2,5 +2,5 @@ version = 1
 
 [[annotations]]
 path = ["*.png"]
-SPDX-FileCopyrightText = "AftrLite & StudioFaewilds"
+SPDX-FileCopyrightText = "AftrLite, & StudioFaewilds, resprited by Frogoo"
 SPDX-License-Identifier = "LicenseRef-Wallening"

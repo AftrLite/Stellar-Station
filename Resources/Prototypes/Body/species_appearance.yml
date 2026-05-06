@@ -35,17 +35,19 @@
     # More equipment
     - map: [ "gloves" ]
     - map: [ "shoes" ]
+    - map: [ "outerClothing" ] # Stellar - Reordering
+    - map: [ "enum.HumanoidVisualLayers.SnoutCover" ] # Stellar - Reordering
     - map: [ "ears" ]
     - map: [ "eyes" ]
     - map: [ "belt" ]
     - map: [ "id" ]
-    - map: [ "outerClothing" ]
+#    - map: [ "outerClothing" ] # Stellar - Reordering
     - map: [ "back" ]
     - map: [ "neck" ]
     - map: [ "suitstorage" ]
 
     # Stuff that goes in front of equipment
-    - map: [ "enum.HumanoidVisualLayers.SnoutCover" ]
+#    - map: [ "enum.HumanoidVisualLayers.SnoutCover" ] # Stellar - Reordering
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
     - map: [ "enum.HumanoidVisualLayers.Hair" ]
     - map: [ "enum.HumanoidVisualLayers.HeadSide" ]

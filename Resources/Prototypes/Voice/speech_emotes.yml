@@ -7,6 +7,9 @@
   whitelist:
     components:
     - Vocal
+  blacklist: # Begin Stellar - Screams begone
+    components:
+    - HumanoidProfile # End Stellar - Screams begone
   chatMessages: ["chat-emote-msg-scream"]
   chatTriggers:
     - scream
