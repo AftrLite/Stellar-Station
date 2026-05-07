@@ -1,0 +1,30 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: StellarStructureBase
+  id: StellarScienceSensorTower
+  name: sensor tower
+  categories: [ ForkFiltered ]
+  components:
+  - type: InteractionOutline
+  - type: SpriteFade
+  - type: Sprite
+    sprite: _ST/Tileset/Science/sensor-tower.rsi
+    drawdepth: Mobs
+    noRot: true
+    offset: 0, 1
+    layers:
+    - state: base
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.6,-0.3,0.6,0.6"
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - GlassAirlockLayer
