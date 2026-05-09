@@ -142,7 +142,7 @@ public sealed partial class SimpleRadialMenu : RadialMenu
             button.OnPressed += _ =>
             {
                 actionOption.OnPressed?.Invoke();
-                if (!haveNested)
+                if (!haveNested && !actionOption.KeepOpen) // Stellar - Allow radial menus to stay open after being pressed. Is this a hack? Yes. Does it work near-flawlessly? Also yes.
                     Close();
             };
         }
@@ -342,6 +342,10 @@ public abstract class RadialMenuOptionBase
     /// Specifier that describes icon to be used for radial menu button.
     /// </summary>
     public RadialMenuIconSpecifier? IconSpecifier { get; set; }
+
+    // Begin Stellar Changes
+    public bool KeepOpen { get; set; }
+    // End Stellar Changes
 }
 
 /// <summary> Base type for model of radial menu button with some action on button pressed. </summary>

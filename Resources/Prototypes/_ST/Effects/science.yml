@@ -1,0 +1,28 @@
+# SPDX-FileCopyrightText: 2026 Janet Blackquill <uhhadd@gmail.com>
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  id: StellarEffectSensorTerminalPopup
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarDeleteOnAnimate
+  - type: Transform
+  - type: TimedDespawn
+    lifetime: 40
+  - type: Sprite
+    sprite: _ST/Icons/radial-icons-sensortower.rsi
+    layers:
+    - state: 1
+      visible: false
+    drawdepth: Effects
+  - type: Tag
+    tags:
+    - HideContextMenu
+  - type: PointLight
+    color: "#d458f4"
+    radius: 2
+    energy: 3
+    enabled: true
+    castShadows: false
+    netsync: false
