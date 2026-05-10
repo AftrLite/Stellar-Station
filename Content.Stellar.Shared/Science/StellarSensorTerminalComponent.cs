@@ -30,7 +30,12 @@ public sealed partial class StellarSensorTerminalComponent : Component
 
     [DataField, AutoNetworkedField] public string TowerCode = string.Empty;
 
-    public Entity<StellarSensorTowerComponent>? ConnectedTower;
+    [DataField, AutoNetworkedField] public EntityUid? SyncingTower;
+
+    /// <summary>
+    /// All the towers that this Terminal can synchronize with.
+    /// </summary>
+    [DataField, AutoNetworkedField] public HashSet<EntityUid> LinkedTowers = new();
 }
 
 [Serializable, NetSerializable]

@@ -28,11 +28,10 @@ public sealed class StellarScienceAnalystSystem : SharedStellarScienceAnalystSys
     private void OnTerminalCode(StellarSensorTerminalCodeEvent args)
     {
         var ent = GetEntity(args.Target);
-
-        if (SensorTerminal == null || SensorTerminal.Value.Owner != ent || SensorTerminal.Value.Comp.PopupEffect == null)
+        if (!TryComp<StellarSensorTerminalComponent>(ent, out var comp) || comp.PopupEffect == null)
             return;
 
-        var codePopup = SensorTerminal.Value.Comp.PopupEffect.Value;
+        var codePopup = comp.PopupEffect.Value;
 
         if (TerminatingOrDeleted(codePopup))
             return;
@@ -43,7 +42,7 @@ public sealed class StellarScienceAnalystSystem : SharedStellarScienceAnalystSys
             var sprite = Comp<SpriteComponent>(codePopup);
             var offset = new Vector2(-1.25f - 0.09375f, 0);
 
-            foreach (var character in SensorTerminal.Value.Comp.TowerCode)
+            foreach (var character in comp.TowerCode)
             {
                 var layer = _sprite.AddLayer((codePopup, sprite), new SpriteSpecifier.Rsi(_rsiPath, $"{character}"));
                 _sprite.LayerMapSet((codePopup, sprite), SensorPopupVisuals.Key, layer);
@@ -59,7 +58,7 @@ public sealed class StellarScienceAnalystSystem : SharedStellarScienceAnalystSys
 
         _animPlayer.Stop(codePopup, "popup-effect");
         _animPlayer.Play(codePopup, FadeAnim(), "popup-effect");
-        SensorTerminal.Value.Comp.PopupEffect = null;
+        comp.PopupEffect = null;
     }
 
     #region Animation
@@ -77,10 +76,10 @@ public sealed class StellarScienceAnalystSystem : SharedStellarScienceAnalystSys
                     InterpolationMode = AnimationInterpolationMode.Linear,
                     KeyFrames =
                     {
-                        new AnimationTrackProperty.KeyFrame(new Vector2(0f, 0.5f), 0f, Easings.InOutQuad),
-                        new AnimationTrackProperty.KeyFrame(new Vector2(0f, 0.9f), 9f * 0.05f, Easings.InOutSine),
-                        new AnimationTrackProperty.KeyFrame(new Vector2(0f, 0.45f), animTime * 0.9f),
-                        new AnimationTrackProperty.KeyFrame(new Vector2(0f, 0f), animTime * 0.025f),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(0.5f, 0.5f), 0f, Easings.InOutQuad),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(0.5f, 0.75f), 9f * 0.05f, Easings.InOutSine),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(0.5f, 0.5f), animTime * 0.9f),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(0.5f, 0f), animTime * 0.025f),
                     },
                 },
                 new AnimationTrackComponentProperty()
@@ -104,8 +103,9 @@ public sealed class StellarScienceAnalystSystem : SharedStellarScienceAnalystSys
                     KeyFrames =
                     {
                         new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(0f), 0f, Easings.OutSine),
-                        new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(0.5f), 9f * 0.025f),
-                        new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(0.5f), animTime * 0.9f),
+                        new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(1f), 9f * 0.025f),
+                        new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(0.66f), animTime * 0.45f),
+                        new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(0.33f), animTime * 0.45f),
                         new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(0f), animTime * 0.025f),
                     },
                 },

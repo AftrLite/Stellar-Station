@@ -238,7 +238,7 @@
   - type: SpriteFade
   - type: Sprite
     sprite: _ST/Tileset/Science/anomaly_generator.rsi # Begin Stellar
-    offset: 0, -0.5
+    offset: 0, 0.5
     drawdepth: Mobs
     noRot: true # End Stellar
     layers:

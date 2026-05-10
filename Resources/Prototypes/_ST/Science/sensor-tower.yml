@@ -6,10 +6,12 @@
   parent: StellarStructureBase
   id: StellarScienceSensorTower
   name: sensor tower
+  description: Part of the station's external sensor arrays. Processes hazard data when loaded with a data drive and synchronized with the main sensor network.
   categories: [ ForkFiltered ]
   components:
   - type: StellarSensorTower
   - type: InteractionOutline
+  - type: DoAfter
   - type: SpriteFade
   - type: Sprite
     drawdepth: Mobs
@@ -18,6 +20,10 @@
     sprite: _ST/Tileset/Science/sensor-tower.rsi
     layers:
     - state: base
+    - state: unshaded
+      sprite: _ST/Tileset/Science/sensor-tower-extras.rsi
+      shader: unshaded
+      offset: -0.03125, -0.90625
   - type: Fixtures
     fixtures:
       fix1:
@@ -39,17 +45,29 @@
     range: 4
     sound:
       path: /Audio/_ST/Machines/ringtone.ogg
+  - type: EmitSoundOnUIOpen
+    sound:
+      collection: Keyboard
+      params:
+        volume: -1
+        variation: 0.10
+        pitch: 1.10  # low pitch keyboard sounds feel kinda weird
+  - type: RandomMetadata
+    nameSegments:
+    - StellarSensorTowerNames
+    nameFormat: name-format-sensortower
 
 - type: entity
   parent: StellarStructureBase
   id: StellarScienceSensorTerminal
   name: sensor network terminal
+  description: This terminal is used to synchronize the station's external sensor towers. Useful!
   categories: [ ForkFiltered ]
   components:
   - type: StellarSensorTerminal
   - type: InteractionOutline
   - type: Sprite
-    offset: 0, 0.09375
+    offset: 0.5, 0.09375
     drawdepth: Mobs
     noRot: true
     sprite: _ST/Tileset/Science/sensor-terminal.rsi
@@ -64,7 +82,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.4,-0.01,0.4,0.4"
+          bounds: "-0.4,-0.01,1.4,0.4"
         density: 1000
         mask:
         - MachineMask
@@ -80,3 +98,31 @@
     speechVerb: Robotic
     speechSounds: Borg
     speechBubbleOffset: 0.2
+
+- type: entity
+  parent: BaseItem
+  id: StellarScienceDataDrive
+  name: data drive
+  description: A heavy-duty drive, used for storing and processing hazard data.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Science/data-drive.rsi
+    noRot: true
+    layers:
+    - state: icon-empty
+  - type: StellarDataDrive
+
+- type: entity
+  parent: StellarScienceDataDrive
+  id: StellarScienceDataDriveFull
+  description: A heavy-duty drive, used for storing and processing hazard data.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: icon-unshaded
+      shader: unshaded
+  - type: StellarDataDrive
+    full: true
