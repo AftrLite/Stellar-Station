@@ -17,7 +17,7 @@ public abstract class StellarGameRuleSystem<TComp> : GameRuleSystem<TComp> where
     [Dependency] protected readonly IRobustRandom Random = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
 
-    protected StellarShiftIntensityPrototype GetShiftIntensity()
+    public StellarShiftIntensityPrototype GetShiftIntensity()
     {
         return _prototype.Index(GetGameRule<StellarShiftIntensityRuleComponent>().Comp1.ShiftIntensityPreset);
     }

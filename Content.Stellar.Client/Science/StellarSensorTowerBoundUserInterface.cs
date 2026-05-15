@@ -11,7 +11,7 @@ using Robust.Shared.Utility;
 namespace Content.Stellar.Client.Science;
 
 /// <summary>
-/// The radial menu used by Stellar Recycler Chutes.
+/// The radial menu used by Stellar Sensor Towers.
 /// </summary>
 [UsedImplicitly]
 public sealed class StellarSensorTowerBoundUserInterface : BoundUserInterface

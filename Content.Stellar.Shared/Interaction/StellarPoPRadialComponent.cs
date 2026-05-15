@@ -15,23 +15,23 @@ public sealed partial class StellarPoPRadialComponent : Component
     /// Icon for constructing the options on the Stellar Player-on-Player interaction radial.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public SpriteSpecifier.Rsi? IconPull = new(new ResPath("/Textures/_ST/Icons/interaction-radial-icons.rsi"), "pull");
+    public SpriteSpecifier.Rsi? IconPull = new(new ResPath("/Textures/_ST/Icons/radial-icons-interaction.rsi"), "pull");
 
     /// <inheritdoc cref="IconPull"/>
     [DataField, AutoNetworkedField]
-    public SpriteSpecifier.Rsi? IconStrip = new(new ResPath("/Textures/_ST/Icons/interaction-radial-icons.rsi"), "inspect");
+    public SpriteSpecifier.Rsi? IconStrip = new(new ResPath("/Textures/_ST/Icons/radial-icons-interaction.rsi"), "inspect");
 
     /// <inheritdoc cref="IconPull"/>
     [DataField, AutoNetworkedField]
-    public SpriteSpecifier.Rsi? IconExamine = new(new ResPath("/Textures/_ST/Icons/interaction-radial-icons.rsi"), "examine");
+    public SpriteSpecifier.Rsi? IconExamine = new(new ResPath("/Textures/_ST/Icons/radial-icons-interaction.rsi"), "examine");
 
     /// <inheritdoc cref="IconPull"/>
     [DataField, AutoNetworkedField]
-    public SpriteSpecifier.Rsi? IconSocial = new(new ResPath("/Textures/_ST/Icons/interaction-radial-icons.rsi"), "social");
+    public SpriteSpecifier.Rsi? IconSocial = new(new ResPath("/Textures/_ST/Icons/radial-icons-interaction.rsi"), "social");
 
     /// <inheritdoc cref="IconPull"/>
     [DataField, AutoNetworkedField]
-    public SpriteSpecifier.Rsi? IconOfferItem = new(new ResPath("/Textures/_ST/Icons/interaction-radial-icons.rsi"), "offer-item");
+    public SpriteSpecifier.Rsi? IconOfferItem = new(new ResPath("/Textures/_ST/Icons/radial-icons-interaction.rsi"), "offer-item");
 
     /// <summary>
     /// DoAfter time for opening the Inspect menu (the "Strip" menu.) through the Stellar Interaction RadialMenu.

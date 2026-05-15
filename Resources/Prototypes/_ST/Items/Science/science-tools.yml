@@ -1,0 +1,53 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: BaseItem
+  id: StellarScienceDataDrive
+  name: data drive
+  description: A heavy-duty drive, used for storing and processing hazard data.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Science/data-drive.rsi
+    layers:
+    - state: icon-empty
+  - type: StellarDataDrive
+
+- type: entity
+  parent: StellarScienceDataDrive
+  id: StellarScienceDataDriveFull
+  description: A heavy-duty drive, used for storing and processing hazard data.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: icon-unshaded
+      shader: unshaded
+  - type: StellarDataDrive
+    full: true
+
+- type: entity
+  parent: BaseItem
+  id: StellarScienceCapsule
+  name: anomaly containment capsule
+  description: A heavy-duty capsule, used for the containment of stabilized anomalies.
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Science/containment-capsule.rsi
+    layers:
+    - state: icon-empty
+
+- type: entity
+  parent: StellarScienceCapsule
+  id: StellarScienceCapsuleFull
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: icon-unshaded
+      shader: unshaded

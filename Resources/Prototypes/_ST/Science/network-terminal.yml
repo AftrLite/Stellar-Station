@@ -1,0 +1,41 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: StellarStructureBase
+  id: StellarScienceSensorTerminal
+  name: sensor network terminal
+  description: This terminal is used to synchronize the station's external sensor towers. Useful!
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarSensorTerminal
+  - type: InteractionOutline
+  - type: Sprite
+    offset: 0.5, 0.09375
+    drawdepth: Mobs
+    noRot: true
+    sprite: _ST/Tileset/Science/sensor-terminal.rsi
+    layers:
+    - state: shadow
+      offset: 0, -0.0625
+    - state: base
+    - state: unshaded
+      shader: unshaded
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.01,1.4,0.4"
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - GlassAirlockLayer
+  - type: AmbientSound
+    enabled: false
+    volume: +12
+    range: 10
+    sound:
+      path: /Audio/_ST/Machines/ringtone.ogg

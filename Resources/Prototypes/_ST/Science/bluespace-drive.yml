@@ -1,0 +1,127 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: StellarStructureBase
+  id: StellarScienceDriveCore
+  name: BSD core
+  placement:
+    mode: SnapgridCenter
+  categories: [ ForkFiltered ]
+  components:
+  - type: InteractionOutline
+  - type: Physics
+  - type: Transform
+    noRot: true
+  - type: Sprite
+    sprite: _ST/Tileset/Science/bluespace-drive-core.rsi
+    offset: 0, 0.78125
+    drawdepth: Mobs
+    noRot: true
+    layers:
+    - state: base
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.9,0.1,0.9,1.55"
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - GlassAirlockLayer
+
+- type: entity
+  parent: StellarStructureBase
+  id: StellarScienceDriveCapacitorLeft
+  name: BSD capacitor array
+  description: One of the bluespace drive's colossal capacitor arrays.
+  placement:
+    mode: SnapgridCenter
+  categories: [ ForkFiltered ]
+  components:
+  - type: InteractionOutline
+  - type: Physics
+  - type: Transform
+    noRot: true
+  - type: SpriteFade
+    noRot: true
+  - type: Sprite
+    sprite: _ST/Tileset/Science/bluespace-drive-capacitor.rsi
+    drawdepth: Mobs
+    offset: -0.25, 1.03125
+    noRot: true
+    layers:
+    - state: base
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.9,-0.15,0.3,1.75"
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - GlassAirlockLayer
+
+- type: entity
+  parent: StellarScienceDriveCapacitorLeft
+  id: StellarScienceDriveCapacitorRight
+  placement:
+    mode: SnapgridCenter
+  categories: [ ForkFiltered ]
+  components:
+  - type: SpriteFade
+  - type: Sprite
+    scale: -1, 1
+    offset: 0.2175, 1.03125
+    noRot: true
+    layers:
+    - state: base
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.3,-0.15,0.9,1.75"
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - GlassAirlockLayer
+
+- type: entity
+  parent: StellarStructureBase
+  id: StellarScienceDriveCables
+  name: BSD cables
+  placement:
+    mode: SnapgridCenter
+  categories: [ ForkFiltered ]
+  components:
+  - type: Physics
+    canCollide: false
+  - type: Transform
+    noRot: true
+  - type: Sprite
+    sprite: _ST/Tileset/Science/bluespace-drive-cables.rsi
+    offset: 0, 0.625
+    noRot: true
+    layers:
+    - state: base
+      offset: -1.33, 0
+    - state: base
+      scale: -1, 1
+      offset: 1.298, 0
+    - state: wires-left
+      offset: -1.33, 0
+      sprite: _ST/Tileset/Science/bluespace-drive-cables.rsi
+    - state: wires-right
+      scale: -1, 1
+      offset: 1.298, 0
+      sprite: _ST/Tileset/Science/bluespace-drive-cables.rsi
+  - type: Tag
+    tags:
+    - HideContextMenu

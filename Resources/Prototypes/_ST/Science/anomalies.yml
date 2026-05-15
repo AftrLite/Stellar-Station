@@ -1,0 +1,261 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: StellarStructureBase
+  id: StellarScienceAnomalyBase
+  name: Anomaly
+  components:
+  - type: InteractionOutline
+  - type: Sprite
+    drawdepth: Mobs
+    offset: 0, 0.5
+    sprite: _ST/Effects/anomalies.rsi
+    layers:
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: shadow-anomaly
+      shader: unshaded
+  - type: PointLight
+    radius: 2.0
+    energy: 5.5
+    softness: 4
+    color: "#00ccff"
+    castShadows: false
+  - type: LightBehaviour
+    behaviours:
+    - !type:RandomizeBehaviour
+      id: fade_out
+      interpolate: Cubic
+      minDuration: 0.2
+      maxDuration: 0.3
+      startValue: 5.5
+      endValue: 2.625
+      property: Energy
+      isLooped: true
+      enabled: true
+    - !type:FadeBehaviour
+      id: fade_out
+      maxDuration: 4.0
+      startValue: 2.5
+      endValue: 1.75
+      isLooped: true
+      enabled: true
+      reverseWhenFinished: true
+
+- type: entity
+  parent: StellarScienceAnomalyBase
+  id: StellarScienceAnomalyBluespace
+  suffix: Bluespace
+  components:
+  - type: Sprite
+    layers:
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: bluespace-1
+      shader: unshaded
+  - type: PointLight
+    radius: 2.0
+    energy: 5.5
+    softness: 4
+    color: "#27adbd"
+    castShadows: false
+
+- type: entity
+  parent: StellarScienceAnomalyBase
+  id: StellarScienceAnomalyAzure
+  suffix: Azure
+  components:
+  - type: Sprite
+    layers:
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: bluespace-2
+      shader: unshaded
+  - type: PointLight
+    radius: 2.0
+    energy: 5.5
+    softness: 4
+    color: "#468aff"
+    castShadows: false
+
+- type: entity
+  parent: StellarScienceAnomalyBase
+  id: StellarScienceAnomalyShadow
+  suffix: Shadow
+  components:
+  - type: Sprite
+    layers:
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: shadow-1
+      shader: unshaded
+  - type: PointLight
+    radius: 2.0
+    energy: 5.5
+    softness: 4
+    color: "#6a4db4"
+    castShadows: false
+
+- type: entity
+  parent: StellarScienceAnomalyBase
+  id: StellarScienceAnomalyApocryphal
+  suffix: Apocryphal
+  components:
+  - type: Sprite
+    layers:
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: shadow-2
+      shader: unshaded
+  - type: PointLight
+    radius: 2.0
+    energy: 5.5
+    softness: 4
+    color: "#35d9ba"
+    castShadows: false
+
+- type: entity
+  parent: StellarScienceAnomalyBase
+  id: StellarScienceAnomalyElectric
+  suffix: Electric
+  components:
+  - type: Sprite
+    layers:
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: electric-1
+      shader: unshaded
+  - type: PointLight
+    radius: 2.0
+    energy: 5.5
+    softness: 4
+    color: "#f7f397"
+    castShadows: false
+
+- type: entity
+  parent: StellarScienceAnomalyBase
+  id: StellarScienceAnomalyMagnetar
+  suffix: Magnetar
+  components:
+  - type: Sprite
+    layers:
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: electric-2
+      shader: unshaded
+  - type: PointLight
+    radius: 2.0
+    energy: 5.5
+    softness: 4
+    color: "#9cdfe4"
+    castShadows: false
+
+- type: entity
+  parent: StellarScienceAnomalyBase
+  id: StellarScienceAnomalyGravity
+  suffix: Gravity
+  components:
+  - type: Sprite
+    layers:
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: gravity
+      shader: unshaded
+  - type: PointLight
+    radius: 2.0
+    energy: 5.5
+    softness: 4
+    color: "#394a50"
+    castShadows: false
+
+- type: entity
+  parent: StellarScienceAnomalyBase
+  id: StellarScienceAnomalyIce
+  suffix: Ice
+  components:
+  - type: Sprite
+    layers:
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: ice
+      shader: unshaded
+  - type: PointLight
+    radius: 2.0
+    energy: 5.5
+    softness: 4
+    color: "#5b92c5"
+    castShadows: false
+
+- type: entity
+  parent: StellarScienceAnomalyBase
+  id: StellarScienceAnomalyFlame
+  suffix: Flame
+  components:
+  - type: Sprite
+    layers:
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: fire-1
+      shader: unshaded
+  - type: PointLight
+    radius: 2.0
+    energy: 5.5
+    softness: 4
+    color: "#e16146"
+    castShadows: false
+
+- type: entity
+  parent: StellarScienceAnomalyBase
+  id: StellarScienceAnomalySupernova
+  suffix: Supernova
+  components:
+  - type: Sprite
+    layers:
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: fire-2
+      shader: unshaded
+  - type: PointLight
+    radius: 2.0
+    energy: 5.5
+    softness: 4
+    color: "#b43565"
+    castShadows: false
+
+- type: entity
+  parent: StellarScienceAnomalyBase
+  id: StellarScienceAnomalyFlesh
+  suffix: Flesh
+  components:
+  - type: Sprite
+    layers:
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: flesh
+      shader: unshaded
+  - type: PointLight
+    radius: 2.0
+    energy: 5.5
+    softness: 4
+    color: "#ac4060"
+    castShadows: false
+
+- type: entity
+  parent: StellarScienceAnomalyBase
+  id: StellarScienceAnomalyLiquid
+  suffix: Liquid
+  components:
+  - type: Sprite
+    layers:
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: liquid
+      shader: unshaded
+  - type: PointLight
+    radius: 2.0
+    energy: 5.5
+    softness: 4
+    color: "#a3b7bc"
+    castShadows: false

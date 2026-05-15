@@ -29,7 +29,7 @@ public sealed class StellarSocialSystem : SharedStellarSocialSystem
     [Dependency] private readonly SpriteSystem _sprite = default!;
 
     private readonly EntProtoId _socialEffectBase = "StellarSocialVisualsEffect";
-    private readonly SpriteSpecifier _socialRequestOverlay = new SpriteSpecifier.Rsi(new("/Textures/_ST/Icons/interaction-radial-icons.rsi"), "query");
+    private readonly SpriteSpecifier _socialRequestOverlay = new SpriteSpecifier.Rsi(new("/Textures/_ST/Icons/radial-icons-interaction.rsi"), "query");
 
     public override void Initialize()
     {

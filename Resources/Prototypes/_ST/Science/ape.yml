@@ -1,0 +1,47 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: StellarStructureBase
+  id: StellarScienceApe
+  name: A.P.E.
+  description: LOREM IPSUM # TODO: Description
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarAnomalyApe
+  - type: InteractionOutline
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _ST/Tileset/Science/ape.rsi
+    layers:
+    - state: base
+    - state: unshaded
+      shader: unshaded
+  - type: Transform
+    anchored: true
+    noRot: false
+  - type: Pullable
+  - type: Anchorable
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.25 # Stellar
+        density: 50
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Dropshadow
+    anchorShadow: true
+    sprite:
+      sprite: _ST/Effects/dropshadow.rsi
+      state: shadow-ape
+    offset: 0, -0.37
+  - type: UserInterface
+    interfaces:
+      enum.StellarApeRadialKey.Key:
+        type: StellarApeBoundUserInterface

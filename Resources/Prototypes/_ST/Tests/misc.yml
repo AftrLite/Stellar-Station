@@ -5,7 +5,7 @@
 - type: entity
   id: StellarVFXBluespaceRIft
   name: bluespace rift
-  categories: [ HideSpawnMenu, ForkFiltered ]
+  categories: [ ForkFiltered ]
   placement:
     mode: SnapgridCenter
   components:

@@ -14,7 +14,7 @@
   - type: Sprite
     netsync: false
     drawdepth: Effects
-    sprite: _ST/Icons/interaction-radial-icons.rsi
+    sprite: _ST/Icons/radial-icons-interaction.rsi
     layers:
     - state: highfive
       shader: unshaded
@@ -37,7 +37,7 @@
     netsync: false
     drawdepth: Effects
     noRot: true
-    sprite: _ST/Icons/interaction-radial-icons.rsi
+    sprite: _ST/Icons/radial-icons-interaction.rsi
     layers:
     - state: hug
       shader: unshaded

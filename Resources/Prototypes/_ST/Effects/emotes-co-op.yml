@@ -8,7 +8,7 @@
   popUpRequest: stellar-emote-handshake-request
   popUpSuccess: stellar-emote-handshake-success
   vfxEntity: StellarSocialVisualsHandshake
-  icon: { sprite: /Textures/_ST/Icons/interaction-radial-icons.rsi, state: handshake }
+  icon: { sprite: /Textures/_ST/Icons/radial-icons-interaction.rsi, state: handshake }
   emoteSound:
     path: /Audio/_ST/Misc/emote-handshake.ogg
     params:
@@ -20,7 +20,7 @@
   popUpRequest: stellar-emote-highfive-request
   popUpSuccess: stellar-emote-highfive-success
   vfxEntity: StellarSocialVisualsHighFive
-  icon: { sprite: /Textures/_ST/Icons/interaction-radial-icons.rsi, state: highfive }
+  icon: { sprite: /Textures/_ST/Icons/radial-icons-interaction.rsi, state: highfive }
   emoteSound:
     path: /Audio/Effects/Emotes/clap-single.ogg
     params:
@@ -32,7 +32,7 @@
   popUpRequest: stellar-emote-hug-request
   popUpSuccess: stellar-emote-hug-success
   vfxEntity: StellarSocialVisualsHug
-  icon: { sprite: /Textures/_ST/Icons/interaction-radial-icons.rsi, state: hug }
+  icon: { sprite: /Textures/_ST/Icons/radial-icons-interaction.rsi, state: hug }
   emoteSound:
     path: /Audio/Effects/thudswoosh.ogg
     params:
@@ -44,7 +44,7 @@
   popUpRequest: stellar-emote-fistbump-request
   popUpSuccess: stellar-emote-fistbump-success
   vfxEntity: StellarSocialVisualsFistbump
-  icon: { sprite: /Textures/_ST/Icons/interaction-radial-icons.rsi, state: fistbump }
+  icon: { sprite: /Textures/_ST/Icons/radial-icons-interaction.rsi, state: fistbump }
   emoteSound:
     path: /Audio/Effects/soft_thump.ogg
     params:
