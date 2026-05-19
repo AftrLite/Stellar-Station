@@ -38,14 +38,11 @@ public sealed partial class StellarGunHitscanComponent : Component
     /// <summary>
     /// How much damage the hitscan weapon will do when hitting a target.
     /// </summary>
-    [DataField(required: true)]
-    public DamageSpecifier Damage;
+    [DataField] public DamageSpecifier? Damage;
 
     /// <summary>
     /// RSI containing the appropriate sprites for the hitscan- expecting "start", "middle", "end", and "bullet" states.
     /// </summary>
-    [DataField]
-    [AlwaysPushInheritance]
-    public SpriteSpecifier.Rsi Ray;
+    [DataField] [AlwaysPushInheritance] public SpriteSpecifier.Rsi Ray;
 }
 

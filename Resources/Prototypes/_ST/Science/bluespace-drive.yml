@@ -47,7 +47,6 @@
   - type: Transform
     noRot: true
   - type: SpriteFade
-    noRot: true
   - type: Sprite
     sprite: _ST/Tileset/Science/bluespace-drive-capacitor.rsi
     drawdepth: Mobs

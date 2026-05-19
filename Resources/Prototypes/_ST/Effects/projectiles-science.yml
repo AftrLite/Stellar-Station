@@ -1,0 +1,157 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### MUZZLE FLASHES
+- type: entity
+  abstract: true
+  parent: StellarMuzzleFlashBase
+  id: StellarMuzzleFlashScienceBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PointLight
+    radius: 7
+    energy: 2
+    mask: /Textures/_ST/LightMasks/cone-rotated.png
+    enabled: true
+    autoRot: true
+    castShadows: false
+    netsync: false
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  parent: StellarMuzzleFlashScienceBase
+  id: StellarMuzzleFlashScienceAlpha
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ST/Projectiles/Guns/science-alpha.rsi
+    offset: 0.25, 0
+  - type: PointLight
+    color: "#41bea8"
+
+- type: entity
+  parent: StellarMuzzleFlashScienceBase
+  id: StellarMuzzleFlashScienceBeta
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ST/Projectiles/Guns/science-beta.rsi
+    offset: 0.25, 0
+  - type: PointLight
+    color: "#9089a1"
+
+- type: entity
+  parent: StellarMuzzleFlashScienceBase
+  id: StellarMuzzleFlashScienceGamma
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ST/Projectiles/Guns/science-gamma.rsi
+    offset: 0.25, 0
+  - type: PointLight
+    color: "#c5cad1"
+
+- type: entity
+  parent: StellarMuzzleFlashScienceBase
+  id: StellarMuzzleFlashScienceSigma
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ST/Projectiles/Guns/science-sigma.rsi
+    offset: 0.25, 0
+  - type: PointLight
+    color: "#e5a557"
+
+- type: entity
+  parent: StellarMuzzleFlashScienceBase
+  id: StellarMuzzleFlashScienceLambda
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _ST/Projectiles/Guns/tachyon-heavy.rsi
+    offset: 0.25, 0
+  - type: PointLight
+    color: "#42a4ae"
+
+### BEAMS
+- type: entity
+  abstract: true
+  parent: StellarHitscanVisualsBase
+  id: StellarHitscanScienceBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicRaycast
+    maxDistance: 7
+  - type: HitscanReflect
+  - type: StellarStabilizerBeam
+  - type: StellarGunHitscan
+    damage:
+      types:
+        Radiation: 10
+    maxDistance: 7
+    unshaded: true
+    ray:
+      sprite: _ST/Projectiles/Guns/science-alpha.rsi
+
+- type: entity
+  parent: StellarHitscanScienceBase
+  id: StellarHitscanScienceAlpha
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarStabilizerBeam
+    muzzleFlash: StellarMuzzleFlashScienceAlpha
+  - type: StellarGunHitscan
+    lightColor: "#41bea8"
+    ray:
+      sprite: _ST/Projectiles/Guns/science-alpha.rsi
+
+- type: entity
+  parent: StellarHitscanScienceBase
+  id: StellarHitscanScienceBeta
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarStabilizerBeam
+    muzzleFlash: StellarMuzzleFlashScienceBeta
+  - type: StellarGunHitscan
+    lightColor: "#9089a1"
+    ray:
+      sprite: _ST/Projectiles/Guns/science-beta.rsi
+
+- type: entity
+  parent: StellarHitscanScienceBase
+  id: StellarHitscanScienceGamma
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarStabilizerBeam
+    muzzleFlash: StellarMuzzleFlashScienceGamma
+  - type: StellarGunHitscan
+    lightColor: "#c5cad1"
+    ray:
+      sprite: _ST/Projectiles/Guns/science-gamma.rsi
+
+- type: entity
+  parent: StellarHitscanScienceBase
+  id: StellarHitscanScienceSigma
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarStabilizerBeam
+    muzzleFlash: StellarMuzzleFlashScienceSigma
+  - type: StellarGunHitscan
+    lightColor: "#e5a557"
+    ray:
+      sprite: _ST/Projectiles/Guns/science-sigma.rsi
+
+- type: entity
+  parent: StellarHitscanScienceBase
+  id: StellarHitscanScienceLambda
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarStabilizerBeam
+    muzzleFlash: StellarMuzzleFlashScienceLambda
+  - type: StellarGunHitscan
+    lightColor: "#42a4ae"
+    ray:
+      sprite: _ST/Projectiles/Guns/malign-beam.rsi

@@ -6,3 +6,8 @@ SPDX-FileCopyrightText = "By AftrLite(GitHub). Made using a combination of (Crea
 SPDX-License-Identifier = "LicenseRef-Wallening"
 SPDX-FileAttributionText = "https://freesound.org/"
 
+[[annotations]]
+path = ["science-abe-shoot1.ogg", "science-abe-shoot2.ogg", "science-abe-shoot3.ogg", "science-abe-shoot4.ogg"]
+SPDX-FileCopyrightText = "By Daleonfire(Freesound). Converted to Mono by AftrLite(GitHub)."
+SPDX-License-Identifier = "LicenseRef-Wallening"
+SPDX-FileAttributionText = "https://freesound.org/people/Daleonfire/sounds/548138/"

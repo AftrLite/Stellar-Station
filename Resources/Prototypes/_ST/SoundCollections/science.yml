@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: soundCollection
+  id: ScienceAbeShoot
+  files:
+  - /Audio/_ST/Misc/science-abe-shoot1.ogg
+  - /Audio/_ST/Misc/science-abe-shoot2.ogg
+  - /Audio/_ST/Misc/science-abe-shoot3.ogg
+  - /Audio/_ST/Misc/science-abe-shoot4.ogg

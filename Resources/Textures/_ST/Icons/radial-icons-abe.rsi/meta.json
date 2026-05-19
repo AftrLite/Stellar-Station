@@ -1,0 +1,38 @@
+{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "by AftrLite(GitHub)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "pull"
+        },
+        {
+            "name": "anchor"
+        },
+        {
+            "name": "rotate"
+        },
+        {
+            "name": "beam"
+        },
+        {
+            "name": "alpha"
+        },
+        {
+            "name": "beta"
+        },
+        {
+            "name": "gamma"
+        },
+        {
+            "name": "sigma"
+        },
+        {
+            "name": "lambda"
+        }
+    ]
+}

@@ -282,13 +282,16 @@ public abstract partial class SharedStellarGunSystem : EntitySystem
         var originPos = TransformSystem.ToMapCoordinates(Transform(args.Data.Gun).Coordinates).Position;
         var targetPos = TransformSystem.ToMapCoordinates(Transform(args.Data.HitEntity.Value).Coordinates).Position;
         var distance = Math.Clamp((targetPos - originPos).Length(), ent.Comp.MinDistance, ent.Comp.MaxDistance);
-        var dmg = (distance > ent.Comp.MinDistance) ? ent.Comp.Damage * Math.Pow(ent.Comp.FalloffModifier, distance / ent.Comp.MaxDistance) : ent.Comp.Damage;
 
-        if(!_damage.TryChangeDamage(args.Data.HitEntity.Value, dmg, out var damageDealt, origin: args.Data.Shooter))
-            return;
+        if (ent.Comp.Damage != null)
+        {
+            var dmg = (distance > ent.Comp.MinDistance) ? ent.Comp.Damage * Math.Pow(ent.Comp.FalloffModifier, distance / ent.Comp.MaxDistance) : ent.Comp.Damage;
+            if(!_damage.TryChangeDamage(args.Data.HitEntity.Value, dmg, out var damageDealt, origin: args.Data.Shooter))
+                return;
 
-        var damageEvent = new HitscanDamageDealtEvent { Target = args.Data.HitEntity.Value, DamageDealt = damageDealt };
-        RaiseLocalEvent(ent, ref damageEvent);
+            var damageEvent = new HitscanDamageDealtEvent { Target = args.Data.HitEntity.Value, DamageDealt = damageDealt };
+            RaiseLocalEvent(ent, ref damageEvent);
+        }
     }
 
     private void OnHitscanDamageDealt(Entity<StellarGunHitscanComponent> ent, ref HitscanDamageDealtEvent args)

@@ -3,20 +3,33 @@
 # SPDX-License-Identifier: LicenseRef-Wallening
 
 - type: entity
+  abstract: true
   parent: StellarStructureBase
   id: StellarScienceAnomalyBase
   name: Anomaly
   components:
+  - type: StellarAnomaly
   - type: InteractionOutline
   - type: Sprite
     drawdepth: Mobs
-    offset: 0, 0.5
     sprite: _ST/Effects/anomalies.rsi
     layers:
     - state: shadow-anomaly
       shader: unshaded
     - state: shadow-anomaly
       shader: unshaded
+  - type: Appearance
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
   - type: PointLight
     radius: 2.0
     energy: 5.5

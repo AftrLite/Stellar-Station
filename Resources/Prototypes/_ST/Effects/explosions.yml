@@ -2,6 +2,7 @@
 #
 # SPDX-License-Identifier: LicenseRef-Wallening
 
+### EXPLOSION PROTOTYPES
 - type: explosion
   id: StellarDefault
   damagePerIntensity:
@@ -50,6 +51,7 @@
   fireColor: "#b60034"
   fireStates: 1
 
+### EXPLOSION ENTITIES (Visual Effects)
 - type: entity
   id: StellarExplosionDefault
   categories: [ HideSpawnMenu ]
@@ -219,3 +221,37 @@
     duration: 1
   - type: TimedDespawn
     lifetime: 1
+
+- type: entity
+  id: StellarExplosionAnomalySpawn
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarShockwave
+    duration: 2
+    visualRange: 2.5
+    visualForce: 0.025
+    visualWidth: 0.075
+    visualAberration: 0.25
+  - type: TimedDespawn
+    lifetime: 2
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    loop: false
+    sprite: _ST/Effects/explosion.rsi
+    layers:
+    - state: vfx-glitchy
+      shader: unshaded
+
+- type: entity
+  id: StellarExplosionAnomalyPulse
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarShockwave
+    duration: 2
+    visualRange: 2.5
+    visualForce: 0.025
+    visualWidth: 0.075
+    visualAberration: 0.25
+  - type: TimedDespawn
+    lifetime: 2

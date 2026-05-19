@@ -123,8 +123,7 @@
   components:
   - type: Sprite
     noRot: true
-    drawdepth: Mobs # Stellar - Wallening
-    sprite: _ST/Tileset/Science/ape.rsi # Stellar
+    sprite: Structures/Machines/Anomaly/ape.rsi
     layers:
     - state: base
     - state: unshaded
@@ -147,7 +146,7 @@
       fix1:
         shape:
           !type:PhysShapeCircle
-          radius: 0.25 # Stellar
+          radius: 0.35
         density: 50
         mask:
         - MachineMask
@@ -191,7 +190,7 @@
     showExamineText: false
     selectedMode: SemiAuto
     availableModes:
-      - SemiAuto
+    - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
   - type: Appearance
@@ -212,19 +211,13 @@
     range: 200
   - type: DeviceLinkSink
     ports:
-      - On
-      - Off
-      - Toggle
-      - SetParticleDelta
-      - SetParticleEpsilon
-      - SetParticleZeta
-      - SetParticleSigma
-  - type: Dropshadow # Begin Stellar - Wallening
-    anchorShadow: true
-    sprite:
-      sprite: _ST/Effects/dropshadow.rsi
-      state: shadow-ape
-    offset: 0, -0.37 # End Stellar - Wallening
+    - On
+    - Off
+    - Toggle
+    - SetParticleDelta
+    - SetParticleEpsilon
+    - SetParticleZeta
+    - SetParticleSigma
 
 - type: entity
   id: MachineAnomalyGenerator

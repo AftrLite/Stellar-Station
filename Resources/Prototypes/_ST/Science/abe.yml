@@ -1,0 +1,88 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: StellarStructureBase
+  id: StellarScienceAbe
+  name: A.B.E
+  description: An anomalous beam emitter, or "A.B.E" for short. Successor to the previously-popular A.P.E, the A.B.E boasts improved portability and increased performance.
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: StellarAnomalyAbe
+    collisionMask: Opaque
+    soundDeploy:
+      path: /Audio/_ST/Misc/science-abe-deploy.ogg
+      params:
+        volume: -3
+        variation: 0.05
+    soundUndeploy:
+      path: /Audio/_ST/Misc/science-abe-undeploy.ogg
+      params:
+        volume: -3
+        variation: 0.05
+    soundCharge:
+      path: /Audio/_ST/Misc/science-abe-charge.ogg
+      params:
+        variation: 0.077
+    soundShoot:
+      collection: ScienceAbeShoot
+      params:
+        variation: 0.077
+  - type: DoAfter
+  - type: Pullable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Dynamic
+  - type: Transform
+    anchored: False
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.20
+        density: 50
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _ST/Tileset/Science/abe.rsi
+    layers:
+    - state: shadow-float
+      offset: 0, -0.1875
+      map: [ "shadow" ]
+    - state: float
+      map: [ "base" ]
+    - state: unshaded
+      map: [ "unshaded" ]
+      visible: False
+      shader: unshaded
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.StellarAbeVisuals.Visuals:
+        shadow:
+          Undeploying: { state: shadow-out }
+          Undeployed: { state: shadow-float }
+          Deploying: { state: shadow-in }
+          Deployed: { state: shadow-base }
+        base:
+          Undeploying: { state: deploy-out }
+          Undeployed: { state: float }
+          Deploying: { state: deploy-in }
+          Deployed: { state: base }
+        unshaded:
+          Undeploying: { visible: False }
+          Undeployed: { visible: False }
+          Deploying: { visible: False }
+          Deployed: { visible: true }
+  - type: UserInterface
+    interfaces:
+      enum.StellarAbeRadialKey.Key:
+        type: StellarAbeBoundUserInterface
