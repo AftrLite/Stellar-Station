@@ -45,6 +45,8 @@ public sealed partial class StellarGunReloadableComponent : Component
 
     [DataField] public int MultiShotAmount = 1;
 
+    [DataField] public float ProjectileSpeed = 10;
+
     [DataField, AutoNetworkedField] public bool ShowExamineText = true;
 
     [DataField, AutoNetworkedField] public bool ShowWeaponType = true;

@@ -1,0 +1,120 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### BEAMS
+- type: entity
+  parent: StellarHitscanVisualsBase
+  id: StellarHitscanAnomalyElectric
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicRaycast
+    maxDistance: 10
+  - type: HitscanReflect
+  - type: StellarGunHitscan
+    damage:
+      types:
+        Shock: 40
+    maxDistance: 10
+    unshaded: true
+    lightColor: "#ffcd31"
+    ray:
+      sprite: _ST/Projectiles/Anomalies/anomaly-electric.rsi
+
+- type: entity
+  parent: StellarHitscanVisualsBase
+  id: StellarHitscanAnomalyIonic
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicRaycast
+    maxDistance: 25
+  - type: HitscanReflect
+  - type: StellarGunHitscan
+    damage:
+      types:
+        Shock: 80
+    maxDistance: 25
+    unshaded: true
+    lightColor: "#9cdfe4"
+    ray:
+      sprite: _ST/Projectiles/Anomalies/anomaly-ionic.rsi
+
+- type: entity
+  id: StellarProjectileAnomalyFlame
+  parent: StellarProjectileBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: _ST/Projectiles/Anomalies/anomaly-fire.rsi
+    layers:
+    - state: bullet
+      shader: unshaded
+  - type: Projectile
+    impactEffect: StellarProjectileImpactFlame
+    damage:
+      types:
+        Heat: 12
+  - type: ESTimedDespawn
+    lifetime: 5
+  - type: PointLight
+    color: "#42a4ae"
+    radius: 2
+    energy: 1
+    mask: /Textures/_ST/LightMasks/compact-line.png
+    enabled: true
+    autoRot: true
+    castShadows: false
+
+- type: entity
+  id: StellarProjectileAnomalyIce
+  parent: StellarProjectileBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: _ST/Projectiles/Anomalies/anomaly-ice.rsi
+    layers:
+    - state: bullet
+      shader: unshaded
+  - type: Projectile
+    impactEffect: StellarProjectileImpactIce
+    damage:
+      types:
+        Cold: 12
+  - type: ESTimedDespawn
+    lifetime: 5
+  - type: PointLight
+    color: "#42a4ae"
+    radius: 2
+    energy: 1
+    mask: /Textures/_ST/LightMasks/compact-line.png
+    enabled: true
+    autoRot: true
+    castShadows: false
+
+- type: entity
+  id: StellarProjectileImpactFlame
+  parent: StellarProjectileImpactBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: _ST/Effects/projectile-impact.rsi
+    layers:
+    - state: fire
+      shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+
+- type: entity
+  id: StellarProjectileImpactIce
+  parent: StellarProjectileImpactBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: _ST/Effects/projectile-impact.rsi
+    layers:
+    - state: ice
+      shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]

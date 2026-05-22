@@ -1,0 +1,18 @@
+version = 1
+
+[[annotations]]
+path = ["*.ogg"]
+SPDX-FileCopyrightText = "By AftrLite(GitHub). Made using a combination of (Creative Commons 0) samples from freesound.org."
+SPDX-License-Identifier = "LicenseRef-Wallening"
+SPDX-FileAttributionText = "https://freesound.org/"
+
+[[annotations]]
+path = ["science-abe-shoot1.ogg", "science-abe-shoot2.ogg", "science-abe-shoot3.ogg", "science-abe-shoot4.ogg"]
+SPDX-FileCopyrightText = "By Daleonfire(Freesound). Converted to Mono by AftrLite(GitHub)."
+SPDX-License-Identifier = "LicenseRef-Wallening"
+SPDX-FileAttributionText = "https://freesound.org/people/Daleonfire/sounds/548138/"
+
+[[annotations]]
+path = ["science-anom-spawn.ogg", "science-anom-pulse.ogg", "science-anom-idle.ogg"]
+SPDX-FileCopyrightText = "By Pigeonbeans for Stellar Station."
+SPDX-License-Identifier = "LicenseRef-Wallening"

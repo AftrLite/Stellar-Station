@@ -351,6 +351,21 @@
   - 1.0
   - 1.0
 
+## OOZE
+- type: tile
+  id: StellarFloorOoze
+  name: ooze
+  sprite: /Textures/_ST/Tileset/Floor/Misc/ooze.png
+  variants: 2
+  placementVariants:
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepSlime
+
 ## LOBBY
 
 - type: tile

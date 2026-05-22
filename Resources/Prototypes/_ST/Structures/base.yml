@@ -77,8 +77,6 @@
     key: walls
   - type: RadiationBlocker
     resistance: 2
-  - type: CosmicCorruptible
-    convertTo: StellarWallMalign
   - type: Icon
     state: full
   - type: Anchorable

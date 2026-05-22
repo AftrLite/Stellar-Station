@@ -95,13 +95,6 @@ entities:
       pos: 289.08115,100.86931
       parent: 1
     - type: ESTileBasedRoof
-      unRoofedTiles:
-      - Lattice
-      - FloorGlass
-      - FloorRGlass
-      - FloorAsteroidSand
-      - PlatingAsteroid
-      - StellarFloorNothing
     - type: MapGrid
       chunks:
         0,0:
@@ -35861,7 +35854,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -5.5,26.5
       parent: 2
-- proto: StellarVFXBluespaceRIft
+- proto: StellarVFXBluespaceRift
   entities:
   - uid: 5731
     components:

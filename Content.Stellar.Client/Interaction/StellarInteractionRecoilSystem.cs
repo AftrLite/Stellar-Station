@@ -5,6 +5,7 @@
 using System.Numerics;
 using Content.Client.Effects;
 using Content.Shared.Effects;
+using Content.Stellar.Client.Animations;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -24,35 +25,6 @@ public sealed class StellarInteractionRecoilSystem : EntitySystem
         SubscribeAllEvent<ColorFlashEffectEvent>(OnColorFlashEffect);
     }
 
-    private Animation GetAnimation(Angle facing, Vector2 offset)
-    {
-        const float offsetDistance = 4f / EyeManager.PixelsPerMeter;
-
-        var offsetFromCurrent = facing.Opposite().ToWorldVec() * offsetDistance;
-        var offsetLength = TimeSpan.FromMilliseconds(175);
-        var returnLength = TimeSpan.FromMilliseconds(87.5);
-
-        return new Animation()
-        {
-            Length = offsetLength + returnLength,
-
-            AnimationTracks =
-            {
-                new AnimationTrackComponentProperty()
-                {
-                    ComponentType = typeof(SpriteComponent),
-                    Property = nameof(SpriteComponent.Offset),
-                    KeyFrames =
-                    {
-                        new AnimationTrackProperty.KeyFrame(offset, 0f),
-                        new AnimationTrackProperty.KeyFrame(offset + offsetFromCurrent, (float)offsetLength.TotalSeconds, Easings.OutExpo),
-                        new AnimationTrackProperty.KeyFrame(offset, (float)returnLength.TotalSeconds, Easings.OutCirc),
-                    },
-                },
-            },
-        };
-    }
-
     private void Recoil(EntityUid entity)
     {
         if (!TryComp<SpriteComponent>(entity, out var sprite) || !HasComp<StellarInteractionRecoilTargetComponent>(entity))
@@ -61,7 +33,7 @@ public sealed class StellarInteractionRecoilSystem : EntitySystem
         if (_animation.HasRunningAnimation(entity, AnimateKey))
             return;
 
-        _animation.Play(entity, GetAnimation(Transform(entity).LocalRotation, sprite.Offset), AnimateKey);
+        _animation.Play(entity, StellarAnimLib.KnockbackFacing(0.25f, Transform(entity).LocalRotation, sprite.Offset), AnimateKey);
     }
 
     private void OnColorFlashEffect(ColorFlashEffectEvent ev)

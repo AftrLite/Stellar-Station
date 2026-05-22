@@ -9,6 +9,16 @@
   name: Anomaly
   components:
   - type: StellarAnomaly
+    pipTimeMin: 10
+    pipTimeMax: 30
+    soundSpawn:
+      path: /Audio/_ST/Science/science-anom-spawn.ogg
+      params:
+        variation: 0.077
+    soundPulse:
+      path: /Audio/_ST/Science/science-anom-pulse.ogg
+      params:
+        variation: 0.077
   - type: InteractionOutline
   - type: Sprite
     drawdepth: Mobs
@@ -19,47 +29,53 @@
     - state: shadow-anomaly
       shader: unshaded
   - type: Appearance
+  - type: AnimationPlayer
+  - type: ESTimedDespawnSpriteFade
+    fadeTime: 0.8
+  - type: Physics
+    bodyType: Static
   - type: Fixtures
     fixtures:
       fix1:
         shape:
           !type:PhysShapeCircle
           radius: 0.35
-        density: 50
         mask:
-        - FlyingMobMask
+        - FullTileMask
         layer:
-        - FlyingMobLayer
+        - WallLayer
+        density: 50
+        hard: false
+  - type: AmbientSound
+    enabled: false
+    range: 15
+    sound:
+      path: /Audio/_ST/Science/science-anom-idle.ogg
   - type: PointLight
-    radius: 2.0
-    energy: 5.5
-    softness: 4
+    enabled: false
+    radius: 3.75
+    energy: 9
+    softness: 2
     color: "#00ccff"
-    castShadows: false
-  - type: LightBehaviour
-    behaviours:
-    - !type:RandomizeBehaviour
-      id: fade_out
-      interpolate: Cubic
-      minDuration: 0.2
-      maxDuration: 0.3
-      startValue: 5.5
-      endValue: 2.625
-      property: Energy
-      isLooped: true
-      enabled: true
-    - !type:FadeBehaviour
-      id: fade_out
-      maxDuration: 4.0
-      startValue: 2.5
-      endValue: 1.75
-      isLooped: true
-      enabled: true
-      reverseWhenFinished: true
+    castShadows: true
+
+
+- type: entity
+  abstract: true
+  parent: StellarScienceAnomalyBase
+  id: StellarScienceAnomalyPowerfulBase
+  components:
+  - type: StellarAnomaly
+    integrityPipsMax: 7
+    integrityPipsSpawnVariance: 3
+    pipTimerMin: 60
+    pipTimerMax: 120
+    pipTimerStable: 140
 
 - type: entity
   parent: StellarScienceAnomalyBase
   id: StellarScienceAnomalyBluespace
+  description: An unbound vortex of swirling cerulean...
   suffix: Bluespace
   components:
   - type: Sprite
@@ -74,12 +90,40 @@
     softness: 4
     color: "#27adbd"
     castShadows: false
+  - type: Portal
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.48,0.25,0.48"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        hard: false
 
 - type: entity
-  parent: StellarScienceAnomalyBase
+  parent: StellarScienceAnomalyPowerfulBase
   id: StellarScienceAnomalyAzure
+  description: A maelstrom pure azure, seething against realspace.
   suffix: Azure
   components:
+  - type: StellarAnomaly
+    triggerChance: 0.75
+  - type: SpawnOnTrigger
+    keysIn:
+    - anom
+    proto: StellarSciencBluespaceRift
   - type: Sprite
     layers:
     - state: shadow-anomaly
@@ -92,10 +136,43 @@
     softness: 4
     color: "#468aff"
     castShadows: false
+  - type: ExplodeOnTrigger
+    keysIn:
+    - anom
+  - type: Explosive
+    explosionType: StellarDefault
+    maxIntensity: 5
+    intensitySlope: 2
+    totalIntensity: 35
+    canCreateVacuum: false
+    repeatable: true
+    deleteAfterExplosion: false
+  - type: Portal
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.48,0.25,0.48"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        hard: false
 
 - type: entity
   parent: StellarScienceAnomalyBase
   id: StellarScienceAnomalyShadow
+  description: An unbound fissure in the fabric of reality...
   suffix: Shadow
   components:
   - type: Sprite
@@ -112,8 +189,9 @@
     castShadows: false
 
 - type: entity
-  parent: StellarScienceAnomalyBase
+  parent: StellarScienceAnomalyPowerfulBase
   id: StellarScienceAnomalyApocryphal
+  description: A wicked fissure in realspace itself. It's watching you.
   suffix: Apocryphal
   components:
   - type: Sprite
@@ -132,8 +210,14 @@
 - type: entity
   parent: StellarScienceAnomalyBase
   id: StellarScienceAnomalyElectric
+  description: An unbound arc of pure energy...
   suffix: Electric
   components:
+  - type: StellarAnomaly
+    soundPulse:
+      path: /Audio/_ST/Science/science-anom-pulse-electric.ogg
+      params:
+        variation: 0.077
   - type: Sprite
     layers:
     - state: shadow-anomaly
@@ -146,12 +230,23 @@
     softness: 4
     color: "#f7f397"
     castShadows: false
+  - type: StellarAnomalyPulseShoot
+    shootable: StellarHitscanAnomalyElectric
+    shootAmountMin: 4
+    shootAmountMax: 5
 
 - type: entity
-  parent: StellarScienceAnomalyBase
-  id: StellarScienceAnomalyMagnetar
-  suffix: Magnetar
+  parent: StellarScienceAnomalyPowerfulBase
+  id: StellarScienceAnomalyIonic
+  description: Convalescent coils of energy, rippling with pure power.
+  suffix: Ionic
   components:
+  - type: StellarAnomaly
+    triggerChance: 0.66
+    soundPulse:
+      path: /Audio/_ST/Science/science-anom-pulse-ionic.ogg
+      params:
+        variation: 0.077
   - type: Sprite
     layers:
     - state: shadow-anomaly
@@ -164,28 +259,20 @@
     softness: 4
     color: "#9cdfe4"
     castShadows: false
-
-- type: entity
-  parent: StellarScienceAnomalyBase
-  id: StellarScienceAnomalyGravity
-  suffix: Gravity
-  components:
-  - type: Sprite
-    layers:
-    - state: shadow-anomaly
-      shader: unshaded
-    - state: gravity
-      shader: unshaded
-  - type: PointLight
-    radius: 2.0
-    energy: 5.5
-    softness: 4
-    color: "#394a50"
-    castShadows: false
+  - type: StellarAnomalyPulseShoot
+    shootable: StellarHitscanAnomalyIonic
+    shootAmountMin: 5
+    shootAmountMax: 6
+  - type: EmpOnTrigger
+    keysIn:
+    - anom
+    range: 10
+    energyConsumption: 50000
 
 - type: entity
   parent: StellarScienceAnomalyBase
   id: StellarScienceAnomalyIce
+  description: An unbound concentration of rime and frost...
   suffix: Ice
   components:
   - type: Sprite
@@ -200,10 +287,26 @@
     softness: 4
     color: "#5b92c5"
     castShadows: false
+  - type: StellarAnomalyPulseShoot
+    projectileSpeed: 10
+    shootingMethod: Projectile
+    shootable: StellarProjectileAnomalyIce
+    shootAmountMin: 3
+    shootAmountMax: 4
+  - type: StellarAnomalyPulseSpawn
+    entries:
+    - settings:
+        minAmount: 6
+        maxAmount: 8
+        maxRange: 3.5
+        canSpawnOnEntities: false
+      spawns:
+      - IceCrust
 
 - type: entity
   parent: StellarScienceAnomalyBase
   id: StellarScienceAnomalyFlame
+  description: An unbound blaze, bright and wild...
   suffix: Flame
   components:
   - type: Sprite
@@ -218,11 +321,46 @@
     softness: 4
     color: "#e16146"
     castShadows: false
+  - type: StellarAnomaly
+    triggerChance: 0.5
+  - type: StellarAnomalyPulseShoot
+    projectileSpeed: 4
+    shootingMethod: Projectile
+    shootable: StellarProjectileAnomalyFlame
+    shootAmountMin: 3
+    shootAmountMax: 4
+  - type: ExplodeOnTrigger
+    keysIn:
+    - anom
+  - type: Explosive
+    explosionType: StellarFireExplosion
+    maxIntensity: 1
+    intensitySlope: 5
+    totalIntensity: 10
+    canCreateVacuum: false
+    repeatable: true
+    deleteAfterExplosion: false
+  - type: IgnitionSource
+    temperature: 800
+    ignited: true
+  - type: IgniteOnCollide
+    fixtureId: fix1
+    fireStacks: 1
+  - type: DamageOnInteract
+    damage:
+      types:
+        Heat: 10
+    popupText: anomaly-component-contact-damage
+  - type: DamageOnAttacked
+    damage:
+      types:
+        Heat: 10
 
 - type: entity
-  parent: StellarScienceAnomalyBase
-  id: StellarScienceAnomalySupernova
-  suffix: Supernova
+  parent: StellarScienceAnomalyPowerfulBase
+  id: StellarScienceAnomalySolar
+  description: A brilliant conflagration, roaring with solar energy.
+  suffix: Solar
   components:
   - type: Sprite
     layers:
@@ -236,10 +374,45 @@
     softness: 4
     color: "#b43565"
     castShadows: false
+  - type: StellarAnomaly
+    triggerChance: 0.75
+  - type: StellarAnomalyPulseShoot
+    projectileSpeed: 3
+    shootingMethod: Projectile
+    shootable: StellarProjectileAnomalyFlame
+    shootAmountMin: 4
+    shootAmountMax: 5
+  - type: ExplodeOnTrigger
+    keysIn:
+    - anom
+  - type: Explosive
+    explosionType: StellarFireExplosion
+    maxIntensity: 5
+    intensitySlope: 2
+    totalIntensity: 35
+    canCreateVacuum: false
+    repeatable: true
+    deleteAfterExplosion: false
+  - type: IgnitionSource
+    temperature: 800
+    ignited: true
+  - type: IgniteOnCollide
+    fixtureId: fix1
+    fireStacks: 3
+  - type: DamageOnInteract
+    damage:
+      types:
+        Heat: 25
+    popupText: anomaly-component-contact-damage
+  - type: DamageOnAttacked
+    damage:
+      types:
+        Heat: 25
 
 - type: entity
   parent: StellarScienceAnomalyBase
   id: StellarScienceAnomalyFlesh
+  description: An unbound amalgam of flesh and tissue...
   suffix: Flesh
   components:
   - type: Sprite
@@ -254,21 +427,135 @@
     softness: 4
     color: "#ac4060"
     castShadows: false
+  - type: StellarAnomalyPulseSpawn
+    entries:
+    - settings:
+        minAmount: 6
+        maxAmount: 8
+        maxRange: 3.5
+        canSpawnOnEntities: false
+      spawns:
+      - StellarFleshFloor
+    - settings:
+        spawnOnPulse: true
+        minAmount: 1
+        maxAmount: 3
+        minRange: 3
+        maxRange: 4.5
+      spawns:
+      - MobFleshJared
+      - MobFleshGolem
+      - MobFleshClamp
+      - MobFleshLover
 
 - type: entity
   parent: StellarScienceAnomalyBase
-  id: StellarScienceAnomalyLiquid
-  suffix: Liquid
+  id: StellarScienceAnomalyOoze
+  description: An unbound blob of unidentifiable ooze...
+  suffix: Ooze
   components:
+  - type: StellarAnomaly
+    triggerChance: 1
   - type: Sprite
     layers:
     - state: shadow-anomaly
       shader: unshaded
-    - state: liquid
+    - state: ooze
       shader: unshaded
   - type: PointLight
     radius: 2.0
     energy: 5.5
     softness: 4
-    color: "#a3b7bc"
+    color: "#7acc62"
     castShadows: false
+  - type: StellarAnomalyPulseSpawn
+    spawnOnSpawn: false
+    entries:
+    - settings:
+        minAmount: 0
+        maxAmount: 2
+        minRange: 1
+        maxRange: 4
+        canSpawnOnEntities: false
+      spawns:
+      - StellarWallOozeNoOcclusion
+    - settings:
+        spawnOnPulse: true
+        minAmount: 2
+        maxAmount: 3
+        minRange: 3
+        maxRange: 4.5
+      spawns:
+      - StellarMobSlimeOoze
+  - type: StellarTileConversion
+    conversionMaxTicks: 0
+    conversionTime: 0.33
+    conversionChance: 0.75
+    useVfx: false
+    enabled: false
+    conversionTiles:
+    - StellarFloorOoze
+    entityConversionDict:
+      StellarWallWood: StellarWallOozeNoOcclusion
+      StellarWallSteel: StellarWallOozeNoOcclusion
+      StellarWallPlasteel: StellarWallOozeNoOcclusion
+      StellarWallShuttle: StellarWallOozeNoOcclusion
+      StellarWindowShuttle: StellarWallOozeNoOcclusion
+      StellarWindowGlass: StellarWallOozeNoOcclusion
+      StellarWindowGlassReinforced: StellarWallOozeNoOcclusion
+      StellarWindowPlasma: StellarWallOozeNoOcclusion
+      StellarWindowPlasmaReinforced: StellarWallOozeNoOcclusion
+      StellarWindowUranium: StellarWallOozeNoOcclusion
+      StellarWindowUraniumReinforced: StellarWallOozeNoOcclusion
+
+- type: entity
+  parent: StellarStructureBase
+  id: StellarSciencBluespaceRift
+  name: bluespace rift
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    sprite: _ST/Effects/bluespaceportal.rsi
+    layers:
+    - state: vfx
+      shader: unshaded
+  - type: Appearance
+  - type: AnimationPlayer
+  - type: PointLight
+    radius: 15
+    energy: 1
+    softness: 0.9
+    color: "#468aff"
+  - type: StellarProjectileAnimation
+  - type: ESTimedDespawn
+    lifetime: 2.5
+  - type: ESTimedDespawnSpriteFade
+    fadeTime: 0.25
+  - type: Tag
+    tags:
+    - HideContextMenu
+  - type: Portal
+    maxRandomRadius: 30
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.5
+        density: 50
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.25,-1.25,1.25,1.25"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        hard: false

@@ -5,8 +5,10 @@
 using Content.Client.UserInterface.Controls;
 using Content.Stellar.Server.CosmicCult.Components;
 using Content.Stellar.Shared.Science;
+using Content.Stellar.Shared.Science.Components;
 using Robust.Client.UserInterface;
 using JetBrains.Annotations;
+using Robust.Shared.Collections;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
@@ -32,7 +34,7 @@ public sealed class StellarAbeBoundUserInterface : BoundUserInterface
     {
         base.Open();
 
-        if (_menu?.IsOpen == true || !EntMan.HasComponent<StellarAnomalyAbeComponent>(Owner))
+        if (_menu?.IsOpen == true || !EntMan.HasComponent<StellarAbeComponent>(Owner))
             return;
 
         _menu = this.CreateWindow<SimpleRadialMenu>();
@@ -71,41 +73,34 @@ public sealed class StellarAbeBoundUserInterface : BoundUserInterface
             ToolTip = "Stabilizer Beam",
         };
 
-        var selectAlpha = new RadialMenuActionOption<EntProtoId>(ShootMessage, "StellarHitscanScienceAlpha")
+        var selectAlpha = new RadialMenuActionOption<AbeBeamType>(ShootMessage, AbeBeamType.Alpha)
         {
-            IconSpecifier = RadialMenuIconSpecifier.With(new SpriteSpecifier.Rsi(_rsiPath, "alpha")),
+            IconSpecifier = RadialMenuIconSpecifier.With(new SpriteSpecifier.Rsi(_rsiPath, "1")),
             ToolTip = "Alpha",
         };
 
-        var selectBeta = new RadialMenuActionOption<EntProtoId>(ShootMessage, "StellarHitscanScienceBeta")
+        var selectBeta = new RadialMenuActionOption<AbeBeamType>(ShootMessage, AbeBeamType.Beta)
         {
-            IconSpecifier = RadialMenuIconSpecifier.With(new SpriteSpecifier.Rsi(_rsiPath, "beta")),
+            IconSpecifier = RadialMenuIconSpecifier.With(new SpriteSpecifier.Rsi(_rsiPath, "2")),
             ToolTip = "Beta",
         };
 
-        var selectGamma = new RadialMenuActionOption<EntProtoId>(ShootMessage, "StellarHitscanScienceGamma")
+        var selectGamma = new RadialMenuActionOption<AbeBeamType>(ShootMessage, AbeBeamType.Gamma)
         {
-            IconSpecifier = RadialMenuIconSpecifier.With(new SpriteSpecifier.Rsi(_rsiPath, "gamma")),
+            IconSpecifier = RadialMenuIconSpecifier.With(new SpriteSpecifier.Rsi(_rsiPath, "3")),
             ToolTip = "Gamma",
         };
 
-        var selectSigma = new RadialMenuActionOption<EntProtoId>(ShootMessage, "StellarHitscanScienceSigma")
-        {
-            IconSpecifier = RadialMenuIconSpecifier.With(new SpriteSpecifier.Rsi(_rsiPath, "sigma")),
-            ToolTip = "Sigma",
-        };
-
-        var selectLambda = new RadialMenuActionOption<EntProtoId>(ShootMessage, "StellarHitscanScienceLambda")
+        var selectLambda = new RadialMenuActionOption<AbeBeamType>(ShootMessage, AbeBeamType.Lambda)
         {
             IconSpecifier = RadialMenuIconSpecifier.With(new SpriteSpecifier.Rsi(_rsiPath, "lambda")),
             ToolTip = "Lambda",
         };
 
         shootNest.Add(selectAlpha);
+        shootNest.Add(selectGamma);
         shootNest.Add(selectBeta);
         // shootNest.Add(selectLambda);
-        shootNest.Add(selectGamma);
-        shootNest.Add(selectSigma);
 
         options.Add(anchor);
 
@@ -122,9 +117,29 @@ public sealed class StellarAbeBoundUserInterface : BoundUserInterface
         return options;
     }
 
-    private void ShootMessage(EntProtoId beamType)
+    private void ShootMessage(AbeBeamType beamType)
     {
-        var message = new StellarAbeRadialMessage(AbeMenuMethod.ShootBeam, beamType);
+        EntProtoId beam = "";
+        EntProtoId muzzle = "";
+        switch (beamType)
+        {
+            case AbeBeamType.Alpha:
+                beam = "StellarHitscanScienceAlpha";
+                muzzle = "StellarMuzzleFlashScienceAlpha";
+                break;
+            case AbeBeamType.Beta:
+                beam = "StellarHitscanScienceBeta";
+                muzzle = "StellarMuzzleFlashScienceBeta";
+                break;
+            case AbeBeamType.Gamma:
+                beam = "StellarHitscanScienceGamma";
+                muzzle = "StellarMuzzleFlashScienceGamma";
+                break;
+            case AbeBeamType.Lambda:
+                break;
+        }
+
+        var message = new StellarAbeRadialMessage(AbeMenuMethod.ShootBeam, beam, muzzle);
         SendPredictedMessage(message);
     }
 
@@ -132,5 +147,13 @@ public sealed class StellarAbeBoundUserInterface : BoundUserInterface
     {
         var message = new StellarAbeRadialMessage(state);
         SendPredictedMessage(message);
+    }
+
+    private enum AbeBeamType : byte
+    {
+        Alpha,
+        Beta,
+        Gamma,
+        Lambda,
     }
 }

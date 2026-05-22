@@ -10,6 +10,7 @@ using Content.Shared.Effects;
 using Content.Shared.Hands;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
+using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Hitscan.Events;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Systems;
@@ -17,6 +18,7 @@ using Content.Shared.Wieldable;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -40,6 +42,7 @@ public abstract partial class SharedStellarGunSystem : EntitySystem
     [Dependency] private readonly ESScreenshakeSystem _shake = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
+    [Dependency] private readonly SharedProjectileSystem _projectile = default!;
 
     public override void Initialize()
     {
@@ -239,7 +242,6 @@ public abstract partial class SharedStellarGunSystem : EntitySystem
 
     private void ShootProjectile(Entity<StellarGunReloadableComponent> ent, Vector2 direction, EntityUid user)
     {
-        var initialSpeed = Physics.GetMapLinearVelocity(user);
         if (ent.Comp.MultiShotAmount > 1)
         {
             var angles = LinearSpread(direction.ToAngle() - ent.Comp.MultiShotSpread / 2, direction.ToAngle() + ent.Comp.MultiShotSpread / 2, ent.Comp.MultiShotAmount);
@@ -247,15 +249,11 @@ public abstract partial class SharedStellarGunSystem : EntitySystem
             for (var i = 0; i < ent.Comp.MultiShotAmount; i++)
             {
                 var angleWiggle = _random.NextAngle(ent.Comp.MultiShotWiggleMin, ent.Comp.MultiShotWiggleMax) + angles[i];
-                var projectileEv = new StellarProjectileEvent(angleWiggle.ToVec(), initialSpeed, ent, user);
-                RaiseLocalEvent(ent, ref projectileEv);
+                ConstructProjectile(ent, ent.Comp.Shootable, angleWiggle.ToVec(), user, ent.Comp.ProjectileSpeed);
             }
         }
         else
-        {
-            var projectileEv = new StellarProjectileEvent(direction, initialSpeed, ent, user);
-            RaiseLocalEvent(ent, ref projectileEv);
-        }
+            ConstructProjectile(ent, ent.Comp.Shootable, direction.Normalized(), user, ent.Comp.ProjectileSpeed);
     }
 
     private void OnHitscan(Entity<StellarGunHitscanComponent> ent, ref HitscanTraceEvent args)
@@ -331,6 +329,41 @@ public abstract partial class SharedStellarGunSystem : EntitySystem
         return angles;
     }
 
+    public void ConstructProjectile(EntityUid uid, EntProtoId projectileProto, Vector2 direction, EntityUid? user = null, float projectileSpeed = 25)
+    {
+        if (_netManager.IsClient)
+            return; // This is quite dumb.
+
+        var baseSpeed = Physics.GetMapLinearVelocity(user != null ? user.Value : uid);
+        var shootable = Spawn(projectileProto, TransformSystem.GetMapCoordinates(uid));
+        var physics = EnsureComp<PhysicsComponent>(shootable);
+        var projectile = EnsureComp<ProjectileComponent>(shootable);
+        var targetMapVelocity = baseSpeed + direction * projectileSpeed;
+        var currentMapVelocity = Physics.GetMapLinearVelocity(shootable, physics);
+        var finalLinear = physics.LinearVelocity + targetMapVelocity - currentMapVelocity;
+        projectile.Weapon = uid;
+        _projectile.SetShooter(shootable, projectile, user != null ? user.Value : uid);
+        Physics.SetLinearVelocity(shootable, finalLinear, body: physics);
+        Physics.SetBodyStatus(shootable, physics, BodyStatus.InAir);
+        TransformSystem.SetWorldRotation(shootable, direction.ToWorldAngle() + projectile.Angle);
+    }
+
+    public void ConstructHitscan(EntityUid uid, EntProtoId hitscanProto, EntityCoordinates fromCoords, Vector2 direction, EntProtoId? muzzleProto = null, bool muzzleFlash = false)
+    {
+        var hitscanEnt = Spawn(hitscanProto);
+        var hitscanEv = new HitscanTraceEvent()
+        {
+            FromCoordinates = fromCoords, ShotDirection = direction, Gun = uid, Shooter = uid,
+        };
+        RaiseLocalEvent(hitscanEnt, ref hitscanEv);
+
+        if (muzzleFlash && muzzleProto.HasValue)
+        {
+            var ev = new StellarMuzzleFlashEvent(GetNetEntity(uid), muzzleProto, direction.ToAngle());
+            RaiseNetworkEvent(ev);
+        }
+    }
+
     protected abstract void StellarHitscan(EntityUid gunUid, StellarHitscanEvent message, EntityUid? user = null);
 
     protected abstract void StellarMuzzleFlash(EntityUid gunUid, StellarMuzzleFlashEvent message, EntityUid? user = null);
@@ -399,9 +432,6 @@ public sealed class StellarHitscanEvent : EntityEventArgs
         RayVisuals = rayVisuals;
     }
 }
-
-[ByRefEvent]
-public record struct StellarProjectileEvent(Vector2 Direction, Vector2 InitialSpeed, Entity<StellarGunReloadableComponent> Gun, EntityUid User);
 
 [Serializable, NetSerializable]
 public sealed partial class StellarAmmoReloadDoAfter : SimpleDoAfterEvent;

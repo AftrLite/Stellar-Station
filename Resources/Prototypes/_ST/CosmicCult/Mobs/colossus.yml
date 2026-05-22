@@ -246,10 +246,10 @@
     thresholds:
       0: Alive
       600: Dead
-  - type: CosmicCorrupting
+  - type: StellarTileConversion
     mobile: true
     autoDisable: false
-    corruptionReduction: 0
+    chanceReduction: 0
 
 - type: entity
   parent: [ MobCosmicColossusBase ]

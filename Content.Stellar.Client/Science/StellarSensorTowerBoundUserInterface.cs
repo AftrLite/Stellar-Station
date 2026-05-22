@@ -4,6 +4,7 @@
 
 using Content.Client.UserInterface.Controls;
 using Content.Stellar.Shared.Science;
+using Content.Stellar.Shared.Science.Components;
 using Robust.Client.UserInterface;
 using JetBrains.Annotations;
 using Robust.Shared.Utility;

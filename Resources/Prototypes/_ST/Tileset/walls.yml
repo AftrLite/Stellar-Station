@@ -259,3 +259,51 @@
   - type: StellarWallSmooth
     key: WallSolid
     fullState: wall
+
+- type: entity
+  parent:
+  - StellarStructureBaseWall
+  id: StellarWallOozeNoOcclusion
+  name: ooze wall
+  description: A wall made of... Ooze. You sure don't see that every day.
+  suffix: No Occlusion
+  categories: [ ForkFiltered ]
+  components:
+  - type: Occluder
+    enabled: false
+  - type: Sprite
+    sprite: _ST/Tileset/Walls/ooze.rsi
+  - type: Icon
+    sprite: _ST/Tileset/Walls/ooze.rsi
+  - type: StellarWallSmooth
+    key: WallSolid
+    fullState: wall
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 1000
+        hard: false
+  - type: SpeedModifierContacts
+    walkSpeedModifier: 0.2
+    sprintSpeedModifier: 0.1
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepWater
+      params:
+        volume: 8
+  - type: StepTrigger
+    requiredTriggeredSpeed: 0
+    intersectRatio: 0.1
+    blacklist:
+      tags:
+      - Catwalk
+  - type: TileEntityEffect
+    effects:
+    - !type:Extinguish

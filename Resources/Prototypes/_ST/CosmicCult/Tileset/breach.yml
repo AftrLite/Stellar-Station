@@ -25,14 +25,14 @@
   - type: CosmicExamine
     cultistText: cosmic-examine-text-gateway
     othersText: cosmic-examine-text-crew-gateway
-  - type: CosmicCorrupting
+  - type: StellarTileConversion
     conversionTiles:
       - FloorCosmicRough
       - FloorCosmicCorruption
-    corruptionMaxTicks: 4
-    corruptionSpeed: 1
-    corruptionChance: 1
-    corruptionReduction: 0.249
+    conversionMaxTicks: 4
+    conversionTime: 1
+    conversionChance: 1
+    chanceReduction: 0.249
   - type: EmitSoundOnSpawn
     sound:
       path: /Audio/_ST/CosmicCult/gateway-spawn.ogg

@@ -73,13 +73,13 @@
   - type: CosmicExamine
     cultistText: cosmic-examine-text-stigma
     othersText: cosmic-examine-text-crew-stigma
-  - type: CosmicCorrupting
+  - type: StellarTileConversion
     conversionTiles:
     - FloorCosmicRough
-    corruptionMaxTicks: 2
-    corruptionSpeed: 1
-    corruptionChance: 0.5
-    corruptionReduction: 0.23
+    conversionMaxTicks: 2
+    conversionTime: 1
+    conversionChance: 0.5
+    chanceReduction: 0.23
   - type: PointLight
     color: "#42a4ae"
     radius: 2.5

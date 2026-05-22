@@ -25,11 +25,11 @@
     cultistText: cosmic-examine-text-rift
     othersText: cosmic-examine-text-crew-rift
   - type: CosmicRift
-  - type: CosmicCorrupting
-    corruptionMaxTicks: 6
-    corruptionSpeed: 8
-    corruptionChance: 1
-    corruptionReduction: 0.16
+  - type: StellarTileConversion
+    conversionMaxTicks: 6
+    conversionTime: 8
+    conversionChance: 1
+    chanceReduction: 0.16
   - type: PointLight
     color: "#42a4ae"
     radius: 2.5

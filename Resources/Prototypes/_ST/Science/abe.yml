@@ -11,28 +11,36 @@
   placement:
     mode: SnapgridCenter
   components:
-  - type: StellarAnomalyAbe
+  - type: StellarAbe
+    dialogueStabilized: StellarSensorAbeDialogueStabilized
+    dialogueUndeployed: StellarSensorAbeDialogueUndeployed
+    dialogueDeployed: StellarSensorAbeDialogueDeployed
     collisionMask: Opaque
     soundDeploy:
-      path: /Audio/_ST/Misc/science-abe-deploy.ogg
+      path: /Audio/_ST/Science/science-abe-deploy.ogg
       params:
         volume: -3
         variation: 0.05
     soundUndeploy:
-      path: /Audio/_ST/Misc/science-abe-undeploy.ogg
+      path: /Audio/_ST/Science/science-abe-undeploy.ogg
       params:
         volume: -3
         variation: 0.05
     soundCharge:
-      path: /Audio/_ST/Misc/science-abe-charge.ogg
+      path: /Audio/_ST/Science/science-abe-charge.ogg
       params:
         variation: 0.077
+        volume: -2
     soundShoot:
       collection: ScienceAbeShoot
       params:
         variation: 0.077
+        volume: -1
   - type: DoAfter
   - type: Pullable
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Borg
   - type: InteractionOutline
   - type: Physics
     bodyType: Dynamic

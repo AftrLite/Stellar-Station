@@ -51,14 +51,6 @@ entities:
       pos: 288.38983,429.73245
       parent: 1
     - type: ESTileBasedRoof
-      unRoofedTiles:
-      - Lattice
-      - FloorGlass
-      - FloorRGlass
-      - FloorAsteroidSand
-      - PlatingAsteroid
-      - FloorCosmicVoid
-      - StellarFloorNothing
     - type: BlockGridConstruction
     - type: MapGrid
       chunks:

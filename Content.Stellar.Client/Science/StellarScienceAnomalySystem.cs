@@ -3,26 +3,33 @@
 // SPDX-License-Identifier: LicenseRef-Wallening
 
 using System.Numerics;
-using Content.Shared.IdentityManagement;
-using Content.Shared.Weapons.Hitscan.Events;
+using Content.Stellar.Client.Animations;
 using Content.Stellar.Shared.Science;
-using Robust.Client.Animations;
+using Content.Stellar.Shared.Science.Components;
 using Robust.Client.GameObjects;
-using Robust.Shared.Animations;
-using Robust.Shared.Map;
+using Robust.Shared.Utility;
 
 namespace Content.Stellar.Client.Science;
 
 public sealed class StellarScienceAnomalySystem : SharedStellarScienceAnomalySystem
 {
     [Dependency] private readonly AnimationPlayerSystem _animation = default!;
+    [Dependency] private readonly SpriteSystem _sprite = default!;
+
+    private readonly ResPath _rsiPath = new("/Textures/_ST/Icons/radial-icons-abe.rsi");
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeNetworkEvent<StellarAnomalyReactionVisualsEvent>(OnAnomalyReaction);
+        SubscribeLocalEvent<StellarAnomalyComponent, ComponentInit>(OnComponentInit);
+    }
 
+    private void OnComponentInit(Entity<StellarAnomalyComponent> ent, ref ComponentInit args)
+    {
+        _animation.Play(ent, StellarAnimLib.FadeSimple(1f, 1.2f), "spawn-fade");
+        _animation.Play(ent, StellarAnimLib.ElasticBounce(2.5f, 1.55f), "spawn-bounce");
     }
 
     private void OnAnomalyReaction(StellarAnomalyReactionVisualsEvent args)
@@ -30,63 +37,34 @@ public sealed class StellarScienceAnomalySystem : SharedStellarScienceAnomalySys
         var ent = GetEntity(args.Target);
         var source = GetEntity(args.Source);
 
-        if (HasComp<StellarAnomalyComponent>(ent) && !_animation.HasRunningAnimation(ent, "react"))
+        if (!TryComp<StellarAnomalyComponent>(ent, out var comp) || args.CodeCache == string.Empty)
+            return;
+
+        var codePopup = Spawn(comp.CodePopup, Transform(ent).Coordinates);
+        var sprite = Comp<SpriteComponent>(codePopup);
+        var length = args.CodeCache.Length;
+
+        for (int i = 0; i < length; i++)
         {
-            var dist = PositionOffset(ent, source);
-            var distY = Math.Clamp(dist.Y * 2, -2, 2);
-            var distX = Math.Clamp(dist.X * 2, -2, 2);
-            var reactAnim = AnomalyReactAnim(1.25f, new Vector2(distX, distY));
-            _animation.Play(ent, reactAnim, "react");
+            var layer = _sprite.AddLayer((codePopup, sprite), new SpriteSpecifier.Rsi(_rsiPath, "false"));
+            var offset = new Vector2(((float)length/length * - length * length * 0.1f + i - 0.1f) * 0.66f, 0f); // the evil stupid dumb numbers
+            if (length == 1)
+                offset = new Vector2(-0.03125f, 0f);
+
+            _sprite.LayerMapSet((codePopup, sprite), AnomalyPopupVisuals.Key, layer);
+            _sprite.LayerSetOffset((codePopup, sprite), layer, offset);
+            sprite.LayerSetShader(AnomalyPopupVisuals.Key, "unshaded");
+            if (args.CodeCache[i].Equals(comp.AnomalyCode[i]))
+                _sprite.LayerSetRsi((codePopup, sprite), layer, _rsiPath, "true");
         }
-    }
 
-    private Vector2 PositionOffset(EntityUid start, EntityUid end)
-    {
-        var startXform  = Transform(start);
-        var endXform  = Transform(end);
-        if (startXform .MapID == MapId.Nullspace || endXform .MapID == MapId.Nullspace)
-            return Vector2.Zero;
+        if (!_animation.HasRunningAnimation(ent, "popup-effect"))
+            _animation.Play(codePopup, StellarAnimLib.SymbolPopup(0.5f, 2f), "popup-effect");
 
-        if (startXform .ParentUid != endXform .ParentUid)
-            return Vector2.Zero;
+        if (!_animation.HasRunningAnimation(ent, "react-bounce"))
+            _animation.Play(ent, StellarAnimLib.ElasticBounce(1.25f), "react-bounce");
 
-        return endXform .LocalPosition - startXform .LocalPosition;
-    }
-
-    private static Animation AnomalyReactAnim(float animTime, Vector2 midPos)
-    {
-        return new Animation
-        {
-            Length = TimeSpan.FromSeconds(animTime),
-            AnimationTracks =
-            {
-                new AnimationTrackComponentProperty()
-                {
-                    ComponentType = typeof(SpriteComponent),
-                    Property = nameof(SpriteComponent.Scale),
-                    InterpolationMode = AnimationInterpolationMode.Linear,
-                    KeyFrames =
-                    {
-                        // new AnimationTrackProperty.KeyFrame(new Vector2(1f, 1f), animTime * 0.1f),
-                        new AnimationTrackProperty.KeyFrame(new Vector2(1f, 1f), 0f),
-                        new AnimationTrackProperty.KeyFrame(new Vector2(0.5f, 0.5f), animTime * 0.1f, Easings.InOutSine),
-                        new AnimationTrackProperty.KeyFrame(new Vector2(1f, 1f), animTime * 0.9f, Easings.OutElastic),
-                    },
-                },
-                new AnimationTrackComponentProperty()
-                {
-                    ComponentType = typeof(SpriteComponent),
-                    Property = nameof(SpriteComponent.Offset),
-                    InterpolationMode = AnimationInterpolationMode.Linear,
-                    KeyFrames =
-                    {
-                        new AnimationTrackProperty.KeyFrame(Vector2.Zero, animTime * 0.035f),
-                        new AnimationTrackProperty.KeyFrame(Vector2.Zero, 0f, Easings.OutSine),
-                        new AnimationTrackProperty.KeyFrame(-midPos * 0.2f, animTime*0.4f, Easings.InOutCirc),
-                        new AnimationTrackProperty.KeyFrame(Vector2.Zero, animTime*0.6f, Easings.OutBack),
-                    },
-                },
-            },
-        };
+        if (!_animation.HasRunningAnimation(ent, "react-knockback"))
+            _animation.Play(ent, StellarAnimLib.KnockbackClampedRelative(Transform(ent), Transform(source), 1.25f, 0.04375f), "react-knockback");
     }
 }

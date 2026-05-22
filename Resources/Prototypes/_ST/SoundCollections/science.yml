@@ -5,7 +5,7 @@
 - type: soundCollection
   id: ScienceAbeShoot
   files:
-  - /Audio/_ST/Misc/science-abe-shoot1.ogg
-  - /Audio/_ST/Misc/science-abe-shoot2.ogg
-  - /Audio/_ST/Misc/science-abe-shoot3.ogg
-  - /Audio/_ST/Misc/science-abe-shoot4.ogg
+  - /Audio/_ST/Science/science-abe-shoot1.ogg
+  - /Audio/_ST/Science/science-abe-shoot2.ogg
+  - /Audio/_ST/Science/science-abe-shoot3.ogg
+  - /Audio/_ST/Science/science-abe-shoot4.ogg

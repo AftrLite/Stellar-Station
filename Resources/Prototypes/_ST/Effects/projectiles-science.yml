@@ -27,7 +27,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _ST/Projectiles/Guns/science-alpha.rsi
+    sprite: _ST/Projectiles/Devices/science-alpha.rsi
     offset: 0.25, 0
   - type: PointLight
     color: "#41bea8"
@@ -38,10 +38,10 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _ST/Projectiles/Guns/science-beta.rsi
+    sprite: _ST/Projectiles/Devices/science-beta.rsi
     offset: 0.25, 0
   - type: PointLight
-    color: "#9089a1"
+    color: "#c5cad1"
 
 - type: entity
   parent: StellarMuzzleFlashScienceBase
@@ -49,32 +49,10 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _ST/Projectiles/Guns/science-gamma.rsi
-    offset: 0.25, 0
-  - type: PointLight
-    color: "#c5cad1"
-
-- type: entity
-  parent: StellarMuzzleFlashScienceBase
-  id: StellarMuzzleFlashScienceSigma
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _ST/Projectiles/Guns/science-sigma.rsi
+    sprite: _ST/Projectiles/Devices/science-gamma.rsi
     offset: 0.25, 0
   - type: PointLight
     color: "#e5a557"
-
-- type: entity
-  parent: StellarMuzzleFlashScienceBase
-  id: StellarMuzzleFlashScienceLambda
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _ST/Projectiles/Guns/tachyon-heavy.rsi
-    offset: 0.25, 0
-  - type: PointLight
-    color: "#42a4ae"
 
 ### BEAMS
 - type: entity
@@ -94,7 +72,7 @@
     maxDistance: 7
     unshaded: true
     ray:
-      sprite: _ST/Projectiles/Guns/science-alpha.rsi
+      sprite: _ST/Projectiles/Devices/science-alpha.rsi
 
 - type: entity
   parent: StellarHitscanScienceBase
@@ -102,11 +80,11 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: StellarStabilizerBeam
-    muzzleFlash: StellarMuzzleFlashScienceAlpha
+    digit: 1
   - type: StellarGunHitscan
     lightColor: "#41bea8"
     ray:
-      sprite: _ST/Projectiles/Guns/science-alpha.rsi
+      sprite: _ST/Projectiles/Devices/science-alpha.rsi
 
 - type: entity
   parent: StellarHitscanScienceBase
@@ -114,11 +92,11 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: StellarStabilizerBeam
-    muzzleFlash: StellarMuzzleFlashScienceBeta
+    digit: 2
   - type: StellarGunHitscan
     lightColor: "#9089a1"
     ray:
-      sprite: _ST/Projectiles/Guns/science-beta.rsi
+      sprite: _ST/Projectiles/Devices/science-beta.rsi
 
 - type: entity
   parent: StellarHitscanScienceBase
@@ -126,23 +104,11 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: StellarStabilizerBeam
-    muzzleFlash: StellarMuzzleFlashScienceGamma
+    digit: 3
   - type: StellarGunHitscan
     lightColor: "#c5cad1"
     ray:
-      sprite: _ST/Projectiles/Guns/science-gamma.rsi
-
-- type: entity
-  parent: StellarHitscanScienceBase
-  id: StellarHitscanScienceSigma
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: StellarStabilizerBeam
-    muzzleFlash: StellarMuzzleFlashScienceSigma
-  - type: StellarGunHitscan
-    lightColor: "#e5a557"
-    ray:
-      sprite: _ST/Projectiles/Guns/science-sigma.rsi
+      sprite: _ST/Projectiles/Devices/science-gamma.rsi
 
 - type: entity
   parent: StellarHitscanScienceBase
@@ -150,7 +116,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: StellarStabilizerBeam
-    muzzleFlash: StellarMuzzleFlashScienceLambda
+    digit: 777
   - type: StellarGunHitscan
     lightColor: "#42a4ae"
     ray:

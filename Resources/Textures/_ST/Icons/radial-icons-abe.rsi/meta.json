@@ -20,19 +20,22 @@
             "name": "beam"
         },
         {
-            "name": "alpha"
+            "name": "1"
         },
         {
-            "name": "beta"
+            "name": "2"
         },
         {
-            "name": "gamma"
-        },
-        {
-            "name": "sigma"
+            "name": "3"
         },
         {
             "name": "lambda"
+        },
+        {
+            "name": "true"
+        },
+        {
+            "name": "false"
         }
     ]
 }

@@ -11,10 +11,10 @@ namespace Content.Stellar.Client.Animations;
 /// The most basic system ever. I made this purely to save on component and code duplication.
 /// Cleans up entities once they've finished their animations.
 /// No, this does not clean up entities on the server. Therefore, please make sure entities also have TimedDespawnComponent if you're using this with entities that also exist on the server.
+/// Or use a Timing method to tidy them up. That works too, but it's gross.
 /// </summary>
 public sealed class StellarDeleteOnAnimateSystem : EntitySystem
 {
-
     public override void Initialize()
     {
         base.Initialize();
@@ -24,9 +24,23 @@ public sealed class StellarDeleteOnAnimateSystem : EntitySystem
 
     private void OnAnimationCompleted(Entity<StellarDeleteOnAnimateComponent> ent, ref AnimationCompletedEvent args)
     {
-        if (!ent.Comp.DeleteOnStop && args.Finished)
-            PredictedQueueDel(ent);
-        if (ent.Comp.DeleteOnStop)
-            PredictedQueueDel(ent);
+        switch (ent.Comp.Method)
+        {
+            case StellarDeleteOnAnimateMethod.OnAnyFinish:
+                if (args.Finished)
+                    PredictedQueueDel(ent);
+                return;
+            case StellarDeleteOnAnimateMethod.OnAnyStop:
+                PredictedQueueDel(ent);
+                return;
+            case StellarDeleteOnAnimateMethod.OnKeyFinish:
+                if (args.Finished && args.Key == ent.Comp.AnimateKey)
+                    PredictedQueueDel(ent);
+                return;
+            case StellarDeleteOnAnimateMethod.OnKeyStop:
+                if (args.Key == ent.Comp.AnimateKey)
+                    PredictedQueueDel(ent);
+                return;
+        }
     }
 }

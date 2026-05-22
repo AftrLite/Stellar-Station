@@ -36,18 +36,25 @@
   description: A heavy-duty capsule, used for the containment of stabilized anomalies.
   categories: [ ForkFiltered ]
   components:
+  - type: StellarContainmentCapsule
   - type: Sprite
+    noRot: true
+    drawdepth: Mobs
     sprite: _ST/Items/Science/containment-capsule.rsi
     layers:
     - state: icon-empty
-
-- type: entity
-  parent: StellarScienceCapsule
-  id: StellarScienceCapsuleFull
-  categories: [ ForkFiltered ]
-  components:
-  - type: Sprite
-    layers:
-    - state: icon
+      map: [ "base" ]
     - state: icon-unshaded
+      map: [ "unshaded" ]
+      visible: False
       shader: unshaded
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.StellarCapsuleVisuals.Visuals:
+        base:
+          False: { state: icon-empty }
+          True: { state: icon }
+        unshaded:
+          False: { visible: false }
+          True: { visible: true }

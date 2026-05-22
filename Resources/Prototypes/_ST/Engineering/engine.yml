@@ -425,7 +425,7 @@
   parent: StellarStructureBase
   placement:
     mode: SnapgridCenter
-  categories: [ ForkFiltered ]
+  categories: [ HideSpawnMenu ]
   components:
   - type: Physics
   - type: Sprite

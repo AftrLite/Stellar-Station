@@ -7,6 +7,7 @@ using Content.Client.Animations;
 using Content.Shared.Hands;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
+using Content.Stellar.Client.Animations;
 using Content.Stellar.Shared.Social;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
@@ -110,7 +111,7 @@ public sealed class StellarSocialSystem : SharedStellarSocialSystem
 
         RemoveRequestEffect((requestee, socialComp));
 
-        var dist = PositionBetweenPlayers(requestee, target) / 2;
+        var dist = StellarAnimLib.PositionOffset(Transform(requestee), Transform(target)) / 2;
         var effectEnt = Spawn(proto.VfxEntity, Transform(requestee).Coordinates);
 
         _audio.PlayEntity(proto.EmoteSound, effectEnt, effectEnt);
@@ -139,7 +140,7 @@ public sealed class StellarSocialSystem : SharedStellarSocialSystem
         PopUp.PopupClient(Loc.GetString("stellar-social-item-give", ("target", target), ("item", args.ItemName)), requestee, requestee);
         PopUp.PopupClient(Loc.GetString("stellar-social-item-take", ("target", requestee), ("item", args.ItemName)), target, target);
 
-        var dist = PositionBetweenPlayers(requestee, target);
+        var dist = StellarAnimLib.PositionOffset(Transform(requestee), Transform(target));
         var transferEnt = Spawn(_socialEffectBase, Transform(requestee).Coordinates);
         var transferAnim = TransferItemAnim(dist);
 
@@ -147,19 +148,6 @@ public sealed class StellarSocialSystem : SharedStellarSocialSystem
         _sprite.SetDrawDepth(transferEnt, (int) Content.Shared.DrawDepth.DrawDepth.Effects);
         _transform.SetWorldRotationNoLerp(transferEnt, dist.ToAngle());
         _animPlayer.Play(transferEnt, transferAnim, "item-transfer"); // we use the same Animation Key as the request fadeout, since the Item Transfer Animation utilizes the request entity.
-    }
-
-    private Vector2 PositionBetweenPlayers(EntityUid start, EntityUid end)
-    {
-        var performerXform = Transform(start);
-        var targetXform = Transform(end);
-        if (performerXform.MapID == MapId.Nullspace || targetXform.MapID == MapId.Nullspace)
-            return Vector2.Zero;
-
-        if (performerXform.ParentUid != targetXform.ParentUid)
-            return Vector2.Zero;
-
-        return targetXform.LocalPosition - performerXform.LocalPosition;
     }
 
     # region Animation

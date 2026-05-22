@@ -58,8 +58,6 @@
           collection: WindowShatter
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: CosmicCorruptible
-    convertTo: StellarWindowMalign
 
 - type: entity
   id: StellarBaseWindowFrame

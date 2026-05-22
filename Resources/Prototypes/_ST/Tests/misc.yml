@@ -9,8 +9,6 @@
   placement:
     mode: SnapgridCenter
   components:
-  - type: InteractionOutline
-  - type: Clickable
   - type: Sprite
     offset: 0, 0.5
     drawdepth: Overdoors

@@ -202,7 +202,7 @@
       state: antibody
   - type: StellarGunReloadable
     weaponType: StellarGunTypeChemicalLauncher
-    shootable: BulletGrenadeFrag
+    shootable: StellarProjectileAnomalyFlame # TODO: Placeholder
     shootingMethod: Projectile
     muzzleFlash: StellarMuzzleFlashInterdyne
     reloadTime: 1.334

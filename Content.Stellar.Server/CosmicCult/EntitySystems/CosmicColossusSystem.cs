@@ -18,6 +18,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Throwing;
 using Content.Shared.Warps;
+using Content.Stellar.Server.TileConversion;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Components;
@@ -112,6 +113,6 @@ public sealed class CosmicColossusSystem : EntitySystem
             PopupType.Large);
         RemComp<PointLightComponent>(ent);
         RemComp<WarpPointComponent>(ent);
-        RemComp<CosmicCorruptingComponent>(ent);
+        RemComp<StellarTileConversionComponent>(ent);
     }
 }

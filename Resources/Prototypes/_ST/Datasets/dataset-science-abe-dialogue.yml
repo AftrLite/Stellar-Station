@@ -1,0 +1,21 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-CosmicCult
+
+- type: localizedDataset
+  id: StellarSensorAbeDialogueStabilized
+  values:
+    prefix: abe-stabilized-dataset-
+    count: 11
+
+- type: localizedDataset
+  id: StellarSensorAbeDialogueDeployed
+  values:
+    prefix: abe-deployed-dataset-
+    count: 9
+
+- type: localizedDataset
+  id: StellarSensorAbeDialogueUndeployed
+  values:
+    prefix: abe-undeployed-dataset-
+    count: 12

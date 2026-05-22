@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2026 Janet Blackquill <uhhadd@gmail.com>
+# SPDX-FileCopyrightText: 2026 AftrLite
 #
 # SPDX-License-Identifier: LicenseRef-Wallening
 
@@ -11,11 +11,13 @@
   - type: TimedDespawn
     lifetime: 40
   - type: Sprite
+    drawdepth: Effects
     sprite: _ST/Icons/radial-icons-sensortower.rsi
     layers:
     - state: 1
       visible: false
-    drawdepth: Effects
+  - type: Appearance
+  - type: AnimationPlayer
   - type: Tag
     tags:
     - HideContextMenu
@@ -26,3 +28,21 @@
     enabled: true
     castShadows: false
     netsync: false
+
+- type: entity
+  id: StellarEffectAnomalyCodePopup
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarDeleteOnAnimate
+  - type: Transform
+  - type: Sprite
+    drawdepth: Effects
+    sprite: _ST/Icons/radial-icons-abe.rsi
+    layers:
+    - state: 1
+      visible: false
+  - type: Appearance
+  - type: AnimationPlayer
+  - type: Tag
+    tags:
+    - HideContextMenu

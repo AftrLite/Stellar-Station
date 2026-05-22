@@ -5,6 +5,7 @@
 using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
 using Content.Stellar.Shared.Science;
+using Content.Stellar.Shared.Science.Components;
 using Robust.Shared.Random;
 
 namespace Content.Stellar.Server.Science;
@@ -92,16 +93,16 @@ public sealed class StellarScienceAnalystSystem : SharedStellarScienceAnalystSys
 
         _terminal.Clear();
         _lookup.GetEntitiesInRange(Transform(ent).Coordinates, 500, _terminal);
-        foreach (var core in  _terminal)
+        foreach (var terminal in  _terminal)
         {
-            var candidateMapId = Transform(core).MapID;
-            var candidateGridUid = Transform(core).GridUid;
+            var candidateMapId = Transform(terminal).MapID;
+            var candidateGridUid = Transform(terminal).GridUid;
             if (candidateMapId != mapId || candidateGridUid != gridUid)
                 continue;
 
-            ent.Comp.LinkedTerminal = core;
-            core.Comp.LinkedTowers.Add(ent);
-            Dirty(core);
+            ent.Comp.LinkedTerminal = terminal;
+            terminal.Comp.LinkedTowers.Add(ent);
+            Dirty(terminal);
             Dirty(ent);
             break;
         }

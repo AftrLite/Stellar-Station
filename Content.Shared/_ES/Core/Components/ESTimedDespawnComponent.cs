@@ -14,14 +14,14 @@ namespace Content.Shared._ES.Core.Timer.Components;
 /// ES-specific version of <see cref="TimedDespawnComponent"/> with networking capabilities
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
-[Access(typeof(ESTimedDespawnSystem), Other = AccessPermissions.None)]
+[Access(typeof(ESTimedDespawnSystem), Other = AccessPermissions.Read)] // Stellar
 public sealed partial class ESTimedDespawnComponent : Component
 {
     /// <summary>
     /// How long the entity will exist before despawning
     /// </summary>
     [DataField, AutoNetworkedField]
-    public TimeSpan Lifetime;
+    public TimeSpan Lifetime = TimeSpan.FromSeconds(1.25f); // Stellar - Giving this a default value is convenient
 
     /// <summary>
     /// The time at which the entity will despawn

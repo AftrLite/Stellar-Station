@@ -1,0 +1,32 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "LicenseRef-Wallening",
+    "copyright": "By AftrLite",
+    "states": [
+        {
+            "name": "shadow"
+        },
+        {
+            "name": "base-idle"
+        },
+        {
+            "name": "base-dead"
+        },
+        {
+            "name": "base-moving",
+            "delays":
+            [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        }
+    ]
+}

@@ -53,6 +53,19 @@
 
 ### EXPLOSION ENTITIES (Visual Effects)
 - type: entity
+  id: StellarExplosionBase
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+  - type: StellarShockwave
+    duration: 0.75
+  - type: TimedDespawn
+    lifetime: 3
+  - type: Appearance
+  - type: AnimationPlayer
+
+- type: entity
+  parent: StellarExplosionBase
   id: StellarExplosionDefault
   categories: [ HideSpawnMenu ]
   components:
@@ -80,6 +93,7 @@
     duration: 0.9
 
 - type: entity
+  parent: StellarExplosionBase
   id: StellarExplosionFlash
   categories: [ HideSpawnMenu ]
   components:
@@ -112,6 +126,7 @@
     netsync: false
 
 - type: entity
+  parent: StellarExplosionBase
   id: StellarExplosionFirestorm
   categories: [ HideSpawnMenu ]
   components:
@@ -143,6 +158,7 @@
     duration: 0.9
 
 - type: entity
+  parent: StellarExplosionBase
   id: StellarExplosionHCS
   categories: [ HideSpawnMenu ]
   components:
@@ -171,6 +187,7 @@
     duration: 0.8
 
 - type: entity
+  parent: StellarExplosionBase
   id: StellarExplosionEchion
   categories: [ HideSpawnMenu ]
   components:
@@ -202,6 +219,7 @@
     duration: 1
 
 - type: entity
+  parent: StellarExplosionBase
   id: StellarExplosionCybersunEmp
   categories: [ HideSpawnMenu ]
   components:
@@ -223,17 +241,16 @@
     lifetime: 1
 
 - type: entity
+  parent: StellarExplosionBase
   id: StellarExplosionAnomalySpawn
   categories: [ HideSpawnMenu ]
   components:
   - type: StellarShockwave
     duration: 2
     visualRange: 2.5
-    visualForce: 0.025
+    visualForce: 0.0175
     visualWidth: 0.075
-    visualAberration: 0.25
-  - type: TimedDespawn
-    lifetime: 2
+    visualAberration: 0.5
   - type: Sprite
     drawdepth: Effects
     noRot: true
@@ -242,15 +259,20 @@
     layers:
     - state: vfx-glitchy
       shader: unshaded
+  - type: ESTimedDespawn
+    lifetime: 2
+  - type: ESTimedDespawnSpriteFade
+    fadeTime: 0.5
 
 - type: entity
+  parent: StellarExplosionBase
   id: StellarExplosionAnomalyPulse
   categories: [ HideSpawnMenu ]
   components:
   - type: StellarShockwave
     duration: 2
     visualRange: 2.5
-    visualForce: 0.025
+    visualForce: 0.015
     visualWidth: 0.075
     visualAberration: 0.25
   - type: TimedDespawn
