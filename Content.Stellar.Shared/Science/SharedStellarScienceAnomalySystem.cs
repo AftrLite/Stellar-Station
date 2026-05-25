@@ -60,7 +60,6 @@ public abstract class SharedStellarScienceAnomalySystem : EntitySystem
 
     private void OnAnomalyExamined(Entity<StellarAnomalyComponent> ent, ref ExaminedEvent args)
     {
-        var baseText = ent.Comp.Stable ? "anomaly-examine-stable" : "anomaly-examine-unstable";
         var integrityText = "";
         switch (ent.Comp.IntegrityPipsValue)
         {
@@ -77,16 +76,28 @@ public abstract class SharedStellarScienceAnomalySystem : EntitySystem
                 integrityText = "anomaly-examine-extra";
                 break;
         }
-        args.PushMarkup(Loc.GetString(baseText) + Loc.GetString(integrityText));
+        if (ent.Comp.Stable && ent.Comp.IntegrityPipsValue > 1)
+            args.PushMarkup(Loc.GetString("anomaly-examine-stable-options"));
+        else if (ent.Comp.Stable && ent.Comp.IntegrityPipsValue <= 1)
+            args.PushMarkup(Loc.GetString("anomaly-examine-stable-weak-options"));
+        else
+            args.PushMarkup(Loc.GetString("anomaly-examine-unstable-options"));
+
+        args.PushMarkup(Loc.GetString(integrityText));
     }
 
-    protected void MakeAnomalyPulse(Entity<StellarAnomalyComponent> ent)
+    public void MakeAnomalyPulse(Entity<StellarAnomalyComponent?> ent)
     {
-        var ev = new StellarAnomalyPulseEvent();
+        if (!Resolve(ent, ref ent.Comp, false))
+            return;
+
+        var ev1 = new StellarAnomalyPulseEvent();
+        var ev2 = new StellarAnomalyDestabilizeEvent();
         Timer.SpawnMethodTimer(TimeSpan.FromSeconds(1.65), () => Shake.LerpedShake(ent, 0.66f, 0.75f, 0.0085f, 40f)); // Yucky timers! Used to sync up our audiovisual sauce.
         Timer.SpawnMethodTimer(TimeSpan.FromSeconds(1.65), () => PredictedSpawnAtPosition(ent.Comp.PulseVfx, Transform(ent).Coordinates));
-        Timer.SpawnMethodTimer(TimeSpan.FromSeconds(1.65), () => RaiseLocalEvent(ent, ref ev));
+        Timer.SpawnMethodTimer(TimeSpan.FromSeconds(1.65), () => RaiseLocalEvent(ent, ref ev1));
         Audio.PlayPredicted(ent.Comp.SoundPulse, ent, ent);
+        RaiseLocalEvent(ent, ref ev2);
     }
 
     protected string AnomalyCode(Entity<StellarAnomalyComponent> ent)
@@ -112,6 +123,7 @@ public abstract class SharedStellarScienceAnomalySystem : EntitySystem
         var time = ent.Comp.Stable ? ent.Comp.PipTimeStable : Random.Next(ent.Comp.PipTimeMin, ent.Comp.PipTimeMax);
         ent.Comp.CurrentPipTimer = Timing.CurTime + time;
         ent.Comp.IntegrityPipsValue--;
+        Dirty(ent);
         if (ent.Comp.IntegrityPipsValue <= 0)
             EnsureComp<ESTimedDespawnComponent>(ent);
     }
@@ -128,14 +140,15 @@ public abstract class SharedStellarScienceAnomalySystem : EntitySystem
     {
         LocId text = "";
         if (ent.Comp.EnteredCode.Length > 0)
-            text = "Stabilization scrambled!"; // TODO: Localization
+            text = "anomaly-popup-scrambled";
 
         if (ent.Comp.Stable)
-            text = "Destabilized!"; // TODO: Localization
+            text = "anomaly-popup-destabilized";
 
-        _popUp.PopupPredicted(text, ent, ent, PopupType.Large); // TODO: Localization | PopupPredicted(Loc.GetString("sensortower-popup-synccancelled"), uid, uid, PopupType.Large);
-
+        _popUp.PopupPredicted(Loc.GetString(text), ent, ent, PopupType.Large);
+        _doAfter.Cancel(ent.Comp.HarvestDoAfterId);
         ent.Comp.Stable = false;
+        ent.Comp.HarvestDoAfterId = null;
         ent.Comp.EnteredCode = string.Empty;
         ent.Comp.AnomalyCode = AnomalyCode(ent);
         Dirty(ent);

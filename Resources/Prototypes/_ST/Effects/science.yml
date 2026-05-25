@@ -37,12 +37,49 @@
   - type: Transform
   - type: Sprite
     drawdepth: Effects
-    sprite: _ST/Icons/radial-icons-abe.rsi
+    sprite: _ST/Icons/radial-icons-portables.rsi
     layers:
     - state: 1
       visible: false
   - type: Appearance
   - type: AnimationPlayer
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+- type: entity
+  id: StellarEffectSciencePulse
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    noRot: true
+    anchored: false
+  - type: TimedDespawn
+    lifetime: 2.025
+  - type: Sprite
+    netsync: false
+    drawdepth: Effects
+    layers:
+    - sprite: _ST/Effects/science-pulse.rsi
+      state: vfx
+      shader: unshaded
+  - type: PointLight
+    color: "#9052bc"
+    radius: 1.75
+    energy: 35
+    castShadows: false
+  - type: LightBehaviour
+    behaviours:
+    - !type:FadeBehaviour
+      interpolate: Linear
+      minDuration: 2.025
+      maxDuration: 2.025
+      startValue: 0.1
+      endValue: 35
+      property: Energy
+      enabled: true
+      isLooped: true
+      reverseWhenFinished: true
   - type: Tag
     tags:
     - HideContextMenu

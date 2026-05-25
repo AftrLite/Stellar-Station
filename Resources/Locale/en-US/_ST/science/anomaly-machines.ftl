@@ -1,3 +1,5 @@
+
+### DIALOGUE: ABE
 abe-stabilized-dataset-1 = Anomaly status: Stabilized!
 abe-stabilized-dataset-2 = Anomaly status: Stabilized!
 abe-stabilized-dataset-3 = Anomaly status: Stabilized!
@@ -17,7 +19,7 @@ abe-deployed-dataset-4 = I like this spot!
 abe-deployed-dataset-5 = I love stabilizing anomalies!
 abe-deployed-dataset-6 = Beep! Let's stabilize anomalies!
 abe-deployed-dataset-7 = Deployed and ready!
-abe-deployed-dataset-8 = Oh golly, do i get to help stablize anomalies?
+abe-deployed-dataset-8 = Oh golly, do i get to help stabilize anomalies?
 abe-deployed-dataset-9 = Wowee! I'm here to help!
 
 abe-undeployed-dataset-1 = A.B.E status: Portable!
@@ -33,4 +35,24 @@ abe-undeployed-dataset-10 = Yippee!
 abe-undeployed-dataset-11 = Ready to move!
 abe-undeployed-dataset-12 = Let's go!
 
-abe-dialogue-format = {$part0}
+### DIALOGUE: BEA
+bea-harvested-dataset-1 = Harvest sequence: complete.
+bea-harvested-dataset-2 = Harvest sequence: complete.
+bea-harvested-dataset-3 = Harvest sequence: complete.
+
+bea-deployed-dataset-1 = B.E.A status: Deployed.
+bea-deployed-dataset-2 = B.E.A status: Deployed.
+bea-deployed-dataset-3 = B.E.A status: Deployed.
+
+bea-undeployed-dataset-1 = B.E.A status: Mobile.
+bea-undeployed-dataset-2 = B.E.A status: Mobile.
+bea-undeployed-dataset-3 = B.E.A status: Mobile.
+
+### POPUPS
+bea-popup-no-anom = No anomaly detected!
+bea-popup-anom-unstable = The anomaly needs to be stabilized first!
+bea-popup-anom-fading = The anomaly is too weak to harvest...
+
+### EXAMINES
+bea-examine = Can [color=#a73eff][bold]Harvest[/bold][/color] Anomalies.
+abe-examine = Can [color=#a73eff][bold]Stabilize[/bold][/color] Anomalies.

@@ -257,30 +257,5 @@ public static class StellarAnimLib
             },
         };
     }
-
-    [PublicAPI]
-    public static Animation ProjectileBase(float animTime)
-    {
-        return new Animation
-        {
-            Length = TimeSpan.FromSeconds(animTime),
-            AnimationTracks =
-            {
-                new AnimationTrackComponentProperty()
-                {
-                    ComponentType = typeof(SpriteComponent),
-                    Property = nameof(SpriteComponent.Scale),
-                    InterpolationMode = AnimationInterpolationMode.Linear,
-                    KeyFrames =
-                    {
-                        new AnimationTrackProperty.KeyFrame(new Vector2(1f, 1f), 0f),
-                        new AnimationTrackProperty.KeyFrame(new Vector2(0.5f, 0.5f), animTime * 0.025f, Easings.InOutSine),
-                        new AnimationTrackProperty.KeyFrame(new Vector2(1f, 1f), animTime * 0.825f, Easings.OutElastic),
-                        new AnimationTrackProperty.KeyFrame(new Vector2(0.25f, 0.5f), animTime * 0.1f, Easings.InOutSine),
-                    },
-                },
-            },
-        };
-    }
 }
 

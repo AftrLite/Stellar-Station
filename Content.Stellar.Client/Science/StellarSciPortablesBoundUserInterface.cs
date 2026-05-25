@@ -20,12 +20,12 @@ namespace Content.Stellar.Client.Science;
 /// The radial menu used by Stellar A.P.Es.
 /// </summary>
 [UsedImplicitly]
-public sealed class StellarAbeBoundUserInterface : BoundUserInterface
+public sealed class StellarSciPortablesBoundUserInterface : BoundUserInterface
 {
     private SimpleRadialMenu? _menu;
-    private readonly ResPath _rsiPath = new("/Textures/_ST/Icons/radial-icons-abe.rsi");
+    private readonly ResPath _rsiPath = new("/Textures/_ST/Icons/radial-icons-portables.rsi");
 
-    public StellarAbeBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
+    public StellarSciPortablesBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
         IoCManager.InjectDependencies(this);
     }
@@ -34,36 +34,42 @@ public sealed class StellarAbeBoundUserInterface : BoundUserInterface
     {
         base.Open();
 
-        if (_menu?.IsOpen == true || !EntMan.HasComponent<StellarAbeComponent>(Owner))
+        if (_menu?.IsOpen == true || !EntMan.TryGetComponent<StellarSciencePortablesComponent>(Owner, out var portableComp))
             return;
 
         _menu = this.CreateWindow<SimpleRadialMenu>();
         _menu.Track(Owner);
-        _menu.SetButtons(GetButtons());
+        _menu.SetButtons(GetButtons(portableComp));
         _menu.OpenOverMouseScreenPosition();
     }
 
-    private IEnumerable<RadialMenuOptionBase> GetButtons()
+    private IEnumerable<RadialMenuOptionBase> GetButtons(StellarSciencePortablesComponent comp)
     {
         var options = new HashSet<RadialMenuOptionBase>();
 
-        var pull = new RadialMenuActionOption<AbeMenuMethod>(StateMessage, AbeMenuMethod.Pull)
+        var pull = new RadialMenuActionOption<SciPortableMenuMethod>(StateMessage, SciPortableMenuMethod.Pull)
         {
             IconSpecifier = RadialMenuIconSpecifier.With(new SpriteSpecifier.Rsi(_rsiPath, "pull")),
             ToolTip = "Pull",
         };
 
-        var anchor = new RadialMenuActionOption<AbeMenuMethod>(StateMessage, AbeMenuMethod.Deploy)
+        var anchor = new RadialMenuActionOption<SciPortableMenuMethod>(StateMessage, SciPortableMenuMethod.Deploy)
         {
             IconSpecifier = RadialMenuIconSpecifier.With(new SpriteSpecifier.Rsi(_rsiPath, "anchor")),
             ToolTip = "Anchor",
         };
 
-        var rotate = new RadialMenuActionOption<AbeMenuMethod>(StateMessage, AbeMenuMethod.Rotate)
+        var rotate = new RadialMenuActionOption<SciPortableMenuMethod>(StateMessage, SciPortableMenuMethod.Rotate)
         {
             IconSpecifier = RadialMenuIconSpecifier.With(new SpriteSpecifier.Rsi(_rsiPath, "rotate")),
             ToolTip = "Rotate",
             KeepOpen = true,
+        };
+
+        var harvest = new RadialMenuActionOption<SciPortableMenuMethod>(StateMessage, SciPortableMenuMethod.Harvest)
+        {
+            IconSpecifier = RadialMenuIconSpecifier.With(new SpriteSpecifier.Rsi(_rsiPath, "harvest")),
+            ToolTip = "Harvest",
         };
 
         var shootNest = new List<RadialMenuOptionBase>();
@@ -111,7 +117,15 @@ public sealed class StellarAbeBoundUserInterface : BoundUserInterface
         else if (transform is not null && transform.Anchored)
         {
             options.Add(rotate);
-            options.Add(shoot);
+            switch (comp.PortablesType) // Switch for in case we add more Portables with semi-unique behavior.
+            {
+                case StellarPortablesType.Abe:
+                    options.Add(shoot);
+                    return options;
+                case StellarPortablesType.Bea:
+                    options.Add(harvest);
+                    return options;
+            }
         }
 
         return options;
@@ -139,13 +153,13 @@ public sealed class StellarAbeBoundUserInterface : BoundUserInterface
                 break;
         }
 
-        var message = new StellarAbeRadialMessage(AbeMenuMethod.ShootBeam, beam, muzzle);
+        var message = new StellarSciRadialMessage(SciPortableMenuMethod.ShootBeam, beam, muzzle);
         SendPredictedMessage(message);
     }
 
-    private void StateMessage(AbeMenuMethod state)
+    private void StateMessage(SciPortableMenuMethod state)
     {
-        var message = new StellarAbeRadialMessage(state);
+        var message = new StellarSciRadialMessage(state);
         SendPredictedMessage(message);
     }
 

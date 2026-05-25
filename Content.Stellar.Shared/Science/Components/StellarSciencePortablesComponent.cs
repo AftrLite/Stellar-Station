@@ -13,16 +13,19 @@ using Robust.Shared.Serialization;
 namespace Content.Stellar.Shared.Science.Components;
 
 /// <summary>
-/// Component that defines an entity as an A.P.E. Used for Anomaly containment.
+/// Component that defines an entity as "Science Portable". By default, the "portables" are the A.B.E and the B.E.A.
+/// Despite their gameplay differences, they both share this component and relevant system in order to avoid needless code duplication.
 /// </summary>
 [RegisterComponent, NetworkedComponent]
-public sealed partial class StellarAbeComponent : Component
+public sealed partial class StellarSciencePortablesComponent : Component
 {
     [DataField] public CollisionGroup CollisionMask;
 
     [DataField] public float BeamRange = 7;
 
     [DataField] public Color BeamColor = Color.Orange;
+
+    [DataField] public TimeSpan HarvestTime = TimeSpan.FromSeconds(30);
 
     [DataField] public TimeSpan BeamChargeTime = TimeSpan.FromSeconds(2.15);
 
@@ -40,27 +43,40 @@ public sealed partial class StellarAbeComponent : Component
 
     [DataField] public float DialogueChance = 0.1f;
 
+    [DataField] public ProtoId<LocalizedDatasetPrototype>? DialogueHarvested;
+
     [DataField] public ProtoId<LocalizedDatasetPrototype>? DialogueStabilized;
 
     [DataField] public ProtoId<LocalizedDatasetPrototype>? DialogueUndeployed;
 
     [DataField] public ProtoId<LocalizedDatasetPrototype>? DialogueDeployed;
+
+    [DataField] public StellarPortablesType PortablesType = StellarPortablesType.Abe;
+
+    [DataField] public EntProtoId HarvestVfx = "StellarEffectSciencePulse";
 }
 
 [Serializable, NetSerializable]
-public enum StellarAbeRadialKey
+public enum StellarPortablesType // Is this stupid? Maybe.
+{
+    Abe,
+    Bea,
+}
+
+[Serializable, NetSerializable]
+public enum StellarPortablesRadialKey
 {
     Key,
 }
 
 [Serializable, NetSerializable]
-public enum StellarAbeVisuals
+public enum StellarPortablesVisuals
 {
     Visuals,
 }
 
 [Serializable, NetSerializable]
-public enum StellarAbeState
+public enum StellarPortablesState
 {
     Undeploying,
     Undeployed,

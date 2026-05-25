@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: LicenseRef-Wallening
 
+using Content.Shared.DoAfter;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -49,6 +50,12 @@ public sealed partial class StellarAnomalyComponent : Component
     [DataField, AutoNetworkedField] public string AnomalyCode = string.Empty;
 
     [DataField, AutoNetworkedField] public bool Stable;
+
+    [DataField] public DoAfterId? HarvestDoAfterId;
+
+    [DataField] public EntProtoId? HarvestOutput;
+
+    [DataField] public EntProtoId? HarvestOutputRare;
 
     [DataField] public EntProtoId CodePopup = "StellarEffectAnomalyCodePopup";
 

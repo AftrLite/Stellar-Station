@@ -32,11 +32,7 @@ public sealed class StellarScienceAnomalySystem : SharedStellarScienceAnomalySys
                 var ev1 = new StellarAnomalyDecrementEvent();
                 RaiseLocalEvent(uid, ref ev1);
                 if (comp.IntegrityPipsValue > 0)
-                {
-                    var ev3 = new StellarAnomalyDestabilizeEvent();
-                    RaiseLocalEvent(uid, ref ev3);
                     MakeAnomalyPulse((uid, comp));
-                }
             }
         }
     }

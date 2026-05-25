@@ -32,6 +32,6 @@ public sealed class StellarProjectileAnimationSystem : EntitySystem
         if (ent.Comp.UseTimeDespawn && TryComp<ESTimedDespawnComponent>(ent, out var despawn))
             time = (float) despawn.Lifetime.TotalSeconds;
 
-        _animation.Play(ent, StellarAnimLib.ProjectileBase(time), ent.Comp.AnimateKey);
+        _animation.Play(ent, StellarAnimLib.ElasticBounce(time * 0.5f), ent.Comp.AnimateKey);
     }
 }

@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: LicenseRef-Wallening
 
 using System.Numerics;
+using Content.Shared.Examine;
 using Content.Stellar.Client.Animations;
 using Content.Stellar.Shared.Science;
 using Content.Stellar.Shared.Science.Components;
@@ -16,14 +17,14 @@ public sealed class StellarScienceAnomalySystem : SharedStellarScienceAnomalySys
     [Dependency] private readonly AnimationPlayerSystem _animation = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
 
-    private readonly ResPath _rsiPath = new("/Textures/_ST/Icons/radial-icons-abe.rsi");
+    private readonly ResPath _rsiPath = new("/Textures/_ST/Icons/radial-icons-portable.rsi");
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeNetworkEvent<StellarAnomalyReactionVisualsEvent>(OnAnomalyReaction);
         SubscribeLocalEvent<StellarAnomalyComponent, ComponentInit>(OnComponentInit);
+        SubscribeNetworkEvent<StellarAnomalyReactionVisualsEvent>(OnAnomalyReaction);
     }
 
     private void OnComponentInit(Entity<StellarAnomalyComponent> ent, ref ComponentInit args)

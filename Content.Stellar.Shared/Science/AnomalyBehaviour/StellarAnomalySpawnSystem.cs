@@ -4,6 +4,7 @@
 
 using Content.Shared.Anomaly;
 using Content.Shared.Anomaly.Effects.Components;
+using Content.Stellar.Shared._ES.Core.Timer;
 using Content.Stellar.Shared.Science.Components;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
@@ -12,6 +13,7 @@ namespace Content.Stellar.Shared.Science.AnomalyBehaviour;
 
 public sealed class StellarAnomalySpawnSystem : EntitySystem
 {
+    [Dependency] private readonly ESEntityTimerSystem _timer = default!;
     [Dependency] private readonly SharedAnomalySystem _wizAnomaly = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
@@ -28,7 +30,7 @@ public sealed class StellarAnomalySpawnSystem : EntitySystem
     {
         foreach (var entry in ent.Comp.Entries)
         {
-            SpawnEntities(ent, entry);
+            _timer.SpawnMethodTimer(TimeSpan.FromSeconds(1.3), () => SpawnEntities(ent, entry)); // GROSSSSS
         }
     }
 

@@ -2,20 +2,40 @@
 #
 # SPDX-License-Identifier: LicenseRef-CosmicCult
 
+### ABE
 - type: localizedDataset
-  id: StellarSensorAbeDialogueStabilized
+  id: StellarSciAbeDialogueStabilized
   values:
     prefix: abe-stabilized-dataset-
     count: 11
 
 - type: localizedDataset
-  id: StellarSensorAbeDialogueDeployed
+  id: StellarSciAbeDialogueDeployed
   values:
     prefix: abe-deployed-dataset-
     count: 9
 
 - type: localizedDataset
-  id: StellarSensorAbeDialogueUndeployed
+  id: StellarSciAbeDialogueUndeployed
   values:
     prefix: abe-undeployed-dataset-
     count: 12
+
+### BEA
+- type: localizedDataset
+  id: StellarSciBeaDialogueHarvested
+  values:
+    prefix: bea-harvested-dataset-
+    count: 3
+
+- type: localizedDataset
+  id: StellarSciBeaDialogueDeployed
+  values:
+    prefix: bea-deployed-dataset-
+    count: 3
+
+- type: localizedDataset
+  id: StellarSciBeaDialogueUndeployed
+  values:
+    prefix: bea-undeployed-dataset-
+    count: 3

@@ -9,8 +9,8 @@
   name: Anomaly
   components:
   - type: StellarAnomaly
-    pipTimeMin: 10
-    pipTimeMax: 30
+    harvestOutput: StellarScienceDataDrive
+    harvestOutputRare: StellarScienceDataDriveFull
     soundSpawn:
       path: /Audio/_ST/Science/science-anom-spawn.ogg
       params:
@@ -23,11 +23,6 @@
   - type: Sprite
     drawdepth: Mobs
     sprite: _ST/Effects/anomalies.rsi
-    layers:
-    - state: shadow-anomaly
-      shader: unshaded
-    - state: shadow-anomaly
-      shader: unshaded
   - type: Appearance
   - type: AnimationPlayer
   - type: ESTimedDespawnSpriteFade
@@ -40,12 +35,11 @@
         shape:
           !type:PhysShapeCircle
           radius: 0.35
-        mask:
-        - FullTileMask
-        layer:
-        - WallLayer
         density: 50
-        hard: false
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
   - type: AmbientSound
     enabled: false
     range: 15
@@ -180,6 +174,7 @@
     - state: shadow-anomaly
       shader: unshaded
     - state: shadow-1
+      offset: 0, 0.1
       shader: unshaded
   - type: PointLight
     radius: 2.0
@@ -199,6 +194,7 @@
     - state: shadow-anomaly
       shader: unshaded
     - state: shadow-2
+      offset: 0, 0.1
       shader: unshaded
   - type: PointLight
     radius: 2.0
@@ -223,6 +219,7 @@
     - state: shadow-anomaly
       shader: unshaded
     - state: electric-1
+      offset: 0, 0.2
       shader: unshaded
   - type: PointLight
     radius: 2.0
@@ -230,10 +227,10 @@
     softness: 4
     color: "#f7f397"
     castShadows: false
-  - type: StellarAnomalyPulseShoot
+  - type: StellarAnomalyShoot
     shootable: StellarHitscanAnomalyElectric
     shootAmountMin: 4
-    shootAmountMax: 5
+    shootAmountMax: 6
 
 - type: entity
   parent: StellarScienceAnomalyPowerfulBase
@@ -252,6 +249,7 @@
     - state: shadow-anomaly
       shader: unshaded
     - state: electric-2
+      offset: 0, 0.1
       shader: unshaded
   - type: PointLight
     radius: 2.0
@@ -259,10 +257,10 @@
     softness: 4
     color: "#9cdfe4"
     castShadows: false
-  - type: StellarAnomalyPulseShoot
+  - type: StellarAnomalyShoot
     shootable: StellarHitscanAnomalyIonic
-    shootAmountMin: 5
-    shootAmountMax: 6
+    shootAmountMin: 6
+    shootAmountMax: 8
   - type: EmpOnTrigger
     keysIn:
     - anom
@@ -287,7 +285,7 @@
     softness: 4
     color: "#5b92c5"
     castShadows: false
-  - type: StellarAnomalyPulseShoot
+  - type: StellarAnomalyShoot
     projectileSpeed: 10
     shootingMethod: Projectile
     shootable: StellarProjectileAnomalyIce
@@ -323,7 +321,7 @@
     castShadows: false
   - type: StellarAnomaly
     triggerChance: 0.5
-  - type: StellarAnomalyPulseShoot
+  - type: StellarAnomalyShoot
     projectileSpeed: 4
     shootingMethod: Projectile
     shootable: StellarProjectileAnomalyFlame
@@ -376,7 +374,7 @@
     castShadows: false
   - type: StellarAnomaly
     triggerChance: 0.75
-  - type: StellarAnomalyPulseShoot
+  - type: StellarAnomalyShoot
     projectileSpeed: 3
     shootingMethod: Projectile
     shootable: StellarProjectileAnomalyFlame

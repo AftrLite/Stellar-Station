@@ -9,7 +9,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Stellar.Shared.Science.Components;
 
 [RegisterComponent, NetworkedComponent]
-public sealed partial class StellarAnomalyPulseShootComponent : Component
+public sealed partial class StellarAnomalyShootComponent : Component
 {
     [DataField] public StellarGunMethod ShootingMethod = StellarGunMethod.Hitscan;
 

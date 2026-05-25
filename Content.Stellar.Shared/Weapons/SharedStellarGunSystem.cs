@@ -11,6 +11,7 @@ using Content.Shared.Hands;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Projectiles;
+using Content.Shared.Random.Helpers;
 using Content.Shared.Weapons.Hitscan.Events;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Systems;
@@ -307,18 +308,19 @@ public abstract partial class SharedStellarGunSystem : EntitySystem
 
     private Angle GetRecoilAngle(TimeSpan curTime, EntityUid uid, GunComponent comp, Angle direction)
     {
+        var rand = SharedRandomExtensions.PredictedRandom(Timing, GetNetEntity(uid));
         var timeSinceLastFire = (curTime - comp.LastFire).TotalSeconds;
         var newTheta = MathHelper.Clamp(comp.CurrentAngle.Theta + comp.AngleIncreaseModified.Theta - comp.AngleDecayModified.Theta * timeSinceLastFire, comp.MinAngleModified.Theta, comp.MaxAngleModified.Theta);
         comp.CurrentAngle = new Angle(newTheta);
         comp.LastFire = comp.NextFire;
         DirtyFields(uid, comp, null, nameof(GunComponent.CurrentAngle), nameof(GunComponent.LastFire));
 
-        var random = _random.NextFloat(-0.5f, 0.5f);
-        var angle = new Angle(direction.Theta + comp.CurrentAngle.Theta * random);
+        var randomAngle = rand.NextFloat(-0.5f, 0.5f); // Yeah i don't care that it's deprecated, this is how we can do PredictedRandom for now.
+        var angle = new Angle(direction.Theta + comp.CurrentAngle.Theta * randomAngle);
         return angle;
     }
 
-    private Angle[] LinearSpread(Angle start, Angle end, int intervals)
+    public Angle[] LinearSpread(Angle start, Angle end, int intervals)
     {
         var angles = new Angle[intervals];
         for (var i = 0; i <= intervals - 1; i++)

@@ -1,0 +1,181 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: StellarStructureBase
+  id: StellarScienceAbe
+  name: A.B.E
+  description: An anomalous beam emitter, or "A.B.E" for short. Successor to the previously-popular A.P.E, the A.B.E boasts improved portability and increased performance.
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: StellarSciencePortables
+    dialogueStabilized: StellarSciAbeDialogueStabilized
+    dialogueUndeployed: StellarSciAbeDialogueUndeployed
+    dialogueDeployed: StellarSciAbeDialogueDeployed
+    collisionMask: Opaque
+    soundDeploy:
+      path: /Audio/_ST/Science/science-portable-deploy.ogg
+      params:
+        volume: -3
+        variation: 0.05
+    soundUndeploy:
+      path: /Audio/_ST/Science/science-portable-undeploy.ogg
+      params:
+        volume: -3
+        variation: 0.05
+    soundCharge:
+      path: /Audio/_ST/Science/science-abe-charge.ogg
+      params:
+        variation: 0.077
+        volume: -2
+    soundShoot:
+      collection: ScienceAbeShoot
+      params:
+        variation: 0.077
+        volume: -1
+  - type: DoAfter
+  - type: Pullable
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Borg
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Dynamic
+  - type: Transform
+    anchored: False
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.20
+        density: 50
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _ST/Tileset/Science/abe.rsi
+    layers:
+    - state: shadow-float
+      offset: 0, -0.1875
+      map: [ "shadow" ]
+    - state: float
+      map: [ "base" ]
+    - state: unshaded
+      map: [ "unshaded" ]
+      visible: False
+      shader: unshaded
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.StellarPortablesVisuals.Visuals:
+        shadow:
+          Undeploying: { state: shadow-out }
+          Undeployed: { state: shadow-float }
+          Deploying: { state: shadow-in }
+          Deployed: { state: shadow-base }
+        base:
+          Undeploying: { state: deploy-out }
+          Undeployed: { state: float }
+          Deploying: { state: deploy-in }
+          Deployed: { state: base }
+        unshaded:
+          Undeploying: { visible: False }
+          Undeployed: { visible: False }
+          Deploying: { visible: False }
+          Deployed: { visible: true }
+  - type: UserInterface
+    interfaces:
+      enum.StellarPortablesRadialKey.Key:
+        type: StellarSciPortablesBoundUserInterface
+
+
+- type: entity
+  parent: StellarStructureBase
+  id: StellarScienceBea
+  name: B.E.A
+  description: A big energy aspirator, or "B.E.A" for short. It's unclear whether "big" refers to the energy it absorbs, or to the size of the device itself.
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: StellarSciencePortables
+    portablesType: Bea
+    transformTime: 0.5
+    dialogueHarvested: StellarSciBeaDialogueHarvested
+    dialogueUndeployed: StellarSciBeaDialogueUndeployed
+    dialogueDeployed: StellarSciBeaDialogueDeployed
+    collisionMask: Opaque
+    soundDeploy:
+      path: /Audio/_ST/Science/science-portable-deploy.ogg
+      params:
+        volume: -3
+        variation: 0.05
+    soundUndeploy:
+      path: /Audio/_ST/Science/science-portable-undeploy.ogg
+      params:
+        volume: -3
+        variation: 0.05
+  - type: DoAfter
+  - type: Pullable
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Borg
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Dynamic
+  - type: Transform
+    anchored: False
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.20
+        density: 50
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    offset: 0, 0.06
+    sprite: _ST/Tileset/Science/bea.rsi
+    layers:
+    - state: float
+      map: [ "base" ]
+    - state: unshaded
+      map: [ "unshaded" ]
+      visible: False
+      shader: unshaded
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.StellarPortablesVisuals.Visuals:
+        base:
+          Undeploying: { state: deploy-out }
+          Undeployed: { state: float }
+          Deploying: { state: deploy-in }
+          Deployed: { state: base }
+        unshaded:
+          Undeploying: { visible: False }
+          Undeployed: { visible: False }
+          Deploying: { visible: False }
+          Deployed: { visible: true }
+  - type: UserInterface
+    interfaces:
+      enum.StellarPortablesRadialKey.Key:
+        type: StellarSciPortablesBoundUserInterface
+  - type: AmbientSound
+    enabled: false
+    range: 5
+    volume: -6
+    sound:
+      path: /Audio/Ambience/Objects/anomaly_generator.ogg
