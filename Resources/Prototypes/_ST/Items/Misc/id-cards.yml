@@ -293,6 +293,20 @@
   - type: PresetIdCard
     job: StellarJobScienceScientist
 
+- type: entity
+  parent: StellarIDCardBase
+  id: StellarIDCardScienceAnalyst
+  suffix: sensor analyst
+  components:
+  - type: Sprite
+    layers:
+    - state: base-default #base
+    - state: decal-stripe-science #decal
+    - sprite: _ST/Icons/job-icons.rsi #icon
+      offset: "-0.155, -0.0325"
+      state: science-Analyst
+  - type: PresetIdCard
+    job: StellarJobScienceAnalyst
 
 
 ### SUPPLY

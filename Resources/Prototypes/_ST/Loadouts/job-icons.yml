@@ -135,6 +135,14 @@
     state: science-Scientist
   jobName: LOREM IPSUM
 
+- type: jobIcon
+  parent: JobIcon
+  id: StellarJobIconScienceAnalyst
+  icon:
+    sprite: *icon-rsi
+    state: science-Analyst
+  jobName: LOREM IPSUM
+
 
 ### SUPPLY
 - type: jobIcon

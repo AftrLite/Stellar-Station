@@ -1,0 +1,38 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+### UNIFORMS
+- type: entity
+  parent: StellarClothingUniformBase
+  id: StellarClothingUniformScienceAnalyst
+  name: sensor analyst's uniform
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Science/Analyst/analyst-uniform.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Science/Analyst/analyst-uniform.rsi
+
+- type: entity
+  parent: StellarClothingUniformScienceAnalyst
+  id: StellarClothingUniformScienceAnalystSkirt
+  name: sensor analyst's uniform & skirt
+  description: LOREM IPSUM
+  components:
+  - type: Clothing
+    slots: [innerclothing]
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-skirt
+
+- type: entity
+  parent: StellarClothingUniformBase
+  id: StellarClothingUniformScienceAnalystCoveralls
+  name: engineer's coveralls
+  description: LOREM IPSUM
+  components:
+  - type: Sprite
+    sprite: _ST/Clothing/Science/Analyst/analyst-uniform-coveralls.rsi
+  - type: Clothing
+    sprite: _ST/Clothing/Science/Analyst/analyst-uniform-coveralls.rsi

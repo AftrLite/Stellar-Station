@@ -18,6 +18,28 @@
   supervisors: job-supervisors-hop
   access:
   - Service
+  - Science
+
+- type: job
+  id: StellarJobScienceAnalyst
+  name: stellar-job-name-analyst
+  description: stellar-job-description-analyst
+  setPreference: true
+  playTimeTracker: StellarTimeTrackerScienceAnalyst
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Civilian
+  #     time: 0.5h
+  startingGear: StellarGearScienceAnalyst
+  icon: StellarJobIconScienceAnalyst
+  supervisors: job-supervisors-hop
+  access:
+  - Service
+  - Science
+
 
 - type: playTimeTracker
   id: StellarTimeTrackerScienceScientist
+
+- type: playTimeTracker
+  id: StellarTimeTrackerScienceAnalyst

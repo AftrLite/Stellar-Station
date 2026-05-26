@@ -30,3 +30,12 @@
         - MachineMask
         layer:
         - GlassAirlockLayer
+  - type: UserInterface
+    interfaces:
+      enum.StellarPortablesRadialKey.Key:
+        type: StellarCraftingBenchBoundUserInterface
+  - type: ActivatableUI
+    singleUser: true
+    requiresComplex: true
+    blockSpectators: true
+    key: enum.StellarPortablesRadialKey.Key

@@ -1,0 +1,77 @@
+# SPDX-FileCopyrightText: 2025 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+# ROLE STARTING GEAR
+- type: startingGear
+  id: StellarGearScienceAnalyst
+  equipment:
+    id: StellarPDAScienceAnalyst
+    ears: StellarClothingHeadsetScience
+  storage:
+    back:
+    - Flash
+
+# ROLE LOADOUT CONFIG
+- type: roleLoadout
+  id: StellarJobScienceAnalyst
+  groups:
+  - StellarAnalystEyes
+  - StellarAnalystCoat
+  - StellarAnalystUniform
+  - StellarAnalystShoes
+  - StellarScienceBackpack
+  - Survival
+  - GroupSpeciesBreathTool
+  - GroupTankHarness
+
+# LOADOUT GROUPS
+- type: loadoutGroup
+  id: StellarAnalystEyes
+  name: stellar-loadout-eyes
+  minLimit: 0
+  loadouts:
+  - StellarMiscLoadoutEyesGlasses
+  - StellarMiscLoadoutEyesSunglasses
+
+- type: loadoutGroup
+  id: StellarAnalystCoat
+  name: stellar-loadout-outerclothing
+  minLimit: 0
+  loadouts:
+  - StellarMiscLoadoutOuterLabCoat
+
+- type: loadoutGroup
+  id: StellarAnalystUniform
+  name: stellar-loadout-uniform
+  loadouts:
+  - StellarAnalystUniform
+  - StellarAnalystUniformSkirt
+  - StellarAnalystUniformCoveralls
+
+- type: loadoutGroup
+  id: StellarAnalystShoes
+  name: stellar-loadout-shoes
+  loadouts:
+  - StellarMiscLoadoutShoesScience
+  - StellarMiscLoadoutShoesBrownDress
+  - StellarMiscLoadoutShoesBlack
+  - StellarMiscLoadoutShoesBrown
+
+### UNIFORM
+- type: loadout
+  id: StellarAnalystUniform
+  equipment:
+    jumpsuit: StellarClothingUniformScienceAnalyst
+  groupBy: "uniform"
+
+- type: loadout
+  id: StellarAnalystUniformSkirt
+  equipment:
+    jumpsuit: StellarClothingUniformScienceAnalystSkirt
+  groupBy: "uniform-skirt"
+
+- type: loadout
+  id: StellarAnalystUniformCoveralls
+  equipment:
+    jumpsuit: StellarClothingUniformScienceAnalystCoveralls

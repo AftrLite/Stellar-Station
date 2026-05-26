@@ -64,6 +64,8 @@ stellar-job-description-janitor = LOREM IPSUM
 stellar-job-name-scientist = Scientist
 stellar-job-description-scientist = LOREM IPSUM
 
+stellar-job-name-analyst = Sensor Analyst
+stellar-job-description-analyst = LOREM IPSUM
 
 
 ### SECURITY

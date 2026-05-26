@@ -213,6 +213,18 @@
   - type: PdaBorderColor
     borderColor: "#ffffff"
 
+- type: entity
+  name: sensor analyst's PDA
+  parent: StellarPDABase
+  id: StellarPDAScienceAnalyst
+  description: LOREM IPSUM
+  components:
+  - type: Pda
+    id: StellarIDCardScienceAnalyst
+  - type: Sprite
+    sprite: _ST/Clothing/Science/Analyst/analyst-pda.rsi
+  - type: PdaBorderColor
+    borderColor: "#ffffff"
 
 
 ### SECURITY
