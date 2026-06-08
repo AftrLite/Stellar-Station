@@ -32,7 +32,7 @@
 - type: entity
   parent: BaseItem
   id: StellarScienceCapsule
-  name: anomaly containment capsule
+  name: containment capsule
   description: A heavy-duty capsule, used for the containment of stabilized anomalies.
   categories: [ ForkFiltered ]
   components:

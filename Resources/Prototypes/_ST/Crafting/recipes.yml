@@ -1,0 +1,80 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+
+# FUEL RODS, SCI, DEFENSIVE
+- type: stellarCraftingRecipe
+  id: StellarCraftRecipeFuelRodSciDef1
+  ingredients:
+    StellarFuelRodDepleted: 1
+    SheetGlass1: 5
+  output: StellarFuelRodScienceDefensiveTier1
+  craftingTime: 30
+
+- type: stellarCraftingRecipe
+  id: StellarCraftRecipeFuelRodSciDef2
+  ingredients:
+    StellarFuelRodDepleted: 2
+    SheetGlass1: 10
+  output: StellarFuelRodScienceDefensiveTier2
+  craftingTime: 60
+
+- type: stellarCraftingRecipe
+  id: StellarCraftRecipeFuelRodSciDef3
+  ingredients:
+    StellarFuelRodDepleted: 3
+    SheetGlass1: 15
+  output: StellarFuelRodScienceDefensiveTier3
+  craftingTime: 90
+
+# FUEL RODS, SCI, BLUESPACE
+- type: stellarCraftingRecipe
+  id: StellarCraftRecipeFuelRodSciBlue1
+  ingredients:
+    StellarFuelRodDepleted: 1
+    SheetGlass1: 5
+  output: StellarFuelRodScienceBluespaceTier1
+  craftingTime: 30
+
+- type: stellarCraftingRecipe
+  id: StellarCraftRecipeFuelRodSciBlue2
+  ingredients:
+    StellarFuelRodDepleted: 2
+    SheetGlass1: 10
+  output: StellarFuelRodScienceBluespaceTier2
+  craftingTime: 60
+
+- type: stellarCraftingRecipe
+  id: StellarCraftRecipeFuelRodSciBlue3
+  ingredients:
+    StellarFuelRodDepleted: 3
+    SheetGlass1: 15
+  output: StellarFuelRodScienceBluespaceTier3
+  craftingTime: 90
+
+
+
+
+
+- type: stellarCraftingRecipe
+  id: StellarCraftRecipeFireFoamSci
+  ingredients:
+    SheetGlass1: 5
+  output: StellarFireFoamScience
+  craftingTime: 10
+
+- type: stellarCraftingRecipe
+  id: StellarCraftRecipeDataDrive
+  ingredients:
+    SheetGlass1: 5
+  output: StellarScienceDataDrive
+  craftingTime: 10
+
+- type: stellarCraftingRecipe
+  id: StellarCraftRecipeCapsule
+  ingredients:
+    SheetGlass1: 5
+  output: StellarScienceCapsule
+  craftingTime: 10
+

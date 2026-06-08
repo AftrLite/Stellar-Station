@@ -1,0 +1,9 @@
+﻿<!--
+SPDX-FileCopyrightText: 2026 AftrLite
+
+SPDX-License-Identifier: LicenseRef-Wallening
+-->
+
+<BoxContainer xmlns="https://spacestation14.io" Orientation="Vertical">
+    <SpriteView Name="View"/>
+</BoxContainer>

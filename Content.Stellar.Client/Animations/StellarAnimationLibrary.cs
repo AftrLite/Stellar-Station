@@ -112,8 +112,7 @@ public static class StellarAnimLib
                         new AnimationTrackProperty.KeyFrame(new Vector2(0f, 0.5f), delay),
                         new AnimationTrackProperty.KeyFrame(new Vector2(0f, 0.5f), 0f, Easings.InOutQuad),
                         new AnimationTrackProperty.KeyFrame(new Vector2(0f, 0.75f), start, Easings.InOutSine),
-                        new AnimationTrackProperty.KeyFrame(new Vector2(0f, 0.5f), end * 0.9f),
-                        new AnimationTrackProperty.KeyFrame(new Vector2(0f, 0f), end * 0.1f),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(0f, 0.45f), end, Easings.InOutSine),
                     },
                 },
                 new AnimationTrackComponentProperty()
@@ -139,9 +138,9 @@ public static class StellarAnimLib
                     {
                         new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(0f), 0f, Easings.OutSine),
                         new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(1f), start),
-                        new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(0.66f), end * 0.45f),
-                        new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(0.33f), end * 0.45f),
-                        new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(0f), end * 0.1f),
+                        new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(0.66f), end * 0.40f),
+                        new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(0.33f), end * 0.40f),
+                        new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(0f), end * 0.2f),
                     },
                 },
             },

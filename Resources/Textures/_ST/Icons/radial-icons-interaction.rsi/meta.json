@@ -11,9 +11,6 @@
             "name": "pull"
         },
         {
-            "name": "query"
-        },
-        {
             "name": "inspect"
         },
         {
@@ -39,6 +36,9 @@
         },
         {
             "name": "handshake"
+        },
+        {
+            "name": "query"
         }
     ]
 }

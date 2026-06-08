@@ -9,12 +9,10 @@
   categories: [ ForkFiltered ]
   components:
   - type: StellarFuelRod
+    canHypercharge: false
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/crowbar_drop.ogg
-  - type: Tag
-    tags:
-    - Crowbar
   - type: Sprite
     sprite: Objects/Tools/crowbar.rsi
     state: icon
@@ -28,31 +26,13 @@
   parent: BaseItem
   id: StellarFuelRodDepleted
   name: depleted fuel rod
-  description: A depleted fuel rod. Can be "sustainably" recycled into a lower grade of fuel rod!
+  description: These can be "sustainably" recycled to make new fuel rods!
   categories: [ ForkFiltered ]
   components:
   - type: Sprite
     sprite: _ST/Items/Misc/fuel-rods.rsi
     layers:
     - state: base
-
-# These fuel rods are basically just placeholder.
-- type: entity
-  parent: StellarBaseFuelRodItem
-  id: StellarFuelRodPlasma
-  name: plasma fuel rod
-  description: LOREM IPSUM
-  categories: [ ForkFiltered ]
-  components:
-  - type: StellarFuelRod
-    providedOvercharge: StellarOverchargeScientific
-    canHypercharge: false
-  - type: Sprite
-    sprite: _ST/Items/Misc/fuel-rods.rsi
-    layers:
-    - state: base
-    - state: overlay-plasma
-      shader: unshaded
 
 - type: entity
   parent: StellarBaseFuelRodItem
@@ -103,4 +83,100 @@
     layers:
     - state: base-gorlex
     - state: overlay-echion
+      shader: unshaded
+
+# SCIENCE Fuel Rods, DEFENSIVE
+- type: entity
+  parent: StellarBaseFuelRodItem
+  id: StellarFuelRodScienceDefensiveTier1
+  name: phoron fuel rod
+  description: LOREM IPSUM
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarFuelRod
+    providedOvercharge: StellarOverchargeDefensive
+  - type: Sprite
+    sprite: _ST/Items/Misc/fuel-rods.rsi
+    layers:
+    - state: base-sci-1
+    - state: overlay-sci-def
+      shader: unshaded
+
+- type: entity
+  parent: StellarFuelRodScienceDefensiveTier1
+  id: StellarFuelRodScienceDefensiveTier2
+  name: prime phoron fuel rod
+  description: LOREM IPSUM
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarFuelRod
+  - type: Sprite
+    sprite: _ST/Items/Misc/fuel-rods.rsi
+    layers:
+    - state: base-sci-2
+    - state: overlay-sci-def
+      shader: unshaded
+
+- type: entity
+  parent: StellarFuelRodScienceDefensiveTier1
+  id: StellarFuelRodScienceDefensiveTier3
+  name: apex phoron fuel rod
+  description: LOREM IPSUM
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarFuelRod
+    canHypercharge: true
+  - type: Sprite
+    sprite: _ST/Items/Misc/fuel-rods.rsi
+    layers:
+    - state: base-sci-3
+    - state: overlay-sci-def
+      shader: unshaded
+
+# SCIENCE Fuel Rods, BLUESPACE
+- type: entity
+  parent: StellarBaseFuelRodItem
+  id: StellarFuelRodScienceBluespaceTier1
+  name: azure fuel rod
+  description: LOREM IPSUM
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarFuelRod
+    providedOvercharge: StellarOverchargeBluespace
+  - type: Sprite
+    sprite: _ST/Items/Misc/fuel-rods.rsi
+    layers:
+    - state: base-sci-1
+    - state: overlay-sci-blue
+      shader: unshaded
+
+- type: entity
+  parent: StellarFuelRodScienceBluespaceTier1
+  id: StellarFuelRodScienceBluespaceTier2
+  name: prime azure fuel rod
+  description: LOREM IPSUM
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarFuelRod
+  - type: Sprite
+    sprite: _ST/Items/Misc/fuel-rods.rsi
+    layers:
+    - state: base-sci-2
+    - state: overlay-sci-blue
+      shader: unshaded
+
+- type: entity
+  parent: StellarFuelRodScienceBluespaceTier1
+  id: StellarFuelRodScienceBluespaceTier3
+  name: apex azure fuel rod
+  description: LOREM IPSUM
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarFuelRod
+    canHypercharge: true
+  - type: Sprite
+    sprite: _ST/Items/Misc/fuel-rods.rsi
+    layers:
+    - state: base-sci-3
+    - state: overlay-sci-blue
       shader: unshaded

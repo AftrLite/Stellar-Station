@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "by AftrLite(GitHub)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "true"
+        },
+        {
+            "name": "false"
+        },
+        {
+            "name": "query"
+        },
+        {
+            "name": "check"
+        }
+    ]
+}

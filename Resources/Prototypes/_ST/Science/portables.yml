@@ -2,6 +2,7 @@
 #
 # SPDX-License-Identifier: LicenseRef-Wallening
 
+# A.B.E (STABILIZER)
 - type: entity
   parent: StellarStructureBase
   id: StellarScienceAbe
@@ -95,7 +96,7 @@
       enum.StellarPortablesRadialKey.Key:
         type: StellarSciPortablesBoundUserInterface
 
-
+# B.E.A (HARVESTER)
 - type: entity
   parent: StellarStructureBase
   id: StellarScienceBea

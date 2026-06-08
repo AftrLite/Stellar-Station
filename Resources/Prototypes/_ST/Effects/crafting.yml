@@ -1,0 +1,21 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  id: StellarEffectCraftingPopup
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StellarDeleteOnAnimate
+  - type: Transform
+  - type: Sprite
+    drawdepth: Effects
+    sprite: _ST/Icons/radial-icons-portables.rsi
+    layers:
+    - state: 1
+      visible: false
+  - type: Appearance
+  - type: AnimationPlayer
+  - type: Tag
+    tags:
+    - HideContextMenu

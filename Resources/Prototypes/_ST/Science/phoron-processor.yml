@@ -9,16 +9,22 @@
   description: LOREM IPSUM # TODO: Description
   categories: [ ForkFiltered ]
   components:
+  - type: ApcPowerReceiver
+    powerLoad: 20
+  - type: ExtensionCableReceiver
+  - type: DoAfter
+  - type: StellarCraftingBench
+    availableRecipes:
+    - StellarCraftRecipeDataDrive
+    - StellarCraftRecipeCapsule
+    - StellarCraftRecipeFireFoamSci
+    - StellarCraftRecipeFuelRodSciDef1
+    - StellarCraftRecipeFuelRodSciDef2
+    - StellarCraftRecipeFuelRodSciDef3
+    - StellarCraftRecipeFuelRodSciBlue1
+    - StellarCraftRecipeFuelRodSciBlue2
+    - StellarCraftRecipeFuelRodSciBlue3
   - type: InteractionOutline
-  - type: Sprite
-    drawdepth: Mobs
-    noRot: true
-    offset: 0, 0.25
-    sprite: _ST/Tileset/Science/phoron-processor.rsi
-    layers:
-    - state: base
-    - state: unshaded
-      shader: unshaded
   - type: Fixtures
     fixtures:
       fix1:
@@ -30,12 +36,38 @@
         - MachineMask
         layer:
         - GlassAirlockLayer
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    offset: -0.03125, 0.25
+    sprite: _ST/Tileset/Science/phoron-processor.rsi
+    layers:
+    - state: base
+      map: [ "base" ]
+    - state: unshaded
+      shader: unshaded
+      map: [ "overlay" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.StellarCraftingBenchVisuals.Visuals:
+        base:
+          Unpowered: { state: base-unpowered }
+          Idle: { state: base }
+          Crafting: { state: base-crafting }
+          AwaitingPickup: { state: base-complete }
+        overlay:
+          Unpowered: { visible: false }
+          Idle: { visible: true, state: unshaded }
+          Crafting: { visible: true, state: unshaded-crafting }
+          AwaitingPickup: { visible: true, state: unshaded-complete }
   - type: UserInterface
     interfaces:
-      enum.StellarPortablesRadialKey.Key:
+      enum.StellarCraftingKey.Key:
         type: StellarCraftingBenchBoundUserInterface
-  - type: ActivatableUI
-    singleUser: true
-    requiresComplex: true
-    blockSpectators: true
-    key: enum.StellarPortablesRadialKey.Key
+  - type: AmbientSound
+    enabled: false
+    range: 5
+    volume: -3
+    sound:
+      path: /Audio/_ST/Machines/crafting-inprogress.ogg

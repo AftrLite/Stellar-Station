@@ -11,7 +11,49 @@
             "name": "base"
         },
         {
+            "name": "base-unpowered"
+        },
+        {
+            "name": "base-complete",
+            "delays":
+            [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "base-crafting",
+            "delays":
+            [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
             "name": "unshaded"
+        },
+        {
+            "name": "unshaded-complete"
+        },
+        {
+            "name": "unshaded-crafting",
+            "delays":
+            [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
         }
     ]
 }

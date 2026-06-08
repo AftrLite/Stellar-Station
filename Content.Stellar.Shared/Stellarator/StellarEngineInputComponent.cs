@@ -25,7 +25,7 @@ public sealed partial class StellarEngineInputComponent : Component
         { "StellarOverchargeOffensive", EngineInputDisplayState.Offensive },
         { "StellarOverchargeDefensive", EngineInputDisplayState.Defensive },
         { "StellarOverchargeCurative", EngineInputDisplayState.Curative },
-        { "StellarOverchargeScientific", EngineInputDisplayState.Scientific },
+        { "StellarOverchargeBluespace", EngineInputDisplayState.Scientific },
     };
 
     /// <summary>

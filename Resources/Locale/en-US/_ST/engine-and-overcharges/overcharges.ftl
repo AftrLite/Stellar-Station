@@ -16,6 +16,6 @@ overcharge-name-curative = [color=#2cb9ea][bold]Curative[/bold][/color]
 overcharge-announcement-curative = Additional curative measures are now temporarily available.
 overcharge-announcement-hyper-curative = Hypercharged curative measures are now temporarily available!
 
-overcharge-name-scientific = [color=#a929ff][bold]Scientific[/bold][/color]
-overcharge-announcement-scientific = ???
-overcharge-announcement-hyper-scientific = ???????
+overcharge-name-bluespace = [color=#a73eff][bold]Bluespace[/bold][/color]
+overcharge-announcement-bluespace = ???
+overcharge-announcement-hyper-bluespace = ???????

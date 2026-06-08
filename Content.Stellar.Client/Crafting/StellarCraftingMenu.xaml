@@ -1,17 +1,66 @@
 <!--
-SPDX-FileCopyrightText: 2025 AftrLite
+SPDX-FileCopyrightText: 2026 AftrLite
 
-SPDX-License-Identifier: LicenseRef-CosmicCult
+SPDX-License-Identifier: LicenseRef-Wallening
 -->
 
 <controls:FancyWindow xmlns="https://spacestation14.io"
                       xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls;assembly=Content.Client"
-                      Title="{Loc 'cosmiccult-ui-converted-title'}">
-    <BoxContainer Orientation="Vertical" Margin="10">
-        <Label Text="{Loc 'cosmiccult-ui-converted-text-1'}" Margin="5" Align="Center"/>
-        <Label Text="{Loc 'cosmiccult-ui-converted-text-2'}" Margin="5" Align="Center"/>
-        <BoxContainer Orientation="Horizontal" Margin="5" Align="Center">
-            <Button Name="ConfirmButton" Text="{Loc 'cosmiccult-ui-popup-confirm'}"/>
-        </BoxContainer>
+                      Name="CraftingMenu"
+                      MinSize="520 340"
+                      SetSize="550 340">
+    <BoxContainer Orientation="Vertical" Margin="5 5 5 0">
+        <!-- Main body -->
+        <TabContainer Name="MasterTabContainer" VerticalExpand="True" TabsVisible="False" Margin="5">
+
+            <!-- Recipe Selection Tab -->
+            <ScrollContainer HScrollEnabled="False"  VerticalExpand="True" Margin="0">
+                <BoxContainer Name="RecipeContainer" Orientation="Vertical" VerticalExpand="True"/>
+            </ScrollContainer>
+
+            <!-- Crafting UI Tab -->
+            <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
+                <BoxContainer Orientation="Vertical" VerticalExpand="False">
+                    <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
+
+                        <!-- Recipe Result's Icon & Cancel Button -->
+                        <BoxContainer Orientation="Vertical" VerticalAlignment="Center">
+                            <PanelContainer StyleClasses="BackgroundPanel">
+                                <BoxContainer Name="IconContainer"/>
+                            </PanelContainer>
+                            <Button Name="CancelButton" Text="{Loc stellar-crafting-display-cancel}" StyleClasses="ButtonColorPurpleAndCool"/>
+                        </BoxContainer>
+
+                        <BoxContainer Orientation="Vertical" VerticalAlignment="Center">
+
+                            <!-- Recipe Result's name -->
+
+                            <PanelContainer StyleClasses="BackgroundPanel" HorizontalAlignment="Left" Margin="5 0 0 0">
+                                <BoxContainer Margin="0 9 0 0">
+                                <RichTextLabel Name="ResultName"/>
+                                </BoxContainer>
+                            </PanelContainer>
+
+                            <!-- Recipe Result's description -->
+                            <PanelContainer StyleClasses="BackgroundPanel" HorizontalAlignment="Left" Margin="5 0 0 0">
+                                <RichTextLabel Name="ResultDescription"/>
+                            </PanelContainer>
+                        </BoxContainer>
+                    </BoxContainer>
+
+
+                    <!-- Box containing all the recipe's required ingredients -->
+                    <PanelContainer StyleClasses="BackgroundPanel" Margin="10" VerticalAlignment="Center">
+                        <BoxContainer Orientation="Vertical">
+                            <Label Text="{Loc stellar-crafting-display-ingredients}" HorizontalAlignment="Center"/>
+                            <BoxContainer VerticalExpand="True" HorizontalAlignment="Center" Margin="0 0 0 10">
+                                <GridContainer Columns="4" Name="IngredientsGrid"/>
+                            </BoxContainer>
+                        </BoxContainer>
+                    </PanelContainer>
+
+                </BoxContainer>
+            </ScrollContainer>
+        </TabContainer>
     </BoxContainer>
 </controls:FancyWindow>

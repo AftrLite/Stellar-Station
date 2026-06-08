@@ -9,6 +9,8 @@
   name: Anomaly
   components:
   - type: StellarAnomaly
+#    pipTimeMin: 5
+#    pipTimeMax: 10
     harvestOutput: StellarScienceDataDrive
     harvestOutputRare: StellarScienceDataDriveFull
     soundSpawn:
@@ -62,9 +64,9 @@
   - type: StellarAnomaly
     integrityPipsMax: 7
     integrityPipsSpawnVariance: 3
-    pipTimerMin: 60
-    pipTimerMax: 120
-    pipTimerStable: 140
+    pipTimeMin: 60
+    pipTimeMax: 120
+    pipTimeStable: 140
 
 - type: entity
   parent: StellarScienceAnomalyBase

@@ -16,29 +16,31 @@ public sealed class StellarSciencePortablesSystem : SharedStellarSciencePortable
     {
         base.Initialize();
 
-        SubscribeLocalEvent<StellarSciencePortablesComponent, ActivateInWorldEvent>(OnApeActivateInWorld);
-        SubscribeLocalEvent<StellarSciencePortablesComponent, InteractHandEvent>(OnApeInteractHand);
+        SubscribeLocalEvent<StellarSciencePortablesComponent, ActivateInWorldEvent>(OnActivateInWorld);
+        SubscribeLocalEvent<StellarSciencePortablesComponent, InteractHandEvent>(OnInteractHand);
     }
 
-    private void OnApeActivateInWorld(Entity<StellarSciencePortablesComponent> ent, ref ActivateInWorldEvent args)
+    private void OnActivateInWorld(Entity<StellarSciencePortablesComponent> ent, ref ActivateInWorldEvent args)
     {
         if (!args.Complex || args.Handled)
             return;
 
-        if (DoAfter.IsRunning(ent.Comp.DoAfterId))
-            return;
-
-        UiSystem.OpenUi(ent.Owner, StellarPortablesRadialKey.Key, args.User, true);
+        HandleUI(ent, args.User);
     }
 
-    private void OnApeInteractHand(Entity<StellarSciencePortablesComponent> ent, ref InteractHandEvent args)
+    private void OnInteractHand(Entity<StellarSciencePortablesComponent> ent, ref InteractHandEvent args)
     {
         if (args.Handled)
             return;
 
-        if (DoAfter.IsRunning(ent.Comp.DoAfterId))
+        HandleUI(ent, args.User);
+    }
+
+    private void HandleUI(Entity<StellarSciencePortablesComponent> ent, EntityUid user)
+    {
+        if (DoAfter.IsRunning(ent.Comp.DoAfterId) || UiSystem.IsUiOpen(ent.Owner, StellarPortablesRadialKey.Key))
             return;
 
-        UiSystem.OpenUi(ent.Owner, StellarPortablesRadialKey.Key, args.User, true);
+        UiSystem.OpenUi(ent.Owner, StellarPortablesRadialKey.Key, user, true);
     }
 }

@@ -37,7 +37,7 @@
   - type: Transform
   - type: Sprite
     drawdepth: Effects
-    sprite: _ST/Icons/radial-icons-portables.rsi
+    sprite: _ST/Icons/icons-generic.rsi
     layers:
     - state: 1
       visible: false

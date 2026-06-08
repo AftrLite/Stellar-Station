@@ -25,6 +25,12 @@ ent-StellarWeaponGorlexMinotaur =
    .desc = "Subverted law, captive regulation, and no planetary government can stop us now."
    —Danidas Echion XXI
 
+ent-StellarWeaponGorlexBasilisk =
+   .desc = "In this garden, only flowers we permit may flourish."
+   —Johannes Lysander Echion IV, CEO
+
+### ent-StellarWeaponGorlexLadon - Placeholder, for future weapon use
+### ent-StellarWeaponGorlexTyphon - Placeholder, for future weapon use
 
 ### HARDSUITS
 ent-StellarHardsuitGorlexInfiltrator =

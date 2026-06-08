@@ -18,7 +18,6 @@
   supervisors: job-supervisors-hop
   access:
   - Service
-  - Science
 
 - type: job
   id: StellarJobScienceAnalyst
@@ -35,7 +34,6 @@
   supervisors: job-supervisors-hop
   access:
   - Service
-  - Science
 
 
 - type: playTimeTracker

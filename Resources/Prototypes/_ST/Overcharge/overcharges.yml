@@ -21,7 +21,7 @@
   announcementTextHyper: overcharge-announcement-hyper-curative
 
 - type: stellarOvercharge
-  id: StellarOverchargeScientific
-  name: overcharge-name-scientific
-  announcementText: overcharge-announcement-scientific
-  announcementTextHyper: overcharge-announcement-hyper-scientific
+  id: StellarOverchargeBluespace
+  name: overcharge-name-bluespace
+  announcementText: overcharge-announcement-bluespace
+  announcementTextHyper: overcharge-announcement-hyper-bluespace

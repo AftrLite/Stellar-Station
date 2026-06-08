@@ -33,12 +33,6 @@
         },
         {
             "name": "lambda"
-        },
-        {
-            "name": "true"
-        },
-        {
-            "name": "false"
         }
     ]
 }

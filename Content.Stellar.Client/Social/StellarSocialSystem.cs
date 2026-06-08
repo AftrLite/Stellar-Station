@@ -14,7 +14,6 @@ using Robust.Client.GameObjects;
 using Robust.Shared.Animations;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -30,7 +29,7 @@ public sealed class StellarSocialSystem : SharedStellarSocialSystem
     [Dependency] private readonly SpriteSystem _sprite = default!;
 
     private readonly EntProtoId _socialEffectBase = "StellarSocialVisualsEffect";
-    private readonly SpriteSpecifier _socialRequestOverlay = new SpriteSpecifier.Rsi(new("/Textures/_ST/Icons/radial-icons-interaction.rsi"), "query");
+    private readonly SpriteSpecifier _socialRequestOverlay = new SpriteSpecifier.Rsi(new("/Textures/_ST/Icons/icons-generic.rsi"), "query");
 
     public override void Initialize()
     {

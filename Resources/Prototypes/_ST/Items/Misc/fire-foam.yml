@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: BaseItem
+  abstract: true
+  id: StellarBaseFireFoamItem
+  categories: [ ForkFiltered ]
+  components:
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/crowbar_drop.ogg
+  - type: Sprite
+    sprite: _ST/Items/Misc/firefighter-foam.rsi
+    state: icon-sci
+  - type: Item
+    sprite: _ST/Items/Misc/firefighter-foam.rsi
+    size: Normal
+    shape:
+    - 0,0,0,1
+
+- type: entity
+  parent: StellarBaseFireFoamItem
+  id: StellarFireFoamScience
+  name: fire foam "lotus"
+  description: LOREM IPSUM
+  categories: [ ForkFiltered ]
+  components:
+  - type: Sprite
+    sprite: _ST/Items/Misc/firefighter-foam.rsi
+    state: icon-sci

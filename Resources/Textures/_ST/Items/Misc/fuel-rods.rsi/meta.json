@@ -14,7 +14,19 @@
             "name": "base-gorlex"
         },
         {
-            "name": "overlay-plasma"
+            "name": "base-sci-1"
+        },
+        {
+            "name": "base-sci-2"
+        },
+        {
+            "name": "base-sci-3"
+        },
+        {
+            "name": "overlay-sci-blue"
+        },
+        {
+            "name": "overlay-sci-def"
         },
         {
             "name": "overlay-uranium"
