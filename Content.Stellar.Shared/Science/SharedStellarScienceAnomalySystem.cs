@@ -34,28 +34,12 @@ public abstract class SharedStellarScienceAnomalySystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<StellarAnomalyComponent, InteractUsingEvent>(OnInteractUsing);
         SubscribeLocalEvent<StellarAnomalyComponent, ExaminedEvent>(OnAnomalyExamined);
 
         SubscribeLocalEvent<StellarAnomalyComponent, StellarAnomalyPulseEvent>(OnPulseAnom);
         SubscribeLocalEvent<StellarAnomalyComponent, StellarAnomalyDecrementEvent>(OnDecrementAnom);
         SubscribeLocalEvent<StellarAnomalyComponent, StellarAnomalyStabilizeEvent>(OnStabilizeAnom);
         SubscribeLocalEvent<StellarAnomalyComponent, StellarAnomalyDestabilizeEvent>(OnDestabilizeAnom);
-    }
-
-    private void OnInteractUsing(Entity<StellarAnomalyComponent> ent, ref InteractUsingEvent args)
-    {
-        if (args.Handled || !ent.Comp.Stable || !TryComp<StellarContainmentCapsuleComponent>(args.Used, out var capsuleComp))
-            return;
-
-        if (capsuleComp.Full)
-        {
-            _popUp.PopupClient("This capsule is full!", ent, args.User, PopupType.MediumCaution); // TODO: Localization
-            return;
-        }
-
-        var doArgs = new DoAfterArgs(EntityManager, args.User, capsuleComp.ContainmentTime, new StellarCapsuleDoAfter(), args.Used, ent);
-        _doAfter.TryStartDoAfter(doArgs);
     }
 
     private void OnAnomalyExamined(Entity<StellarAnomalyComponent> ent, ref ExaminedEvent args)

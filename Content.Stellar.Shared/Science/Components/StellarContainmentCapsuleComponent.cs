@@ -26,11 +26,6 @@ public sealed partial class StellarContainmentCapsuleComponent : Component
     [DataField] public int StoredEnergy;
 
     /// <summary>
-    /// How much durability the capsule has left.
-    /// </summary>
-    [DataField] public int Durability;
-
-    /// <summary>
     /// How long it takes to draw an anomaly into the containment capsule.
     /// </summary>
     [DataField] public TimeSpan ContainmentTime = TimeSpan.FromSeconds(10);

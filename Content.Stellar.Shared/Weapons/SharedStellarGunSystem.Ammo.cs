@@ -147,6 +147,7 @@ public abstract partial class SharedStellarGunSystem
             {
                 MovementThreshold = 0.15f,
                 DistanceThreshold = 0.25f,
+                NeedHand = true,
                 BreakOnHandChange = true,
                 BreakOnDropItem = true,
             };
@@ -170,6 +171,7 @@ public abstract partial class SharedStellarGunSystem
             {
                 MovementThreshold = 0.15f,
                 DistanceThreshold = 0.25f,
+                NeedHand = true,
                 BreakOnHandChange = true,
                 BreakOnDropItem = true,
             };

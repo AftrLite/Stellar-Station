@@ -15,7 +15,8 @@
 - type: stellarCraftingRecipe
   id: StellarCraftRecipeFuelRodSciDef2
   ingredients:
-    StellarFuelRodDepleted: 2
+    StellarScienceDataDriveFull: 1
+    StellarFuelRodDepleted: 1
     SheetGlass1: 10
   output: StellarFuelRodScienceDefensiveTier2
   craftingTime: 60
@@ -23,7 +24,8 @@
 - type: stellarCraftingRecipe
   id: StellarCraftRecipeFuelRodSciDef3
   ingredients:
-    StellarFuelRodDepleted: 3
+    StellarScienceDataDriveFull: 1
+    StellarFuelRodDepleted: 1
     SheetGlass1: 15
   output: StellarFuelRodScienceDefensiveTier3
   craftingTime: 90
@@ -40,7 +42,8 @@
 - type: stellarCraftingRecipe
   id: StellarCraftRecipeFuelRodSciBlue2
   ingredients:
-    StellarFuelRodDepleted: 2
+    StellarScienceDataDriveFull: 1
+    StellarFuelRodDepleted: 1
     SheetGlass1: 10
   output: StellarFuelRodScienceBluespaceTier2
   craftingTime: 60
@@ -48,7 +51,8 @@
 - type: stellarCraftingRecipe
   id: StellarCraftRecipeFuelRodSciBlue3
   ingredients:
-    StellarFuelRodDepleted: 3
+    StellarScienceDataDriveFull: 1
+    StellarFuelRodDepleted: 1
     SheetGlass1: 15
   output: StellarFuelRodScienceBluespaceTier3
   craftingTime: 90

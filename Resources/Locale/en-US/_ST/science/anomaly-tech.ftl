@@ -48,6 +48,8 @@ bea-undeployed-dataset-1 = B.E.A status: Mobile.
 bea-undeployed-dataset-2 = B.E.A status: Mobile.
 bea-undeployed-dataset-3 = B.E.A status: Mobile.
 
+
+
 ### POPUPS
 bea-popup-no-anom = No anomaly detected!
 bea-popup-anom-unstable = The anomaly needs to be stabilized first!
@@ -56,3 +58,10 @@ bea-popup-anom-fading = The anomaly is too weak to harvest...
 ### EXAMINES
 bea-examine = Can [color=#a73eff][bold]Harvest[/bold][/color] Anomalies.
 abe-examine = Can [color=#a73eff][bold]Stabilize[/bold][/color] Anomalies.
+
+
+
+### CONTAINMENT CAPSULES
+containment-capsule-info = Used to [color=#a73eff][bold]Contain[/bold][/color] Anomalies and charge the [color=#a73eff][bold]Bluespace Drive[/bold][/color].
+containment-capsule-empty = [color=#d4aa4b]It's [bold]Empty[/bold].[/color]
+containment-capsule-full = [color=#11b28e]It's [bold]Full[/bold]![/color]

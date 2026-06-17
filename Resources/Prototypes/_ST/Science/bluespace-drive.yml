@@ -2,6 +2,39 @@
 #
 # SPDX-License-Identifier: LicenseRef-Wallening
 
+### COMPUTER CONSOLE
+- type: entity
+  parent: StellarStructureBase
+  id: StellarScienceDriveComputer
+  name: BSD control console
+  description: LOREM IPSUM # TODO: Description
+  categories: [ ForkFiltered ]
+  components:
+  - type: ApcPowerReceiver
+    powerLoad: 20
+  - type: ExtensionCableReceiver
+  - type: DoAfter
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.2,-0.01,0.1,1.25"
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - GlassAirlockLayer
+  - type: Sprite
+    sprite: _ST/Tileset/Science/bluespace-drive-computer.rsi
+    offset: 0, 0.53125
+    drawdepth: Mobs
+    noRot: true
+    layers:
+    - state: base
+
+### DRIVE CORE
 - type: entity
   parent: StellarStructureBase
   id: StellarScienceDriveCore
@@ -10,6 +43,7 @@
     mode: SnapgridCenter
   categories: [ ForkFiltered ]
   components:
+  - type: StellarBluespaceDriveCore
   - type: InteractionOutline
   - type: Physics
   - type: Transform
@@ -33,6 +67,7 @@
         layer:
         - GlassAirlockLayer
 
+### CAPCITOR (LEFT)
 - type: entity
   parent: StellarStructureBase
   id: StellarScienceDriveCapacitorLeft
@@ -42,6 +77,7 @@
     mode: SnapgridCenter
   categories: [ ForkFiltered ]
   components:
+  - type: StellarBluespaceDriveCapacitor
   - type: InteractionOutline
   - type: Physics
   - type: Transform
@@ -66,6 +102,7 @@
         layer:
         - GlassAirlockLayer
 
+### CAPACITOR (RIGHT)
 - type: entity
   parent: StellarScienceDriveCapacitorLeft
   id: StellarScienceDriveCapacitorRight
@@ -92,6 +129,7 @@
         layer:
         - GlassAirlockLayer
 
+### CABLES DECOR
 - type: entity
   parent: StellarStructureBase
   id: StellarScienceDriveCables

@@ -49,12 +49,10 @@ public abstract class SharedStellarSciencePortablesSystem : EntitySystem
 
         SubscribeLocalEvent<StellarStabilizerBeamComponent, HitscanRaycastFiredEvent>(OnHitscanHit);
 
-        // SubscribeLocalEvent<StellarContainmentCapsuleComponent, StellarCapsuleDoAfter>(OnCapsuleDoAfter); // TODO: Move into different system
-
         SubscribeLocalEvent<StellarSciencePortablesComponent, StellarSciPortableDeployDoAfter>(OnPortablesDeploy);
         SubscribeLocalEvent<StellarSciencePortablesComponent, StellarSciRadialMessage>(OnPortablesMenu);
 
-        SubscribeLocalEvent<StellarSciencePortablesComponent, ExaminedEvent>(OnPortablesExamined);
+        SubscribeLocalEvent<StellarSciencePortablesComponent, ExaminedEvent>(OnExamined);
     }
 
     private void OnHitscanHit(Entity<StellarStabilizerBeamComponent> ent, ref HitscanRaycastFiredEvent args)
@@ -165,24 +163,6 @@ public abstract class SharedStellarSciencePortablesSystem : EntitySystem
         _chat.TrySendInGameICMessage(uid, Loc.GetString(msg), InGameICChatType.Speak, false);
     }
 
-    // private void OnCapsuleDoAfter(Entity<StellarContainmentCapsuleComponent> ent, ref StellarCapsuleDoAfter args)
-    // {
-    //     if (args.Cancelled || args.Handled || !TryComp<StellarAnomalyComponent>(args.Target, out var anomComp))
-    //         return;
-    //
-    //     if (anomComp.IntegrityPipsValue is not { } pips || pips < 1)
-    //         return;
-    //
-    //     ent.Comp.Full = true;
-    //     ent.Comp.StoredEnergy = pips;
-    //     anomComp.IntegrityPipsValue = 0;
-    //     Appearance.SetData(ent, StellarCapsuleVisuals.Visuals, true);
-    //
-    //     var ev = new StellarAnomalyDecrementEvent();
-    //     RaiseLocalEvent(args.Target.Value, ref ev);
-    //     Dirty(ent);
-    // }
-
     private void OnPortablesDeploy(Entity<StellarSciencePortablesComponent> ent, ref StellarSciPortableDeployDoAfter args)
     {
         if (args.Cancelled || args.Handled)
@@ -235,7 +215,7 @@ public abstract class SharedStellarSciencePortablesSystem : EntitySystem
         }
     }
 
-    private void OnPortablesExamined(Entity<StellarSciencePortablesComponent> ent, ref ExaminedEvent args)
+    private void OnExamined(Entity<StellarSciencePortablesComponent> ent, ref ExaminedEvent args)
     {
         switch (ent.Comp.PortablesType)
         {
@@ -270,9 +250,6 @@ public sealed partial class StellarAbeBeamDoAfter : DoAfterEvent
 
 [Serializable, NetSerializable]
 public sealed partial class StellarBeaHarvestDoAfter : SimpleDoAfterEvent;
-
-[Serializable, NetSerializable]
-public sealed partial class StellarCapsuleDoAfter : SimpleDoAfterEvent;
 
 [Serializable, NetSerializable]
 public sealed partial class StellarSciPortableDeployDoAfter : SimpleDoAfterEvent;
