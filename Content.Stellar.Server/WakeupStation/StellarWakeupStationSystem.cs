@@ -4,12 +4,10 @@
 
 using System.Linq;
 using Content.Server.GameTicking;
-using Content.Server.Shuttles.Events;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Spawners.EntitySystems;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
-using Content.Shared._ES.Camera;
 using Content.Shared.Bed.Cryostorage;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
@@ -18,11 +16,11 @@ using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.StatusEffectNew;
 using Content.Stellar.Shared._ES.Core.Timer;
 using Content.Stellar.Shared.CCVars;
+using Content.Stellar.Shared.Science.Components;
 using Robust.Server.Containers;
 using Robust.Shared.Configuration;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -37,12 +35,10 @@ public sealed class StellarWakeupStationSystem : EntitySystem
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly DockingSystem _dock = default!;
     [Dependency] private readonly ESEntityTimerSystem _esTimer = default!;
-    [Dependency] private readonly ESScreenshakeSystem _shake = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly HungerSystem _hunger = default!;
     [Dependency] private readonly GameTicker _ticker = default!;
     [Dependency] private readonly SharedPoweredLightSystem _lights = default!;
-    [Dependency] private readonly ShuttleSystem _shuttle = default!;
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
@@ -53,6 +49,7 @@ public sealed class StellarWakeupStationSystem : EntitySystem
     private float _stationSleepTime;
 
     private readonly HashSet<Entity<PoweredLightComponent, TransformComponent>> _lightSet = new();
+    private readonly HashSet<Entity<StellarBluespaceDriveCoreComponent, TransformComponent>> _core = new();
     private static readonly EntProtoId SleepStatusEffect = "StatusEffectForcedSleeping";
 
     /// <inheritdoc/>
@@ -60,8 +57,6 @@ public sealed class StellarWakeupStationSystem : EntitySystem
     {
         SubscribeLocalEvent<StationInitializedEvent>(OnStationInitialized);
         SubscribeLocalEvent<StellarWakeupStationComponent, StationPostInitEvent>(OnStationPostInit);
-        SubscribeLocalEvent<StellarWakeupStationComponent, FTLCompletedEvent>(OnFTLCompleted);
-
         SubscribeLocalEvent<PlayerSpawningEvent>(HandlePlayerSpawning, before: [typeof(SpawnPointSystem)]);
 
         _config.OnValueChanged(STCCVars.StationWakeupEnabled, OnWakeupConfigChanged, true);
@@ -152,16 +147,5 @@ public sealed class StellarWakeupStationSystem : EntitySystem
             _statusEffects.TryAddStatusEffectDuration(ev.SpawnResult.Value, SleepStatusEffect, TimeSpan.FromSeconds(1));
         else
             _statusEffects.TryAddStatusEffectDuration(ev.SpawnResult.Value, SleepStatusEffect, TimeSpan.FromSeconds(_random.NextFloat(_stationSleepTime / 10f, _stationSleepTime)));
-    }
-
-    private void OnFTLCompleted(Entity<StellarWakeupStationComponent> ent, ref FTLCompletedEvent args)
-    {
-        if (ent.Comp.GridUid is not { } grid)
-            return; // bruh
-
-        var translation = new ESScreenshakeParameters() { Trauma = 2.8f, DecayRate = 0.04f, Frequency = 0.015f };
-        var filter = Filter.BroadcastGrid(ent.Comp.GridUid.Value);
-        _shake.Screenshake(filter, translation, null);
-        _shuttle.Disable(ent); // Stations don't need to move, dummy. This permanently anchors it and eliminates the need for Station Anchors.
     }
 }

@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
 
 ### DIALOGUE: ABE
 abe-stabilized-dataset-1 = Anomaly status: Stabilized!

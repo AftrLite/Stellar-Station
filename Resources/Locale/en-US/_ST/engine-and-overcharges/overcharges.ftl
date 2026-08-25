@@ -17,5 +17,5 @@ overcharge-announcement-curative = Additional curative measures are now temporar
 overcharge-announcement-hyper-curative = Hypercharged curative measures are now temporarily available!
 
 overcharge-name-bluespace = [color=#a73eff][bold]Bluespace[/bold][/color]
-overcharge-announcement-bluespace = ???
-overcharge-announcement-hyper-bluespace = ???????
+overcharge-announcement-bluespace = Bluespace-linked systems have been temporarily enhanced.
+overcharge-announcement-hyper-bluespace = Bluespace-linked systems are now hypercharged!

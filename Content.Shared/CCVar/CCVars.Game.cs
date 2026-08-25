@@ -151,7 +151,7 @@ public sealed partial class CCVars
         CVarDef.Create("game.diagonalmovement", true, CVar.ARCHIVE);
 
     public static readonly CVarDef<int> SoftMaxPlayers =
-        CVarDef.Create("game.soft_max_players", 30, CVar.SERVERONLY | CVar.ARCHIVE);
+        CVarDef.Create("game.soft_max_players", 65, CVar.SERVERONLY | CVar.ARCHIVE);
 
     /// <summary>
     ///     If a player gets denied connection to the server,
@@ -363,7 +363,7 @@ public sealed partial class CCVars
     /// </summary>
     // ES EDIT: changed to be replicated, shouldn't be a problem
     public static readonly CVarDef<float> RoundRestartTime =
-        CVarDef.Create("game.round_restart_time", 120f, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("game.round_restart_time", 80f, CVar.SERVER | CVar.REPLICATED); // Stellar - 90f -> 80f (1 minute 20 seconds.)
 
     /// <summary>
     ///     The prototype to use for secret weights.

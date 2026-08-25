@@ -21,13 +21,13 @@ public static class StellarAnimLib
     [PublicAPI]
     public static Vector2 PositionOffset(TransformComponent start, TransformComponent end)
     {
-        if (start .MapID == MapId.Nullspace || end .MapID == MapId.Nullspace)
+        if (start.MapID == MapId.Nullspace || end.MapID == MapId.Nullspace)
             return Vector2.Zero;
 
-        if (start .ParentUid != end .ParentUid)
+        if (start.ParentUid != end.ParentUid)
             return Vector2.Zero;
 
-        return end .LocalPosition - start .LocalPosition;
+        return end.LocalPosition - start.LocalPosition;
     }
 
     [PublicAPI]
@@ -167,35 +167,6 @@ public static class StellarAnimLib
                         new AnimationTrackProperty.KeyFrame(offset, 0f),
                         new AnimationTrackProperty.KeyFrame(offset + offsetFromCurrent, animTime * 0.6f, Easings.OutExpo),
                         new AnimationTrackProperty.KeyFrame(offset, animTime * 0.3f, Easings.OutCirc),
-                    },
-                },
-            },
-        };
-    }
-
-    [PublicAPI]
-    public static Animation KnockbackClampedRelative(Vector2 offsetInput, float animTime, float delay = 0f)
-    {
-        var offsetY = Math.Clamp(offsetInput.Y * 2, -2, 2);
-        var offsetX = Math.Clamp(offsetInput.X * 2, -2, 2);
-        var offset = new Vector2(offsetX, offsetY);
-
-        return new Animation
-        {
-            Length = TimeSpan.FromSeconds(animTime + delay),
-            AnimationTracks =
-            {
-                new AnimationTrackComponentProperty()
-                {
-                    ComponentType = typeof(SpriteComponent),
-                    Property = nameof(SpriteComponent.Offset),
-                    InterpolationMode = AnimationInterpolationMode.Linear,
-                    KeyFrames =
-                    {
-                        new AnimationTrackProperty.KeyFrame(Vector2.Zero, delay),
-                        new AnimationTrackProperty.KeyFrame(Vector2.Zero, 0f, Easings.OutSine),
-                        new AnimationTrackProperty.KeyFrame(-offset * 0.2f, animTime*0.4f, Easings.InOutCirc),
-                        new AnimationTrackProperty.KeyFrame(Vector2.Zero, animTime*0.6f, Easings.OutBack),
                     },
                 },
             },

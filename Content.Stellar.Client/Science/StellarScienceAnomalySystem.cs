@@ -17,7 +17,7 @@ public sealed class StellarScienceAnomalySystem : SharedStellarScienceAnomalySys
     [Dependency] private readonly AnimationPlayerSystem _animation = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
 
-    private readonly ResPath _rsiPath = new("/Textures/_ST/Icons/radial-icons-portables.rsi");
+    private readonly ResPath _rsiPath = new("/Textures/_ST/Icons/icons-generic.rsi");
 
     public override void Initialize()
     {

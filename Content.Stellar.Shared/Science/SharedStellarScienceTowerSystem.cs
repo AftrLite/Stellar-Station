@@ -8,6 +8,7 @@ using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
+using Content.Shared.Tools.Systems;
 using Content.Stellar.Shared.Science.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
@@ -16,14 +17,15 @@ using Robust.Shared.Timing;
 
 namespace Content.Stellar.Shared.Science;
 
-public abstract class SharedStellarScienceAnalystSystem : EntitySystem
+public abstract class SharedStellarScienceTowerSystem : EntitySystem
 {
     [Dependency] protected readonly IGameTiming Timing = default!;
     [Dependency] protected readonly IRobustRandom Random = default!;
+    [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
+    [Dependency] protected readonly SharedAmbientSoundSystem Ambient = default!;
     [Dependency] protected readonly SharedAudioSystem Audio = default!;
     [Dependency] protected readonly SharedPopupSystem Popup = default!;
 
-    [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
@@ -40,6 +42,9 @@ public abstract class SharedStellarScienceAnalystSystem : EntitySystem
         SubscribeLocalEvent<StellarSensorTowerComponent, InteractHandEvent>(OnTowerInteractHand);
         SubscribeLocalEvent<StellarSensorTowerComponent, InteractUsingEvent>(OnTowerInteractUsing);
 
+        SubscribeLocalEvent<StellarSensorTowerComponent, WeldableAttemptEvent>(OnTowerAttemptWeld);
+        SubscribeLocalEvent<StellarSensorTowerComponent, WeldableChangedEvent>(OnTowerWelded);
+
         SubscribeLocalEvent<StellarSensorTowerComponent, ExaminedEvent>(OnTowerExamined);
         SubscribeLocalEvent<StellarSensorTerminalComponent, ExaminedEvent>(OnTerminalExamined);
         SubscribeLocalEvent<StellarDataDriveComponent, ExaminedEvent>(OnDriveExamined);
@@ -48,18 +53,18 @@ public abstract class SharedStellarScienceAnalystSystem : EntitySystem
     #region Terminal
     private void OnTerminalActivateInWorld(Entity<StellarSensorTerminalComponent> ent, ref ActivateInWorldEvent args)
     {
-        if (!args.Complex || args.User == args.Target || ent.Comp.SyncingTower == null)
+        if (!args.Complex || ent.Comp.SyncingTower == null)
             return;
 
-        args.Handled = HandleTerminal(ent, ent.Comp.SyncingTower.Value, args.User);
+        args.Handled = HandleTerminal(ent, ent.Comp.SyncingTower.Value);
     }
 
     private void OnTerminalInteractHand(Entity<StellarSensorTerminalComponent> ent, ref InteractHandEvent args)
     {
-        if (args.User == args.Target || args.Handled || ent.Comp.SyncingTower == null)
+        if (args.Handled || ent.Comp.SyncingTower == null)
             return;
 
-        args.Handled = HandleTerminal(ent, ent.Comp.SyncingTower.Value, args.User);
+        args.Handled = HandleTerminal(ent, ent.Comp.SyncingTower.Value);
     }
 
     private void SyncTowerToTerminal(Entity<StellarSensorTerminalComponent> terminal, Entity<StellarSensorTowerComponent> tower)
@@ -68,15 +73,15 @@ public abstract class SharedStellarScienceAnalystSystem : EntitySystem
         terminal.Comp.TimeOutTimer = Timing.CurTime + terminal.Comp.TimeOut;
         terminal.Comp.State = StellarSensorTerminalState.Ringing;
         tower.Comp.State = StellarSensorTowerState.Ringing;
-        _ambient.SetAmbience(terminal, true);
-        _ambient.SetAmbience(tower, true);
+        Ambient.SetAmbience(terminal, true);
+        Ambient.SetAmbience(tower, true);
         Popup.PopupPredicted(Loc.GetString("sensortower-popup-requestsync"), tower, tower, PopupType.Large);
         Popup.PopupPredicted(Loc.GetString("sensorterminal-popup-requestsync"), terminal, terminal, PopupType.Large);
         Dirty(terminal);
         Dirty(tower);
     }
 
-    private bool HandleTerminal(Entity<StellarSensorTerminalComponent> terminal, Entity<StellarSensorTowerComponent?> tower, EntityUid user)
+    private bool HandleTerminal(Entity<StellarSensorTerminalComponent> terminal, Entity<StellarSensorTowerComponent?> tower)
     {
         if (!Resolve(tower, ref tower.Comp))
             return false;
@@ -87,15 +92,15 @@ public abstract class SharedStellarScienceAnalystSystem : EntitySystem
             {
                 terminal.Comp.State = StellarSensorTerminalState.Active;
                 tower.Comp.State = StellarSensorTowerState.Syncing;
-                _ambient.SetAmbience(terminal, false);
-                _ambient.SetAmbience(tower, false);
+                Ambient.SetAmbience(terminal, false);
+                Ambient.SetAmbience(tower, false);
                 Popup.PopupPredicted(Loc.GetString("sensortower-popup-syncstarted"), tower, tower, PopupType.Large);
                 SetupTerminal(terminal);
                 Dirty(tower);
                 return true;
             }
             case StellarSensorTerminalState.Idle:
-                return false; // Do stuff here.
+                return false; //
         }
         return false;
     }
@@ -148,6 +153,8 @@ public abstract class SharedStellarScienceAnalystSystem : EntitySystem
             _ui.CloseUi(ent.Owner, StellarSensorTowerRadialKey.Key);
             Popup.PopupPredicted(Loc.GetString("sensortower-popup-synced"), ent, args.Actor, PopupType.Large);
             Popup.PopupPredicted(Loc.GetString("sensorterminal-popup-synced"), terminal.Value, args.Actor, PopupType.Large);
+            Ambient.SetSound(ent, ent.Comp.SoundProcessing);
+            Ambient.SetAmbience(ent, true);
             RaiseNetworkEvent(new StellarSensorTerminalCodeEvent(GetNetEntity(terminal.Value), true));
 
             var randTime = Random.Next(ent.Comp.ProcessingTimeMin, ent.Comp.ProcessingTimeMax);
@@ -188,8 +195,8 @@ public abstract class SharedStellarScienceAnalystSystem : EntitySystem
         terminal.Comp.TowerCode = string.Empty;
         terminal.Comp.State = StellarSensorTerminalState.Idle;
         tower.Comp.State = StellarSensorTowerState.Idle;
-        _ambient.SetAmbience(tower, false);
-        _ambient.SetAmbience(terminal, false);
+        Ambient.SetAmbience(tower, false);
+        Ambient.SetAmbience(terminal, false);
         _ui.CloseUi(tower.Owner, StellarSensorTowerRadialKey.Key);
         RaiseNetworkEvent(new StellarSensorTerminalCodeEvent(GetNetEntity(terminal), true));
         Dirty(tower);
@@ -251,7 +258,29 @@ public abstract class SharedStellarScienceAnalystSystem : EntitySystem
     }
 
     /// <summary>
-    /// Do we serve the radial menu to a user? Also, AftrLite got was working very fast and probably used more If-statements than he needed to.
+    /// Wether or not we're allowed to weld the tower despite it being Weldable.
+    /// </summary>
+    private void OnTowerAttemptWeld(Entity<StellarSensorTowerComponent> ent, ref WeldableAttemptEvent args)
+    {
+        if (!ent.Comp.Damaged)
+            args.Cancel();
+    }
+
+    /// <summary>
+    /// Handle welding for Damaged towers.
+    /// </summary>
+    private void OnTowerWelded(Entity<StellarSensorTowerComponent> ent, ref WeldableChangedEvent args)
+    {
+        if (!args.IsWelded)
+            return; // What?
+
+        ent.Comp.Damaged = false;
+        Appearance.SetData(ent, StellarSensorTowerVisuals.Visuals, 1);
+        Dirty(ent);
+    }
+
+    /// <summary>
+    /// Do we serve the radial menu to a user? Also, AftrLite was working very fast and probably used more If-statements than he needed to.
     /// </summary>
     private bool CanUI(Entity<StellarSensorTowerComponent> tower, Entity<StellarSensorTerminalComponent?> terminal, EntityUid user)
     {
@@ -347,6 +376,12 @@ public abstract class SharedStellarScienceAnalystSystem : EntitySystem
 
 [Serializable, NetSerializable]
 public sealed partial class StellarSensorTowerDoAfter : SimpleDoAfterEvent;
+
+[Serializable, NetSerializable]
+public sealed partial class StellarTowerCompleteVisualsEvent(NetEntity target) : EntityEventArgs
+{
+    public NetEntity Target = target;
+}
 
 [Serializable, NetSerializable]
 public sealed class StellarSensorTowerRadialMessage(TowerMenuMethod method, int? codeNumber = null) : BoundUserInterfaceMessage

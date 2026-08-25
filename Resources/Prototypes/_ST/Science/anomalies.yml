@@ -529,7 +529,7 @@
     energy: 1
     softness: 0.9
     color: "#468aff"
-  - type: StellarProjectileAnimation
+  - type: StellarLifetimeAnimation
   - type: ESTimedDespawn
     lifetime: 2.5
   - type: ESTimedDespawnSpriteFade

@@ -10,6 +10,13 @@
   description: LOREM IPSUM # TODO: Description
   categories: [ ForkFiltered ]
   components:
+  - type: StellarBluespaceDriveConsole
+  - type: StellarBluespaceDrivePart
+    soundCharge:
+      path: /Audio/_ST/Science/science-bsd-charge.ogg
+      params:
+        variation: 0.077
+        volume: -2
   - type: ApcPowerReceiver
     powerLoad: 20
   - type: ExtensionCableReceiver
@@ -43,7 +50,10 @@
     mode: SnapgridCenter
   categories: [ ForkFiltered ]
   components:
+  - type: StellarOverchargeable
+    requiredOvercharge: StellarOverchargeBluespace
   - type: StellarBluespaceDriveCore
+  - type: DoAfter
   - type: InteractionOutline
   - type: Physics
   - type: Transform
@@ -55,6 +65,31 @@
     noRot: true
     layers:
     - state: base
+    - state: active
+      offset: 0, 0.25
+      sprite: _ST/Tileset/Science/bluespace-drive-core-vfx.rsi
+      shader: unshaded
+      map: [ "unshaded" ]
+    - state: glow
+      shader: unshaded
+      visible: false
+      map: [ "overcharge" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.StellarBluespaceDriveVisuals.Visuals:
+        unshaded:
+          1: { state: charge-1 }
+          2: { state: charge-2 }
+          3: { state: charge-3 }
+          4: { state: charge-4 }
+          Ready: { state: charge-4 }
+          Active: { state: active }
+      enum.OverchargeVisuals.Visuals:
+        overcharge:
+          Disabled: { visible: false }
+          Overcharged: { visible: true, state: glow }
+          Hypercharged: { visible: true, state: glow-hyper }
   - type: Fixtures
     fixtures:
       fix1:
@@ -66,6 +101,12 @@
         - MachineMask
         layer:
         - GlassAirlockLayer
+  - type: PointLight
+    enabled: true
+    castShadows: false
+    radius: 3
+    energy: 5
+    color: "#5292FFFF"
 
 ### CAPCITOR (LEFT)
 - type: entity
@@ -77,6 +118,12 @@
     mode: SnapgridCenter
   categories: [ ForkFiltered ]
   components:
+  - type: StellarBluespaceDrivePart
+    soundCharge:
+      path: /Audio/_ST/Science/science-bsd-charge.ogg
+      params:
+        variation: 0.077
+        volume: -2
   - type: StellarBluespaceDriveCapacitor
   - type: InteractionOutline
   - type: Physics
@@ -110,6 +157,12 @@
     mode: SnapgridCenter
   categories: [ ForkFiltered ]
   components:
+  - type: StellarBluespaceDrivePart
+    soundCharge:
+      path: /Audio/_ST/Science/science-bsd-charge.ogg
+      params:
+        variation: 0.077
+        volume: -2
   - type: SpriteFade
   - type: Sprite
     scale: -1, 1
@@ -138,6 +191,7 @@
     mode: SnapgridCenter
   categories: [ ForkFiltered ]
   components:
+  - type: StellarBluespaceDrivePart
   - type: Physics
     canCollide: false
   - type: Transform

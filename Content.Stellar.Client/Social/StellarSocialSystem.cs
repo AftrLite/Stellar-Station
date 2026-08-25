@@ -48,7 +48,7 @@ public sealed class StellarSocialSystem : SharedStellarSocialSystem
         if (ent.Comp.RequestEffect == null || TerminatingOrDeleted(ent.Comp.RequestEffect) || _animPlayer.HasRunningAnimation(ent.Comp.RequestEffect.Value, "request-fadeout"))
             return;
 
-        var requestAnim = FadeRequestAnim();
+        var requestAnim = StellarAnimLib.FadeSimple(9.25f, 0.25f);
         _animPlayer.Stop(ent.Comp.RequestEffect.Value, "request-effect");
         _animPlayer.Play(ent.Comp.RequestEffect.Value, requestAnim, "request-fadeout");
         ent.Comp.RequestEffect = null;
@@ -191,29 +191,6 @@ public sealed class StellarSocialSystem : SharedStellarSocialSystem
                         new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(1f), animTime * 0.025f),
                         new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(1f), animTime * 0.9f),
                         new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(0f), animTime * 0.025f),
-                    },
-                },
-            },
-        };
-    }
-
-    private static Animation FadeRequestAnim()
-    {
-        return new Animation()
-        {
-            Length = TimeSpan.FromSeconds(10),
-            AnimationTracks =
-            {
-                new AnimationTrackComponentProperty()
-                {
-                    ComponentType = typeof(SpriteComponent),
-                    Property = nameof(SpriteComponent.Color),
-                    InterpolationMode = AnimationInterpolationMode.Linear,
-                    KeyFrames =
-                    {
-                        new AnimationTrackProperty.KeyFrame(Color.White, 0f, Easings.OutSine),
-                        new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(0), 0.25f),
-                        new AnimationTrackProperty.KeyFrame(Color.White.WithAlpha(0), 9.25f),
                     },
                 },
             },

@@ -7,7 +7,7 @@
   abstract: true
   categories: [ HideSpawnMenu ]
   components:
-  - type: StellarProjectileAnimation
+  - type: StellarLifetimeAnimation
   - type: Reflective
   - type: Clickable
   - type: Sprite

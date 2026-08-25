@@ -20,10 +20,22 @@
     sprite: _ST/Tileset/Science/sensor-tower.rsi
     layers:
     - state: base
+      map: [ "base" ]
     - state: unshaded
+      map: [ "unshaded" ]
       sprite: _ST/Tileset/Science/sensor-tower-extras.rsi
       shader: unshaded
       offset: -0.03125, -0.90625
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.StellarSensorTowerVisuals.Visuals:
+        base:
+          1: { state: base }
+          2: { state: base-damaged }
+        unshaded:
+          1: { state: unshaded }
+          2: { state: unshaded-damaged }
   - type: Fixtures
     fixtures:
       fix1:
@@ -44,8 +56,12 @@
     volume: +12
     range: 4
     sound:
-      path: /Audio/_ST/Machines/ringtone.ogg
+      path: /Audio/_ST/Science/science-tower-ringtone.ogg
   - type: RandomMetadata
     nameSegments:
     - StellarSensorTowerNames
     nameFormat: name-format-sensortower
+  - type: Weldable
+    weldedExamineMessage: null
+    fuel: 15
+    time: 7.5

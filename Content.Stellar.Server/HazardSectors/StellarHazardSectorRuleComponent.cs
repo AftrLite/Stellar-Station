@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: LicenseRef-Wallening
 
+using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.Weather;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
@@ -20,20 +21,17 @@ public sealed partial class StellarHazardSectorRuleComponent : Component
     /// <summary>
     /// What parallax to use for the hazard sector's background.
     /// </summary>
-    [DataField(required: true)]
-    public string Parallax;
+    [DataField(required: true)] public string Parallax;
 
     /// <summary>
     /// Weather that plays on the station during this hazard sector. Passed along to StellarHazardSectorStationComponent.
     /// </summary>
-    [DataField]
-    public EntProtoId<WeatherStatusEffectComponent>? Weather;
+    [DataField] public EntProtoId<WeatherStatusEffectComponent>? Weather;
 
     /// <summary>
     /// What light color to use for the hazard sector's environment.
     /// </summary>
-    [DataField(required: true)]
-    public Color MapLight;
+    [DataField(required: true)] public Color MapLight;
 
     /// <summary>
     /// The currently active Hazard Sector Map EntityUid.
@@ -44,6 +42,16 @@ public sealed partial class StellarHazardSectorRuleComponent : Component
     /// The currently active Station Grid EntityUid.
     /// </summary>
     public EntityUid SectorStation;
+
+    /// <summary>
+    /// A weighted pool of mobs unique to this sector.
+    /// </summary>
+    [DataField] public Dictionary<EntProtoId, float> SectorMobs = new();
+
+    /// <summary>
+    /// A weighted pool of anomalies that can be spawned in this sector.
+    /// </summary>
+    [DataField] public Dictionary<EntProtoId, float> SectorAnomalies = new();
 
     /// <summary>
     /// Sound played on loop during bluespace travel.

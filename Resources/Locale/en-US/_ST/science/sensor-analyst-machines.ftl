@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
 sensortower-names-dataset-1 = Alpha
 sensortower-names-dataset-2 = Beta
 sensortower-names-dataset-3 = Gamma
@@ -41,7 +45,11 @@ sensortower-popup-syncstarted = Synchronization initiated!
 sensortower-popup-synccancelled = Synchronization cancelled!
 sensortower-popup-synced = Synchronized!
 sensortower-popup-failed = Synchronization failed!
+sensortower-popup-timeout = Synchronization timeout.
 sensortower-popup-drivefull = That data drive is full!
+
+sensortower-popup-desync = Desynchronized!
+sensortower-popup-desync-damage = Desynchronized due to damage!
 
 sensortower-popup-nodrive = It needs an empty data drive in order to function.
 sensortower-popup-ringing = I need to wait for the main terminal to generate a sync code.

@@ -63,7 +63,7 @@ public sealed class SharedStellarScienceCapsuleSystem : EntitySystem
         ent.Comp.Full = true;
         ent.Comp.StoredEnergy = pips;
         anomComp.IntegrityPipsValue = 0;
-        _appearance.SetData(ent, StellarCapsuleVisuals.Visuals, true);
+        _appearance.SetData(ent, StellarCapsuleVisuals.Visuals, 2);
 
         var ev = new StellarAnomalyDecrementEvent();
         RaiseLocalEvent(args.Target.Value, ref ev);

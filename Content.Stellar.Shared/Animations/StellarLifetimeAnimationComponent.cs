@@ -10,7 +10,7 @@ namespace Content.Stellar.Shared.Animations;
 /// Component that plays a projectile-style animation on an entity from the moment it spawns.
 /// </summary>
 [RegisterComponent, NetworkedComponent]
-public sealed partial class StellarProjectileAnimationComponent : Component
+public sealed partial class StellarLifetimeAnimationComponent : Component
 {
     [DataField] public string AnimateKey = "projectile-animation";
 

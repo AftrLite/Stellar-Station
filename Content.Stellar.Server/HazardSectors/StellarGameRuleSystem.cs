@@ -22,6 +22,16 @@ public abstract class StellarGameRuleSystem<TComp> : GameRuleSystem<TComp> where
         return _prototype.Index(GetGameRule<StellarShiftIntensityRuleComponent>().Comp1.ShiftIntensityPreset);
     }
 
+    public Dictionary<EntProtoId, float> GetSectorMobs()
+    {
+        return GetGameRule<StellarHazardSectorRuleComponent>().Comp1.SectorMobs;
+    }
+
+    public Dictionary<EntProtoId, float> GetSectorAnomalies()
+    {
+        return GetGameRule<StellarHazardSectorRuleComponent>().Comp1.SectorAnomalies;
+    }
+
     protected TimeSpan ExpectedRoundEnd()
     {
         var rule = GetGameRule<StellarMajorThreatRuleComponent>();

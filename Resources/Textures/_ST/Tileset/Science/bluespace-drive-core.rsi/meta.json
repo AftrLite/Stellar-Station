@@ -9,6 +9,12 @@
     "states": [
         {
             "name": "base"
+        },
+        {
+            "name": "glow"
+        },
+        {
+            "name": "glow-hyper"
         }
     ]
 }

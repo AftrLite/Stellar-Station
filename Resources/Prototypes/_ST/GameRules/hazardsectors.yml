@@ -5,7 +5,6 @@
 - type: gamePreset
   id: StellarHazardSectorRandom
   rules:
-  - StellarIntensityRule
   - StellarRandomHazardSectorRule
 
 - type: entity
@@ -27,6 +26,7 @@
   components:
   - type: StellarHazardSectorRule
   - type: StellarMajorThreatRule
+  - type: StellarShiftIntensityRule
 
 - type: entity
   parent: StellarBaseHazardSectorRule
@@ -63,6 +63,19 @@
   - type: StellarHazardSectorRule
     parallax: StellarParallaxAzure
     mapLight: "#54a5f7"
+    sectorMobs:
+      MobCarpDragon: 0.25
+      MobMouse: 0.25
+      MobMothroach: 0.25
+    sectorAnomalies:
+      StellarScienceAnomalyAzure: 0.16
+      StellarScienceAnomalyBluespace: 0.18
+      StellarScienceAnomalyElectric: 0.12
+      StellarScienceAnomalyShadow: 0.10
+      StellarScienceAnomalyFlame: 0.11
+      StellarScienceAnomalyFlesh: 0.10
+      StellarScienceAnomalyOoze: 0.12
+      StellarScienceAnomalyIce: 0.11
 
 - type: entity
   parent: StellarBaseHazardSectorRule

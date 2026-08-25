@@ -9,22 +9,28 @@ using Content.Stellar.Shared.Science.Components;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Shared.Animations;
+using Robust.Shared.Map;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Stellar.Client.Science;
 
-public sealed class StellarScienceAnalystSystem : SharedStellarScienceAnalystSystem
+public sealed class StellarScienceTowerSystem : SharedStellarScienceTowerSystem
 {
     [Dependency] private readonly AnimationPlayerSystem _animation = default!;
+    [Dependency] private readonly IEntityManager _entMan = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
 
+    private readonly SpriteSpecifier _completionOverlay = new SpriteSpecifier.Rsi(new("/Textures/_ST/Icons/icons-generic.rsi"), "check");
     private readonly ResPath _rsiPath = new("/Textures/_ST/Icons/radial-icons-sensortower.rsi");
+    private readonly EntProtoId _popupBase = "StellarEffectCraftingPopup";
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeNetworkEvent<StellarSensorTerminalCodeEvent>(OnTerminalCode);
+        SubscribeNetworkEvent<StellarTowerCompleteVisualsEvent>(OnTowerCompleteEvent);
     }
 
     private void OnTerminalCode(StellarSensorTerminalCodeEvent args)
@@ -56,6 +62,24 @@ public sealed class StellarScienceAnalystSystem : SharedStellarScienceAnalystSys
         _animation.Stop(codePopup, "popup-effect");
         _animation.Play(codePopup, StellarAnimLib.FadeSimpleWithLight(0.9f, 0f, 0.5f, 0f, 3f), "popup-effect");
         comp.PopupEffect = null;
+    }
+
+    private void OnTowerCompleteEvent(StellarTowerCompleteVisualsEvent args)
+    {
+        var ent = GetEntity(args.Target);
+        var comp = Comp<StellarSensorTowerComponent>(ent);
+        var popupEnt = Spawn(_popupBase, Transform(ent).Coordinates);
+        var spriteComp = Comp<SpriteComponent>(popupEnt);
+        var temp = _entMan.SpawnEntity(comp.FullDrive, MapCoordinates.Nullspace); // This is kinda evil. But it's also very easy and fast.
+
+        _sprite.CopySprite(temp, popupEnt);
+        _sprite.SetDrawDepth(popupEnt, (int) Content.Shared.DrawDepth.DrawDepth.Effects);
+        spriteComp.LayerSetShader(_sprite.AddLayer((popupEnt, spriteComp), _completionOverlay), "unshaded");
+
+        if (!_animation.HasRunningAnimation(popupEnt, "popup-effect"))
+            _animation.Play(popupEnt, StellarAnimLib.SymbolPopup(0.5f, 4f), "popup-effect");
+
+        QueueDel(temp); // Nobody will ever know, anyway!
     }
 }
 

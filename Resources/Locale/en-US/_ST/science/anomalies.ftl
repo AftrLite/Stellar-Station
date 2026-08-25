@@ -1,5 +1,8 @@
-### EXAMINES
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
 
+### EXAMINES
 anomaly-examine-extra = [color=#5bdada][bold]Roaring with Energy[/bold]![/color]
 anomaly-examine-high = [color=#11b28e][bold]Bursting with Energy[/bold]![/color]
 anomaly-examine-mid = [color=#d4aa4b][bold]Rippling with Energy[/bold].[/color]

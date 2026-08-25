@@ -20,3 +20,9 @@ public sealed partial class StellarDataDriveComponent : Component
     /// </summary>
     [DataField] public bool Full;
 }
+
+[Serializable, NetSerializable]
+public enum StellarDataDriveVisuals
+{
+    Visuals,
+}

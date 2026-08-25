@@ -9,11 +9,28 @@
   description: A heavy-duty drive, used for storing and processing hazard data.
   categories: [ ForkFiltered ]
   components:
+  - type: StellarDataDrive
   - type: Sprite
     sprite: _ST/Items/Science/data-drive.rsi
     layers:
     - state: icon-empty
-  - type: StellarDataDrive
+      map: [ "base" ]
+    - state: icon-unshaded
+      map: [ "unshaded" ]
+      visible: False
+      shader: unshaded
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.StellarDataDriveVisuals.Visuals:
+        base:
+          1: { state: icon-empty }
+          2: { state: icon }
+          3: { state: icon-depleted }
+        unshaded:
+          1: { visible: false }
+          2: { visible: true }
+          3: { visible: false }
 
 - type: entity
   parent: StellarScienceDataDrive
@@ -53,8 +70,10 @@
     visuals:
       enum.StellarCapsuleVisuals.Visuals:
         base:
-          False: { state: icon-empty }
-          True: { state: icon }
+          1: { state: icon-empty }
+          2: { state: icon }
+          3: { state: icon-depleted }
         unshaded:
-          False: { visible: false }
-          True: { visible: true }
+          1: { visible: false }
+          2: { visible: true }
+          3: { visible: false }

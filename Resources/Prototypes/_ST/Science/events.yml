@@ -1,0 +1,18 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+# A.B.E (STABILIZER)
+- type: entity
+  parent: BaseGameRule
+  id: StellarBaseAnomalySpawn
+  components:
+  - type: StationEvent
+    startAnnouncementColor: "#18abf5"
+    startAudio:
+      path: /Audio/Announcements/announce.ogg
+    weight: 8
+    duration: 35
+    earliestStart: 1
+    reoccurrenceDelay: 8
+  - type: StellarAnomalySpawnRule

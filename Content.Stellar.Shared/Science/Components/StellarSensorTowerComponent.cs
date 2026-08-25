@@ -22,32 +22,31 @@ public sealed partial class StellarSensorTowerComponent : Component
 
     [DataField] public float Progress;
 
-    [DataField] public float ProgressGainMin = 16; // 16
+    [DataField] public float ProgressGainMin = 1; // 16
 
-    [DataField] public float ProgressGainMax = 33.34f; // 33.34
+    [DataField] public float ProgressGainMax = 3.34f; // 33.34
 
-    [DataField] public TimeSpan ProcessingTimeMin = TimeSpan.FromSeconds(1); // 45
+    [DataField] public TimeSpan ProcessingTimeMin = TimeSpan.FromSeconds(2); // 20
 
-    [DataField] public TimeSpan ProcessingTimeMax = TimeSpan.FromSeconds(2); // 60
+    [DataField] public TimeSpan ProcessingTimeMax = TimeSpan.FromSeconds(4); // 40
 
-    [DataField]
-    public Dictionary<StellarSensorTowerEffect, float> EffectProbabilities = new()
+    [DataField] public Dictionary<StellarSensorTowerEffect, float> EffectProbabilities = new()
     {
-        {StellarSensorTowerEffect.Nothing, 75f},
-        {StellarSensorTowerEffect.Damage, 10f}, // Once the tower is damaged, future rolls of "Damage" result in "Desync".
-        {StellarSensorTowerEffect.AttractMobs, 10f},
-        {StellarSensorTowerEffect.Desync, 5f}, // This has a pseudo-weight of 15 if the condition described above is met.
+        {StellarSensorTowerEffect.Nothing, 7.5f}, // 77.5f
+        {StellarSensorTowerEffect.Damage, 10f}, // 10f // Once the tower is damaged, future rolls of "Damage" result in "Desync".
+        {StellarSensorTowerEffect.AttractMobs, 77.5f}, // 7.5f
+        {StellarSensorTowerEffect.Desync, 5f}, // 5f // This has a pseudo-weight of 15 if the condition described above is met.
     };
 
-    [DataField] public SoundSpecifier? InsertSound = new SoundPathSpecifier("/Audio/Weapons/Guns/MagIn/revolver_magin.ogg");
+    [DataField] public SoundSpecifier InsertSound = new SoundPathSpecifier("/Audio/Weapons/Guns/MagIn/revolver_magin.ogg");
 
-    [DataField] public SoundSpecifier? EjectSound = new SoundPathSpecifier("/Audio/Weapons/Guns/MagOut/revolver_magout.ogg");
+    [DataField] public SoundSpecifier EjectSound = new SoundPathSpecifier("/Audio/Weapons/Guns/MagOut/revolver_magout.ogg");
 
-    [DataField] public SoundSpecifier? SoundInput = new SoundPathSpecifier("/Audio/_ST/Machines/ringtone.ogg");
+    [DataField] public SoundSpecifier SoundSynchronize = new SoundPathSpecifier("/Audio/_ST/Science/science-tower-ringtone.ogg");
 
-    [DataField] public SoundSpecifier? SoundActivate = new SoundPathSpecifier("/Audio/_ST/Machines/ringtone.ogg");
+    [DataField] public SoundSpecifier SoundProcessing = new SoundPathSpecifier("/Audio/_ST/Science/science-tower-ambience.ogg");
 
-    [DataField] public SoundSpecifier? SoundSynchronize = new SoundPathSpecifier("/Audio/_ST/Machines/ringtone.ogg");
+    [DataField] public SoundSpecifier FinishSound = new SoundPathSpecifier("/Audio/_ST/Machines/crafting-complete.ogg");
 
     [DataField] public EntProtoId FullDrive = "StellarScienceDataDriveFull";
 
@@ -59,6 +58,12 @@ public sealed partial class StellarSensorTowerComponent : Component
 public enum StellarSensorTowerRadialKey
 {
     Key,
+}
+
+[Serializable, NetSerializable]
+public enum StellarSensorTowerVisuals
+{
+    Visuals,
 }
 
 [Serializable, NetSerializable]

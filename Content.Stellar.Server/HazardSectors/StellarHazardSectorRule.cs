@@ -7,10 +7,9 @@ using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Systems;
+using Content.Shared._ES.Camera;
 using Content.Shared._ES.Lighting.Components;
 using Content.Shared.GameTicking.Components;
-using Content.Shared.Light.Components;
-using Content.Shared.Light.EntitySystems;
 using Content.Shared.Parallax;
 using Content.Shared.Weather;
 using Content.Stellar.Shared._ES.Core.Timer;
@@ -24,8 +23,6 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Stellar.Server.HazardSectors;
@@ -38,9 +35,10 @@ public sealed class StellarHazardSectorRule : StellarGameRuleSystem<StellarHazar
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedWeatherSystem _weather = default!;
-    [Dependency] private readonly ShuttleSystem _shuttleSystem = default!;
+    [Dependency] private readonly ShuttleSystem _shuttle = default!;
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly ESEntityTimerSystem _esTimer = default!;
+    [Dependency] private readonly ESScreenshakeSystem _shake = default!;
 
     private float _stationWakeupTime;
 
@@ -48,8 +46,17 @@ public sealed class StellarHazardSectorRule : StellarGameRuleSystem<StellarHazar
     {
         base.Initialize();
         _config.OnValueChanged(STCCVars.StationWakeupTime, (f => _stationWakeupTime = f), true);
+
+        SubscribeLocalEvent<StellarHazardSectorStationComponent, FTLCompletedEvent>(OnFTLCompleted);
     }
 
+    private void OnFTLCompleted(Entity<StellarHazardSectorStationComponent> ent, ref FTLCompletedEvent args)
+    {
+        var translation = new ESScreenshakeParameters() { Trauma = 0.65f, DecayRate = 0.1f, Frequency = 0.008f };
+        var filter = Filter.BroadcastGrid(ent);
+        _shake.Screenshake(filter, translation, null);
+        _shuttle.Disable(ent); // Stations don't need to move, dummy. This permanently anchors it and eliminates the need for Station Anchors.
+    }
 
     protected override void Started(EntityUid uid, StellarHazardSectorRuleComponent comp, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
@@ -62,15 +69,16 @@ public sealed class StellarHazardSectorRule : StellarGameRuleSystem<StellarHazar
         if (!HasComp<MapGridComponent>(gridUid) || !TryComp<ShuttleComponent>(gridUid, out var shuttleComp))
             return;
 
-        EnsureComp<StellarHazardSectorStationComponent>(gridUid.Value); // Marks the station for convenience.
+        EnsureComp<StellarHazardSectorStationComponent>(gridUid.Value, out var sectorComp); // Marks the station for convenience.
         EnsureComp<ESTileBasedRoofComponent>(gridUid.Value); // Enables light passthrough for windows, ect.
 
+        sectorComp.SectorMobs = comp.SectorMobs; // Copy mob data to the station component so the science systems can access it without invoking a gamerule.
         comp.SectorStation = gridUid.Value;
         comp.SectorMap = EnsureHazardSectorMap(comp.Parallax, comp.MapLight);
         if (comp.Weather is { } weather)
             _weather.TryAddWeather(Transform(comp.SectorMap).MapID, weather, out _, null);
 
-        _shuttleSystem.FTLToCoordinates(gridUid.Value, shuttleComp, Transform(comp.SectorMap).Coordinates, Angle.Zero, 0f, _stationWakeupTime);
+        _shuttle.FTLToCoordinates(gridUid.Value, shuttleComp, Transform(comp.SectorMap).Coordinates, Angle.Zero, 0f, _stationWakeupTime);
 
         var streamEnt = _audio.PlayPvs(comp.TravelAmbience, comp.SectorStation);
         comp.AudioStream = streamEnt?.Entity;
