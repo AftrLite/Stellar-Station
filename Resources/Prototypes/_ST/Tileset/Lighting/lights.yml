@@ -463,3 +463,50 @@
     softness: 0.9
     color: "#d8cdaf"
 
+- type: entity
+  id: StellarLightTubeAlwaysPoweredBlue
+  name: light fixture
+  suffix: Always Powered, Blue
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Sprite
+    drawdepth: Overdoors
+    sprite: _ST/Tileset/Lighting/light_tube.rsi
+    layers:
+    - state: base
+    - state: glow
+      color: "#d8cdaf"
+      shader: unshaded
+  - type: PointLight
+    radius: 8
+    energy: 3
+    softness: 0.5
+    color: "#39a1ff"
+
+- type: entity
+  id: StellarLightTubeAlwaysPoweredLed
+  name: light fixture
+  suffix: Always Powered, LED
+  categories: [ ForkFiltered ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Sprite
+    drawdepth: Overdoors
+    sprite: _ST/Tileset/Lighting/light_tube.rsi
+    layers:
+    - state: base
+    - state: glow
+      color: "#d8cdaf"
+      shader: unshaded
+  - type: PointLight
+    radius: 10
+    energy: 2.5
+    softness: 0.9
+    color: "#EEEEFF"

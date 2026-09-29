@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: LicenseRef-CosmicCult
 
 using System.Numerics;
+using Content.Stellar.Client.Transition;
 using Content.Stellar.Shared.CosmicCult.Abilities;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
@@ -19,6 +20,7 @@ public sealed class CosmicShiftSystem : SharedCosmicShiftSystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly AnimationPlayerSystem _animPlayer = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private readonly StellarTransitionSystem _transition = default!;
 
     private static readonly ProtoId<ShaderPrototype> HorizontalCut = "StellarSpriteCutAnimated";
     private static readonly EntProtoId VfxEntity = "CosmicShiftAbilityVfx";
@@ -34,7 +36,11 @@ public sealed class CosmicShiftSystem : SharedCosmicShiftSystem
 
     private void OnShiftAnim(CosmicShiftAnimEvent args)
     {
-        SetShader(GetEntity(args.Target), args.State);
+        var ent = GetEntity(args.Target);
+        SetShader(ent, args.State);
+
+        if (args.State != CosmicShiftState.Cancel)
+            _transition.ClientTransition(ent, TimeSpan.FromSeconds(2));
     }
 
     private void SetShader(Entity<SpriteComponent?> ent, CosmicShiftState state)

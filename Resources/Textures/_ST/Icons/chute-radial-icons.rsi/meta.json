@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "license": "LicenseRef-Wallening",
+    "copyright": "by AftrLite(GitHub)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "eject"
+        },
+        {
+            "name": "insert"
+        },
+        {
+            "name": "insert-self"
+        },
+        {
+            "name": "power-button"
+        }
+    ]
+}
