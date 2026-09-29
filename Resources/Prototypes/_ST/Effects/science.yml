@@ -39,7 +39,7 @@
     drawdepth: Effects
     sprite: _ST/Icons/icons-generic.rsi
     layers:
-    - state: 1
+    - state: check
       visible: false
   - type: Appearance
   - type: AnimationPlayer
