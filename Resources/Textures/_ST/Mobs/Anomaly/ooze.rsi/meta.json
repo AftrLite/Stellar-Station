@@ -11,6 +11,9 @@
             "name": "shadow"
         },
         {
+            "name": "dead"
+        },
+        {
             "name": "base-idle"
         },
         {
