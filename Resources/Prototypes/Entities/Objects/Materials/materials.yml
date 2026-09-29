@@ -366,6 +366,7 @@
   id: MaterialDiamond
   name: refined diamond
   suffix: Full
+  categories: [ ForkFiltered ] # Stellar
   components:
   - type: Stack
     stackType: Diamond

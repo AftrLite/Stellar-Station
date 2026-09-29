@@ -3,6 +3,7 @@
   id: AirAlarm
   name: air alarm
   description: An air alarm. Alarms... air?
+  categories: [ ForkFiltered ] # Stellar
   components:
   - type: StationAiWhitelist
   - type: Electrified

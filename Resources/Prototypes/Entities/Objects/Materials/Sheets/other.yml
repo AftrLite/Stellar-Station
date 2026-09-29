@@ -79,6 +79,7 @@
   id: SheetPlasma
   name: plasma
   suffix: Full
+  categories: [ ForkFiltered ] # Stellar
   components:
   - type: Material
   - type: PhysicalComposition
@@ -137,6 +138,7 @@
   id: SheetPlastic
   name: plastic
   suffix: Full
+  categories: [ ForkFiltered ] # Stellar
   components:
   - type: Tag
     tags:
@@ -203,6 +205,7 @@
   id: SheetUranium
   name: uranium
   suffix: Full
+  categories: [ ForkFiltered ] # Stellar
   components:
   - type: Material
   - type: Edible

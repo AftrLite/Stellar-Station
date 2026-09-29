@@ -25,6 +25,7 @@
   abstract: true
   parent: CablePhysBase
   id: CableBase
+  categories: [ ForkFiltered ] # Stellar
   components:
   - type: Visibility
     layer: 1
@@ -230,6 +231,7 @@
   parent: [ CablePhysBase, BaseSecurityContraband ]
   name: explosive cord
   description: Spaghetti for people who hate walls.
+  categories: [ HideSpawnMenu ] # Stellar
   components:
   - type: Cable
     cableDroppedOnCutPrototype: CableDetStack1

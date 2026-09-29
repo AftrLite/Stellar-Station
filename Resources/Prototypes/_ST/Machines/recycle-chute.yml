@@ -1,0 +1,98 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+- type: entity
+  parent: StellarStructureBase
+  id: StellarRecyclerChute
+  name: recycler chute
+  description: A quick, one-way trip to the recyling depot.
+  categories: [ ForkFiltered ]
+  components:
+  - type: StellarRecyclerChute
+  - type: DoAfter
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _ST/Tileset/Machines/recycler-chute.rsi
+    drawdepth: Mobs
+    noRot: true
+    offset: 0, 0.1875
+    layers:
+    - state: base
+      map: ["base"]
+    - state: indicator-green
+      shader: unshaded
+      map: ["indicator"]
+    - state: charging
+      visible: false
+      map: ["vfx"]
+    - state: vfx
+      sprite: _ST/Effects/generic-smoke-pulse.rsi
+      visible: false
+      map: ["overlay"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ChuteVisuals.Base:
+        base:
+          Opening: { state: base-opening }
+          Idle: { state: base }
+          Charging: { state: base }
+          Cooldown: { state: base-closing }
+        indicator:
+          Idle: { state: indicator-green }
+          Charging: { state: indicator-yellow }
+          Cooldown: { state: indicator-red }
+        vfx:
+          Opening: { visible: false }
+          Idle: { visible: false }
+          Charging: {state: charging, visible: true }
+          Cooldown: {state: cooldown, visible: true }
+        overlay:
+          Opening: { visible: false, state: vfx }
+          Idle: { visible: false, state: vfx }
+          Charging: { visible: false, state: vfx }
+          Cooldown: { visible: true, state: vfx }
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.35,0.25,0.325,0.5"
+        density: 55
+        mask:
+        - MachineMask
+        layer:
+        - WallLayer
+  - type: RangedDamageSound
+    soundGroups:
+      Brute:
+        collection:
+          MetalBulletImpact
+    soundTypes:
+      Heat:
+        collection:
+          MetalLaserImpact
+  - type: Damageable
+    damageContainer: StructuralInorganic
+  - type: RequireProjectileTarget
+  - type: ContainerContainer
+    containers:
+      entity_storage: !type:Container # If changing this container's name, also change the container ID inside the StellarRecyclerChute component.
+        showEnts: False
+        occludes: True
+  - type: Climbable
+    vaultable: false
+  - type: ThrowInsertContainer
+    containerId: entity_storage
+    probability: 0.67
+  - type: Tag
+    tags:
+    - Structure
+  - type: UserInterface
+    interfaces:
+      enum.StellarChuteRadialKey.Key:
+        type: StellarRecyclerChuteBoundUserInterface

@@ -3,6 +3,7 @@
   parent: BaseItem
   id: IngotBase
   description: A heavy metal ingot stamped with the Nanotrasen logo.
+  categories: [ ForkFiltered ] # Stellar
   components:
   - type: Sprite
     sprite: Objects/Materials/ingots.rsi
@@ -32,6 +33,7 @@
   id: IngotGold
   name: gold bar
   suffix: Full
+
   components:
   - type: Material
   - type: PhysicalComposition

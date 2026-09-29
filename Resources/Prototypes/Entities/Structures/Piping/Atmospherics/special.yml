@@ -3,6 +3,7 @@
   id: AtmosDeviceFanTiny
   name: tiny vent # Stellar
   description: A tiny vent, releasing a thin gust of air. # Stellar
+  categories: [ ForkFiltered ] # Stellar
   placement:
     mode: SnapgridCenter
   components:
@@ -30,6 +31,7 @@
   id: AtmosDeviceFanDirectional
   name: directional vent # Stellar
   description: A very special vent that stops the movement of gases across it. # Stellar
+  categories: [ ForkFiltered ] # Stellar
   placement:
     mode: SnapgridCenter
   components:

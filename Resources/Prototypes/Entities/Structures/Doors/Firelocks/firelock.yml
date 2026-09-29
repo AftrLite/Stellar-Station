@@ -198,6 +198,7 @@
   parent: Firelock
   name: firelock
   suffix: directional # Stellar
+  categories: [ ForkFiltered ] # Stellar
   components:
     - type: StationAiWhitelist
     - type: Sprite

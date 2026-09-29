@@ -6,6 +6,7 @@
   description: Holds gas.
   placement:
     mode: SnapgridCenter
+  categories: [ ForkFiltered ] # Stellar
   components:
   - type: Visibility
     layer: 1

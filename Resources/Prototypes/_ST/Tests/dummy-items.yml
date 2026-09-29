@@ -1,0 +1,66 @@
+# SPDX-FileCopyrightText: 2026 AftrLite
+#
+# SPDX-License-Identifier: LicenseRef-Wallening
+
+# THESE DUMMY ITEMS EXIST AS A PLACEHOLDER FOR THE CONVENIENCE OF MAPPING.
+
+- type: entity
+  abstract: true
+  parent: StellarStructureBase
+  id: StellarMapDummy
+  name: dummy item
+  suffix: MAPPING ONLY
+  categories: [ ForkFiltered ]
+  components:
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _ST/dummy-item.rsi
+    layers:
+    - state: base
+    drawdepth: Mobs
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        mask:
+        - LargeMobMask
+        layer:
+        - WallLayer
+
+- type: entity
+  parent: StellarMapDummy
+  id: StellarMapDummySensorTerminal
+  name: sensor terminal (Sensor Analyst Job Device)
+
+- type: entity
+  parent: StellarMapDummy
+  id: StellarMapDummySuitStorageEVA
+  name: suit storage (EVA Suits)
+
+- type: entity
+  parent: StellarMapDummy
+  id: StellarMapDummySuitStorageSec
+  name: suit storage (Security Suits)
+
+- type: entity
+  parent: StellarMapDummy
+  id: StellarMapDummyRecyclerChute
+  name: recycler chute
+
+- type: entity
+  parent: StellarMapDummy
+  id: StellarMapDummyRecyclerTelepad
+  name: recycler telepad
+
+- type: entity
+  parent: StellarMapDummy
+  id: StellarMapDummyBotanyGrowingBed
+  name: growing bed (Replaces HydroTray.)
+
+- type: entity
+  parent: StellarMapDummy
+  id: StellarMapDummyGasTankDispenser
+  name: gas tank dispenser

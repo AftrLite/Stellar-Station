@@ -1,6 +1,7 @@
 - type: entity
   id: AirSensorBase
   abstract: true
+  categories: [ ForkFiltered ] # Stellar
   components:
   - type: DeviceNetwork
     deviceNetId: AtmosDevices

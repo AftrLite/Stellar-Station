@@ -15,6 +15,7 @@
   itemDrop: FloorTileItemSteel
   heatCapacity: 10000
   flammability: 0
+  indestructible: true
   variants: 4
   placementVariants:
   - 1.0
@@ -79,6 +80,7 @@
   itemDrop: FloorTileItemSteel
   heatCapacity: 10000
   flammability: 0
+  indestructible: true
 
 #### CHECKERBOARD
 - type: tile
@@ -367,7 +369,6 @@
     collection: FootstepSlime
 
 ## LOBBY
-
 - type: tile
   id: StellarFloorNothing
   editorHidden: false

@@ -259,6 +259,7 @@
   id: ChairRitual
   parent: ChairWood
   description: Looks uncomfortable.
+  categories: [ HideSpawnMenu ] # Stellar
   components:
   - type: Sprite
     sprite: Structures/Furniture/chairs.rsi # Stellar - Wallening
@@ -284,6 +285,7 @@
   id: ChairCursed
   parent: ChairWood
   description: It's staring back.
+  categories: [ HideSpawnMenu ] # Stellar
   components:
   - type: Sprite
     sprite: Structures/Furniture/chairs.rsi # Stellar - Wallening

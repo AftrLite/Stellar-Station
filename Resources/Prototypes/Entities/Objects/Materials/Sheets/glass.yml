@@ -54,6 +54,7 @@
   parent: SheetGlassBase
   id: SheetGlass
   suffix: Full
+  categories: [ ForkFiltered ] # Stellar
   components:
   - type: PhysicalComposition
     materialComposition:
@@ -117,6 +118,7 @@
   name: reinforced glass
   description: A reinforced sheet of glass.
   suffix: Full
+  categories: [ ForkFiltered ] # Stellar
   components:
   - type: PhysicalComposition
     materialComposition:
@@ -199,6 +201,7 @@
   name: plasma glass
   description: A sheet of translucent plasma.
   suffix: Full
+  categories: [ ForkFiltered ] # Stellar
   components:
   - type: PhysicalComposition
     materialComposition:
@@ -276,6 +279,7 @@
   name: reinforced plasma glass
   description: A reinforced sheet of translucent plasma.
   suffix: Full
+  categories: [ ForkFiltered ] # Stellar
   components:
   - type: PhysicalComposition
     materialComposition:
@@ -333,6 +337,7 @@
   name: uranium glass
   description: A sheet of uranium glass.
   suffix: Full
+  categories: [ ForkFiltered ] # Stellar
   components:
   - type: PhysicalComposition
     materialComposition:
@@ -409,6 +414,7 @@
   id: SheetRUGlass
   name: reinforced uranium glass
   description: A reinforced sheet of uranium.
+  categories: [ ForkFiltered ] # Stellar
   components:
   - type: PhysicalComposition
     materialComposition:

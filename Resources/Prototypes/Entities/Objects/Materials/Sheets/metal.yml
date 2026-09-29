@@ -40,6 +40,7 @@
   id: SheetSteel
   name: steel
   suffix: Full
+  categories: [ ForkFiltered ] # Stellar
   components:
   - type: Material
   - type: PhysicalComposition
@@ -166,6 +167,7 @@
   id: SheetPlasteel
   name: plasteel
   suffix: Full
+  categories: [ ForkFiltered ] # Stellar
   components:
   - type: Material
   - type: PhysicalComposition
